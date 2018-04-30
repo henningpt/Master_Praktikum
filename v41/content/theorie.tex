@@ -3,9 +3,46 @@
 
 \subsection{Zielsetzung}
 \label{subsec:Zielsetzung}
+Ziel dieses Versuchs ist es, mit Hilfe der sogenannten
+Debye-Scherrer-Methode die Struktur einer Kristallprobe
+zu bestimmen und die Gitterkonstante zu messen.
+
+\subsection{Allgemines}
+\label{subsec:allgemein}
+
+Festkörper wie zum Beispiel Salze und Metalle
+sind aus periodischen
+Kristallstrukturen zusamengesetzt. Dabei sind im
+Allgemeinen die einzelenen Kristallite zufällig
+ausgerichtet. Wenn ein solcher Festkörper untersucht wird,
+wird nur das statistische Mittel der Kristalle beobachtet.
+Zur Untersuchung der Eigentlichen Kristallstruktur
+können somit nur einzelne Kleinkristalle bzw.
+Einkristalle(???) verwendet werden.
+
 
 \subsection{Kristallgitter}
 \label{subsec:kristallstrukturen}
+Um die Periodischen Atomstrukturen eines Kristalls
+zu beschreiben, wird ein Punktgitter verwendet.
+Jedem Gitterpunkt wird eine festgelegte Atomgruppierung,
+die sogenannte Basis, zugeordnet.
+Es existieren theoretisch unendlich viele solcher Punktgitter.
+Jedes wird durch drei sogenannte Translationsvektoren
+$\vec{x}_{1}$, $\vec{x}_{2}$, $\vec{x}_{3}$ gekennzeichnet.
+Durch Linearkombination dieser Vektoren lässt sich
+jeder Gitterpunkt
+\begin{align}
+  \label{eqn:1}
+  \vec{t} = n_{1} \vec{x}_{1} + n_{2} \vec{x}_{2} + n_{3} \vec{x}_{3}
+\end{align}
+beschreiben.
+Mit Hilfe des durch die drei Vektoren $x_{i}$ aufgespannten
+Parallelepipeds(siehe Abbildung \ref{fig:abb2}) lässt sich die
+kleinstmögliche strukturbestimmende Einheit des Gitters,
+die sogenannte Elementarzelle, erhalten.
+Dabei wird zwischen primitiven und nichtprimitiven Einheitszellen unterschieden.
+
 
 \subsection{Netzebenen}
 \label{subsec:netzebenen}
@@ -25,25 +62,43 @@ Ladung $ze_0$ zu
 \begin{align}
   I(r,\theta,z)  \label{6}.
 \end{align}
-Durch die Endliche Ausdehnung der Elektronenhülle,
+Durch die endliche Ausdehnung der Elektronenhülle,
 müssen jedoch Phasenunterschiede
 berücksichtigt werden und es wird
 der Atomformfaktor $f$ als Quotienten
 \begin{align}
 f=.
 \end{align}
-eigneführt.
+eingeführt.
 Ebenfalls kann der Atomformfaktor $f$ als Fourier-Transformierte
 der Ladungsverteilung $\rho(\vec{r})$
 \begin{align}
 f=\int
 \end{align}
- angesehen werden.
-Somit ergibt sich die Steuamplitude eines Atomes
+angesehen werden.
+Somit ergibt sich die Steuamplitude
 \begin{align}
-  I_a=
+  I_\mathrm{a}=f^2\left(z,\frac{\sin\theta}{\lambda}\right)I_\mathrm{e}\left(r,\theta\right)
 \end{align}
--erweiterung auf einheiets zelle
+eines Atomes.
+Die Streuamplitude $A$ einer Elementarzelle resultiert aus
+phasenrichtiger Aufsummation der
+einzelnen Atomstreuamplituden, wobei unterschiedliche
+Atome an den Orten $\vec{r_j}$
+andere Formfaktoren $f_j$ besitzen.
+Somit folgt für die Streuamplitude oder auch Strukturamplitude genannt
+\begin{align}
+  A=\sum_j \symup{e}^{-2\pi i \vec{r}_j\left(\vec{k}-\vec{k}_0\right)} I_\mathm{e}.
+\end{align}
+Durch Verwenden der Braggbedingung in der Form
+\begin{align}
+\vec{k}-\vec{k}_0=\vec{g}
+\intertext{mit dem Reziprokengittervektor }
+\vec{g}=
+\end{align}
+
+
+erweiterung auf einheiets zelle
 -erweiterung auf gitter
 -> Braggbedingung an Netzebenen
 -> Strukturamplitude S
