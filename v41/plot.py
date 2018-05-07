@@ -8,8 +8,8 @@ from uncertainties.unumpy import (nominal_values as noms,
 
 # lade daten
 r_meta = np.genfromtxt("metall.txt", unpack=True)
-
-
+r_meta = r_meta + 0.9/2
+r_meta *= 0.01
 bcc= np.array([[0, 1, 1],#2
                 [0, 0, 2],#4
                 [1, 1, 2],#6
@@ -17,7 +17,7 @@ bcc= np.array([[0, 1, 1],#2
                 [0, 1, 3],#10
                 [2, 2, 2],#12
                 [1, 2, 3],#14
-                [1, 1, 4],#18
+                [1, 1, 4]#18
                 ])
 
 fcc=np.array([[1, 1, 1],#3
@@ -27,7 +27,7 @@ fcc=np.array([[1, 1, 1],#3
               [2, 2, 2],#12
               [0, 0, 4],#16
               [1, 3, 3],#19
-              [0, 2, 4],#20
+              [0, 2, 4]#20
  ])
 
 
@@ -38,12 +38,24 @@ dia = np.array([[1, 1, 1],#3
               [1, 3, 3],#19
               [2, 2, 4],#24
               [3, 3, 3],#27
-              [4, 4, 0],#32
+              [4, 4, 0]#32
  ])
+
+hcp = np.array([[0, 0, 1],#1
+                [0, 1, 1],#2
+                [1, 1, -1],#3
+                [2, 0, 0],#4
+                [2, 1, 0],#5
+                [1, 1, 2],#6
+                [0, 2, 2],#8
+                [2, 2, 1]#9
+                ])
+
 
 bcc=bcc.astype(np.float64)
 fcc=fcc.astype(np.float64)
 dia=dia.astype(np.float64)
+hcp=hcp.astype(np.float64)
 
 # groessen definieren
 wavelen = 1.5417e-10
@@ -51,7 +63,7 @@ camera_rad = 57.3 * 10**(-3)
 d_probe = 130 * 10**(-3)
 proben_rad = 0.001  # nicht endgültig
 v = 0.002
-
+lit_wolfram = 3.16e-10 # kittel
 
 # functions
 def funp(string, arr):
@@ -61,7 +73,9 @@ def funp(string, arr):
 
 
 def winkel(d, R):
-    return (R / (2 * d))
+    print("\n\nwinkelberechnung d: ", d)
+    print("\n\n R: ", R)
+    return (R * 90 /(np.pi * d))
 
 
 def inrad(winkel_deg):
@@ -78,7 +92,7 @@ def gitter(gitter, lamb, theta):
     m_sum = miller(gitter)
 
     print("\n\n\nm_sum aus miller aus gitter", m_sum)
-    return(m_sum * lamb / (2 * np.sin(inrad(theta))))
+    return(m_sum * lamb / (2*np.sin(inrad(theta))))
 
 
 # Betragsquadrat der Millerindices
@@ -89,6 +103,7 @@ def miller(struktur):
         mill_arr[ind] = np.linalg.norm(struktur[ind, :])
         print("\nstruktur ", struktur[ind,:])
     return(mill_arr)
+
 
 def gk_korrektur_a(gk, theta, proben_rad, camera_rad):
     return(gk * proben_rad * (1 - camera_rad) * np.cos(inrad(theta))**2 / (2 * camera_rad * inrad(theta)))
@@ -116,26 +131,27 @@ def gk_plot(name, winkel, gk, funktion, korr, fitgrenzen):
     plt.plot(g_plot, funktion(g_plot, *params))
     plt.savefig("build/plot_"+name+".pdf")
     plt.close()
-    return(unp.uarray(params[1], np.diag(errors)[1]))
+    return(unp.uarray(params[1], np.sqrt(np.diag(errors)[1])))
 
 
 
 # RECHNEN
-# richtige radien
-r_meta = r_meta + 0.9/2
+
 
 # berechne zugehoerige winkel theta
-meta_winkel = winkel(d_probe, r_meta)
+meta_winkel = winkel(camera_rad, r_meta)
 
 # gitterkonstanten bcc metall
 gk_m_bcc = gitter(bcc, wavelen, meta_winkel)
 gk_m_fcc = gitter(fcc, wavelen, meta_winkel)
 gk_m_dia = gitter(dia, wavelen, meta_winkel)
+gk_m_hcp = gitter(hcp, wavelen, meta_winkel)
 
 
 a_m_bcc=unp.uarray(gk_m_bcc,gk_korrektur_a(gk_m_bcc, meta_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_m_bcc, meta_winkel, camera_rad, v))
 a_m_fcc=unp.uarray(gk_m_fcc,gk_korrektur_a(gk_m_fcc, meta_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_m_fcc, meta_winkel, camera_rad, v))
 a_m_dia=unp.uarray(gk_m_dia,gk_korrektur_a(gk_m_dia, meta_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_m_dia, meta_winkel, camera_rad, v))
+a_m_hcp=unp.uarray(gk_m_hcp,gk_korrektur_a(gk_m_hcp, meta_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_m_hcp, meta_winkel, camera_rad, v))
 
 # auf konsole ausgeben
 
@@ -168,13 +184,15 @@ def gerade(x,a,b):
 # fit plto fuer metall bcc
 a_bcc_end=gk_plot("bcc", meta_winkel, a_m_bcc, gerade, winkel_korrektur,[0,7])
 a_fcc_end=gk_plot("fcc", meta_winkel, a_m_fcc, gerade, winkel_korrektur,[0,7])
-a_dia_end=gk_plot("dia", meta_winkel, a_m_dia, gerade, winkel_korrektur,[1,7])
+a_dia_end=gk_plot("dia", meta_winkel, a_m_dia, gerade, winkel_korrektur,[0,7])
+a_hcp_end=gk_plot("hcp", meta_winkel, a_m_hcp, gerade, winkel_korrektur,[0,7])
 
-print("\nMetall bcc",a_bcc_end)
+print(" \nMetall bcc",a_bcc_end)
 print(" \nMetall fcc",a_fcc_end)
 print(" \nMetall dia",a_dia_end)
+print(" \nMetall hcp",a_hcp_end)
 
-
+print("\n\nWolfram ist auserwählt!!!!! Die relative Abweichung beträgt:",(a_bcc_end-lit_wolfram)/lit_wolfram)
 
 #TESTESTEST
 print("\n\n\n\nasldkfjölaksdflj", test(3, wavelen, 2.8665 * 10**(-10)))
@@ -186,12 +204,56 @@ r_salz = np.genfromtxt("salz.txt", unpack=True)
 
 # richtige radien
 r_salz = r_salz + 0.9/2
+r_salz *= 0.01
 
 salz_winkel = winkel(d_probe, r_salz)
 
 print("\n\n\nwinkel salz:\n")
 for element in salz_winkel:
     print(element)
+
+stein_salz=np.array([[1, 1, 1],#3  ggu und guu verboten
+              [0, 0, 2],#4
+              [0, 2, 2],#8
+              [1, 1, 3],#11 abgeschwächt
+              [2, 2, 2],#12
+              [0, 0, 4],#16
+              [1, 3, 3],#19 abgeschwächt
+              [0, 2, 4]#20
+              [2, 2, 4]#24
+              [3, 3, 3]#27
+              [1, 3, 5]#35
+              [2, 4, 4]#36 [0,0,6]
+              [2, 2, 6]#42
+              [3, 3, 5]#43
+              [4, 4, 4]#48
+              ])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # x = np.linspace(0, 10, 1000)
