@@ -4,7 +4,7 @@ from scipy.optimize import curve_fit as cf
 import uncertainties.unumpy as unp
 from uncertainties.unumpy import (nominal_values as noms,
                                   std_devs as stds)
-# from tabelle.py import tabelle
+from tabelle import tabelle
 
 # lade daten
 r_meta = np.genfromtxt("metall.txt", unpack=True)
@@ -170,19 +170,32 @@ def gerade(x,a,b):
 
 
 # fit plto fuer metall bcc
-a_bcc_end = gk_plot("bcc", meta_winkel, a_m_bcc, gerade,
-                    winkel_korrektur, [0, 7])
-a_fcc_end = gk_plot("fcc", meta_winkel, a_m_fcc, gerade,
-                    winkel_korrektur, [0, 7])
-a_dia_end = gk_plot("dia", meta_winkel, a_m_dia, gerade,
-                    winkel_korrektur, [0, 7])
+# a_bcc_end = gk_plot("bcc", meta_winkel, a_m_bcc, gerade,
+#                     winkel_korrektur, [0, 7])
+# a_fcc_end = gk_plot("fcc", meta_winkel, a_m_fcc, gerade,
+#                     winkel_korrektur, [0, 7])
+# a_dia_end = gk_plot("dia", meta_winkel, a_m_dia, gerade,
+#                     winkel_korrektur, [0, 7])
+#
+# print(" \nMetall bcc", a_bcc_end)
+# print(" \nMetall fcc", a_fcc_end)
+# print(" \nMetall dia", a_dia_end)
 
-print(" \nMetall bcc", a_bcc_end)
-print(" \nMetall fcc", a_fcc_end)
-print(" \nMetall dia", a_dia_end)
+# print("\n\nWolfram ist auserwählt!!!!! Die relative Abweichung beträgt:",
+#       (a_bcc_end-lit_wolfram)/lit_wolfram)
 
-print("\n\nWolfram ist auserwählt!!!!! Die relative Abweichung beträgt:",
-      (a_bcc_end-lit_wolfram)/lit_wolfram)
+#def tabelle(datensatz, Name,Rundungen):  # i=Spalten j=Zeilen
+bcc_sum = bcc[:, 0]**2 + bcc[:, 1]**2 + bcc[:, 2]**2
+
+bcc_table = np.array([r_meta*100, meta_winkel, bcc[:, 0], bcc[:, 1],bcc[:, 2], bcc_sum,noms(a_m_bcc)*10**(10),stds(a_m_bcc)*10**(10),np.cos(inrad(meta_winkel))**2])
+bcc_rundung = np.array([      1,           2,         0,         0,        0,       0,             2,           2,                            2,])
+print("\n\n\n", bcc_table)
+tabelle(bcc_table, "bcc_table", bcc_rundung)
+
+
+
+
+
 
 # TESTESTEST
 print("\n\n\n\nasldkfjölaksdflj", test(3, wavelen, 2.8665 * 10**(-10)))
