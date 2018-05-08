@@ -41,21 +41,12 @@ dia = np.array([[1, 1, 1],#3
               [4, 4, 0]#32
  ])
 
-hcp = np.array([[0, 0, 1],#1
-                [0, 1, 1],#2
-                [1, 1, -1],#3
-                [2, 0, 0],#4
-                [2, 1, 0],#5
-                [1, 1, 2],#6
-                [0, 2, 2],#8
-                [2, 2, 1]#9
-                ])
+
 
 
 bcc=bcc.astype(np.float64)
 fcc=fcc.astype(np.float64)
 dia=dia.astype(np.float64)
-hcp=hcp.astype(np.float64)
 
 # groessen definieren
 wavelen = 1.5417e-10
@@ -145,13 +136,11 @@ meta_winkel = winkel(camera_rad, r_meta)
 gk_m_bcc = gitter(bcc, wavelen, meta_winkel)
 gk_m_fcc = gitter(fcc, wavelen, meta_winkel)
 gk_m_dia = gitter(dia, wavelen, meta_winkel)
-gk_m_hcp = gitter(hcp, wavelen, meta_winkel)
 
 
 a_m_bcc=unp.uarray(gk_m_bcc,gk_korrektur_a(gk_m_bcc, meta_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_m_bcc, meta_winkel, camera_rad, v))
 a_m_fcc=unp.uarray(gk_m_fcc,gk_korrektur_a(gk_m_fcc, meta_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_m_fcc, meta_winkel, camera_rad, v))
 a_m_dia=unp.uarray(gk_m_dia,gk_korrektur_a(gk_m_dia, meta_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_m_dia, meta_winkel, camera_rad, v))
-a_m_hcp=unp.uarray(gk_m_hcp,gk_korrektur_a(gk_m_hcp, meta_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_m_hcp, meta_winkel, camera_rad, v))
 
 # auf konsole ausgeben
 
@@ -180,24 +169,25 @@ def gerade(x,a,b):
     return (a*x+b)
 
 
-
 # fit plto fuer metall bcc
-a_bcc_end=gk_plot("bcc", meta_winkel, a_m_bcc, gerade, winkel_korrektur,[0,7])
-a_fcc_end=gk_plot("fcc", meta_winkel, a_m_fcc, gerade, winkel_korrektur,[0,7])
-a_dia_end=gk_plot("dia", meta_winkel, a_m_dia, gerade, winkel_korrektur,[0,7])
-a_hcp_end=gk_plot("hcp", meta_winkel, a_m_hcp, gerade, winkel_korrektur,[0,7])
+a_bcc_end = gk_plot("bcc", meta_winkel, a_m_bcc, gerade,
+                    winkel_korrektur, [0, 7])
+a_fcc_end = gk_plot("fcc", meta_winkel, a_m_fcc, gerade,
+                    winkel_korrektur, [0, 7])
+a_dia_end = gk_plot("dia", meta_winkel, a_m_dia, gerade,
+                    winkel_korrektur, [0, 7])
 
-print(" \nMetall bcc",a_bcc_end)
-print(" \nMetall fcc",a_fcc_end)
-print(" \nMetall dia",a_dia_end)
-print(" \nMetall hcp",a_hcp_end)
+print(" \nMetall bcc", a_bcc_end)
+print(" \nMetall fcc", a_fcc_end)
+print(" \nMetall dia", a_dia_end)
 
-print("\n\nWolfram ist auserwählt!!!!! Die relative Abweichung beträgt:",(a_bcc_end-lit_wolfram)/lit_wolfram)
+print("\n\nWolfram ist auserwählt!!!!! Die relative Abweichung beträgt:",
+      (a_bcc_end-lit_wolfram)/lit_wolfram)
 
-#TESTESTEST
+# TESTESTEST
 print("\n\n\n\nasldkfjölaksdflj", test(3, wavelen, 2.8665 * 10**(-10)))
-##################################################################################
-#salz
+###############################################################################
+# salz
 
 # berechne zugehoerige winkel theta
 r_salz = np.genfromtxt("salz.txt", unpack=True)
@@ -212,21 +202,54 @@ print("\n\n\nwinkel salz:\n")
 for element in salz_winkel:
     print(element)
 
-stein_salz=np.array([[1, 1, 1],#3  ggu und guu verboten
-              [0, 0, 2],#4
-              [0, 2, 2],#8
-              [1, 1, 3],#11 abgeschwächt
-              [2, 2, 2],#12
-              [0, 0, 4],#16
-              [1, 3, 3],#19 abgeschwächt
-              [0, 2, 4]#20
-              [2, 2, 4]#24
-              [3, 3, 3]#27
-              [1, 3, 5]#35
-              [2, 4, 4]#36 [0,0,6]
-              [2, 2, 6]#42
-              [3, 3, 5]#43
-              [4, 4, 4]#48
+stein_salz = np.array([[1, 1, 1],  # 3  ggu und guu verboten
+                      [0, 0, 2],  # 4
+                      [0, 2, 2],  # 8
+                      [1, 1, 3],  # 11 abgeschwächt
+                      [2, 2, 2],  # 12
+                      [0, 0, 4],  # 16
+                      [1, 3, 3],  # 19 abgeschwächt
+                      [0, 2, 4]  # 20
+                      [2, 2, 4]  # 24
+                      [3, 3, 3]  # 27
+                      [1, 3, 5]  # 35
+                      [2, 4, 4]  # 36 [0,0,6]
+                      [2, 2, 6]  # 42
+                      [3, 3, 5]  # 43
+                      [4, 4, 4]  # 48
+                      [, , ]  # 48
+                      [, , ]  # 48
+                      [, , ]  # 48
+                      [, , ]  # 48
+                      [, , ]  # 48
+                      [, , ]  # 48
+                      [, , ]  # 48
+                      [, , ]  # 48
+                      ])
+
+CC = np.array([[0, 0, 1],#1  ggu und guu verboten
+              [0, 1, 1],#2
+              [1, 1, 1],#3
+              [0, 0, 2],#4 abgeschwächt
+              [0, 1, 2],#5
+              [1, 1, 2],#6
+              [0, 2, 2],#8 abgeschwächt
+              [0, 0, 3]#9
+              [0, 1, 3]#10
+              [1, 1, 3]#11
+              [2, 2, 2]#12
+              [0, 2, 3]#13
+              [1, 2, 3]#14
+              [0, 0, 4]#16
+              [0, 1, 4]#17
+              [0, 1, 4]#17
+              [0, 1, 4]#17
+              [0, 1, 4]#17
+              [0, 1, 4]#17
+              [0, 1, 4]#17
+              [0, 1, 4]#17
+              [0, 1, 4]#17
+              [0, 1, 4]#17
               ])
 
 
