@@ -10,7 +10,7 @@ from tabelle import tabelle
 r_meta = np.genfromtxt("metall.txt", unpack=True)
 r_meta = r_meta + 0.9/2
 r_meta *= 0.01
-bcc= np.array([[0, 1, 1],#2
+bcc= np.array([[0, 1, 1],#2,
                 [0, 0, 2],#4
                 [1, 1, 2],#6
                 [0, 2, 2],#8
@@ -170,16 +170,16 @@ def gerade(x,a,b):
 
 
 # fit plto fuer metall bcc
-# a_bcc_end = gk_plot("bcc", meta_winkel, a_m_bcc, gerade,
-#                     winkel_korrektur, [0, 7])
-# a_fcc_end = gk_plot("fcc", meta_winkel, a_m_fcc, gerade,
-#                     winkel_korrektur, [0, 7])
-# a_dia_end = gk_plot("dia", meta_winkel, a_m_dia, gerade,
-#                     winkel_korrektur, [0, 7])
-#
-# print(" \nMetall bcc", a_bcc_end)
-# print(" \nMetall fcc", a_fcc_end)
-# print(" \nMetall dia", a_dia_end)
+a_bcc_end = gk_plot("bcc", meta_winkel, a_m_bcc, gerade,
+                    winkel_korrektur, [0, 7])
+a_fcc_end = gk_plot("fcc", meta_winkel, a_m_fcc, gerade,
+                    winkel_korrektur, [0, 7])
+a_dia_end = gk_plot("dia", meta_winkel, a_m_dia, gerade,
+                    winkel_korrektur, [0, 7])
+
+print(" \nMetall bcc", a_bcc_end)
+print(" \nMetall fcc", a_fcc_end)
+print(" \nMetall dia", a_dia_end)
 
 # print("\n\nWolfram ist auserwählt!!!!! Die relative Abweichung beträgt:",
 #       (a_bcc_end-lit_wolfram)/lit_wolfram)
@@ -215,7 +215,7 @@ print("\n\n\nwinkel salz:\n")
 for element in salz_winkel:
     print(element)
 
-stein_salz = fcc=np.array([[1, 1, 1],#3
+ss = np.array([[1, 1, 1],#3 ggu und guu verboten #stein_salz
               [0, 0, 2],  # 4
               [0, 2, 2],  # 8
               [1, 1, 3],  # 11
@@ -230,38 +230,56 @@ stein_salz = fcc=np.array([[1, 1, 1],#3
               [2, 4, 4],  # 36
               [0, 2, 6],  # 40
               [3, 3, 5],  # 43
-              [4, 4, 4],  #
+              [4, 4, 4],  # 48
               [1, 5, 5],  # 51
+              [0, 4, 6],  # 52
+              [2, 4, 6],  # 56
+              [3, 5, 5],  # 59
+              [4, 4, 6],  # 68
+              [0, 6, 6],  # 72
+              [5, 5, 5],  # 75
                ])
 
-CC = np.array([[0, 0, 1],#1  ggu und guu verboten
-              [0, 1, 1],#2
-              [1, 1, 1],#3
-              [0, 0, 2],#4 abgeschwächt
-              [0, 1, 2],#5
-              [1, 1, 2],#6
-              [0, 2, 2],#8 abgeschwächt
-              [0, 0, 3],#9
-              [0, 1, 3],#10
-              [1, 1, 3],#11
-              [2, 2, 2],#12
-              [0, 2, 3],#13
-              [1, 2, 3],#14
-              [0, 0, 4],#16
-              [0, 1, 4],#17
-              [0, 1, 4],#17
-              [0, 1, 4],#17
-              [0, 1, 4],#17
-              [0, 1, 4],#17
-              [0, 1, 4],#17
-              [0, 1, 4],#17
-              [0, 1, 4],#17
-              [0, 1, 4],#17
+cc = np.array([[0, 0, 1],#1
+               [0, 1, 1],#2
+               [1, 1, 1],#3
+               [0, 0, 2],#4 abgeschwächt
+               [0, 1, 2],#5
+               [1, 1, 2],#6
+               [0, 2, 2],#8 abgeschwächt
+               [0, 0, 3],#9
+               [0, 1, 3],#10
+               [1, 1, 3],#11
+               [2, 2, 2],#12
+               [0, 2, 3],#13
+               [1, 2, 3],#14
+               [0, 0, 4],#16
+               [0, 1, 4],#17
+               [1, 1, 4],#18
+               [1, 3, 3],#19
+               [0, 2, 4],#20
+               [1, 2, 4],#21
+               [2, 3, 3],#22
+               [2, 2, 4],#24
+               [0, 0, 5],#25
+               [0, 1, 5],#26
               ])
 
 
+gk_s_ss = gitter(ss, wavelen, salz_winkel)
+gk_s_cc = gitter(cc, wavelen, salz_winkel)
+# gk_m_dia = gitter(dia, wavelen, salz_winkel)
 
 
+a_s_ss = unp.uarray(gk_s_ss,gk_korrektur_a(gk_s_ss, salz_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_s_ss, salz_winkel, camera_rad, v))
+a_s_cc = unp.uarray(gk_s_cc,gk_korrektur_a(gk_s_cc, salz_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_s_cc, salz_winkel, camera_rad, v))
+# a_s_dia=unp.uarray(gk_s_dia,gk_korrektur_a(gk_s_dia, salz_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_s_dia, salz_winkel, camera_rad, v))
+
+
+
+a_ss_end = gk_plot("ss", salz_winkel, a_s_ss, gerade, winkel_korrektur, [0, 22])
+
+a_cc_end = gk_plot("cc", salz_winkel, a_s_cc, gerade, winkel_korrektur, [0, 22])
 
 
 
