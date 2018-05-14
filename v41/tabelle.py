@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def tabelle(datensatz, Name,Rundungen):  # i=Spalten j=Zeilen
+def tabelle(datensatz, Name, Rundungen):  # i=Spalten j=Zeilen
     fobj_out = open(Name+".tex", "w")
     i_max, j_max = np.shape(datensatz)
     fobj_out.write(r"\begin{table}"+"\n")
@@ -31,8 +31,7 @@ def tabelle(datensatz, Name,Rundungen):  # i=Spalten j=Zeilen
     fobj_out.write(r"\end{table}"+"\n")
     fobj_out.close()
 
-
-
+'''
 test=np.array([[2.2960,3.0100,4.400,5.500,6.600,7.700,8.800,9.900],[1.1,2.2,3.3,4.4,5.5,6.6,7.7,8.8]])
 test1=np.array([1,2,3,4,5])
 print(np.shape(test))
@@ -55,3 +54,4 @@ x="6"
 mist='{0:.'+x+'f}'
 
 print(mist.format(test[0,0]))
+'''

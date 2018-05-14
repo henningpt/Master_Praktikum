@@ -49,20 +49,66 @@ nichtprimitive Einheitszelle.\\ \\
 Die verschiedenen Punktgitter werden anhand ihrer Symmetrie
 in 14 als Bravais-Gitter bezeichnete Arten eingeteilt.
 Diese lassen sich in 7 Gruppen zusammenfassen.\\ \\
-Die Gitterstruktur von Metallen und Salzen, sind gegeben
+\subsubsection{Kubische Kristallstrukturen}
+\label{subsubsec:kubische_gitter}
+
+Die Gitterstruktur von Metallen und Salzen, sind häufig gegeben
 durch die sogenannten Kubischen Gitter.
-Dabei wird zwischen kubisch-primitiven,
+Bei kubischen Gittern sind besitzen die drei Translationsvektoren
+alle die selbe Länge und stehen jeweil senkrecht aufeinander.\\
+Es wird zwischen kubisch-primitiven,
 kubisch-flächenzentrierten und
 kubisch-raumzentrierten Gittern unterschieden. \\ \\
 Das kubisch-primitive Gitter(siehe Abbildung \ref{fig:bcc})
 kennzeichnet sich dadurch,
 das die Atome der Einheitszelle auf den Ecken
-eines Würfels platziert sind.\\ \\
+eines Würfels platziert sind. Somit kann als Basisvektor trivial
+der Nullvektor angegeben werden.\\ \\
 Das kubisch raumzentrierte Gitter(siehe Abbildung \ref{fig:raumzentriert})
 gleicht dem primitiven, allerdings befindet sich noch
 zusätzlich ein Atom im Mittleren des Würfels.
 Somit besteht in diesem Fall die Basis aus zwei Atomen.
+Diese Basisvektoren sind durch
+\begin{align}
+  \label{eqn:2}
+  \begin{pmatrix}
+    0, 0, 0;
+  \end{pmatrix}\\
+  \begin{pmatrix}
+    \frac{1}{2}, \frac{1}{2}, \frac{1}{2};
+  \end{pmatrix}
+\end{align}
+gegeben.\\ \\
+Das kubisch flächenzentrierte Gitter gleicht dem kubisch-primitiven, hat
+allerdings zusätzlich jeweils auf den Mitten der Würfelflächen Atome.
+Die Basisvektoren sind durch
+\begin{align}
+   \label{eqn:3}
+   \begin{pmatrix}
+     0, 0, 0;
+   \end{pmatrix}\\
+   \begin{pmatrix}
+     \frac{1}{2}, \frac{1}{2}, 0;
+   \end{pmatrix}\\
+   \begin{pmatrix}
+     \frac{1}{2}, 0, \frac{1}{2};
+     \end{pmatrix}\\
+     \begin{pmatrix}
+       0, \frac{1}{2}, \frac{1}{2};
+     \end{pmatrix}
+\end{align}
+gegeben.
 
+Durch Verschiebung des kubisch-flächenzentrierten Gitters
+um eine viertel Raumdiagonale ergibt sich das sogenannte
+Diamantgitter(siehe Abbildung \ref{fig:diamant}).
+Die zugehörigen Basisvektoren sind gegeben durch
+\begin{alig}
+  \label{eqn:4}
+  \begin{pmatrix}
+    
+  \end{pmatrix}
+\end{alig}
 \subsection{Netzebenen}
 \label{subsec:netzebenen}
 
