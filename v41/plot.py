@@ -187,7 +187,7 @@ def gerade(x,a,b):
 #def tabelle(datensatz, Name,Rundungen):  # i=Spalten j=Zeilen
 bcc_sum = bcc[:, 0]**2 + bcc[:, 1]**2 + bcc[:, 2]**2
 
-bcc_table = np.array([r_meta*100, meta_winkel, bcc[:, 0], bcc[:, 1],bcc[:, 2], bcc_sum,noms(a_m_bcc)*10**(10),stds(a_m_bcc)*10**(10),np.cos(inrad(meta_winkel))**2])
+bcc_table = np.array([r_meta*100, meta_winkel, bcc[:, 0], bcc[:, 1],bcc[:, 2], bcc_sum,noms(a_m_bcc)*10**(10),stds(a_m_bcc)*10**(10) , np.cos(inrad(meta_winkel))**2])
 bcc_rundung = np.array([      1,           2,         0,         0,        0,       0,             2,           2,                            2,])
 print("\n\n\n", bcc_table)
 tabelle(bcc_table, "bcc_table", bcc_rundung)
