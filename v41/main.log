@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016)  (format=lualatex 2016.11.17)  17 MAY 2018 11:02
+This is LuaTeX, Version 0.95.0 (TeX Live 2016)  (format=lualatex 2016.11.17)  17 MAY 2018 11:31
  restricted system commands enabled.
 **main.tex
 (./main.tex
@@ -614,7 +614,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.213 seconds)
+luaotfload | main : initialization completed in 0.212 seconds)
 Lua module: fontspec 2016/02/01 2.5a Advanced font selection for LuaLaTeX.
 (/home/henning/.local/texlive/2016/texmf-dist/tex/latex/fontspec/fontspec-luate
 x.sty
@@ -2350,6 +2350,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 80--85
 
 LaTeX Warning: Reference `fig:diamant' on page 4 undefined on input line 104.
 
+
+LaTeX Warning: Reference `subsec:kubische_gitter' on page 4 undefined on input l
+ine 129.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--137
+
+ []
+
 (load luc: /home/henning/.local/texlive/2016/texmf-var/luatex-cache/generic/font
 s/otl/lmroman8-regular.luc)(load luc: /home/henning/.local/texlive/2016/texmf-va
 r/luatex-cache/generic/fonts/otl/lmroman6-regular.luc)(load luc: /home/henning/.
@@ -2357,12 +2366,12 @@ local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmroman5-regular.luc
 ) [4](load luc: /home/henning/.local/texlive/2016/texmf-var/luatex-cache/generic
 /fonts/otl/lmroman9-regular.luc)
 LaTeX Font Info:    Font shape `EU2/LatinModernMath(1)/m/n' will be
-(Font)              scaled to size 9.00014pt on input line 181.
+(Font)              scaled to size 9.00014pt on input line 224.
 LaTeX Font Info:    Font shape `EU2/LatinModernMath(2)/m/n' will be
-(Font)              scaled to size 8.99986pt on input line 181.
+(Font)              scaled to size 8.99986pt on input line 224.
 
 
-LaTeX Warning: Citation 'sample' on page 5 undefined on input line 215.
+LaTeX Warning: Citation 'sample' on page 5 undefined on input line 258.
 
 ) (./content/durchfuehrung.tex [5]) (./content/auswertung.tex
 
@@ -2376,7 +2385,7 @@ LaTeX Warning: Reference `eqn:gitter' on page 6 undefined on input line 11.
 LaTeX Warning: Empty bibliography on input line 23.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 25.
-[6]
+[6] [7]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 25.
  (./main.aux
 Language ngerman already loaded; id is 8)
@@ -2387,14 +2396,14 @@ Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 25.
 Package rerunfilecheck Warning: File `main.aux' has changed. Rerun.
 
 Package rerunfilecheck Info: Checksums for `main.aux':
-(rerunfilecheck)             Before: B5FD9B65A6DC664A3CB85BF604D1295A;3781
-(rerunfilecheck)             After:  A65334BEE4338B10F0895A1D1F65DA1E;8919.
+(rerunfilecheck)             Before: 45A3FADA3C8267A8A3A47E7E91F5AE69;4307
+(rerunfilecheck)             After:  8C5264F8AEE748ED9B0AB417DEC4486E;9658.
 
 Package rerunfilecheck Warning: File `main.toc' has changed. Rerun.
 
 Package rerunfilecheck Info: Checksums for `main.toc':
 (rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
-(rerunfilecheck)             After:  A56EE7AB413DDAC7ACF4A772F786B7DF;1183.
+(rerunfilecheck)             After:  685E98E41F74C0489C5A977293AB7056;1285.
 
 LaTeX Warning: There were undefined references.
 
@@ -2412,33 +2421,34 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 44680 strings out of 495118
+ 44689 strings out of 495118
  100000,1648299 words of node,token memory allocated
- 2629 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 256 glue, 1 kern, 97 attribute, 56 glue_spec, 97 at
-tribute_list, 1 write nodes
-   avail lists: 1:2,2:1255,3:121,4:29,5:258,6:2622,7:880,8:76,9:465,10:11,11:366
-
- 46931 multiletter control sequences out of 65536+600000
- 115 fonts using 37234167 bytes
+ 3139 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 314 glue, 1 kern, 123 attribute, 56 glue_spec, 123 
+attribute_list, 1 write nodes
+   avail lists: 1:2,2:1295,3:113,4:29,5:259,6:2622,7:1011,8:84,9:479,10:11,11:36
+6
+ 46936 multiletter control sequences out of 65536+600000
+ 115 fonts using 37233823 bytes
  63i,16n,104p,8833b,2482s stack positions out of 5000i,500n,10000p,200000b,100000s
 
 warning  (pdf backend): unreferenced destination with name 'Hfootnote.1'
 </home/henning/.local/texlive/2016/texmf-dist/fonts/opentype/public/lm/lmroman8-
 regular.otf></home/henning/.local/texlive/2016/texmf-dist/fonts/opentype/public/
 lm-math/latinmodern-math.otf></home/henning/.local/texlive/2016/texmf-dist/fonts
-/opentype/public/lm/lmroman10-bold.otf></home/henning/.local/texlive/2016/texmf-
-dist/fonts/opentype/public/lm-math/latinmodern-math.otf></home/henning/.local/te
-xlive/2016/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf></home/
-henning/.local/texlive/2016/texmf-dist/fonts/opentype/public/lm/lmroman10-regula
-r.otf></home/henning/.local/texlive/2016/texmf-dist/fonts/opentype/public/lm/lmr
-oman12-regular.otf></home/henning/.local/texlive/2016/texmf-dist/fonts/opentype/
-public/lm/lmsans10-bold.otf></home/henning/.local/texlive/2016/texmf-dist/fonts/
-opentype/public/lm/lmroman12-bold.otf>
-Output written on main.pdf (6 pages, 54299 bytes).
+/opentype/public/lm/lmroman10-italic.otf></home/henning/.local/texlive/2016/texm
+f-dist/fonts/opentype/public/lm/lmroman10-bold.otf></home/henning/.local/texlive
+/2016/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf></home/henni
+ng/.local/texlive/2016/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math
+.otf></home/henning/.local/texlive/2016/texmf-dist/fonts/opentype/public/lm/lmro
+man10-regular.otf></home/henning/.local/texlive/2016/texmf-dist/fonts/opentype/p
+ublic/lm/lmroman12-regular.otf></home/henning/.local/texlive/2016/texmf-dist/fon
+ts/opentype/public/lm/lmsans10-bold.otf></home/henning/.local/texlive/2016/texmf
+-dist/fonts/opentype/public/lm/lmroman12-bold.otf>
+Output written on main.pdf (7 pages, 59098 bytes).
 
-PDF statistics: 174 PDF objects out of 1000 (max. 8388607)
- 136 compressed objects within 2 object streams
- 36 named destinations out of 1000 (max. 131072)
- 105 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 191 PDF objects out of 1000 (max. 8388607)
+ 149 compressed objects within 2 object streams
+ 40 named destinations out of 1000 (max. 131072)
+ 113 words of extra memory for PDF output out of 10000 (max. 10000000)
 
