@@ -2,6 +2,16 @@
 \defcounter {refsection}{0}\relax 
 \select@language {german}
 \contentsline {section}{\numberline {1}Theorie}{3}{section.1}
-\contentsline {section}{\numberline {2}Durchführung}{3}{section.2}
-\contentsline {section}{\numberline {3}Auswertung}{3}{section.3}
-\contentsline {section}{\numberline {4}Diskussion}{3}{section.4}
+\contentsline {subsection}{\numberline {1.1}Zielsetzung}{3}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Allgemines}{3}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Kristallgitter}{3}{subsection.1.3}
+\contentsline {subsubsection}{\numberline {1.3.1}Kubische Kristallstrukturen}{3}{subsubsection.1.3.1}
+\contentsline {subsection}{\numberline {1.4}Kristallstrukturen aus zwei Atomarten}{4}{subsection.1.4}
+\contentsline {subsection}{\numberline {1.5}Netzebenen}{4}{subsection.1.5}
+\contentsline {subsection}{\numberline {1.6}Beugung von Röntgenstrahlung an Kristallen}{4}{subsection.1.6}
+\contentsline {subsection}{\numberline {1.7}Debye-Scherrer Methode}{6}{subsection.1.7}
+\contentsline {section}{\numberline {2}Durchführung}{6}{section.2}
+\contentsline {subsection}{\numberline {2.1}Aufbau}{6}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}systematische Fehler}{6}{subsection.2.2}
+\contentsline {section}{\numberline {3}Auswertung}{6}{section.3}
+\contentsline {section}{\numberline {4}Diskussion}{7}{section.4}
