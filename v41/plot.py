@@ -171,29 +171,35 @@ def gerade(x,a,b):
     return (a*x+b)
 
 
-# # fit plto fuer metall bcc
-# a_bcc_end = gk_plot("bcc", meta_winkel, a_m_bcc, gerade,
-#                     winkel_korrektur, [0, 7])
-# a_fcc_end = gk_plot("fcc", meta_winkel, a_m_fcc, gerade,
-#                     winkel_korrektur, [0, 7])
-# a_dia_end = gk_plot("dia", meta_winkel, a_m_dia, gerade,
-#                     winkel_korrektur, [0, 7])
-#
-# print(" \nMetall bcc", a_bcc_end)
-# print(" \nMetall fcc", a_fcc_end)
-# print(" \nMetall dia", a_dia_end)
+# fit plto fuer metall bcc
+a_bcc_end = gk_plot("bcc", meta_winkel, a_m_bcc, gerade,
+                    winkel_korrektur, [0, 7])
+a_fcc_end = gk_plot("fcc", meta_winkel, a_m_fcc, gerade,
+                    winkel_korrektur, [0, 7])
+a_dia_end = gk_plot("dia", meta_winkel, a_m_dia, gerade,
+                    winkel_korrektur, [0, 7])
 
-# print("\n\nWolfram ist auserwählt!!!!! Die relative Abweichung beträgt:",
-#       (a_bcc_end-lit_wolfram)/lit_wolfram)
+print(" \nMetall bcc", a_bcc_end)
+print(" \nMetall fcc", a_fcc_end)
+print(" \nMetall dia", a_dia_end)
+
+print("\n\nWolfram ist auserwählt!!!!! Die relative Abweichung beträgt:",
+      (a_bcc_end-lit_wolfram)/lit_wolfram)
 
 #def tabelle(datensatz, Name,Rundungen):  # i=Spalten j=Zeilen
-bcc_sum = bcc[:, 0]**2 + bcc[:, 1]**2 + bcc[:, 2]**2
 
-bcc_table = np.array([r_meta*100, meta_winkel, bcc[:, 0], bcc[:, 1],bcc[:, 2], bcc_sum,noms(a_m_bcc)*10**(10),stds(a_m_bcc)*10**(10) , np.cos(inrad(meta_winkel))**2])
-bcc_rundung = np.array([      1,           2,         0,         0,        0,       0,             2,           2,                            2,])
-print("\n\n\n", bcc_table)
-tabelle(bcc_table, "bcc_table", bcc_rundung)
+def tabelle_fertig(r, winkel, hkl, a_m_hkl, name):
+    hkl_sum = hkl[:, 0]**2 + hkl[:, 1]**2 + hkl[:, 2]**2
+    rundung = np.array([      1,      2,         0,         0,         0,       0,                     2,                      2,                        3])
+    hkl_table = np.array([r*100, winkel, hkl[:, 0], hkl[:, 1], hkl[:, 2], hkl_sum,noms(a_m_hkl)*10**(10),stds(a_m_hkl)*10**(10) , np.cos(inrad(winkel))**2])
+    tabelle(hkl_table, name+"_table", rundung)
 
+
+# print("\n\n\n", bcc_table)
+
+tabelle_fertig(r_meta, meta_winkel , bcc, a_m_bcc, "bcc")
+tabelle_fertig(r_meta, meta_winkel , fcc, a_m_fcc, "fcc")
+tabelle_fertig(r_meta, meta_winkel , dia, a_m_dia, "dia")
 
 
 
@@ -270,15 +276,17 @@ def z_b(f1, f2, arr):
 
 print("Test 4,4,6",s_s(1,2,[4, 4, 6]))
 
-ss = generate_miller(10,s_s,1,1)
-ss =ss[:len(salz_winkel),:]
-print("len winkel",len(salz_winkel))
-print("len ss",len(ss[:,1]))
-print("ss=",ss)
+# funktion um alle salze auszuwerten
+def salz_auswerten(atomfakt):
+    ss = generate_miller(10,s_s,1,atomfakt) # atomfakt = 1 -> gleiche vorfakoren, 2 -> fuer ungleiche
+    ss =ss[:len(salz_winkel),:]
+# print("len winkel",len(salz_winkel))
+# print("len ss",len(ss[:,1]))
+# print("ss=",ss)
 
 
-cc = generate_miller(10,cs_cl,1,1)
-cc =cc[:len(salz_winkel),:]
+    cc = generate_miller(10,cs_cl,1,atomfakt)
+    cc =cc[:len(salz_winkel),:]
 
 
 # ss = np.array([[1, 1, 1],#3 ggu und guu verboten #stein_salz
@@ -333,8 +341,8 @@ cc =cc[:len(salz_winkel),:]
 #                [0, 1, 5],#26
 #               ])
 
-zb = generate_miller(10,z_b,1,1)
-zb =zb[:len(salz_winkel),:]
+    zb = generate_miller(10,z_b,1,atomfakt)
+    zb =zb[:len(salz_winkel),:]
 
 # zb = np.array([[1, 1, 1],#3
 #               [0, 0, 2],#4
@@ -347,44 +355,51 @@ zb =zb[:len(salz_winkel),:]
 #  ])
 
 
-fluor = generate_miller(10,fluorit,1,1)
-fluor =fluor[:len(salz_winkel),:]
+    fluor = generate_miller(10,fluorit,1,atomfakt)
+    fluor =fluor[:len(salz_winkel),:]
 
 
 
-gk_s_ss = gitter(ss, wavelen, salz_winkel)
-gk_s_cc = gitter(cc, wavelen, salz_winkel)
-gk_s_fluor = gitter(fluor, wavelen, salz_winkel)
-gk_s_zb = gitter(zb, wavelen, salz_winkel)
+    gk_s_ss = gitter(ss, wavelen, salz_winkel)
+    gk_s_cc = gitter(cc, wavelen, salz_winkel)
+    gk_s_fluor = gitter(fluor, wavelen, salz_winkel)
+    gk_s_zb = gitter(zb, wavelen, salz_winkel)
 
 # gk_m_dia = gitter(dia, wavelen, salz_winkel)
 
 
-a_s_ss = unp.uarray(gk_s_ss,gk_korrektur_a(gk_s_ss, salz_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_s_ss, salz_winkel, camera_rad, v))
-a_s_cc = unp.uarray(gk_s_cc,gk_korrektur_a(gk_s_cc, salz_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_s_cc, salz_winkel, camera_rad, v))
-a_s_fluor = unp.uarray(gk_s_fluor,gk_korrektur_a(gk_s_fluor, salz_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_s_fluor, salz_winkel, camera_rad, v))
-a_s_zb = unp.uarray(gk_s_zb,gk_korrektur_a(gk_s_zb, salz_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_s_zb, salz_winkel, camera_rad, v))
+    a_s_ss = unp.uarray(gk_s_ss,gk_korrektur_a(gk_s_ss, salz_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_s_ss, salz_winkel, camera_rad, v))
+    a_s_cc = unp.uarray(gk_s_cc,gk_korrektur_a(gk_s_cc, salz_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_s_cc, salz_winkel, camera_rad, v))
+    a_s_fluor = unp.uarray(gk_s_fluor,gk_korrektur_a(gk_s_fluor, salz_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_s_fluor, salz_winkel, camera_rad, v))
+    a_s_zb = unp.uarray(gk_s_zb,gk_korrektur_a(gk_s_zb, salz_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_s_zb, salz_winkel, camera_rad, v))
 
 # a_s_dia=unp.uarray(gk_s_dia,gk_korrektur_a(gk_s_dia, salz_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_s_dia, salz_winkel, camera_rad, v))
 
 
 
-a_ss_end = gk_plot("ss", salz_winkel, a_s_ss, gerade, winkel_korrektur, [0, 23])
+    a_ss_end = gk_plot("ss"+str(atomfakt), salz_winkel, a_s_ss, gerade, winkel_korrektur, [0, 23])
+    a_cc_end = gk_plot("cc"+str(atomfakt), salz_winkel, a_s_cc, gerade, winkel_korrektur, [0, 23])
+    a_fluor_end = gk_plot("fluor"+str(atomfakt), salz_winkel, a_s_fluor, gerade, winkel_korrektur, [0, 23])
+    a_zb_end = gk_plot("zb"+str(atomfakt), salz_winkel, a_s_zb, gerade, winkel_korrektur, [0, 23])
 
-a_cc_end = gk_plot("cc", salz_winkel, a_s_cc, gerade, winkel_korrektur, [0, 23])
-a_fluor_end = gk_plot("fluor", salz_winkel, a_s_fluor, gerade, winkel_korrektur, [0, 23])
-a_zb_end = gk_plot("zb", salz_winkel, a_s_zb, gerade, winkel_korrektur, [0, 23])
-
-
-
-print(" \nSalz ss", a_ss_end)
-print(" \nSalz cc", a_cc_end)
-print(" \nSalz fluor", a_fluor_end)
-print(" \nSalz zb", a_zb_end)
+    tabelle_fertig(r_salz, salz_winkel , ss, a_s_ss, "ss"+str(atomfakt))
+    tabelle_fertig(r_salz, salz_winkel , cc, a_s_cc, "cc"+str(atomfakt))
+    tabelle_fertig(r_salz, salz_winkel , fluor, a_s_fluor, "fluor"+str(atomfakt))
+    tabelle_fertig(r_salz, salz_winkel , zb, a_s_zb, "zb"+str(atomfakt))
 
 
 
+    print("Gleich=1, Ungleich=2 =>", atomfakt)
+    print(" \nSalz ss", a_ss_end)
+    print(" \nSalz cc", a_cc_end)
+    print(" \nSalz fluor", a_fluor_end)
+    print(" \nSalz zb", a_zb_end)
 
+
+
+# funktionsaufruf salze :
+salz_auswerten(1) # gleiche
+salz_auswerten(2) # ungleiche
 
 
 
