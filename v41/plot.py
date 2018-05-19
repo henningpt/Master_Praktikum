@@ -5,6 +5,8 @@ import uncertainties.unumpy as unp
 from uncertainties.unumpy import (nominal_values as noms,
                                   std_devs as stds)
 from tabelle import tabelle
+from miller import generate_miller
+from miller import fluorit
 
 # lade daten
 r_meta = np.genfromtxt("metall.txt", unpack=True)
@@ -169,17 +171,17 @@ def gerade(x,a,b):
     return (a*x+b)
 
 
-# fit plto fuer metall bcc
-a_bcc_end = gk_plot("bcc", meta_winkel, a_m_bcc, gerade,
-                    winkel_korrektur, [0, 7])
-a_fcc_end = gk_plot("fcc", meta_winkel, a_m_fcc, gerade,
-                    winkel_korrektur, [0, 7])
-a_dia_end = gk_plot("dia", meta_winkel, a_m_dia, gerade,
-                    winkel_korrektur, [0, 7])
-
-print(" \nMetall bcc", a_bcc_end)
-print(" \nMetall fcc", a_fcc_end)
-print(" \nMetall dia", a_dia_end)
+# # fit plto fuer metall bcc
+# a_bcc_end = gk_plot("bcc", meta_winkel, a_m_bcc, gerade,
+#                     winkel_korrektur, [0, 7])
+# a_fcc_end = gk_plot("fcc", meta_winkel, a_m_fcc, gerade,
+#                     winkel_korrektur, [0, 7])
+# a_dia_end = gk_plot("dia", meta_winkel, a_m_dia, gerade,
+#                     winkel_korrektur, [0, 7])
+#
+# print(" \nMetall bcc", a_bcc_end)
+# print(" \nMetall fcc", a_fcc_end)
+# print(" \nMetall dia", a_dia_end)
 
 # print("\n\nWolfram ist auserwählt!!!!! Die relative Abweichung beträgt:",
 #       (a_bcc_end-lit_wolfram)/lit_wolfram)
@@ -215,84 +217,170 @@ print("\n\n\nwinkel salz:\n")
 for element in salz_winkel:
     print(element)
 
-ss = np.array([[1, 1, 1],#3 ggu und guu verboten #stein_salz
-              [0, 0, 2],  # 4
-              [0, 2, 2],  # 8
-              [1, 1, 3],  # 11
-              [2, 2, 2],  # 12
-              [0, 0, 4],  # 16
-              [1, 3, 3],  # 19
-              [0, 2, 4],  # 20
-              [2, 2, 4],  # 24
-              [3, 3, 3],  # 27
-              [0, 4, 4],  # 32
-              [1, 3, 5],  # 35
-              [2, 4, 4],  # 36
-              [0, 2, 6],  # 40
-              [3, 3, 5],  # 43
-              [4, 4, 4],  # 48
-              [1, 5, 5],  # 51
-              [0, 4, 6],  # 52
-              [2, 4, 6],  # 56
-              [3, 5, 5],  # 59
-              [4, 4, 6],  # 68
-              [0, 6, 6],  # 72
-              [5, 5, 5],  # 75
-               ])
 
-cc = np.array([[0, 0, 1],#1
-               [0, 1, 1],#2
-               [1, 1, 1],#3
-               [0, 0, 2],#4 abgeschwächt
-               [0, 1, 2],#5
-               [1, 1, 2],#6
-               [0, 2, 2],#8 abgeschwächt
-               [0, 0, 3],#9
-               [0, 1, 3],#10
-               [1, 1, 3],#11
-               [2, 2, 2],#12
-               [0, 2, 3],#13
-               [1, 2, 3],#14
-               [0, 0, 4],#16
-               [0, 1, 4],#17
-               [1, 1, 4],#18
-               [1, 3, 3],#19
-               [0, 2, 4],#20
-               [1, 2, 4],#21
-               [2, 3, 3],#22
-               [2, 2, 4],#24
-               [0, 0, 5],#25
-               [0, 1, 5],#26
-              ])
+# functions
 
-zb = np.array([[1, 1, 1],#3
-              [0, 0, 2],#4
-              [0, 2, 2],#8
-              [1, 1, 3],#11
-              [2, 2, 2],#12
-              [0, 0, 4],#16
-              [1, 3, 3],#19
-              [0, 2, 4]#20
- ])
+def s_s(f1, f2, arr):
+    v1 = -1j * np.pi
+    v2 = -1j * np.pi
+    h = arr[0]
+    k = arr[1]
+    l = arr[2]
+    f1 = f1 * (1 + np.exp(v1 * (h + k)) + np.exp(v1 * (h + l)) + np.exp(v1 * (k + l)))
+    # print( "h k l=", h, k, l)
+    # print("f_1 =",f1)
+    f2 = f2 * (np.exp(v2 *(h +  k + l)) + np.exp(v2 * (2 * h + k + 2 * l))
+                + np.exp(v2 *(h + 2 * k + 2 * l))
+                + np.exp(v2 *(2 * h + 2 * k +   l)))
+# print("f_2: ", f2)
+    # print("abs=",round(abs(f2+f1),6))
+    return(round(abs(f2+f1),6))
+
+
+def cs_cl(f1, f2, arr):
+    v1 = -1j * np.pi
+    v2 = -1j * np.pi
+    h = arr[0]
+    k = arr[1]
+    l = arr[2]
+    f1 = f1 * (1)
+    # print( "h k l=", h, k, l)
+    # print("f_1 =",f1)
+    f2 = f2 * (np.exp(v2 *(h +  k + l)))
+# print("f_2: ", f2)
+    # print("abs=",round(abs(f2+f1),6))
+    return(round(abs(f2+f1),6))
+
+
+def z_b(f1, f2, arr):
+    v1 = -1j * np.pi
+    v2 = -1j * np.pi / 2
+    h = arr[0]
+    k = arr[1]
+    l = arr[2]
+    f1 = f1 * (1 + np.exp(v1 * (h + k)) + np.exp(v1 * (h + l)) + np.exp(v1 * (k + l)))
+    # print( "h k l=", h, k, l)
+    # print("f_1 =",f1)
+    f2 = f2 * (np.exp(v2 *(h +  k + l)) + np.exp(v2 *(3*h + 3 * k + l)) + np.exp(v2 * (3*h + k + 3 * l))
+                + np.exp(v2 *(h + 3*k + 3*l)))
+    # print("f_2: ", f2)
+    # print("abs=",round(abs(f2+f1),6))
+    return(round(abs(f2+f1),6))
+
+
+print("Test 4,4,6",s_s(1,2,[4, 4, 6]))
+
+ss = generate_miller(10,s_s,1,1)
+ss =ss[:len(salz_winkel),:]
+print("len winkel",len(salz_winkel))
+print("len ss",len(ss[:,1]))
+print("ss=",ss)
+
+
+cc = generate_miller(10,cs_cl,1,1)
+cc =cc[:len(salz_winkel),:]
+
+
+# ss = np.array([[1, 1, 1],#3 ggu und guu verboten #stein_salz
+#               [0, 0, 2],  # 4
+#               [0, 2, 2],  # 8
+#               [1, 1, 3],  # 11
+#               [2, 2, 2],  # 12
+#               [0, 0, 4],  # 16
+#               [1, 3, 3],  # 19
+#               [0, 2, 4],  # 20
+#               [2, 2, 4],  # 24
+#               [3, 3, 3],  # 27
+#               [0, 4, 4],  # 32
+#               [1, 3, 5],  # 35
+#               [2, 4, 4],  # 36
+#               [0, 2, 6],  # 40
+#               [3, 3, 5],  # 43
+#               [4, 4, 4],  # 48
+#               [1, 5, 5],  # 51
+#               [0, 4, 6],  # 52
+#               [2, 4, 6],  # 56
+#               [3, 5, 5],  # 59
+#               [4, 4, 6],  # 68
+#               [0, 6, 6],  # 72
+#               [5, 5, 5],  # 75
+#                ])
+
+
+#
+# cc = np.array([[0, 0, 1],#1
+#                [0, 1, 1],#2
+#                [1, 1, 1],#3
+#                [0, 0, 2],#4 abgeschwächt
+#                [0, 1, 2],#5
+#                [1, 1, 2],#6
+#                [0, 2, 2],#8 abgeschwächt
+#                [0, 0, 3],#9
+#                [0, 1, 3],#10
+#                [1, 1, 3],#11
+#                [2, 2, 2],#12
+#                [0, 2, 3],#13
+#                [1, 2, 3],#14
+#                [0, 0, 4],#16
+#                [0, 1, 4],#17
+#                [1, 1, 4],#18
+#                [1, 3, 3],#19
+#                [0, 2, 4],#20
+#                [1, 2, 4],#21
+#                [2, 3, 3],#22
+#                [2, 2, 4],#24
+#                [0, 0, 5],#25
+#                [0, 1, 5],#26
+#               ])
+
+zb = generate_miller(10,z_b,1,1)
+zb =zb[:len(salz_winkel),:]
+
+# zb = np.array([[1, 1, 1],#3
+#               [0, 0, 2],#4
+#               [0, 2, 2],#8
+#               [1, 1, 3],#11
+#               [2, 2, 2],#12
+#               [0, 0, 4],#16
+#               [1, 3, 3],#19
+#               [0, 2, 4]#20
+#  ])
+
+
+fluor = generate_miller(10,fluorit,1,1)
+fluor =fluor[:len(salz_winkel),:]
 
 
 
 gk_s_ss = gitter(ss, wavelen, salz_winkel)
 gk_s_cc = gitter(cc, wavelen, salz_winkel)
+gk_s_fluor = gitter(fluor, wavelen, salz_winkel)
+gk_s_zb = gitter(zb, wavelen, salz_winkel)
+
 # gk_m_dia = gitter(dia, wavelen, salz_winkel)
 
 
 a_s_ss = unp.uarray(gk_s_ss,gk_korrektur_a(gk_s_ss, salz_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_s_ss, salz_winkel, camera_rad, v))
 a_s_cc = unp.uarray(gk_s_cc,gk_korrektur_a(gk_s_cc, salz_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_s_cc, salz_winkel, camera_rad, v))
+a_s_fluor = unp.uarray(gk_s_fluor,gk_korrektur_a(gk_s_fluor, salz_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_s_fluor, salz_winkel, camera_rad, v))
+a_s_zb = unp.uarray(gk_s_zb,gk_korrektur_a(gk_s_zb, salz_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_s_zb, salz_winkel, camera_rad, v))
+
 # a_s_dia=unp.uarray(gk_s_dia,gk_korrektur_a(gk_s_dia, salz_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_s_dia, salz_winkel, camera_rad, v))
 
 
 
-a_ss_end = gk_plot("ss", salz_winkel, a_s_ss, gerade, winkel_korrektur, [0, 22])
+a_ss_end = gk_plot("ss", salz_winkel, a_s_ss, gerade, winkel_korrektur, [0, 23])
 
-a_cc_end = gk_plot("cc", salz_winkel, a_s_cc, gerade, winkel_korrektur, [0, 22])
+a_cc_end = gk_plot("cc", salz_winkel, a_s_cc, gerade, winkel_korrektur, [0, 23])
+a_fluor_end = gk_plot("fluor", salz_winkel, a_s_fluor, gerade, winkel_korrektur, [0, 23])
+a_zb_end = gk_plot("zb", salz_winkel, a_s_zb, gerade, winkel_korrektur, [0, 23])
 
 
+
+print(" \nSalz ss", a_ss_end)
+print(" \nSalz cc", a_cc_end)
+print(" \nSalz fluor", a_fluor_end)
+print(" \nSalz zb", a_zb_end)
 
 
 
