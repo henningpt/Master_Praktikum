@@ -1,4 +1,4 @@
-# (radien -0.9) in cm
+# (radien -0.45) in cm
 2.2
 2.5
 2.6
