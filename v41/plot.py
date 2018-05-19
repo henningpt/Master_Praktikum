@@ -265,6 +265,17 @@ cc = np.array([[0, 0, 1],#1
                [0, 1, 5],#26
               ])
 
+zb = np.array([[1, 1, 1],#3
+              [0, 0, 2],#4
+              [0, 2, 2],#8
+              [1, 1, 3],#11
+              [2, 2, 2],#12
+              [0, 0, 4],#16
+              [1, 3, 3],#19
+              [0, 2, 4]#20
+ ])
+
+
 
 gk_s_ss = gitter(ss, wavelen, salz_winkel)
 gk_s_cc = gitter(cc, wavelen, salz_winkel)
