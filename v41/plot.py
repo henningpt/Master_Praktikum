@@ -68,7 +68,7 @@ def funp(string, arr):
 def winkel(d, R):
     print("\n\nwinkelberechnung d: ", d)
     print("\n\n R: ", R)
-    return (R * 90 /(np.pi * d))
+    return (R * 90 /(np.pi * d)))
 
 
 def inrad(winkel_deg):

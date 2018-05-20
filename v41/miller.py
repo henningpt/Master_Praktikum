@@ -28,22 +28,22 @@ def generate_miller(x, func , f1 ,f2):
             if(func(f1 ,f2 , hkl_sorted[index,:]) == 0.0 ):
                 delete = np.append(delete,index)
 
-    print("delete1 vorher:\n",delete)
-    print(hkl_sorted)
+    # print("delete1 vorher:\n",delete)
+    # print(hkl_sorted)
     hkl_sorted= np.delete(hkl_sorted, delete  , 0)
-    print("delete2 vorher:\n")
-    print(hkl_sorted)
+    # print("delete2 vorher:\n")
+    # print(hkl_sorted)
     delete2 = np.array([0])
     for index, value in enumerate(hkl_sorted[:,1] ):
         if(index != 0):
             if(LA.norm(hkl_sorted[index,:]) == LA.norm(hkl_sorted[index - 1,:])):
-                print("eins=",LA.norm(hkl_sorted[index,:]))
-                print("zwei=",LA.norm(hkl_sorted[index - 1,:]))
-                print(index)
+                # print("eins=",LA.norm(hkl_sorted[index,:]))
+                # print("zwei=",LA.norm(hkl_sorted[index - 1,:]))
+                # print(index)
                 delete2 = np.append(delete2,index)
     hkl_sorted = np.delete(hkl_sorted, delete2[1:]  , 0)
-    print("delete2 nachher:\n",delete2)
-    print(hkl_sorted)
+    # print("delete2 nachher:\n",delete2)
+    # print(hkl_sorted)
     return hkl_sorted
 
 
