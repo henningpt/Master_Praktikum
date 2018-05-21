@@ -1,14 +1,81 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
+Um mit Hilfe der Filmstreifenmethode die Struktur der Probe zu bestimmen, werden
+die Radien der "Debye-Ringe", die sich durch die Bestrahlung auf dem Filmstreifen bilden,
+vermessen. Durch die Proportionalität zwischen den Radien $r$ und den Beugungswinkeln $\theta$
+\begin{align}
+\theta=\frac{\SI{360}{\degree}\cdot r}{4 \pi R } \label{eqn:winkel}
+\end{align}
+mit dem Kameraradius $R$ wird der Beugungswinkel $\theta$ berechnet.
+Die Tabelle \ref{tab:bcc} enthält die gemessenen Radien $r$ und die nach \ref{eqn:winkel} berechneten Winkel
+für die Metallprobe und die Tablle \ref{tab:salz} die für die Salzprobe.
+Es wird davon ausgegangen, dass die "Debye-Ringe" immer zu der ersten Ordnung gehören
+und das nur kubische Gitterstrukturen beobachtet werden.
+Somit lässt sich die Gleichung \ref{eqn:10} für auftetenden
+Reflexe durch \eqref{eqn:5} zu
+\begin{align}
+\symup{a} = \frac{\lambda \sqrt{h^2 +k^2+l^2}}{2\sin{\theta}} \label{eqn:Gitterkonst}
+\end{align}
+umformen.
+Um aus den berechneten Beugungswinkeln $\theta$ die Gitterkonstante a
+zu bestimmen, muss somit auch die zum Refelex gehörige Millerindicesumme
+\begin{align*}
+  m_{sum}=h^{2} + k^{2} + l^{2}
+\end{align*}
+der Netzebeneschar (hkl) bekannt sein.
+Die Information für welchen Werten von hkl Refexe auftreten
+enthält die Strukturamplitude S nach Gleichung \eqref{eqn:Streu}.
+Die Gleichung \eqref{eqn:Streu} wiederum benötigt die Basisvektor
+der Elementarzelle. Da die der Proben nicht bekannt sind werden
+Material typische Gitterstruktur verwendent und die Ergebnisse
+untereinander verglichen. Metalle können typischerweise in
+ bcc-, fcc- und Diamant-Struktur
+vorliegen und Salz in Flourit-, Zinkblende-,
+Steinsalz-, Cäsiumchlorid-Struktur.
+Durch die entsprechenden Basisvektoren
+werden Werte für hkl bestimmt wo die Strukturamplitude
+$S\neq0$ und somit ein Refelex auftritt.
+Durch die Zweiatomigebasis bei den
+Salzstrukturen ist es nötig zwischen zwei Fälle zu differenzieren,
+da der Atomformfaktor in Gleichung
+\eqref{ean:Streu} nicht ausgeklammert werden kann.
+\begin{align*}
+  Fall 1: f_1\approx f_2  & & Fall 2: f_1\neq f_2.
+\end{align*}
+Bei Fall 1 verschwinden dadurch im Vergleich zu Fall 2 manche
+Reflexe.
+Die zu einem Reflex führenden Werte von hkl wurden hier mit Hilfe von
+Python \cite[\python] berechent. Dabei ist nur $m_{sum}$ entscheidend
+und von mehreren Ebenscharen mit identische $m_{sum}$ wird nur eine verwendet,
+da alle den gleichen Beugungswinkel $\theta$ besitzen.
+Es wird angenommen, dass alle Möglichen Reflexe bei der Messung auftreten.
+Somit wird jedem Beugungswinkel \theta ein $m_{sum}$ zugewiesen.
+Wobei der kleinste Beugungswinkel durch Beugung an der
+Ebenschar mit der niedrigsten $m_sum$ entsteht und so weiter.
+Die Tabelle \ref{tab:bcc} enthält bsw. die Zuordnung für eine bcc-Struktur.
+Aus der Zuordnung von $m_{sum}$ und $\theta$
+wird für jedem Messwert nach \eqref{eqn:Gitterkonst}
+eine Gitterkonstante bestimmt. Der Fehler $\delta a$
+auf die Gitterkonstante
+wird nach den Gleichungen \eqref{eqn:sys1} und \eqref{eqn:sys2}
+berechnet. Die berechneten Gitterkonstanten werden
+gegen $\cos^2\left(\theta\right)$ aufgetragen und es wird
+eine lineare Regression
+der Datenpunkte mit Hilfe von Pyhton durchgeführt.
+Die beste Gitterkonstante enspricht dann $a(\Si{90}{\degree})$
+also dem y-Achsenabschitt der ermittelten Geraden.
 
 
-$h^{2} + k^{2} + l^{2}$
 
+
+Da die Gitterkonstanten $\symup{a}$ in der Theorie einen
+festen Werte besitzt,
+wird für größere Beugungswinkel $\theta$ auch
 
 \begin{table}
   \centering
-  \caption{Tabelle der Messwerte für die Kreisradien $r$ und die daraus resultienenden Winkel $\theta$
+  \caption{Tabelle der Messwerte für die Kreisradien $r$ und die daraus nach \ref{eqn:winkel} resultienenden Winkel $\theta$
   und die von bcc zugeordneten Reflexe durch die Millerindices hkl und deren Quadratsumme. Ebenfalls aufgetragen sind die
   aus Gleichung \eqref{eqn:gitter} berechneten Gitterkonstanten $a$.}
   \label{tab:bcc}
