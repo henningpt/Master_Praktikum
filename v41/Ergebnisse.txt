@@ -2,14 +2,14 @@ Metall bcc a=(3.218+/-0.011)e-10
 Metall fcc a=(3.70+/-0.22)e-10
 Metall dia a=(4.67+/-0.18)e-10
 
-Fall:1 f_1=f_2
-Metall ss a=(7.62+/-0.22)e-10
-Metall Fluorit a=(4.56+/-0.10)e-10
-Metall zb =(7.13+/-0.26)e-10
-Metall cc =(5.16+/-0.16)e-10
+Fall:1
+Salz ss a=(7.62+/-0.22)e-10
+Salz Fluorit a=(4.56+/-0.10)e-10
+Salz zb =(7.13+/-0.26)e-10
+Salz cc =(5.16+/-0.16)e-10
 
-Fall:2 f_1!=f_2
-Metall ss a=(6.06+/-0.18)e-10
-Metall Fluorit a=(4.56+/-0.10)e-10
-Metall zb =(6.06+/-0.18)e-10
-Metall cc =(3.81+/-0.11)e-10
+Fall:2
+Salz ss a=(6.06+/-0.18)e-10
+Salz Fluorit a=(4.56+/-0.10)e-10
+Salz zb =(6.06+/-0.18)e-10
+Salz cc =(3.81+/-0.11)e-10

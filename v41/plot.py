@@ -126,10 +126,14 @@ def gk_korrektur_v(gk, theta, camera_rad, v):
 def gk_plot(name, winkel, gk, funktion, korr, fitgrenzen):
     params, errors = cf(funktion, np.cos(inrad(winkel[fitgrenzen[0]:fitgrenzen[1]]))**2,
                                   noms(gk[fitgrenzen[0]:fitgrenzen[1]]))
-    g_plot = np.linspace(0.1, max(np.cos(inrad(winkel)**2)))
-    plt.errorbar(np.cos(inrad(winkel))**2, noms(gk), xerr=korr(winkel),
-                 yerr=stds(gk), fmt='x')
-    plt.plot(g_plot, funktion(g_plot, *params))
+    g_plot = np.linspace(0,1)
+    plt.errorbar(np.cos(inrad(winkel))**2, noms(gk)*1e10, xerr=korr(winkel),
+                 yerr=stds(gk)*1e10, fmt='x',label=r'Messwert')
+    plt.plot(g_plot, funktion(g_plot, *params)*1e10,label=r'Fit')
+    plt.xlabel(r'$\cos^2\left(\theta\right)$')
+    plt.ylabel(r'$a \:/\: \si{\angstrom}$')
+    plt.legend(loc='best')
+    plt.tight_layout()
     plt.savefig("build/plot_"+name+".pdf")
     plt.close()
     return(unp.uarray(params[1], np.sqrt(np.diag(errors)[1])))
