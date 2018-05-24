@@ -8,10 +8,16 @@ from tabelle import tabelle
 from miller import generate_miller
 from miller import fluorit
 
+
+fobj_out = open("Ergebnisse.txt", "w")
+
+
+
 # lade daten
 r_meta = np.genfromtxt("metall.txt", unpack=True)
 r_meta = r_meta + 0.9/2
 r_meta *= 0.01
+
 bcc= np.array([[0, 1, 1],#2,
                 [0, 0, 2],#4
                 [1, 1, 2],#6
@@ -68,7 +74,7 @@ def funp(string, arr):
 def winkel(d, R):
     print("\n\nwinkelberechnung d: ", d)
     print("\n\n R: ", R)
-    return (R * 90 /(np.pi * d)))
+    return (R * 90 /(np.pi * d))
 
 
 def inrad(winkel_deg):
@@ -83,18 +89,20 @@ def test(m_sum, lamb, a):
 # Gitterkonstante für jeden winkel berechnen
 def gitter(gitter, lamb, theta):
     m_sum = miller(gitter)
-
     print("\n\n\nm_sum aus miller aus gitter", m_sum)
     return(m_sum * lamb / (2*np.sin(inrad(theta))))
 
 
 # Betragsquadrat der Millerindices
 def miller(struktur):
-    mill_arr = np.array(struktur[:,1])
+    mill_arr = np.array(struktur[:,1], dtype=float)
 
     for ind, val in enumerate(struktur[:, 1]):
-        mill_arr[ind] = np.linalg.norm(struktur[ind, :])
-        print("\nstruktur ", struktur[ind,:])
+        #mill_arr[ind] = np.linalg.norm(struktur[ind, :])
+        mill_arr[ind] = float(np.sqrt(struktur[ind,0]**2+struktur[ind,1]**2+struktur[ind,2]**2))
+        # print("\n test ", mill_arr[ind])
+        # print("\n richtig ", np.sqrt(struktur[ind,0]**2+struktur[ind,1]**2+struktur[ind,2]**2))
+    print("\n\n\nm_sum aus miller aus gitter", mill_arr)
     return(mill_arr)
 
 
@@ -179,6 +187,11 @@ a_fcc_end = gk_plot("fcc", meta_winkel, a_m_fcc, gerade,
 a_dia_end = gk_plot("dia", meta_winkel, a_m_dia, gerade,
                     winkel_korrektur, [0, 7])
 
+fobj_out.write("Metall bcc a="+str(a_bcc_end)+"\n")
+fobj_out.write("Metall fcc a="+str(a_fcc_end)+"\n")
+fobj_out.write("Metall dia a="+str(a_dia_end)+"\n")
+
+
 print(" \nMetall bcc", a_bcc_end)
 print(" \nMetall fcc", a_fcc_end)
 print(" \nMetall dia", a_dia_end)
@@ -210,6 +223,7 @@ print("\n\n\n\nasldkfjölaksdflj", test(3, wavelen, 2.8665 * 10**(-10)))
 ###############################################################################
 # salz
 
+
 # berechne zugehoerige winkel theta
 r_salz = np.genfromtxt("salz.txt", unpack=True)
 
@@ -217,7 +231,7 @@ r_salz = np.genfromtxt("salz.txt", unpack=True)
 r_salz = r_salz + 0.9/2
 r_salz *= 0.01
 
-salz_winkel = winkel(d_probe, r_salz)
+salz_winkel = winkel(camera_rad, r_salz)
 
 print("\n\n\nwinkel salz:\n")
 for element in salz_winkel:
@@ -277,7 +291,7 @@ def z_b(f1, f2, arr):
 print("Test 4,4,6",s_s(1,2,[4, 4, 6]))
 
 # funktion um alle salze auszuwerten
-def salz_auswerten(atomfakt):
+def salz_auswerten(atomfakt,fobj_out):
     ss = generate_miller(10,s_s,1,atomfakt) # atomfakt = 1 -> gleiche vorfakoren, 2 -> fuer ungleiche
     ss =ss[:len(salz_winkel),:]
 # print("len winkel",len(salz_winkel))
@@ -382,6 +396,13 @@ def salz_auswerten(atomfakt):
     a_fluor_end = gk_plot("fluor"+str(atomfakt), salz_winkel, a_s_fluor, gerade, winkel_korrektur, [0, 23])
     a_zb_end = gk_plot("zb"+str(atomfakt), salz_winkel, a_s_zb, gerade, winkel_korrektur, [0, 23])
 
+    fobj_out.write("\nFall:"+str(atomfakt)+"\n")
+    fobj_out.write("Salz ss a="+ str(a_ss_end)+"\n")
+    fobj_out.write("Salz Fluorit a="+ str(a_fluor_end)+"\n")
+    fobj_out.write("Salz zb ="+ str(a_zb_end)+"\n")
+    fobj_out.write("Salz cc ="+ str(a_cc_end)+"\n")
+
+
     tabelle_fertig(r_salz, salz_winkel , ss, a_s_ss, "ss"+str(atomfakt))
     tabelle_fertig(r_salz, salz_winkel , cc, a_s_cc, "cc"+str(atomfakt))
     tabelle_fertig(r_salz, salz_winkel , fluor, a_s_fluor, "fluor"+str(atomfakt))
@@ -398,8 +419,9 @@ def salz_auswerten(atomfakt):
 
 
 # funktionsaufruf salze :
-salz_auswerten(1) # gleiche
-salz_auswerten(2) # ungleiche
+salz_auswerten(1,fobj_out) # gleiche
+salz_auswerten(2,fobj_out) # ungleiche
+fobj_out.close()
 
 
 

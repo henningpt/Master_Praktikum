@@ -6,6 +6,7 @@ def tabelle(datensatz, Name, Rundungen):  # i=Spalten j=Zeilen
     fobj_out = open(Name+".tex", "w")
     i_max, j_max = np.shape(datensatz)
     fobj_out.write(r"\begin{table}"+"\n")
+    fobj_out.write(r"\centering"+"\n")
     fobj_out.write(r"  \caption{}"+"\n")
     fobj_out.write(r"  \label{}"+"\n")
     fobj_out.write(r"\begin{tabular}{"+i_max*"S" +"} \n")

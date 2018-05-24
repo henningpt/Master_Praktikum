@@ -259,30 +259,36 @@ Indizes $(1 \ 4 \ 6)$ veranschaulicht.
 \label{subsec:Beugung}
 Kristallstrukturen können mit Hilfe von Beugung
 elektromagnetischer Wellen an Elektron und Atomkernen untersucht werden.
-Dabei eignet sich Röntgenstrahlung für die Untersuchung
-, da die Wellenlänge dieser, die Größenordnung
-von $\SI{1}{\angstrom}$.
- besitzt.
+Dabei eignet sich Röntgenstrahlung für die Untersuchung, da diese Wellenlängen um
+$\SI{1}{\angstrom}$ besitzt und somit in
+die Größenordnung der Gitterkonstanten liegt.
 Für die theorische Beschreibung werden Elektron und Atomkernen
 als Hertzsche-Dipole betrachtet, die mit einem
 Elektrischenfeld wechselwirken.
-Somit ergibt sich die Intensität eines punktförmiges Streuzentrum mit
-Ladung $ze_0$ zu
+Für die Intensität eines punktförmiges Streuzentrum mit
+Ladung $ze_0$ ergibt sich
 \begin{align}
-  I(r,\theta,z)  \label{6}.
+  I(r,\theta,z) = I_0\left(\frac{\mu_0 (ze_0)^2}{4\pi zm_0}\right)\frac{1}{r^2}\frac{1+\cos^2 2\theta}{2}=z^2 I_e \label{6}.
 \end{align}
 Durch die endliche Ausdehnung der Elektronenhülle,
 müssen jedoch Phasenunterschiede
-berücksichtigt werden und es wird
+\begin{align*}
+  \Deta\phi=2\pi\frac{\Delta s}{\lambda}= 2\pi\vec{r}\left(\vec{k}-\vec{k}_0\rigth)
+\end{align*}
+zwischen den gebeugten
+Strahlen berücksichtigt werden und es wird
 der Atomformfaktor $f$ als Quotienten
+von am Atom gestreuter Intensität $I_a$ und $I_e$ der
+Intensiät eines Einzelelektrons
 \begin{align}
-f=.ate
+f^2=\frac{I_a}{I_e}
 \end{align}
-eingeführt.
+von eingeführt.
+
 Ebenfalls kann der Atomformfaktor $f$ als Fourier-Transformierte
 der Ladungsverteilung $\rho(\vec{r})$
 \begin{align}
-f=\int
+f=\int_{\mathrm{Hülle}} \symup{e}^{-\symup{i}\pi\Delta\phi} \rho(\left \vec{r}\right) \symup{d}^3 r = \int_{\mathrm{Hülle}} \symup{e}^{-2\pi\symup{i}\left(\vec{k}-\vec{k}_0\right)} \rho(\left \vec{r}\right) \symup{d}^3 r
 \end{align}
 angesehen werden.
 Somit ergibt sich die Steuamplitude
@@ -299,12 +305,15 @@ Somit folgt für die Streuamplitude oder auch Strukturamplitude genannt
 \begin{align}
   S=\sum_j \symup{e}^{-2\pi \symup{i} \vec{r}_j\left(\vec{k}-\vec{k}_0\right)} I_\mathrm{e}.
 \end{align}
-Die Streuung findet nicht nur an einer Elementarzelle statt sondern an Ebenenscharen im Kristall statt.
+Die Streuung findet nicht nur an einer Elementarzelle statt sondern an
+Ebenenscharen im Kristall statt.
 Wird dies berücksichtigt, ergibt sich die
 Braggsche Bedingung
 \begin{align}
-n\lambda= 2\symup{d}\sin{\theta} \ \ \ \ n=1,2\dots \label{eqn:10} .
+n\lambda= 2\symup{d}\sin{\theta} \ \ \ \ n=1,2\dots \label{eqn:10}
 \end{align}
+mit dem Ebenenabstand $d$ und Ein- und Ausfallwinkel $\theta$.
+Jeder Auftretende Reflex erfüllt diese Bedingung.
 Durch die dazu äquivalente Form
 \begin{align}
 \vec{k}-\vec{k}_0=\frac{n}{|\vec{d}|}=\vec{g7}
@@ -315,8 +324,12 @@ folgt für die Streuamplitude der $(hkl)$-Ebene
 \begin{align}
   S=\sum_j \symup{e}^{-2\pi \symup{i}(x_jh+y_jk+z_jl)}  I_\mathrm{e}. \label{eqn:Streu}
 \end{align}
-Sind sowohl die Atomformfaktor $f_j$ und die Positionen $\vec{r}_j$ der Basis bekannt,ist durch diese Gleichung festgelegt,
-ob ein Refelex für die $(hkl)$-Ebene beobachtet wird oder nicht.
+Sind sowohl die Atomformfaktor $f_j$ und
+die Positionen $\vec{r}_j$ der
+Basis bekannt, ist durch diese
+Gleichung festgelegt,
+ob ein Refelex für die $(hkl)$-Ebene
+beobachtet wird $S\neq0$ oder nicht $S=0$.
 % erweiterung auf einheiets zelle
 % -erweiterung auf gitter
 % -> Braggbedingung an Netzebenen
@@ -342,6 +355,7 @@ einems Filmstreifens wird der Beugungswinkel $\theta$
 bestimmt. Durch systematisches Probieren wird
 jedem Beugungswinkel $\theta$ eine Netzebeneschar
 ${(\pm h \pm k \pm l)}$ zugeordnet und somit versucht
-eine zu den Refexen passende Kristallstruktur und die Gitterkonstante $a$
+eine zu den Refexen passende Kristallstruktur und
+die Gitterkonstante $a$
 zu ermitteln.
 \cite{sample})

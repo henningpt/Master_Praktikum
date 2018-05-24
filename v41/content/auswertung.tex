@@ -21,7 +21,7 @@ umformen.
 Um aus den berechneten Beugungswinkeln $\theta$ die Gitterkonstante a
 zu bestimmen, muss somit auch die zum Refelex gehörige Millerindicesumme
 \begin{align*}
-  m_{sum}=h^{2} + k^{2} + l^{2}
+  m_mathrm{sum}=h^{2} + k^{2} + l^{2}
 \end{align*}
 der Netzebeneschar (hkl) bekannt sein.
 Die Information für welchen Werten von hkl Refexe auftreten
@@ -31,7 +31,7 @@ der Elementarzelle. Da die der Proben nicht bekannt sind werden
 Material typische Gitterstruktur verwendent und die Ergebnisse
 untereinander verglichen. Metalle können typischerweise in
  bcc-, fcc- und Diamant-Struktur
-vorliegen und Salz in Flourit-, Zinkblende-,
+vorliegen und Salz in Fluorit-, Zinkblende-,
 Steinsalz-, Cäsiumchlorid-Struktur.
 Durch die entsprechenden Basisvektoren
 werden Werte für hkl bestimmt wo die Strukturamplitude
@@ -46,15 +46,15 @@ da der Atomformfaktor in Gleichung
 Bei Fall 1 verschwinden dadurch im Vergleich zu Fall 2 manche
 Reflexe.
 Die zu einem Reflex führenden Werte von hkl wurden hier mit Hilfe von
-Python \cite[\python] berechent. Dabei ist nur $m_{sum}$ entscheidend
-und von mehreren Ebenscharen mit identische $m_{sum}$ wird nur eine verwendet,
+Python \cite[\python] berechent. Dabei ist nur $m_mathrm{sum}$ entscheidend
+und von mehreren Ebenscharen mit identische $m_mathrm{sum}$ wird nur eine verwendet,
 da alle den gleichen Beugungswinkel $\theta$ besitzen.
 Es wird angenommen, dass alle Möglichen Reflexe bei der Messung auftreten.
-Somit wird jedem Beugungswinkel \theta ein $m_{sum}$ zugewiesen.
+Somit wird jedem Beugungswinkel \theta ein $m_mathrm{sum}$ zugewiesen.
 Wobei der kleinste Beugungswinkel durch Beugung an der
 Ebenschar mit der niedrigsten $m_sum$ entsteht und so weiter.
 Die Tabelle \ref{tab:bcc} enthält bsw. die Zuordnung für eine bcc-Struktur.
-Aus der Zuordnung von $m_{sum}$ und $\theta$
+Aus der Zuordnung von $m_mathrm{sum}$ und $\theta$
 wird für jedem Messwert nach \eqref{eqn:Gitterkonst}
 eine Gitterkonstante bestimmt. Der Fehler $\delta a$
 auf die Gitterkonstante
@@ -63,38 +63,296 @@ berechnet. Die berechneten Gitterkonstanten werden
 gegen $\cos^2\left(\theta\right)$ aufgetragen und es wird
 eine lineare Regression
 der Datenpunkte mit Hilfe von Pyhton durchgeführt.
-Die beste Gitterkonstante enspricht dann $a(\Si{90}{\degree})$
+Die beste Gitterkonstante enspricht dann $a(\SI{90}{\degree})$
 also dem y-Achsenabschitt der ermittelten Geraden.
+Die verwendeten Geräte besitzen folgende Maße:
+\begin{align}
+  \rho &= Probenradius = \SI{1}{\milli\meter}
+  R &= Kameraradius = \SI{57.3}{\milli\meter}
+  F &= Abstand Fokus-Probe = \SI{130}{\milli\meter}.
+  \lambda &=
+\end{align}
+\subsection{Metallprobe}
+Die Metallprobe wird sowohl unter der Annahme einer
+bcc-Struktur, siehe Tabelle \ref{tab:bcc} und Abbildung \ref{subfig:bcc},
+einer fcc-Struktur, siehe Tabelle \ref{tab:fcc} und Abbildung \ref{subfig:fcc},
+aus auch einer Diamant-Struktur, siehe Tabelle \ref{tab:dia} und Abbildung \ref{subfig:dia}
+untersucht.
 
-
-
-
-Da die Gitterkonstanten $\symup{a}$ in der Theorie einen
-festen Werte besitzt,
-wird für größere Beugungswinkel $\theta$ auch
 
 \begin{table}
   \centering
   \caption{Tabelle der Messwerte für die Kreisradien $r$ und die daraus nach \ref{eqn:winkel} resultienenden Winkel $\theta$
-  und die von bcc zugeordneten Reflexe durch die Millerindices hkl und deren Quadratsumme. Ebenfalls aufgetragen sind die
-  aus Gleichung \eqref{eqn:gitter} berechneten Gitterkonstanten $a$.}
+  und die von bcc zugeordneten Reflexe durch die Millerindices hkl und deren Quadratsumme $m_\mathrm{sum}$.
+  Ebenfalls aufgetragen sind die
+  aus Gleichung \eqref{eqn:Gitterkonst} berechneten Gitterkonstanten $a$.}
   \label{tab:bcc}
-\begin{tabular}{S S c c c S S S S}
+\begin{tabular}{S S c c c c S[table-format=1.2]@{${}\pm{}$} S[table-format=1.2] S[table-format=1.3]}
 \toprule
-$r/\si{\milli\meter}$ & $\theta / \si{\degree}$&{$h$} & {$k$} & {$l$} & {$h^{2} + k^{2} + l^{2}$} & \multicolumn{2}{$a/\si{\angstrom}$} &  $\cos\left(\theta\right)^2$ \\
+$r/\si{\milli\meter}$ & $\theta / \si{\degree}$ &$h$ & $k$ & $l$ & $m_\mathrm{sum}$ & \multicolumn{2}{c}{$a/\si{\angstrom}$}
+&  {$\cos^2\left(\theta\right)$} \\
 \midrule
-4.2 	&	20.75	&	0	&	1	&	1	&	2 	&	3.08	\pm 	0.16	& 0.87   \\
-6.0	  &	29.75	&	0	&	0	&	2	&	4 	&	3.11	\pm 	0.12	& 0.75   \\
-7.4	  &	37.25	&	1	&	1	&	2	&	6 	&	3.12	\pm 	0.09	& 0.63   \\
-8.8	  &	43.75	&	0	&	2	&	2	&	8 	&	3.15	\pm 	0.08	& 0.52   \\
-10.0	&	50.25	&	0	&	1	&	3	&	10	&	3.17	\pm 	0.06	& 0.41   \\
-11.4	&	57.25	&	2	&	2	&	2	&	12	&	3.18	\pm 	0.04	& 0.29   \\
-13.0	&	65.25	&	1	&	2	&	3	&	14	&	3.18	\pm 	0.02	& 0.18   \\
-15.3	&	76.49	&	1	&	1	&	4	&	18	&	3.36	\pm 	0.01	& 0.05   \\
+4.2 	&	20.75	&	0	&	1	&	1	&	2 	&	3.08	&	0.16	&	0.874   \\
+6.0 	&	29.75	&	0	&	0	&	2	&	4 	&	3.11	&	0.12	&	0.754   \\
+7.4 	&	37.25	&	1	&	1	&	2	&	6 	&	3.12	&	0.09	&	0.634   \\
+8.8 	&	43.75	&	0	&	2	&	2	&	8 	&	3.15	&	0.08	&	0.522   \\
+10.0	&	50.25	&	0	&	1	&	3	&	10	&	3.17	&	0.06	&	0.409   \\
+11.4	&	57.25	&	2	&	2	&	2	&	12	&	3.18	&	0.04	&	0.293   \\
+13.0	&	65.25	&	1	&	2	&	3	&	14	&	3.18	&	0.02	&	0.175   \\
+15.3	&	76.49	&	1	&	1	&	4	&	18	&	3.36	&	0.01	&	0.055   \\
+
 \bottomrule
 \end{tabular}
 \end{table}
 
+
+
+\begin{table}
+\centering
+\caption{Tabelle der Messwerte für die Kreisradien $r$ und die daraus nach \ref{eqn:winkel} resultienenden Winkel $\theta$
+    und die von fcc zugeordneten Reflexe durch die Millerindices hkl und deren Quadratsumme $m_\mathrm{sum}$.
+    Ebenfalls aufgetragen sind die
+    aus Gleichung \eqref{eqn:Gitterkonst} berechneten Gitterkonstanten $a$.}
+  \label{tab:fcc}
+\begin{tabular}{S S c c c c S[table-format=1.2]@{${}\pm{}$} S[table-format=1.2] S[table-format=1.3]  }
+\toprule
+$r/\si{\milli\meter}$ & $\theta / \si{\degree}$ &$h$ & $k$ & $l$ & $m_\mathrm{sum}$ & \multicolumn{2}{c}{$a/\si{\angstrom}$}
+&  {$\cos^2\left(\theta\right)$} \\
+\midrule
+4.2	&	20.75	&	1	&	1	&	1	&	3	&	3.77	&	0.19	&	0.874   \\
+6.0	&	29.75	&	0	&	0	&	2	&	4	&	3.11	&	0.12	&	0.754   \\
+7.4	&	37.25	&	0	&	2	&	2	&	8	&	3.60	&	0.11	&	0.634   \\
+8.8	&	43.75	&	1	&	1	&	3	&	11	&	3.70	&	0.09	&	0.522   \\
+10.0	&	50.25	&	2	&	2	&	2	&	12	&	3.47	&	0.06	&	0.409   \\
+11.4	&	57.25	&	0	&	0	&	4	&	16	&	3.67	&	0.05	&	0.293   \\
+13.0	&	65.25	&	1	&	3	&	3	&	19	&	3.70	&	0.03	&	0.175   \\
+15.3	&	76.49	&	0	&	2	&	4	&	20	&	3.55	&	0.01	&	0.055   \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+
+\begin{table}
+\centering
+\caption{Tabelle der Messwerte für die Kreisradien $r$ und die daraus nach \ref{eqn:winkel} resultienenden Winkel $\theta$
+    und die von bcc zugeordneten Reflexe durch die Millerindices hkl und deren Quadratsumme $m_\mathrm{sum}$.
+    Ebenfalls aufgetragen sind die
+    aus Gleichung \eqref{eqn:Gitterkonst} berechneten Gitterkonstanten $a$.}
+  \label{tab:dia}
+\begin{tabular}{S S c c c c S[table-format=1.2]@{${}\pm{}$} S[table-format=1.2] S[table-format=1.3]  }
+\toprule
+$r/\si{\milli\meter}$ & $\theta / \si{\degree}$ &$h$ & $k$ & $l$ & $m_\mathrm{sum}$ & \multicolumn{2}{c}{$a/\si{\angstrom}$}
+&  {$\cos^2\left(\theta\right)$} \\
+\midrule
+4.2 	&	20.75	&	1	&	1	&	1	&	3	  &	3.77	&	0.19	&	0.874   \\
+6.0 	&	29.75	&	0	&	2	&	2	&	8  	&	4.39  &	0.17	&	0.754   \\
+7.4 	&	37.25	&	1	&	1	&	3	&	11	&	4.22  &	0.13 	&	0.634   \\
+8.8 	&	43.75	&	0	&	0	&	4	&	16  &	4.46  &	0.11	&	0.522   \\
+10.0	&	50.25	&	1	&	3	&	3	&	19	&	4.37	&	0.08	&	0.409   \\
+11.4	&	57.25	&	2	&	2	&	4	&	24	&	4.49	&	0.06	&	0.293   \\
+13.0	&	65.25	&	3	&	3	&	3	&	27	&	4.41	&	0.03	&	0.175   \\
+15.3	&	76.49	&	4	&	4	&	0	&	32	&	4.48	&	0.01	&	0.055   \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\begin{figure}[hhh]
+  \centering
+  \begin{subfigure}{0.8\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{build/plot_bcc.pdf}
+    \caption{bcc-Struktur}
+    \label{subfig:bcc}
+  \end{subfigure}
+  \begin{subfigure}{.8\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{build/plot_fcc.pdf}
+    \caption{fcc-Struktur}
+    \label{subfig:fcc}
+  \end{subfigure}
+  \begin{subfigure}{.8\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{build/plot_dia.pdf}
+    \caption{Diamant-Struktur}
+    \label{subfig:dia}
+  \end{subfigure}
+  \caption{Die bestimmten Gitterkonstante $a$ für verschiedene angenommene Strukturen gegen $\cos^2\theta$ aufgetagen.}
+  \label{fig:metall}
+\end{figure}
+
+
+
+\subsection{Salz-Probe}
+Die Salz-Probe wird sowohl unter der Annahme
+$f_1\approx f_2$  als auch $(f_1 \neq f_2)$ untersucht.
+Dabei wird die Salz-Probe auf
+Steinsalz-Struktur, siehe Tabelle \ref{tab:ss1}(\ref{tab:ss2}) und Abbildung  \ref{subfig:ss1} (\ref{subfig:ss2}),
+Fluorit-Struktur, siehe Tabelle \ref{tab:fluo1}(\ref{tab:fluo2}) und Abbildung  \ref{subfig:fluo1} (\ref{subfig:fluo2}),
+Zinkblende-Struktur, siehe Tabelle \ref{tab:zb1}(\ref{tab:zb2}) und Abbildung  \ref{subfig:zb1} (\ref{subfig:zb2})
+und Cäsiumchlorid-Struktur, siehe Tabelle \ref{tab:cc1}(\ref{tab:cc2}) und Abbildung  \ref{subfig:cc1} (\ref{subfig:cc2})
+überprüft.
+
+\begin{table}
+\centering
+\caption{Tabelle der Messwerte für die Kreisradien $r$ und die daraus nach \ref{eqn:winkel} resultienenden Winkel $\theta$
+    und die von der Steinsalz-Struktur für $f_1\approx f_2$ zugeordneten Reflexe durch die Millerindices hkl und deren Quadratsumme $m_\mathrm{sum}$.
+    Ebenfalls aufgetragen sind die
+    aus Gleichung \eqref{eqn:Gitterkonst} berechneten Gitterkonstanten $a$.}
+  \label{tab:ss1}
+\begin{tabular}{S S c c c c S[table-format=1.2]@{${}\pm{}$} S[table-format=1.2] S[table-format=1.3]  }
+\toprule
+$r/\si{\milli\meter}$ & $\theta / \si{\degree}$ &$h$ & $k$ & $l$ & $m_\mathrm{sum}$ & \multicolumn{2}{c}{$a/\si{\angstrom}$}
+&  {$\cos^2\left(\theta\right)$} \\
+\midrule
+2.7	  &	5.84	&	0	&	0	&	2	&	4	  &	15.15	&	1.73	&	0.990   \\
+3.0	  &	6.50	&	0	&	2	&	2	&	8 	&	13.62	&	1.44	&	0.987   \\
+3.1	  &	6.72	&	2	&	2	&	2	&	12	&	19.76	&	2.05	&	0.986   \\
+4.4	  &	9.59	&	0	&	0	&	4	&	16	&	18.52	&	1.51	&	0.972   \\
+5.2	  &	11.35	&	0	&	2	&	4	&	20	&	15.67	&	1.15	&	0.961   \\
+5.4	  &	11.79	&	2	&	2	&	4	&	24	&	15.09	&	1.08	&	0.958   \\
+6.4	  &	13.99	&	0	&	4	&	4	&	32	&	15.94	&	1.03	&	0.942   \\
+7.0	  &	15.32	&	2	&	4	&	4	&	36	&	17.51	&	1.07	&	0.930   \\
+7.2	  &	15.76	&	0	&	2	&	6	&	40	&	17.03	&	1.02	&	0.926   \\
+8.0	  &	17.52	&	2	&	2	&	6	&	44	&	15.36	&	0.86	&	0.909   \\
+8.4	  &	18.62	&	4	&	4	&	4	&	48	&	14.48	&	0.78	&	0.898   \\
+9.4 	&	20.82	&	0	&	4	&	6	&	52	&	15.18	&	0.76	&	0.874   \\
+10.0	&	21.93	&	2	&	4	&	6	&	56	&	14.45	&	0.70	&	0.861   \\
+10.1	&	22.37	&	0	&	0	&	8	&	64	&	16.21	&	0.78	&	0.855   \\
+11.0	&	24.13	&	0	&	2	&	8	&	68	&	15.08	&	0.68	&	0.833   \\
+11.5	&	25.45	&	2	&	2	&	8	&	72	&	14.35	&	0.62	&	0.815   \\
+11.8	&	25.89	&	2	&	6	&	6	&	76	&	14.12	&	0.61	&	0.809   \\
+13.0	&	28.76	&	0	&	4	&	8	&	80	&	12.82	&	0.51	&	0.769   \\
+13.4	&	29.42	&	2	&	4	&	8	&	84	&	14.12	&	0.55	&	0.759   \\
+13.6	&	29.86	&	4	&	6	&	6	&	88	&	13.93	&	0.53	&	0.752   \\
+14.9	&	32.83	&	4	&	4	&	8	&	96	&	12.79	&	0.44	&	0.706   \\
+16.4	&	36.03	&	0	&	6	&	8	&	100	&	13.10	&	0.41	&	0.654   \\
+16.6	&	36.47	&	0	&	2	&	10&	104	&	12.97	&	0.40	&	0.647   \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}
+\centering
+\caption{Tabelle der Messwerte für die Kreisradien $r$ und die daraus nach \ref{eqn:winkel} resultienenden Winkel $\theta$
+    und die von der Fluorit-Struktur für $f_1\approx f_2$ zugeordneten Reflexe durch die Millerindices hkl und deren Quadratsumme $m_\mathrm{sum}$.
+    Ebenfalls aufgetragen sind die
+    aus Gleichung \eqref{eqn:Gitterkonst} berechneten Gitterkonstanten $a$.}
+  \label{tab:fluo1}
+\begin{tabular}{S S c c c c S[table-format=1.2]@{${}\pm{}$} S[table-format=1.2] S[table-format=1.3]  }
+\toprule
+$r/\si{\milli\meter}$ & $\theta / \si{\degree}$ &$h$ & $k$ & $l$ & $m_\mathrm{sum}$ & \multicolumn{2}{c}{$a/\si{\angstrom}$}
+&  {$\cos^2\left(\theta\right)$} \\
+\midrule
+2.7	&	5.84	&	0	&	1	&	1	&	2	&	7.58	&	0.87	&	0.990   \\
+3.0	&	6.50	&	1	&	1	&	1	&	3	&	6.81	&	0.72	&	0.987   \\
+3.1	&	6.72	&	0	&	0	&	2	&	4	&	13.17	&	1.36	&	0.986   \\
+4.4	&	9.59	&	1	&	1	&	2	&	6	&	9.26	&	0.76	&	0.972   \\
+5.2	&	11.35	&	0	&	2	&	2	&	8	&	7.83	&	0.58	&	0.961   \\
+5.4	&	11.79	&	0	&	1	&	3	&	10	&	11.32	&	0.81	&	0.958   \\
+6.4	&	13.99	&	1	&	1	&	3	&	11	&	9.56	&	0.62	&	0.942   \\
+7.0	&	15.32	&	2	&	2	&	2	&	12	&	8.76	&	0.53	&	0.930   \\
+7.2	&	15.76	&	1	&	2	&	3	&	14	&	8.52	&	0.51	&	0.926   \\
+8.0	&	17.52	&	0	&	0	&	4	&	16	&	10.24	&	0.58	&	0.909   \\
+8.4	&	18.62	&	1	&	1	&	4	&	18	&	9.66	&	0.52	&	0.898   \\
+9.4	&	20.82	&	1	&	3	&	3	&	19	&	8.67	&	0.44	&	0.874   \\
+10.0	&	21.93	&	0	&	2	&	4	&	20	&	8.26	&	0.40	&	0.861   \\
+10.1	&	22.37	&	2	&	3	&	3	&	22	&	8.10	&	0.39	&	0.855   \\
+11.0	&	24.13	&	2	&	2	&	4	&	24	&	7.54	&	0.34	&	0.833   \\
+11.5	&	25.45	&	1	&	3	&	4	&	26	&	8.97	&	0.39	&	0.815   \\
+11.8	&	25.89	&	3	&	3	&	3	&	27	&	8.83	&	0.38	&	0.809   \\
+13.0	&	28.76	&	1	&	2	&	5	&	30	&	8.01	&	0.32	&	0.769   \\
+13.4	&	29.42	&	0	&	4	&	4	&	32	&	7.85	&	0.30	&	0.759   \\
+13.6	&	29.86	&	0	&	3	&	5	&	34	&	7.74	&	0.30	&	0.752   \\
+14.9	&	32.83	&	1	&	3	&	5	&	35	&	7.11	&	0.25	&	0.706   \\
+16.4	&	36.03	&	2	&	4	&	4	&	36	&	7.86	&	0.25	&	0.654   \\
+16.6	&	36.47	&	2	&	3	&	5	&	38	&	7.78	&	0.24	&	0.647   \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\begin{table}
+\centering
+\caption{Tabelle der Messwerte für die Kreisradien $r$ und die daraus nach \ref{eqn:winkel} resultienenden Winkel $\theta$
+    und die von der Zinkblende-Struktur für $f_1\approx f_2$ zugeordneten Reflexe durch die Millerindices hkl und deren Quadratsumme $m_\mathrm{sum}$.
+    Ebenfalls aufgetragen sind die
+    aus Gleichung \eqref{eqn:Gitterkonst} berechneten Gitterkonstanten $a$.}
+  \label{tab:zb1}
+\begin{tabular}{S S c c c c S[table-format=1.2]@{${}\pm{}$} S[table-format=1.2] S[table-format=1.3]  }
+\toprule
+$r/\si{\milli\meter}$ & $\theta / \si{\degree}$ &$h$ & $k$ & $l$ & $m_\mathrm{sum}$ & \multicolumn{2}{c}{$a/\si{\angstrom}$}
+&  {$\cos^2\left(\theta\right)$} \\
+\midrule
+2.7	&	5.84	&	1	&	1	&	1	&	3	&	7.58	&	0.87	&	0.990   \\
+3.0	&	6.50	&	0	&	2	&	2	&	8	&	13.62	&	1.44	&	0.987   \\
+3.1	&	6.72	&	1	&	1	&	3	&	11	&	19.76	&	2.05	&	0.986   \\
+4.4	&	9.59	&	0	&	0	&	4	&	16	&	18.52	&	1.51	&	0.972   \\
+5.2	&	11.35	&	1	&	3	&	3	&	19	&	15.67	&	1.15	&	0.961   \\
+5.4	&	11.79	&	2	&	2	&	4	&	24	&	15.09	&	1.08	&	0.958   \\
+6.4	&	13.99	&	3	&	3	&	3	&	27	&	15.94	&	1.03	&	0.942   \\
+7.0	&	15.32	&	0	&	4	&	4	&	32	&	14.59	&	0.89	&	0.930   \\
+7.2	&	15.76	&	1	&	3	&	5	&	35	&	14.19	&	0.85	&	0.926   \\
+8.0	&	17.52	&	0	&	2	&	6	&	40	&	15.36	&	0.86	&	0.909   \\
+8.4	&	18.62	&	3	&	3	&	5	&	43	&	14.48	&	0.78	&	0.898   \\
+9.4	&	20.82	&	4	&	4	&	4	&	48	&	13.01	&	0.65	&	0.874   \\
+10.0	&	21.93	&	1	&	1	&	7	&	51	&	14.45	&	0.70	&	0.861   \\
+10.1	&	22.37	&	2	&	4	&	6	&	56	&	14.18	&	0.68	&	0.855   \\
+11.0	&	24.13	&	1	&	3	&	7	&	59	&	13.20	&	0.60	&	0.833   \\
+11.5	&	25.45	&	0	&	0	&	8	&	64	&	14.35	&	0.62	&	0.815   \\
+11.8	&	25.89	&	3	&	3	&	7	&	67	&	14.12	&	0.61	&	0.809   \\
+13.0	&	28.76	&	2	&	2	&	8	&	72	&	12.82	&	0.51	&	0.769   \\
+13.4	&	29.42	&	5	&	5	&	5	&	75	&	12.55	&	0.49	&	0.759   \\
+13.6	&	29.86	&	0	&	4	&	8	&	80	&	12.39	&	0.47	&	0.752   \\
+14.9	&	32.83	&	1	&	1	&	9	&	83	&	12.79	&	0.44	&	0.706   \\
+16.4	&	36.03	&	4	&	6	&	6	&	88	&	11.79	&	0.37	&	0.654   \\
+16.6	&	36.47	&	1	&	3	&	9	&	91	&	11.67	&	0.36	&	0.647   \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}
+\centering
+\caption{Tabelle der Messwerte für die Kreisradien $r$ und die daraus nach \ref{eqn:winkel} resultienenden Winkel $\theta$
+    und die von der Cäsiumchlorid-Struktur für $f_1\approx f_2$ zugeordneten Reflexe durch die Millerindices hkl und deren Quadratsumme $m_\mathrm{sum}$.
+    Ebenfalls aufgetragen sind die
+    aus Gleichung \eqref{eqn:Gitterkonst} berechneten Gitterkonstanten $a$.}
+  \label{tab:cc1}
+\begin{tabular}{S S c c c c S[table-format=1.2]@{${}\pm{}$} S[table-format=1.2] S[table-format=1.3]  }
+\toprule
+$r/\si{\milli\meter}$ & $\theta / \si{\degree}$ &$h$ & $k$ & $l$ & $m_\mathrm{sum}$ & \multicolumn{2}{c}{$a/\si{\angstrom}$}
+&  {$\cos^2\left(\theta\right)$} \\
+\midrule
+2.7	&	5.84	&	0	&	1	&	1	&	2	&	7.58	&	0.87	&	0.990   \\
+3.0	&	6.50	&	0	&	0	&	2	&	4	&	13.62	&	1.44	&	0.987   \\
+3.1	&	6.72	&	1	&	1	&	2	&	6	&	13.17	&	1.36	&	0.986   \\
+4.4	&	9.59	&	0	&	2	&	2	&	8	&	9.26	&	0.76	&	0.972   \\
+5.2	&	11.35	&	0	&	1	&	3	&	10	&	11.75	&	0.86	&	0.961   \\
+5.4	&	11.79	&	2	&	2	&	2	&	12	&	11.32	&	0.81	&	0.958   \\
+6.4	&	13.99	&	1	&	2	&	3	&	14	&	9.56	&	0.62	&	0.942   \\
+7.0	&	15.32	&	0	&	0	&	4	&	16	&	11.67	&	0.71	&	0.930   \\
+7.2	&	15.76	&	1	&	1	&	4	&	18	&	11.35	&	0.68	&	0.926   \\
+8.0	&	17.52	&	0	&	2	&	4	&	20	&	10.24	&	0.58	&	0.909   \\
+8.4	&	18.62	&	2	&	3	&	3	&	22	&	9.66	&	0.52	&	0.898   \\
+9.4	&	20.82	&	2	&	2	&	4	&	24	&	8.67	&	0.44	&	0.874   \\
+10.0	&	21.93	&	1	&	3	&	4	&	26	&	10.32	&	0.50	&	0.861   \\
+10.1	&	22.37	&	1	&	2	&	5	&	30	&	10.13	&	0.48	&	0.855   \\
+11.0	&	24.13	&	0	&	4	&	4	&	32	&	9.43	&	0.43	&	0.833   \\
+11.5	&	25.45	&	0	&	3	&	5	&	34	&	8.97	&	0.39	&	0.815   \\
+11.8	&	25.89	&	2	&	4	&	4	&	36	&	10.59	&	0.46	&	0.809   \\
+13.0	&	28.76	&	2	&	3	&	5	&	38	&	9.61	&	0.38	&	0.769   \\
+13.4	&	29.42	&	0	&	2	&	6	&	40	&	9.42	&	0.36	&	0.759   \\
+13.6	&	29.86	&	1	&	4	&	5	&	42	&	9.29	&	0.35	&	0.752   \\
+14.9	&	32.83	&	2	&	2	&	6	&	44	&	8.53	&	0.30	&	0.706   \\
+16.4	&	36.03	&	1	&	3	&	6	&	46	&	7.86	&	0.25	&	0.654   \\
+16.6	&	36.47	&	4	&	4	&	4	&	48	&	7.78	&	0.24	&	0.647   \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 
 % plots
@@ -103,29 +361,29 @@ $r/\si{\milli\meter}$ & $\theta / \si{\degree}$&{$h$} & {$k$} & {$l$} & {$h^{2} 
   \begin{subfigure}{.45\textwidth}
     \centering
     \includegraphics[width=\textwidth]{build/plot_ss1.pdf}
-    \caption{plotss1}
-    \label{subfig:cool11}
+    \caption{Steinsalz-Struktur}
+    \label{subfig:ss1}
   \end{subfigure}
   \begin{subfigure}{.45\textwidth}
     \centering
     \includegraphics[width=\textwidth]{build/plot_fluor1.pdf}
-    \caption{plotfluor1}
-    \label{subfig:cool12}
+    \caption{Fluorit-Struktur}
+    \label{subfig:fluo1}
   \end{subfigure}
   \begin{subfigure}{.45\textwidth}
     \centering
     \includegraphics[width=\textwidth]{build/plot_zb1.pdf}
-    \caption{plotzb1}
-    \label{subfig:cool13}
+    \caption{Zinkblende-Struktur}
+    \label{subfig:zb1}
   \end{subfigure}
   \begin{subfigure}{.45\textwidth}
     \centering
     \includegraphics[width=\textwidth]{build/plot_cc1.pdf}
-    \caption{plotcc1}
-    \label{subfig:cool14}
+    \caption{Cäsiumchlorid-Struktur}
+    \label{subfig:cc1}
   \end{subfigure}
   \caption{two subfigures}
-  \label{fig:very cool1}
+  \label{fig:salz1}
 \end{figure}
 
 \begin{figure}[hhh]
