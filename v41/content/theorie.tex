@@ -33,7 +33,7 @@ $\vec{x}_{1}$, $\vec{x}_{2}$, $\vec{x}_{3}$ gekennzeichnet.
 Durch Linearkombination dieser Vektoren lässt sich
 jeder Gitterpunkt
 \begin{align}
-  \label{eqn:1}
+  \label{eqn:1*}
   \vec{t} = n_{1} \vec{x}_{1} + n_{2} \vec{x}_{2} + n_{3} \vec{x}_{3}
 \end{align}
 beschreiben.
@@ -70,7 +70,7 @@ zusätzlich ein Atom im Mittleren des Würfels.
 Somit besteht in diesem Fall die Basis aus zwei Atomen.
 Diese Basisvektoren sind durch:
 \begin{align}
-  \label{eqn:2}
+  \label{eqn:2*}
   \begin{pmatrix}
     0, 0, 0;
   \end{pmatrix}\\
@@ -84,7 +84,7 @@ Das \textit{kubisch flächenzentrierte Gitter} gleicht dem
 allerdings zusätzlich jeweils auf den Mitten der Würfelflächen Atome.
 Die Basisvektoren sind durch
 \begin{align}
-   \label{eqn:3}
+   \label{eqn:3*}
    \begin{pmatrix}
      0, 0, 0;
    \end{pmatrix}\\
@@ -107,7 +107,7 @@ Die zugehörigen Basisvektoren sind gegeben durch die
 Basisvektoren des \textit{kubisch-flächenzentrierten Gitters}
 und zusätzlich durch die Vektoren:
 \begin{align}
-   \label{eqn:4}
+   \label{eqn:4*}
    \begin{pmatrix}
     \frac{1}{4}, \frac{1}{4}, \frac{1}{4}
   \end{pmatrix}\
@@ -138,7 +138,7 @@ jeweils in zwei kubisch-flächenzentrierten Gittern angeordnet, die um eine
 halbe Raumdiagonale zueinander verschoben sind. Die Atompositionen
 in der Einheitszelle sind:
 \begin{align}
-  \label{eqn:5}
+  \label{eqn:5*}
   \text{Atom }(1) :&
   \begin{pmatrix}
     0, 0, 0
@@ -152,7 +152,7 @@ in der Einheitszelle sind:
   \begin{pmatrix}
     0, \frac{1}{2}, \frac{1}{2}
   \end{pmatrix}\\
-  \label{eqn:6}
+  \label{eqn:6*}
   \text{Atom }(2) :&
   \begin{pmatrix}
     0, 0, 0
@@ -173,12 +173,12 @@ unterschiedlichen Atomen, um eine halbe Raumdiagonale zueinander
 verschoben werden. Die Atompositionen in der Einheitszelle
 sind gegeben durch:
 \begin{align}
-  \label{eqn:7}
+  \label{eqn:7*}
   \text{Atom }(1) :&
   \begin{pmatrix}
     0, 0, 0
   \end{pmatrix}\\
-  \label{eqn:8}
+  \label{eqn:8*}
   \text{Atom }(1) :&
   \begin{pmatrix}
     \frac{1}{2}, \frac{1}{2}, \frac{1}{2}
@@ -191,7 +191,7 @@ Ein Atomtyp(\textbf{1}) besetzt die Plätze des
 der Andere (\textbf{2}) die folgenden
 Positionen:
 \begin{align}
-  \label{eqn:8}
+  \label{eqn:9*}
   \text{Atom }(2) :&
   \begin{pmatrix}
     \frac{1}{4}, \frac{1}{4}, \frac{1}{4}
@@ -242,18 +242,33 @@ wird das Zahlentripel noch mit einer geeigneten Zahl
 multipliziert. In Abbildung \ref{fig:miller_indizes}
 ist die Beschreibung für die Netzebenenschar mit den
 Indizes $(1 \ 4 \ 6)$ veranschaulicht.
+Liegt kein Schnittpunkt mit einer Achse vor, so wird der Millerindex $0$ gewählt.
 
-\begin{figure}
+\begin{figure}[hhh]
   \centering
   \includegraphics[width=0.9\textwidth]
   \caption{Veranschaulichung einer Netzebene mit Miller-Indizes (1 4 6).[\cite{sample}]}
 \end{figure}
 
-
-
+Wie bereits erwähnt, haben benachbarte Netzebenen immer
+den selben Abstand. Dieser Netzebenenabstand $d$ wird bei der
+Strukturanalyse benötigt. In Abbildung \ref{fig:miller_abstand} wird
+die Berechnung von $d$ veranschaulicht. Der Vektor, dessen Betrag $d$ ergibt,
+muss einerseits orthogonal auf der eingezeichneten Netzebene und andererseits orthogonal
+auf einer Benachbarten. Aus Überlegungen zu den in \ref{fig:miller_abstand}
+eingezeichneten rechtwinkligen Dreiecken unter der Bedingung
 \begin{align}
-\symup{d}=\frac{\symup{a}}{\sqrt{h^2 +k^2+l^2}} \label{eqn:5}
+  \label{eqn:4}
+  \cos\alpha^2 + \cos\beta^2 + \cos\gamma^2 = 1
 \end{align}
+lässt sich der Netzebenenabstand
+durch
+\begin{align}
+  \label{eqn:5}
+  d = \frac{a}{\sqrt{h^2 + k^2 + l^2}}
+\end{align}
+berechnen.
+
 
 \subsection{Beugung von Röntgenstrahlung an Kristallen}
 \label{subsec:Beugung}
