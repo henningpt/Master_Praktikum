@@ -59,12 +59,12 @@ alle die selbe Länge und stehen jeweil senkrecht aufeinander.\\
 Es wird zwischen \textit{kubisch-primitiven},
 \textit{kubisch-flächenzentrierten} und
 \textit{kubisch-raumzentrierten Gittern} unterschieden. \\ \\
-Das \textit{kubisch-primitive Gitter}(siehe Abbildung \ref{fig:bcc})
+Das \textit{kubisch-primitive Gitter}(siehe Abbildung \ref{fig:sc})
 kennzeichnet sich dadurch,
 das die Atome der Einheitszelle auf den Ecken
 eines Würfels platziert sind. Somit kann als Basisvektor trivial
 der Nullvektor angegeben werden.\\ \\
-Das \textit{kubisch raumzentrierte Gitter}(siehe Abbildung \ref{fig:raumzentriert})
+Das \textit{kubisch raumzentrierte Gitter}(siehe Abbildung \ref{fig:bcc})
 gleicht dem primitiven, allerdings befindet sich noch
 zusätzlich ein Atom im Mittleren des Würfels.
 Somit besteht in diesem Fall die Basis aus zwei Atomen.
@@ -79,6 +79,13 @@ Diese Basisvektoren sind durch:
   \end{pmatrix}
 \end{align}
 gegeben.\\ \\
+
+\begin{figure}[hhh]
+  \centering
+  \includegraphics[width=0.9\textwidth]{abbildungen/bcc.png}
+  \caption{Einheitszelle des kubisch-raumzentrierten Gitters.[\cite{sample}]}
+\end{figure}
+
 Das \textit{kubisch flächenzentrierte Gitter} gleicht dem
 \textit{kubisch-primitiven}, hat
 allerdings zusätzlich jeweils auf den Mitten der Würfelflächen Atome.
@@ -99,6 +106,12 @@ Die Basisvektoren sind durch
      \end{pmatrix}
 \end{align}
 gegeben.
+
+\begin{figure}[hhh]
+  \centering
+  \includegraphics[width=0.9\textwidth]{abbildungen/fcc.png}
+  \caption{Einheitszelle des kubisch-raumzentrierten Gitters.[\cite{sample}]}
+\end{figure}
 
 Durch Verschiebung des \textit{kubisch-flächenzentrierten Gitters}
 um eine viertel Raumdiagonale ergibt sich die sogenannte
@@ -246,7 +259,7 @@ Liegt kein Schnittpunkt mit einer Achse vor, so wird der Millerindex $0$ gewähl
 
 \begin{figure}[hhh]
   \centering
-  \includegraphics[width=0.9\textwidth]
+  \includegraphics[width=0.9\textwidth]{abbildungen/miller_ind.png}
   \caption{Veranschaulichung einer Netzebene mit Miller-Indizes (1 4 6).[\cite{sample}]}
 \end{figure}
 
@@ -269,6 +282,11 @@ durch
 \end{align}
 berechnen.
 
+\begin{figure}[hhh]
+  \centering
+  \includegraphics[width=0.9\textwidth]{abbildungen/miller_dist.png}
+  \caption{Skizze zuer Veranschaulichung der Berechnung des Netzebenenabstands.[\cite{sample}]}
+\end{figure}
 
 \subsection{Beugung von Röntgenstrahlung an Kristallen}
 \label{subsec:Beugung}
@@ -288,7 +306,7 @@ Ladung $ze_0$ ergibt sich
 Durch die endliche Ausdehnung der Elektronenhülle,
 müssen jedoch Phasenunterschiede
 \begin{align*}
-  \Deta\phi=2\pi\frac{\Delta s}{\lambda}= 2\pi\vec{r}\left(\vec{k}-\vec{k}_0\rigth)
+  \Delta\phi=2\pi\frac{\Delta s}{\lambda} = 2\pi\vec{r}\left(\vec{k}-\vec{k}_0\right)
 \end{align*}
 zwischen den gebeugten
 Strahlen berücksichtigt werden und es wird
@@ -303,7 +321,7 @@ von eingeführt.
 Ebenfalls kann der Atomformfaktor $f$ als Fourier-Transformierte
 der Ladungsverteilung $\rho(\vec{r})$
 \begin{align}
-f=\int_{\mathrm{Hülle}} \symup{e}^{-\symup{i}\pi\Delta\phi} \rho(\left \vec{r}\right) \symup{d}^3 r = \int_{\mathrm{Hülle}} \symup{e}^{-2\pi\symup{i}\left(\vec{k}-\vec{k}_0\right)} \rho(\left \vec{r}\right) \symup{d}^3 r
+f=\int_{\mathrm{Hülle}} \symup{e}^{-\symup{i}\pi\Delta\phi} \rho\left( \vec{r}\right) \symup{d}^3 r = \int_{\mathrm{Hülle}} \symup{e}^{-2\pi\symup{i}\left(\vec{k}-\vec{k}_0\right)} \rho\left( \vec{r}\right) \symup{d}^3
 \end{align}
 angesehen werden.
 Somit ergibt sich die Steuamplitude
