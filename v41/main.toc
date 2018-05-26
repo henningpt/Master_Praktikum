@@ -1,7 +1,18 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \defcounter {refsection}{0}\relax 
 \select@language {german}
-\contentsline {section}{\numberline {1}Auswertung}{3}{section.1}
-\contentsline {subsection}{\numberline {1.1}Metallprobe}{4}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}Salz-Probe}{7}{subsection.1.2}
-\contentsline {section}{\numberline {2}Diskussion}{12}{section.2}
+\contentsline {section}{\numberline {1}Theorie}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Zielsetzung}{3}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Allgemines}{3}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Kristallgitter}{3}{subsection.1.3}
+\contentsline {subsubsection}{\numberline {1.3.1}Kubische Kristallstrukturen}{3}{subsubsection.1.3.1}
+\contentsline {subsection}{\numberline {1.4}Kristallstrukturen aus zwei Atomarten}{5}{subsection.1.4}
+\contentsline {subsection}{\numberline {1.5}Netzebenen}{6}{subsection.1.5}
+\contentsline {subsection}{\numberline {1.6}Beugung von Röntgenstrahlung an Kristallen}{7}{subsection.1.6}
+\contentsline {subsection}{\numberline {1.7}Debye-Scherrer Methode}{9}{subsection.1.7}
+\contentsline {section}{\numberline {2}Durchführung}{10}{section.2}
+\contentsline {subsection}{\numberline {2.1}systematische Fehler}{10}{subsection.2.1}
+\contentsline {section}{\numberline {3}Auswertung}{13}{section.3}
+\contentsline {subsection}{\numberline {3.1}Metallprobe}{14}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Salz-Probe}{17}{subsection.3.2}
+\contentsline {section}{\numberline {4}Diskussion}{22}{section.4}
