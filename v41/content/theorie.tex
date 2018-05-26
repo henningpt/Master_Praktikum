@@ -59,12 +59,12 @@ alle die selbe Länge und stehen jeweil senkrecht aufeinander.\\
 Es wird zwischen \textit{kubisch-primitiven},
 \textit{kubisch-flächenzentrierten} und
 \textit{kubisch-raumzentrierten Gittern} unterschieden. \\ \\
-Das \textit{kubisch-primitive Gitter}(siehe Abbildung \ref{fig:bcc})
+Das \textit{kubisch-primitive Gitter}(siehe Abbildung \ref{fig:sc})
 kennzeichnet sich dadurch,
 das die Atome der Einheitszelle auf den Ecken
 eines Würfels platziert sind. Somit kann als Basisvektor trivial
 der Nullvektor angegeben werden.\\ \\
-Das \textit{kubisch raumzentrierte Gitter}(siehe Abbildung \ref{fig:raumzentriert})
+Das \textit{kubisch raumzentrierte Gitter}(siehe Abbildung \ref{fig:bcc})
 gleicht dem primitiven, allerdings befindet sich noch
 zusätzlich ein Atom im Mittleren des Würfels.
 Somit besteht in diesem Fall die Basis aus zwei Atomen.
@@ -79,6 +79,13 @@ Diese Basisvektoren sind durch:
   \end{pmatrix}
 \end{align}
 gegeben.\\ \\
+
+\begin{figure}[hhh]
+  \centering
+  \includegraphics[width=0.9\textwidth]{abbildungen/bcc.png}
+  \caption{Einheitszelle des kubisch-raumzentrierten Gitters.[\cite{sample}]}
+\end{figure}
+
 Das \textit{kubisch flächenzentrierte Gitter} gleicht dem
 \textit{kubisch-primitiven}, hat
 allerdings zusätzlich jeweils auf den Mitten der Würfelflächen Atome.
@@ -99,6 +106,12 @@ Die Basisvektoren sind durch
      \end{pmatrix}
 \end{align}
 gegeben.
+
+\begin{figure}[hhh]
+  \centering
+  \includegraphics[width=0.9\textwidth]{abbildungen/fcc.png}
+  \caption{Einheitszelle des kubisch-raumzentrierten Gitters.[\cite{sample}]}
+\end{figure}
 
 Durch Verschiebung des \textit{kubisch-flächenzentrierten Gitters}
 um eine viertel Raumdiagonale ergibt sich die sogenannte
@@ -245,11 +258,11 @@ Indizes $(1 \ 4 \ 6)$ veranschaulicht.
 Liegt kein Schnittpunkt mit einer
 Achse vor, so wird der Millerindex $0$ gewählt.
 
-% \begin{figure}[hhh]
-%   \centering
-%   \includegraphics[width=0.9\textwidth]
-%   \caption{Veranschaulichung einer Netzebene mit Miller-Indizes (1 4 6).[\cite{sample}]}
-% \end{figure}
+\begin{figure}[hhh]
+  \centering
+  \includegraphics[width=0.9\textwidth]{abbildungen/miller_ind.png}
+  \caption{Veranschaulichung einer Netzebene mit Miller-Indizes (1 4 6).[\cite{sample}]}
+\end{figure}
 
 Wie bereits erwähnt, haben benachbarte Netzebenen immer
 den selben Abstand. Dieser Netzebenenabstand $d$ wird bei der
@@ -270,6 +283,11 @@ durch
 \end{align}
 berechnen.
 
+\begin{figure}[hhh]
+  \centering
+  \includegraphics[width=0.9\textwidth]{abbildungen/miller_dist.png}
+  \caption{Skizze zuer Veranschaulichung der Berechnung des Netzebenenabstands.[\cite{sample}]}
+\end{figure}
 
 \subsection{Beugung von Röntgenstrahlung an Kristallen}
 \label{subsec:Beugung}
