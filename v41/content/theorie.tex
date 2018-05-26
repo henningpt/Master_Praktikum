@@ -242,13 +242,14 @@ wird das Zahlentripel noch mit einer geeigneten Zahl
 multipliziert. In Abbildung \ref{fig:miller_indizes}
 ist die Beschreibung für die Netzebenenschar mit den
 Indizes $(1 \ 4 \ 6)$ veranschaulicht.
-Liegt kein Schnittpunkt mit einer Achse vor, so wird der Millerindex $0$ gewählt.
+Liegt kein Schnittpunkt mit einer
+Achse vor, so wird der Millerindex $0$ gewählt.
 
-\begin{figure}[hhh]
-  \centering
-  \includegraphics[width=0.9\textwidth]
-  \caption{Veranschaulichung einer Netzebene mit Miller-Indizes (1 4 6).[\cite{sample}]}
-\end{figure}
+% \begin{figure}[hhh]
+%   \centering
+%   \includegraphics[width=0.9\textwidth]
+%   \caption{Veranschaulichung einer Netzebene mit Miller-Indizes (1 4 6).[\cite{sample}]}
+% \end{figure}
 
 Wie bereits erwähnt, haben benachbarte Netzebenen immer
 den selben Abstand. Dieser Netzebenenabstand $d$ wird bei der
@@ -288,7 +289,7 @@ Ladung $ze_0$ ergibt sich
 Durch die endliche Ausdehnung der Elektronenhülle,
 müssen jedoch Phasenunterschiede
 \begin{align*}
-  \Deta\phi=2\pi\frac{\Delta s}{\lambda}= 2\pi\vec{r}\left(\vec{k}-\vec{k}_0\rigth)
+  \Delta\phi=2\pi\frac{\Delta s}{\lambda}= 2\pi\vec{r}\left(\vec{k}-\vec{k}_0\right)
 \end{align*}
 zwischen den gebeugten
 Strahlen berücksichtigt werden und es wird
@@ -303,7 +304,13 @@ von eingeführt.
 Ebenfalls kann der Atomformfaktor $f$ als Fourier-Transformierte
 der Ladungsverteilung $\rho(\vec{r})$
 \begin{align}
-f=\int_{\mathrm{Hülle}} \symup{e}^{-\symup{i}\pi\Delta\phi} \rho(\left \vec{r}\right) \symup{d}^3 r = \int_{\mathrm{Hülle}} \symup{e}^{-2\pi\symup{i}\left(\vec{k}-\vec{k}_0\right)} \rho(\left \vec{r}\right) \symup{d}^3 r
+f=\int_{\mathrm{Hülle}}
+\symup{e}^{-\symup{i}\pi\Delta\phi}
+\rho\left( \vec{r}\right) \symup{d}^3 r
+ = \int_{\mathrm{Hülle}}
+ \symup{e}^{-2\pi\symup{i}
+ \left(\vec{k}-\vec{k}_0\right)}
+ \rho\left( \vec{r}\right) \symup{d}^3 r
 \end{align}
 angesehen werden.
 Somit ergibt sich die Steuamplitude
@@ -349,7 +356,7 @@ beobachtet wird $S\neq0$ oder nicht $S=0$.
 % -erweiterung auf gitter
 % -> Braggbedingung an Netzebenen
 % -> Strukturamplitude S
-
+%
 \subsection{Debye-Scherrer Methode}
 \label{subsec:Methoden}
 Um die Kistallstruktur eines Probematerials
