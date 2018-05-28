@@ -7,7 +7,7 @@ Ziel dieses Versuchs ist es, mit Hilfe der sogenannten
 Debye-Scherrer-Methode die Struktur einer Kristallprobe
 zu bestimmen und die Gitterkonstante zu messen.
 
-\subsection{Allgemines}
+\subsection{Allgemeines}
 \label{subsec:allgemein}
 
 Festkörper wie zum Beispiel Salze und Metalle
@@ -16,14 +16,14 @@ Kristallstrukturen zusamengesetzt. Dabei sind im
 Allgemeinen die einzelenen Kristallite zufällig
 ausgerichtet. Wenn ein solcher Festkörper untersucht wird,
 wird nur das statistische Mittel der Kristalle beobachtet.
-Zur Untersuchung der Eigentlichen Kristallstruktur
+Zur Untersuchung der eigentlichen Kristallstruktur
 können somit nur einzelne Kleinkristalle bzw.
-Einkristalleverwendet werden.
+Einkristalle verwendet werden.
 
 
 \subsection{Kristallgitter}
 \label{subsec:kristallstrukturen}
-Um die Periodischen Atomstrukturen eines Kristalls
+Um die periodischen Atomstrukturen eines Kristalls
 zu beschreiben, wird ein Punktgitter verwendet.
 Jedem Gitterpunkt wird eine festgelegte Atomgruppierung,
 die sogenannte Basis, zugeordnet.
@@ -45,10 +45,18 @@ Dabei wird zwischen primitiven und nichtprimitiven Einheitszellen
 unterschieden. Im Fall einer primitiven Einheitszelle,
 liegen auf den Eckpunkten des Parallelepipeds Atome.
 Ist dies nicht der Fall, handelt es sich um eine
-nichtprimitive Einheitszelle.\\ \\
+nichtprimitive Einheitszelle.\\
 Die verschiedenen Punktgitter werden anhand ihrer Symmetrie
 in 14 als \textit{Bravais-Gitter} bezeichnete Arten eingeteilt.
 Diese lassen sich in 7 Gruppen zusammenfassen.
+
+\begin{figure}[hhh]
+  \centering
+  \includegraphics[width=0.5\textwidth]{abbildungen/epiped.png}
+  \caption{Durch Translationsvektoren aufgespanntes Parallelepiped.\cite{sample}}
+  \label{fig:abb2}
+\end{figure}
+
 \subsubsection{Kubische Kristallstrukturen}
 \label{subsubsec:kubische_gitter}
 
@@ -57,13 +65,13 @@ sind häufig gegeben durch die sogenannten Kubischen Gitter.
 Bei kubischen Gittern sind besitzen die drei Translationsvektoren
 alle die selbe Länge und stehen jeweil senkrecht aufeinander.\\
 Es wird zwischen \textit{kubisch-primitiven},
-\textit{kubisch-flächenzentrierten} und
-\textit{kubisch-raumzentrierten Gittern} unterschieden. \\ \\
-Das \textit{kubisch-primitive Gitter}(siehe Abbildung \ref{fig:sc})
+\textit{kubisch-flächenzentrierten}(\textbf{bcc}) und \\
+\textit{kubisch-raumzentrierten Gittern}(\textbf{fcc}) unterschieden.
+Das \textit{kubisch-primitive Gitter}
 kennzeichnet sich dadurch,
 das die Atome der Einheitszelle auf den Ecken
 eines Würfels platziert sind. Somit kann als Basisvektor trivial
-der Nullvektor angegeben werden.\\ \\
+der Nullvektor angegeben werden.\\
 Das \textit{kubisch raumzentrierte Gitter}(siehe Abbildung \ref{fig:bcc})
 gleicht dem primitiven, allerdings befindet sich noch
 zusätzlich ein Atom im Mittleren des Würfels.
@@ -78,12 +86,13 @@ Diese Basisvektoren sind durch:
     \frac{1}{2}, \frac{1}{2}, \frac{1}{2};
   \end{pmatrix}
 \end{align}
-gegeben.\\ \\
+gegeben.\\
 
 \begin{figure}[hhh]
   \centering
-  \includegraphics[width=0.9\textwidth]{abbildungen/bcc.png}
-  \caption{Einheitszelle des kubisch-raumzentrierten Gitters.[\cite{sample}]}
+  \includegraphics[width=0.5\textwidth]{abbildungen/bcc.png}
+  \caption{Einheitszelle des kubisch-raumzentrierten Gitters.\cite{sample}}
+  \label{fig:bcc}
 \end{figure}
 
 Das \textit{kubisch flächenzentrierte Gitter} gleicht dem
@@ -94,13 +103,13 @@ Die Basisvektoren sind durch
    \label{eqn:3*}
    \begin{pmatrix}
      0, 0, 0;
-   \end{pmatrix}\\
+   \end{pmatrix}\
    \begin{pmatrix}
      \frac{1}{2}, \frac{1}{2}, 0;
-   \end{pmatrix}\\
+   \end{pmatrix}\
    \begin{pmatrix}
      \frac{1}{2}, 0, \frac{1}{2};
-     \end{pmatrix}\\
+     \end{pmatrix}\
      \begin{pmatrix}
        0, \frac{1}{2}, \frac{1}{2};
      \end{pmatrix}
@@ -109,13 +118,14 @@ gegeben.
 
 \begin{figure}[hhh]
   \centering
-  \includegraphics[width=0.9\textwidth]{abbildungen/fcc.png}
-  \caption{Einheitszelle des kubisch-raumzentrierten Gitters.[\cite{sample}]}
+  \includegraphics[width=0.5\textwidth]{abbildungen/fcc.png}
+  \caption{Einheitszelle des kubisch-flächenzentrierten Gitters.\cite{sample}}
+  \label{fig:fcc}
 \end{figure}
 
 Durch Verschiebung des \textit{kubisch-flächenzentrierten Gitters}
 um eine viertel Raumdiagonale ergibt sich die sogenannte
-\textit{Diamant-Struktur}(siehe Abbildung \ref{fig:diamant}).
+\textit{Diamant-Struktur}.
 Die zugehörigen Basisvektoren sind gegeben durch die
 Basisvektoren des \textit{kubisch-flächenzentrierten Gitters}
 und zusätzlich durch die Vektoren:
@@ -139,13 +149,13 @@ und zusätzlich durch die Vektoren:
 \label{subsec:2atome}
 Die bisher diskutierten Kristallstrukturen sind alle aus nur
 einem Atomtyp zusammengesetzt. Im Folgenden wird auf Strukturen
-eingegangen, die aus zwei verschiedenen Atomtypen bestehen.\\ \\
+eingegangen, die aus zwei verschiedenen Atomtypen bestehen.
 Die sogeannte \textit{Zinkblende-Struktur} entsteht aus der
-in \ref{subsec:kubische_gitter}
+in \ref{subsubsec:kubische_gitter}
 aufgeführten Diamantstruktur, indem an den Stellen der zum
 kubisch-flächenzentrierten verschiedenen Vektoren der Einheitszelle
-ein anderer Atomtyp auftritt.\\
-Bei der \textit{Steinsalz-Struktur}(siehe Abbildung \ref{fig:steinsalz})
+ein anderer Atomtyp auftritt.
+Bei der \textit{Steinsalz-Struktur}
 sind die verschiedenen Atomtypen
 jeweils in zwei kubisch-flächenzentrierten Gittern angeordnet, die um eine
 halbe Raumdiagonale zueinander verschoben sind. Die Atompositionen
@@ -180,7 +190,7 @@ in der Einheitszelle sind:
     \frac{1}{2}, 1, 1
    \end{pmatrix}
 \end{align}
-Die sogenannte \textit{Cäsium-Chlorid-Struktur}(siehe Abbildung \ref{fig:cscl})
+Die sogenannte \textit{Cäsium-Chlorid-Struktur}
 ensteht, wenn zwei \textit{kubisch-primitive Gitter}, mit jeweils
 unterschiedlichen Atomen, um eine halbe Raumdiagonale zueinander
 verschoben werden. Die Atompositionen in der Einheitszelle
@@ -218,7 +228,7 @@ Positionen:
   \begin{pmatrix}
     \frac{3}{4}, \frac{3}{4}, \frac{3}{4}
   \end{pmatrix}\\
-  \begin{pmatrix}
+  &\begin{pmatrix}
     \frac{1}{4}, \frac{1}{4}, \frac{3}{4}
   \end{pmatrix}\
   \begin{pmatrix}
@@ -252,7 +262,7 @@ Koordinatensystems der Einheitszelle ergeben im
 dreidimensionalen Raum das gesuchte Zahlentripel.\\
 Um die typische Notation mit drei ganzen Zahlen zu erhalten
 wird das Zahlentripel noch mit einer geeigneten Zahl
-multipliziert. In Abbildung \ref{fig:miller_indizes}
+multipliziert. In Abbildung \ref{fig:miller_ind}
 ist die Beschreibung für die Netzebenenschar mit den
 Indizes $(1 \ 4 \ 6)$ veranschaulicht.
 Liegt kein Schnittpunkt mit einer
@@ -260,8 +270,9 @@ Achse vor, so wird der Millerindex $0$ gewählt.
 
 \begin{figure}[hhh]
   \centering
-  \includegraphics[width=0.9\textwidth]{abbildungen/miller_ind.png}
+  \includegraphics[width=0.5\textwidth]{abbildungen/miller_ind.png}
   \caption{Veranschaulichung einer Netzebene mit Miller-Indizes (1 4 6).\cite{sample}}
+  \label{fig:miller_ind}
 \end{figure}
 
 Wie bereits erwähnt, haben benachbarte Netzebenen immer
@@ -285,9 +296,12 @@ berechnen.
 
 \begin{figure}[hhh]
   \centering
-  \includegraphics[width=0.9\textwidth]{abbildungen/miller_dist.png}
+  \includegraphics[width=0.5\textwidth]{abbildungen/miller_dist.png}
   \caption{Skizze zur Veranschaulichung der Berechnung des Netzebenenabstands.\cite{sample}}
+  \label{fig:miller_abstand}
 \end{figure}
+
+\FloatBarrier
 
 \subsection{Beugung von Röntgenstrahlung an Kristallen}
 \label{subsec:Beugung}
@@ -321,20 +335,20 @@ von eingeführt.
 
 Ebenfalls kann der Atomformfaktor $f$ als Fourier-Transformierte
 der Ladungsverteilung $\rho(\vec{r})$
-\begin{align}
-f=\int_{\mathrm{Hülle}}
-\symup{e}^{-\symup{i}\pi\Delta\phi}
-\rho\left( \vec{r}\right) \symup{d}^3 r
- = \int_{\mathrm{Hülle}}
- \symup{e}^{-2\pi\symup{i}
- \left(\vec{k}-\vec{k}_0\right)}
- \rho\left( \vec{r}\right) \symup{d}^3 r
-\end{align}
+% \begin{align}
+% f=\int_{\mathrm{Hülle}}
+% \symup{e}^{-\symup{i}\pi\Delta\phi}
+% \rho\left( \vec{r}\right) \symup{d}^3 r
+%  = \int_{\mathrm{Hülle}}
+%  \symup{e}^{-2\pi\symup{i}
+%  \left(\vec{k}-\vec{k}_0\right)}
+%  \rho\left( \vec{r}\right) \symup{d}^3 r
+% \end{align}
 angesehen werden.
 Somit ergibt sich die Streuamplitude
-\begin{align}
-  I_\mathrm{a}=f^2\left(z,\frac{\sin\theta}{\lambda}\right)I_\mathrm{e}\left(r,\theta\right)
-\end{align}
+% \begin{align}
+%   I_{\mathrm{a}}=f^2\left(z,\frac{\sin\theta}{\lambda}\right)I_{\mathrm{e}}\left(r,\theta\right)
+% \end{align}
 eines Atome.
 Die Streuamplitude $S$ einer Elementarzelle resultiert aus
 phasenrichtiger Aufsummation der
@@ -342,9 +356,9 @@ einzelnen Atomstreuamplituden, wobei unterschiedliche
 Atome an den Orten $\vec{r_j}$
 andere Formfaktoren $f_j$ besitzen.
 Somit folgt für die Streuamplitude oder auch Strukturamplitude genannt
-\begin{align}
-  S=\sum_j \symup{e}^{-2\pi \symup{i} \vec{r}_j\left(\vec{k}-\vec{k}_0\right)} I_\mathrm{e}.
-\end{align}
+% \begin{align}
+%   S=\sum_j \symup{e}^{-2\pi \symup{i} \vec{r}_j\left(\vec{k}-\vec{k}_0\right)} I_{\mathrm{e}}.
+% \end{align}
 Die Streuung findet nicht nur an
 einer Elementarzelle statt, sondern an
 Ebenenscharen im Kristall statt.
@@ -357,13 +371,13 @@ mit dem Ebenenabstand $d$ und Ein- und Ausfallwinkel $\theta$.
 Jeder auftretende Reflex erfüllt diese Bedingung.
 Durch die dazu äquivalente Form
 \begin{align}
-\vec{k}-\vec{k}_0=\frac{n}{|\vec{d}|}=\vec{g7}
+\vec{k}-\vec{k}_0=\frac{n}{|\vec{d}|}=\vec{g}
 \intertext{mit dem Reziprokengittervektor\footnote{Die Basisvektoren und Reziprokenbasisvektoren erfüllen die Relation $A_i*a_j=\delta_{ij}$}}
 \vec{g}(hkl)=h\vec{A}+k\vec{B}+l\vec{C}
 \end{align}
 folgt für die Streuamplitude der $(hkl)$-Ebene
 \begin{align}
-  S=\sum_j \symup{e}^{-2\pi \symup{i}(x_jh+y_jk+z_jl)}  I_\mathrm{e}. \label{eqn:Streu}
+  S=\sum_j \symup{e}^{-2\pi \symup{i}(x_jh+y_jk+z_jl)}  I_{\mathrm{e}}. \label{eqn:Streu}
 \end{align}
 Sind sowohl die Atomformfaktor $f_j$ und
 die Positionen $\vec{r}_j$ der
@@ -399,4 +413,6 @@ ${(\pm h \pm k \pm l)}$ zugeordnet und somit versucht
 eine zu den Reflexen passende Kristallstruktur und
 die Gitterkonstante $a$
 zu ermitteln.
-% \cite{sample})
+
+
+Die zur Anfertigung des Theorieteils benötigten Informationen wurden der Versuchsanleitung entnommen.\cite{sample})
