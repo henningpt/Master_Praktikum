@@ -63,7 +63,6 @@ d_probe = 130 * 10**(-3)
 proben_rad = 0.001  # nicht endgültig
 v = 0.002
 lit_wolfram = 3.16e-10 # kittel
-
 # functions
 def funp(string, arr):
     print("\n\n\n" + string)
@@ -157,27 +156,27 @@ a_m_fcc=unp.uarray(gk_m_fcc,gk_korrektur_a(gk_m_fcc, meta_winkel, proben_rad, ca
 a_m_dia=unp.uarray(gk_m_dia,gk_korrektur_a(gk_m_dia, meta_winkel, proben_rad, camera_rad) + gk_korrektur_v(gk_m_dia, meta_winkel, camera_rad, v))
 
 # auf konsole ausgeben
-
-print("\n\n\nwinkel metall:\n")
-for element in meta_winkel:
-    print(element)
-
-print("\n\n\nGitterkonstanten bcc metall: ")
-for element in gk_m_bcc:
-    print(element)
-
-
-print("\n\n\nGitterkonstanten fcc metall: ")
-for element in gk_m_fcc:
-    print(element)
-
-
-print("\n\n\nGitterkonstanten dia metall: ")
-for element in gk_m_dia:
-    print(element)
-
-funp(" Korrekturen bcc: ", a_m_bcc)
-
+#
+# print("\n\n\nwinkel metall:\n")
+# for element in meta_winkel:
+#     print(element)
+#
+# print("\n\n\nGitterkonstanten bcc metall: ")
+# for element in gk_m_bcc:
+#     print(element)
+#
+#
+# print("\n\n\nGitterkonstanten fcc metall: ")
+# for element in gk_m_fcc:
+#     print(element)
+#
+#
+# print("\n\n\nGitterkonstanten dia metall: ")
+# for element in gk_m_dia:
+#     print(element)
+#
+# funp(" Korrekturen bcc: ", a_m_bcc)
+#
 
 def gerade(x,a,b):
     return (a*x+b)
@@ -200,14 +199,12 @@ print(" \nMetall bcc", a_bcc_end)
 print(" \nMetall fcc", a_fcc_end)
 print(" \nMetall dia", a_dia_end)
 
-print("\n\nWolfram ist auserwählt!!!!! Die relative Abweichung beträgt:",
-      (a_bcc_end-lit_wolfram)/lit_wolfram)
 
 #def tabelle(datensatz, Name,Rundungen):  # i=Spalten j=Zeilen
 
 def tabelle_fertig(r, winkel, hkl, a_m_hkl, name):
     hkl_sum = hkl[:, 0]**2 + hkl[:, 1]**2 + hkl[:, 2]**2
-    rundung = np.array([      1,      2,         0,         0,         0,       0,                     2,                      2,                        3])
+    rundung = np.array([      1,      2,          0,         0,         0,       0,                     2,                      2,                        3])
     hkl_table = np.array([r*100, winkel, hkl[:, 0], hkl[:, 1], hkl[:, 2], hkl_sum,noms(a_m_hkl)*10**(10),stds(a_m_hkl)*10**(10) , np.cos(inrad(winkel))**2])
     tabelle(hkl_table, name+"_table", rundung)
 
@@ -296,6 +293,7 @@ print("Test 4,4,6",s_s(1,2,[4, 4, 6]))
 
 # funktion um alle salze auszuwerten
 def salz_auswerten(atomfakt,fobj_out):
+    lit_cae_clo = 4.119e-10 #wiki
     ss = generate_miller(10,s_s,1,atomfakt) # atomfakt = 1 -> gleiche vorfakoren, 2 -> fuer ungleiche
     ss =ss[:len(salz_winkel),:]
 # print("len winkel",len(salz_winkel))
@@ -405,6 +403,9 @@ def salz_auswerten(atomfakt,fobj_out):
     fobj_out.write("Salz Fluorit a="+ str(a_fluor_end)+"\n")
     fobj_out.write("Salz zb ="+ str(a_zb_end)+"\n")
     fobj_out.write("Salz cc ="+ str(a_cc_end)+"\n")
+    if(atomfakt==2):
+        fobj_out.write("\n\nCäsiumclorid ist auserwählt!!!!! Die relative Abweichung beträgt:"+
+            str((a_cc_end-lit_cae_clo)/lit_cae_clo) + "\n")
 
 
     tabelle_fertig(r_salz, salz_winkel , ss, a_s_ss, "ss"+str(atomfakt))
@@ -425,6 +426,11 @@ def salz_auswerten(atomfakt,fobj_out):
 # funktionsaufruf salze :
 salz_auswerten(1,fobj_out) # gleiche
 salz_auswerten(2,fobj_out) # ungleiche
+fobj_out.write("\n\nWolfram ist auserwählt!!!!! Die relative Abweichung beträgt:"+
+      str((a_bcc_end-lit_wolfram)/lit_wolfram) +  "\n")
+
+
+print
 fobj_out.close()
 
 

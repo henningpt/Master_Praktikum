@@ -5,13 +5,14 @@ import numpy as np
 def tabelle(datensatz, Name, Rundungen):  # i=Spalten j=Zeilen
     fobj_out = open(Name+".tex", "w")
     i_max, j_max = np.shape(datensatz)
-    fobj_out.write(r"\begin{table}"+"\n")
-    fobj_out.write(r"\centering"+"\n")
-    fobj_out.write(r"  \caption{}"+"\n")
-    fobj_out.write(r"  \label{}"+"\n")
-    fobj_out.write(r"\begin{tabular}{"+i_max*"S" +"} \n")
-    fobj_out.write(r"\toprule"+"\n \\\ \n")
-    fobj_out.write(r"\midrule"+"\n")
+    # fobj_out.write(r"\begin{table}"+"\n")
+    # fobj_out.write(r"\centering"+"\n")
+    # fobj_out.write(r"  \caption{}"+"\n")
+    # fobj_out.write(r"  \label{}"+"\n")
+    # fobj_out.write(r"\begin{tabular}{"+i_max*"S" +"} \n")
+    fobj_out.write(r"%"+i_max*"S" +"\n")
+    # fobj_out.write(r"\toprule"+"\n \\\ \n")
+    # fobj_out.write(r"\midrule"+"\n")
     #runden und in strings umwandeln
     for i in range(i_max):
         datensatz[i][:] = np.around(datensatz[i][:], decimals=Rundungen[i])
@@ -27,9 +28,9 @@ def tabelle(datensatz, Name, Rundungen):  # i=Spalten j=Zeilen
         fobj_out.write(r"   \\ "+"\n")
     # [j,i] = np.shape(test)
     # for(i in )
-    fobj_out.write(r"\bottomrule"+"\n")
-    fobj_out.write(r"\end{tabular}"+"\n")
-    fobj_out.write(r"\end{table}"+"\n")
+    # fobj_out.write(r"\bottomrule"+"\n")
+    # fobj_out.write(r"\end{tabular}"+"\n")
+    # fobj_out.write(r"\end{table}"+"\n")
     fobj_out.close()
 
 '''
