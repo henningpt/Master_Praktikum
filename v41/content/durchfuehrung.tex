@@ -1,3 +1,4 @@
+\newpage
 \section{Aufbau und Durchführung}
 \label{sec:Durchführung}
 Hier soll die Filmstreifenmethode verwendet werden,
@@ -32,7 +33,7 @@ vorliegen. In der Abbildung \ref{fig:aufbau} ist ein schematischer Aufbau des Ve
 \begin{figure}
   \centering
   \includegraphics{Aufbau.PNG}
-  \caption{Schematischer Aufbau des Versuches.}
+  \caption{Schematischer Aufbau des Versuches.\cite{sample}}
   \label{fig:aufbau}
  \end{figure}
 \FloatBarrier
@@ -68,25 +69,45 @@ zu Gitterkonstante $\mathrm{a}$
 Dabei entspricht $\rho$ dem Radius der Probe, $R$ dem Kameraradius
 und $F$ dem Abstand Fokus-Probe.
 
- \begin{figure}
-   \centering
-   \includegraphics[width=0.5\textwidth]{Syst_error_1.PNG}
-   \caption{Systematischer Fehler bei der Messung von $\theta$ durch
-   Absorption an der Oberfläche der Probe.}
-   \label{fig:error1}
-  \end{figure}
+\begin{figure}[hhh]
+  \centering
+  \begin{subfigure}{.49\textwidth}
+    \centering
+    \includegraphics[width=1\textwidth]{Syst_error_1.PNG}
+    \caption{Systematischer Fehler bei der Messung von $\theta$ durch
+    Absorption an der Oberfläche der Probe.\cite{sample}}
+    \label{fig:error1}
+  \end{subfigure}
+  \begin{subfigure}{.49\textwidth}
+    \centering
+    \includegraphics[width=1\textwidth]{Syst_error_2.PNG}
+    \caption{Systematischer Fehler bei
+    der Messung von $\theta$, da die Probenachse $P$
+     und Filmstreifenachse $M$ nicht übereinander liegen.\cite{sample}}
+    \label{fig:error2}
+  \end{subfigure}
+\end{figure}
+
+
+ % \begin{figure}
+ %   \centering
+ %   \includegraphics[width=0.5\textwidth]{Syst_error_1.PNG}
+ %   \caption{Systematischer Fehler bei der Messung von $\theta$ durch
+ %   Absorption an der Oberfläche der Probe.}
+ %   \label{fig:error1}
+ %  \end{figure}
 
 Zum andern fallen die Zylinderachsen von Probe und Filmstreifen
 nur bedingt ineinander dargestellt in Abbildung \ref{fig:error2}.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.5\textwidth]{Syst_error_2.PNG}
-  \caption{Systematischer Fehler bei
-  der Messung von $\theta$, da die Probenachse $P$
-   und Filmstreifenachse $M$ nicht übereinander liegen.}
-  \label{fig:error2}
-\end{figure}
+% \begin{figure}
+%   \centering
+%   \includegraphics[width=0.5\textwidth]{Syst_error_2.PNG}
+%   \caption{Systematischer Fehler bei
+%   der Messung von $\theta$, da die Probenachse $P$
+%    und Filmstreifenachse $M$ nicht übereinander liegen.}
+%   \label{fig:error2}
+% \end{figure}
 Der Abstand $v$ der zwei Zylinderachsen in der Röntgenstrahl-Ebene
 verändert somit den gemessenen Winkel $\theta$.
 Für die Korrektur $\Delta a_{\mathrm{V}}$ an der Gitterkonstante $\mathrm{a}$
