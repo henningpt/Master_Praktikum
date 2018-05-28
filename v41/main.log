@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.07.0 (TeX Live 2018)  (format=lualatex 2018.5.27)  27 MAY 2018 17:03
+This is LuaTeX, Version 1.07.0 (TeX Live 2018)  (format=lualatex 2018.5.27)  27 MAY 2018 20:27
  restricted system commands enabled.
 **main.tex
 (./main.tex
@@ -33,7 +33,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.233 seconds (./header.tex
+luaotfload | main : initialization completed in 0.224 seconds (./header.tex
 (/home/henning/.local/texlive/2016/texmf-dist/tex/latex/koma-script/scrartcl.cl
 s
 Document Class: scrartcl 2018/03/30 v3.25 KOMA-Script document class (article)
@@ -910,10 +910,10 @@ n.ldf
 File: gloss-german.ldf polyglossia: module for german
 Module polyglossia Info: Language data for german
 (polyglossia)            lefthyphenmin	2
-(polyglossia)            patterns	hyph-de-1901.pat.txt
 (polyglossia)            loader	loadhyph-de-1901.tex
-(polyglossia)            synonyms	table: 0x5ccd910
+(polyglossia)            patterns	hyph-de-1901.pat.txt
 (polyglossia)            hyphenation	
+(polyglossia)            synonyms	table: 0x5126ba0
 (polyglossia)            righthyphenmin	2
 (polyglossia)            patterns: hyph-de-1901.pat.txt on input line 6
 Module polyglossia Info: Language german was not yet loaded; created with id 4 o
@@ -922,10 +922,10 @@ Module polyglossia Info: Language german already loaded; id is 4 on input line 6
 
 Module polyglossia Info: Language data for ngerman
 (polyglossia)            lefthyphenmin	2
-(polyglossia)            patterns	hyph-de-1996.pat.txt
 (polyglossia)            loader	loadhyph-de-1996.tex
-(polyglossia)            synonyms	table: 0x5ccdae0
+(polyglossia)            patterns	hyph-de-1996.pat.txt
 (polyglossia)            hyphenation	
+(polyglossia)            synonyms	table: 0x5126d70
 (polyglossia)            righthyphenmin	2
 (polyglossia)            patterns: hyph-de-1996.pat.txt on input line 68
 Module polyglossia Info: Language ngerman was not yet loaded; created with id 8 
@@ -1082,9 +1082,7 @@ th-table.tex)
 luaotfload | cache : Lookup cache loaded from /home/henning/.local/texlive/2016/
 texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.(load luc: /hom
 e/henning/.local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/latinmode
-rn-math.luc)(save: /home/henning/.local/texlive/2016/texmf-var/luatex-cache/gene
-ric/fonts/otl/latinmodern-math.lua)(save: /home/henning/.local/texlive/2016/texm
-f-var/luatex-cache/generic/fonts/otl/latinmodern-math.luc)
+rn-math.luc)
 \g__fontspec_family_LatinModernMath_int=\count272
 .................................................
 . fontspec info: "no-font-shape"
@@ -1271,14 +1269,10 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 51.
 (/home/henning/.local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )(load luc: /home/henning/.local/texlive/2016/texmf-var/luatex-cache/generic/fon
-ts/otl/xits-math.luc)(save: /home/henning/.local/texlive/2016/texmf-var/luatex-c
-ache/generic/fonts/otl/xits-math.lua)(save: /home/henning/.local/texlive/2016/te
-xmf-var/luatex-cache/generic/fonts/otl/xits-math.luc)
+ts/otl/xits-math.luc)
 \g__fontspec_family_XITSMath_int=\count273
 (load luc: /home/henning/.local/texlive/2016/texmf-var/luatex-cache/generic/font
-s/otl/xits-mathbold.luc)(save: /home/henning/.local/texlive/2016/texmf-var/luate
-x-cache/generic/fonts/otl/xits-mathbold.lua)(save: /home/henning/.local/texlive/
-2016/texmf-var/luatex-cache/generic/fonts/otl/xits-mathbold.luc)
+s/otl/xits-mathbold.luc)
 luaotfload | aux : font no 47 (nil) does not define feature smcp for script math
  with language dflt
 luaotfload | aux : no font with id 47
@@ -2360,24 +2354,19 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-(save: /home/henning/.local/texlive/2016/texmf-var/luatex-cache/generic/fonts/ot
-l/lmsans8-regular.lua)(save: /home/henning/.local/texlive/2016/texmf-var/luatex-
-cache/generic/fonts/otl/lmsans8-regular.luc)(load luc: /home/henning/.local/texl
-ive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmmono10-regular.luc)(save: /h
-ome/henning/.local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmmono1
-0-regular.lua)(save: /home/henning/.local/texlive/2016/texmf-var/luatex-cache/ge
-neric/fonts/otl/lmmono10-regular.luc)
+(load luc: /home/henning/.local/texlive/2016/texmf-var/luatex-cache/generic/font
+s/otl/lmsans8-regular.luc)(load luc: /home/henning/.local/texlive/2016/texmf-var
+/luatex-cache/generic/fonts/otl/lmmono10-regular.luc)
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-(save: /home/henning/.local/texlive/2016/texmf-var/luatex-cache/generic/fonts/ot
-l/lmmono8-regular.lua)(save: /home/henning/.local/texlive/2016/texmf-var/luatex-
-cache/generic/fonts/otl/lmmono8-regular.luc)(load luc: /home/henning/.local/texl
-ive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmroman12-bold.luc)(load luc: 
-/home/henning/.local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmsan
-s10-bold.luc)(load luc: /home/henning/.local/texlive/2016/texmf-var/luatex-cache
-/generic/fonts/otl/lmroman12-regular.luc)
+(load luc: /home/henning/.local/texlive/2016/texmf-var/luatex-cache/generic/font
+s/otl/lmmono8-regular.luc)(load luc: /home/henning/.local/texlive/2016/texmf-var
+/luatex-cache/generic/fonts/otl/lmroman12-bold.luc)(load luc: /home/henning/.loc
+al/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmsans10-bold.luc)(load
+ luc: /home/henning/.local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl
+/lmroman12-regular.luc)
 LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
 (Font)              scaled to size 14.4002pt on input line 14.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
@@ -2390,26 +2379,19 @@ LaTeX Font Info:    Font shape `TU/LatinModernMath(3)/m/n' will be
 (Font)              scaled to size 9.99985pt on input line 14.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(3)/m/n' will be
 (Font)              scaled to size 6.9999pt on input line 14.
-(save: /home/henning/.local/texlive/2016/texmf-var/luatex-cache/generic/fonts/ot
-l/lmsans12-regular.lua)(save: /home/henning/.local/texlive/2016/texmf-var/luatex
--cache/generic/fonts/otl/lmsans12-regular.luc)(save: /home/henning/.local/texliv
-e/2016/texmf-var/luatex-cache/generic/fonts/otl/lmmono12-regular.lua)(save: /hom
-e/henning/.local/texlive/2016/texmf-var/luatex-cache/generic/fonts/otl/lmmono12-
-regular.luc) [1
+(load luc: /home/henning/.local/texlive/2016/texmf-var/luatex-cache/generic/font
+s/otl/lmsans12-regular.luc)(load luc: /home/henning/.local/texlive/2016/texmf-va
+r/luatex-cache/generic/fonts/otl/lmmono12-regular.luc) [1
 
 {/home/henning/.local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 ]
 Package tocbasic Info: character protrusion at toc deactivated on input line 15.
 
- (./main.toc
-Module polyglossia Info: Language ngerman already loaded; id is 8 on input line 
-3
-)
+ (./main.toc)
 \tf@toc=\write5
 
 \openout5 = main.toc
-
-[2
+ [2
 
 ] (./content/theorie.tex
 
@@ -2453,7 +2435,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 80--82
 
  []
 
-<abbildungen/bcc.png, id=61, 274.02374pt x 204.765pt>
+<abbildungen/bcc.png, id=35, 274.02374pt x 204.765pt>
 File: abbildungen/bcc.png Graphic file (type png)
 <use abbildungen/bcc.png>
 Package luatex.def Info: abbildungen/bcc.png  used on input line 85.
@@ -2464,7 +2446,7 @@ LaTeX Warning: Citation 'sample' on page 4 undefined on input line 86.
 
 LaTeX Warning: Citation 'sample' on page 4 undefined on input line 86.
 
-<abbildungen/fcc.png, id=62, 243.91125pt x 221.82875pt>
+<abbildungen/fcc.png, id=36, 243.91125pt x 221.82875pt>
 File: abbildungen/fcc.png Graphic file (type png)
 <use abbildungen/fcc.png>
 Package luatex.def Info: abbildungen/fcc.png  used on input line 112.
@@ -2505,7 +2487,7 @@ LaTeX Warning: Reference `fig:cscl' on page 6 undefined on input line 183.
 LaTeX Warning: Reference `fig:miller_indizes' on page 6 undefined on input line 
 255.
 
-<abbildungen/miller_ind.png, id=83, 284.06125pt x 183.68625pt>
+<abbildungen/miller_ind.png, id=58, 284.06125pt x 183.68625pt>
 File: abbildungen/miller_ind.png Graphic file (type png)
 <use abbildungen/miller_ind.png>
 Package luatex.def Info: abbildungen/miller_ind.png  used on input line 263.
@@ -2528,7 +2510,7 @@ LaTeX Warning: Reference `fig:miller_abstand' on page 6 undefined on input line
 272.
 
 [6]
-<abbildungen/miller_dist.png, id=95, 377.41pt x 330.23375pt>
+<abbildungen/miller_dist.png, id=72, 377.41pt x 330.23375pt>
 File: abbildungen/miller_dist.png Graphic file (type png)
 <use abbildungen/miller_dist.png>
 Package luatex.def Info: abbildungen/miller_dist.png  used on input line 288.
@@ -2560,14 +2542,14 @@ End of file on the terminal!
 
 
 Here is how much of LuaTeX's memory you used:
- 42008 strings out of 494413
- 100000,1648299 words of node,token memory allocated 9607 words of node memory still in use:
+ 41951 strings out of 494413
+ 100000,1648299 words of node,token memory allocated 9587 words of node memory still in use:
    131 hlist, 19 vlist, 16 rule, 77 disc, 8 local_par, 6 dir, 20 math, 164 glue,
  75 kern, 31 penalty, 1 style, 2 noad, 3 math_char, 6 margin_kern, 625 glyph, 2 
-align_record, 116 attribute, 82 glue_spec, 116 attribute_list, 10 temp, 1 align_
+align_record, 116 attribute, 78 glue_spec, 116 attribute_list, 10 temp, 1 align_
 stack, 1 write, 3 pdf_dest, 1 pdf_setmatrix, 1 pdf_save, 1 pdf_restore nodes
-   avail lists: 1:2,2:594,3:82,4:23,5:231,6:22,7:2618,8:80,9:409,10:10,11:291
- 44952 multiletter control sequences out of 65536+600000
+   avail lists: 1:2,2:594,3:75,4:23,5:231,6:3,7:2616,8:80,9:409,10:9,11:291
+ 44902 multiletter control sequences out of 65536+600000
  144 fonts using 51480991 bytes
  61i,15n,107p,9101b,3088s stack positions out of 5000i,500n,10000p,200000b,100000s
 !  ==> Fatal error occurred, no output PDF file produced!
