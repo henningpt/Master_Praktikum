@@ -67,14 +67,161 @@ durch die Näherung zu
 \begin{align}
 \langle I_z\rangle_P= -\frac{\hbar^2}{4}\frac{\gamma B_0}{k_B T}.
 \end{align}
-Für die Gleichgewichtsmagnetie
-...
+Für die Gleichgewichtsmagnetisierung $M_0$ bei der
+der Temperatur $T$ in $\vec{e}_z$-Richtung gilt dann
+\begin{align}
+M_0=\frac{1}{4}\mu_0 \gamma^2 \frac{\hbar^2}{k_B} N \frac{B_0}{T}
+\end{align}
+mit $N$ der Anzahl der Momente pro Volumeneinheit.
 
-
-
-
-\subsection{Larmor-Präzession}
+\subsection{Larmor-Präzession??}
 \label{subsec:zielsetzung}
+Durch die große Anzahl von Einzelmomenten in einer Probe \approx $\SI{10e28}{\per\cubic\meter}$
+kann die Probenmagnetisierung $\vec{M}$ mit klassischen Methoden
+beschrieben werden.
+Auf eine Magnetisierung $\vec{M}$ in einem Feld $B_0\vec{e}_z$
+wirkt somit ein Drehmoment
+\begin{align}
+\vec{D}=\vec{M} \times \vec{B}_0 \vec{e}_z
+\end{align}
+und gemäß der Kreiselgleichung
+\begin{align}
+  \frac{\symup{d}\vec{I}}{\symup{d}t}=\vec{M}\times\vec{B}_0 \vec{e}_z \label{eqn:kreisel}
+\end{align}
+ ändert sich der Gesamtdrehimpuls $\vec{I}$.
+Da Gesamtdrehimpuls$\vec{I}$ und magnetisches Moment $\vec{M}$
+über das gyromagnetische Verhältnis $\gamma$
+verbunden sind, folgt aus \eqref{eqn:kreisel}
+die zeitliche Entwicklung
+\begin{align}
+  \vec{M}(t)=
+  \left( \begin{array}{c} M_x \\ M_y \\ M_z \end{array}\right)
+=\left( \begin{array}{c} \phantom{-}A\cos\gamma B_0 t \\ -A\sin\gamma B_0 t \\ \text{const} \end{array}\right).
+\end{align}
+Die Magnetisierung $\vec{M}$ präzediert demnach um die
+$\vec{e}_z-Achse$ mit der Lamor-Frequenz $\omega_L=\gamma B_0$.
+
+\paragraph{Relaxationserscheinungen}
+Wird $\vec{M}$ aus der Gleichgewichtslage $\vec{M}_0$
+mit einem hochfrequenten Einstrahlung gebracht, strebt diese
+nach enden der Störung wieder zur $\vec{M}_0$.
+Dieser Relaxationsprozess wird durch die
+Blochschen Gleichungen
+\begin{align}
+  \frac{\symup{d}M_z}{\symup{d}t}=\frac{M_0-M_z}{T_1},
+  &\frac{\symup{d}M_x}{\symup{d}t}=\gamma B_0 M_x\frac{M_x}{T_2},
+  &\frac{\symup{d}M_y}{\symup{d}t}=\gamma B_0 M_y\frac{M_y}{T_2}
+\end{align}
+beschrieben.
+Die Zeitkonstante $T_1$ entspricht
+der longitutdinalen oder Spin-Gitter-Relaxationszeit, sie
+beschreibt die Änderung der Magnetisierungskomponente parallel zu
+$\vec{B}_0$. Die Zeitkonstante $T_2$ hingegen entspricht
+der transversalen oder Spin-Spin-Relaxationszeit, sie
+beschreibt die Änderung der Magnetisierungskomponenten
+senkrecht zu $\vec{B}_0$.
+
+\paragraph{HF-Einstrahlungsvorgänge}
+\label{para:HF}
+Um die Probenmagnetisierung aus der Gleichgewichtslage
+zu bringen, wird die Probe einem Hochfequenzfeld
+\begin{align}
+   \vec{B}_{HF}=2\vec{B}_1 \cos\omega t \label{eqn:Feld}
+\end{align}
+mit dem magnetischen
+Feldvektor $\vec{B}_1 \bot \vec{e}_z$ ausgesetzt.
+Das Feld \eqref{eqn:Feld} kann in
+zwei zirkular polarisierte Felder mit den Frequenz
+$+\omega$ und $-\omega$ zerlegt werden.
+Für Frequenzen $\omega\approx\omega_L$
+kann $-\omega$ vernachlässigt werden und
+das Feld kann als in der x-y-Ebende rotierendes Feld
+gesehen werden. Das gesamte auf die Probe
+wirkende Feld ist somit
+\begin{align}
+\vec{B}_{ges}=  \left( \begin{array}{c} B_1 \cos \omega t \\ B_1 \sin \omega t \\ B_0 \end{array}\right).
+\end{align}
+
+Um eine Lösung der Kreiselgleichung
+für $\vec{M}(t)$ zu bestimmen,
+wird eine Koordinatentransformations
+in ein mit der Frequenz $\omega$ um die $\vec{e}_z$ Achse
+rotierendes Koordinatensystem mit $\vec{e}'_x$, $\vec{e}'_y$ und $\vec{e}'_z=\vec{e}_z$.
+Durch diese Transformation wird die Zeitabhängigkeit des $B_1$-Feldes
+elimiert und das Feld zeigt dadurch konstant in $\vec{e}'_x$-Richtung.
+Durch diese Transformation nimmt die Kreiselgleichung die Form
+\begin{align}
+\frac{\symup{d}\vec{M}}{\symup{d}t}=\gamma\left(\vec{M}\times\vec{B}_{ges}\right)-\vec{\omega}\times \vec{M}
+\end{align}
+an. Diese kann ebenfalls so dargestellt werden
+\begin{align}
+\frac{\symup{d}\vec{M}}{\symup{d}t}=\gamma\left(\vec{M}\times\vec{B}_{eff}\right)
+\intertext{mit dem effektives Magnetfeld}
+\vec{B}_{eff}=  \vec{B}_0 +\vec{B}_1 + \frac{\vec{\omega}}{\gamma}.
+\end{align}
+Der Magnetisierungsvektor $\vec{M}$ führ somit
+eine Präzessionsbewegung um die Feldrichtung $B_{eff}$,
+die in der Abbildung \ref{fig:bfeld} dargestellt ist, aus
+\begin{figure}
+  \includegraphics[width=0.3\textwidth]{bfeld.PNG}
+  \caption{}
+  \label{fig:bfeld}
+\end{figure}
+Für den Fall $B_0=\frac{\omega}{\gamma}$ entspricht grade $B_{eff}=B_1$
+und die $\vec{M}$ dreht sich aus der $\vec{e}_z$-Achse heraus.
+Der Drehwinkel $\delta(\Delta t)$ beträt dabei
+\begin{align}
+  \delta(\Delta t)=\gamma B_1 \Delta t.
+\end{align}
+Um die Magnetisierung um $\SI{90}{\degree}$ zu drehen beträgt die
+Einstrahlungszeit
+\begin{align}
+  \Delta t_{90} = \frac{\pi}{2\gamma B_1}.
+\end{align}
+Die Magnetisierung zeigt somit in die $\vec{e}'_y$-Richtung, dies
+entspricht einem $\SI{90}{\degree}$-Puls.
+Für einen $\SI{180}{\degree}$-Puls beträgt dei Einstrahlungszeit
+$\Delta t_{180}=2\Delta t_{90}$ und die Magnetisierung $\vec{M}$
+zeigt in $-\vec{e}_z$-Richtung.
+Durch Anwenden dieser diskreten Pulse lassen sich
+wohldefinierte Nicht-Gleichgewichtszustände erzeugen.
+Da die Magnetisierung nach den Pulsen wieder zu dem
+Gleichgewichtszustand zurückstrebt, lassen sich so die
+Relaxationszeiten $T_1$ und $T_2$ messen.
+
+\subsection{Messmethoden}
+\paragraph{Bestimmung der Relacationszeit $T_2$}
+\begin{itemize}
+  \item[-] Freier Induktionszerfall (FID)\\
+  Für FID wird die Probe
+  in ein homogenes Magnetfeld $B_0\vec{e}_z$ platziert.
+  Zusätzlich befindet sich die Probe in einer
+  Spule, die senkrecht zu dem Feld steht.
+  Durch die Spule wird ein hochfequentes Magnetfeld
+  mit der Frequenz $\omega_L=\gamma B_0$ eingestrahlt.
+  Somit können wie in \ref{para:HF} $\SI{90}{\degree}$- oder $\SI{180}{\degree}$-Pulse
+realisiert werden.
+Bei dem freien Induktionszerfall wird die Probenmagnetisierung mit einem
+$\SI{90}{\degree}$-Puls in $\vec{e}'_y$-Richtung rotiert. Nach abschalten des Pulses
+führt die Magnetisierung dann eine Präzessionsbewegung in der
+x-y-Ebene auf Grundes des noch bestehenden $B_0\vec{e}_z$ Feldes aus.
+Die dadurch enstehende Induktionsspannung in der Spule wird in Abhängigkeit der Zeit aufgenommen.
+Der Zerfall der transversalen Magnetisierung und somit auch abnehmen der
+Induktionsspannung mit der Zeit, besitzt zwei Gründe.
+Zum einen
+
+
+  \item[-] Spin-Echo-Verfahren\\
+  testetetetasldasjdlkasjdlkjflkj<sgkjlökfjd
+  dsfndsflkndslfkadkfhkjfgkdfjsgkjdhfgkldhlfkjdsfljsldkfjsdlkfjalkdsjklfglkf
+  aldkgldfksläkfjöfdl
+  \item[-] Carr-Pucell- und Meilboom-Bill-Methode\\
+  testetetetasldasjdlkasjdlkjflkj<sgkjlökfjd
+  dsfndsflkndslfkadkfhkjfgkdfjsgkjdhfgkldhlfkjdsfljsldkfjsdlkfjalkdsjklfglkf
+  aldkgldfksläkfjöfdl
+
+\end{itemize}
+
 
 % formeln
 \begin{align}
