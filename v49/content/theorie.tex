@@ -208,17 +208,92 @@ x-y-Ebene auf Grundes des noch bestehenden $B_0\vec{e}_z$ Feldes aus.
 Die dadurch enstehende Induktionsspannung in der Spule wird in Abhängigkeit der Zeit aufgenommen.
 Der Zerfall der transversalen Magnetisierung und somit auch abnehmen der
 Induktionsspannung mit der Zeit, besitzt zwei Gründe.
-Zum einen
-
+Zum einen existiert kein perfektes homogens Magnetfeld bei einer
+reale Apparatur und zum anderen
+existieren Dipolfeldern der nächsten Nachbarn und Spins in der Elektronenhülle,
+die ebenfalls eien Inhomogenität des Magnetfeldes in der Probe erzeugen.
+Die Larmorfrequenzen der einzelnen Spins ist somit nicht mehr für alle Spins
+gleich, sondern es existiert eine Verteilung der Larmorfrequenzen.
+Dies führt zu einer Dephasierung
+der Spins, da manche Spins schnell oder langsamer
+als mit der Frequenz $\omega=\gamma B_0$ rotieren.
+Die transversalen Magnetisierung nimmt deshalb mit der Zeit ab.
+Messbar ist nur die Relaxationszeit $T_2^*$
+mit
+\begin{align}
+  \frac{1}{T_2^*} = \frac{1}{T_2} + \frac{1}{T_{\Delta B}}
+\end{align}
+wobei $T_{\Delta B}$ der Zeitkonstante enspricht, die durch die Inhomogenität
+des $B_0\vec{e}_z$ hervorgerufen wird.
+Für ein hinreichend homogenens Feld ist $T_{\Delta B} \gg T_2$
+und $T_2$ kann mit dem FID bestimmt werden.
+Jedoch für $T_{\Delta B}$ \textless $T_2$ ist eine $T_2$-Bestimmung wegen
+den apparativen Feldinhomogneitäten über FID nicht mehr möglich.
 
   \item[-] Spin-Echo-Verfahren\\
-  testetetetasldasjdlkasjdlkjflkj<sgkjlökfjd
-  dsfndsflkndslfkadkfhkjfgkdfjsgkjdhfgkldhlfkjdsfljsldkfjsdlkfjalkdsjklfglkf
-  aldkgldfksläkfjöfdl
+  Die Spin-Echo-Methode bietet eine Möglichkeit die apparativen Störeffekte
+  bei der $T_2$-Bestimmung zu eliminieren.
+  Dabei werden mit mindestens zwei HF-Pulsen benötigt.
+  Mit einem $\SI{90}{\degree}$-Puls wird die Probenmagnetisierung in die
+$\vec{e}'_y$-Richtung gedreht.
+Wegen den verschiedenen Larmorfequenzen der einezelnen Spins, beginnt die Dephasierung.
+Im rotierendem Koordinatensystem drehen somit Spins mit $\omega_{L_\text{Spin}}<\omega_{Hf}$
+gegen und Spins mit $\omega_{L_\text{Spin}}>\omega_{Hf}$ mit dem
+Uhrzeigersinn um die $\vec{e}_z$-Achse.
+Bereits nach der Zeit $T_{\Delta B}$ ist die transversalen
+Probenmagnetisierung durch
+Auseinanderlaufen der Spins so gut wie verschwunden,
+sodass kaum ein Induktionssignal
+gemessen wird. Wird nach dem $\SI{90}{\degree}$-Puls
+zu Zeitpunkt $\tau$
+ein $\SI{180}{\degree}$-Puls
+auf die Probe gegeben, wird nach $2\tau$, wie in Abbildung \ref{fig:hahn-echo} dargestellt, das sognannte Hahn-Echo beobachtet.
+\begin{figure}
+  \includegraphics[width=0.8\textwidth]{hahn-echo.PNG}
+  \caption{Hahn-Echo.}
+  \label{fig:hahn-echo}
+\end{figure}
+Durch den $\SI{180}{\degree}$-Puls führen
+die Spins eine Drehung um die
+$\vec{e}'_x$-Achse aus und laufen wieder zusammen
+zum Zeitpunkt $2\tau$ sind alle Spins wieder in Phase und eine
+transversalen Probenmagnetisierung
+erzeugt wieder ein Spingal in der Spule.
+Der zeitliche Verlauf der Spins ist in Abbildung
+\ref{fig:spin-echo} dargestellt.
+
+\begin{figure}
+  \includegraphics[width=0.8\textwidth]{spin-echo.PNG}
+  \caption{Zeitlicher Verlauf des Hahn-Echos.}
+  \label{fig:spin-echo}
+\end{figure}
+
+Das Hahn-Echo-Signal besitzt im vergleich zum Startsignal
+ein anderes Vorzeichen, da die transversale
+Magnetisierung zu Zeitpunkt $2\tau$ in $-\vec{e}_y$-Richtung zeigt.
+Für $T_2\rightarrow\infty$ erreicht die betragsmäßige
+Amplitude des Echos die
+ursprüngliche Höhe vor dem FID.
+Jedoch treten zu den reversiblen Dephasierungsprozessen auch
+irreversible auf wie Wechselwirkung. Diese führen zur Abnahme der Echo-Stärke $M_Y$
+,wie in Abbildung \ref{fig:tau_ver} dargestellt,
+in Abhänigkeit von der Zeit in der Form
+\begin{align}
+  M_Y(t)=M_0 \exp\left(-\fra{t}{T_2}\right).
+\end{align}
+
+\begin{figure}
+  \includegraphics[width=0.8\textwidth]{tau_ver.PNG}
+  \caption{Zeitlicher Verlauf des Hahn-Echos für unterschiedliche $\tau$.}
+  \label{fig:tau_ver}
+\end{figure}
+
+
+
+
   \item[-] Carr-Pucell- und Meilboom-Bill-Methode\\
-  testetetetasldasjdlkasjdlkjflkj<sgkjlökfjd
-  dsfndsflkndslfkadkfhkjfgkdfjsgkjdhfgkldhlfkjdsfljsldkfjsdlkfjalkdsjklfglkf
-  aldkgldfksläkfjöfdl
+
+
 
 \end{itemize}
 
