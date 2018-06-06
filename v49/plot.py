@@ -1,17 +1,26 @@
 import numpy as np
 import matplotlib.pyplot as plt
-# import scipy.signal.argrelextrema as rextrem
+from scipy.optimize import curve_fit as cf
 from scipy.signal import argrelextrema as rextrem
+from uncertainties import unumpy as unp
+
+# werte
+tau   = 20e-3
+phi   = 111 # degree
+f     = 21.71617e6
+
 
 # lade daten
-t1_visk = 12.0 * 60.0 + 3.0 + 0.5
-t2_visk = 12.0 * 60.0 + 0.3  # zeiten viskosimeter
+t1_visk = unp.uarray(12.0 * 60.0 + 3.0 + 0.5, 1)
+t2_visk = unp.uarray(12.0 * 60.0 + 0.3, 1)  # zeiten viskosimeter
 
 t1_tau, t1_amp = np.genfromtxt("t1messung.txt", unpack=True)
 d_tau, d_amp = np.genfromtxt("diffmessung.txt", unpack=True)
-d_amp *= -1.0
+# d_amp *= -1.0 keine ahnung wofuer :D
 
-print("mittelwert viskosimeter: ", 0.5 * (t1_visk + t2_visk))
+t_visk = 0.5 * (t1_visk + t2_visk)
+print("mittelwert viskosimeter: ", t_visk)
+
 
 # lade csv dateien:
 mydata = np.genfromtxt('cp.csv', delimiter=',')
@@ -20,13 +29,9 @@ sig_a  = mydata[:,1]
 
 mydata2 = np.genfromtxt('mg.csv', delimiter=',')
 time_a2 = mydata2[:,0]
+# zeitskala verschieben, sodass keine negativen Zeiten auftreten
+time_a2 += abs(min(time_a2))
 sig_a2  = mydata2[:,1]
-
-# filtern auf signifikante signale
-# cut_here = 4e-2
-# sig_a_cut = sig_a[abs(sig_a) > cut_here]
-# time_a_cut = time_a[abs(sig_a) > cut_here]
-# print(sig_a_cut)
 
 
 # functions
@@ -36,63 +41,95 @@ def filter(arr1, arr2, cut):
     return(arr1_cut, arr2_cut)
 
 
-def stplot(time, signal, logarit, name, *args):
-    plt.plot(time, signal, '-', label='Messwerte')
-    if (!args.empty()):
-        plt.plot()
+def stplot(time, signal, logarit, name):
+    ys_add = ""
+    plt.plot(time, signal, 'x', label='Messwerte')
     plt.xlabel(r'$  t \ / \ \mathrm{ms}$')
-    plt.ylabel(r'$U \ / \ \mathrm{mV}$')
     if(logarit):
-        plt.xscale("log")
+        ys_add = "ln "
+    plt.ylabel(ys_add + r'$U \ / \ \mathrm{mV}$')
     plt.legend(loc='best')
     plt.savefig("build/t_u_plot" + name + ".pdf")
-    plt.close()
     return()
 
 
-# def findmax(arr, range):
+def expf(x, a, b, c):
+    return(a * np.e**(b * x) + c)
+
+
+def lnr(x, a, b):
+    return(a * x + b)
+
+
+def diffkoeff(t, a, T2, D, g, G):
+    return(a * np.e**(-t / T2) * np.e**(- D * g**2 * G**2 * t**3 / 12.0))
+
+
+def grad(d, g, th):
+    return(8.8 / (d * g * th))
+
+
+def thalb(arr):
+    halb_wert = max(arr) * 0.5
+    arr += -halb_wert
+    return(np.argmin(abs(arr)))
+
 
 # verarbeiten
 #cutten
-sig_a_cut , time_a_cut = filter(sig_a, time_a, 4e-2)
-sig_a2_cut, time_a2_cut = filter(sig_a2, time_a2, 2e-2)
+sig_a_cut , time_a_cut = filter(sig_a, time_a, 21e-3)
+sig_a2_cut, time_a2_cut = filter(sig_a2, time_a2, 0e-2)
 
 # peaks suchen
-extrema_a = rextrem(sig_a, np.greater, order=3)
-
-# # t1 plotten
-# plt.figure(1)
-# plt.plot(t1_tau, t1_amp, 'x', label='Messwerte')
-# plt.xlabel(r'$  \tau \ / \ \mathrm{ms}$')
-# plt.ylabel(r'$U \ / \ \mathrm{mV}$')
-# # plt.xscale("log")
-# plt.legend(loc='best')
-# plt.show()
-#
-# # plotten diffusion
-# plt.figure(2)
-# plt.plot(d_tau, d_amp, 'x', label='Messwerte')
-# plt.xlabel(r'$\tau \ / \ \mathrm{ms}$')
-# plt.ylabel(r'$U \ / \ \mathrm{mV}$')
-# plt.legend(loc='best')
-# plt.show()
+extrema_a = rextrem(sig_a_cut, np.greater, order=4)
+extrema_a2 = rextrem(sig_a2_cut, np.greater, order=29)
 
 
-# plotten fuer a)
-# plt.figure(3)
-# plt.plot(time_a, sig_a, '-', label='Messwerte')
-# plt.xlabel(r'$  t \ / \ \mathrm{ms}$')
-# plt.ylabel(r'$U \ / \ \mathrm{mV}$')
-# # plt.xscale("log")
-# plt.legend(loc='best')
-# plt.show()
+# fits, rechnungen
+# a)
+# aparams1, acov1 = cf(expf, time_a2_cut[extrema_a2], sig_a2_cut[extrema_a2], maxfev=2000) curve_fit klappt nicht
 
-# testen
-testarr = np.array([1,0,1,1,2,1,2,0,3,1,2,1,0])
-extrema = rextrem(testarr, np.greater, order=2)
-print("TEST: " ,testarr, "\n", extrema, "\n", testarr[extrema])
+# log -> linfit
+aparams, acov = cf(lnr, time_a2_cut[extrema_a2], np.log(sig_a2_cut[extrema_a2]))
+auparams = unp.uarray(aparams, np.sqrt(np.diag(acov)))
+
+t2_a = -1 / auparams[0] # berechne T2 fuer meiboom-gill methode
+
+# fit fuer halbwertszeit
+dparams, dcov = cf(diffkoeff, d_tau, d_amp)
+duparams = unp.uarray(dparams, np.sqrt(np.diag(dcov)))
+
+
 # plotten
+stplot(d_tau, d_amp, 0, 'diff')
+d_plot = np.linspace(min(d_tau), max(d_tau))
+plt.errorbar(d_plot, diffkoeff(d_plot, *dparams), label='Fit', fmt='-')
+plt.savefig("build/t_u_plotdiff.pdf")
+plt.close()
 stplot(time_a, sig_a, 0, "1")
+plt.close()
 stplot(time_a_cut, sig_a_cut, 0, '1cut')
-stplot(time_a2, sig_a2, 0, "zwei")
+plt.close()
+stplot(time_a2, sig_a2, 0, "2")
+plt.close()
 stplot(time_a2_cut, sig_a2_cut, 0, "2cut")
+plt.close()
+stplot(time_a2_cut[extrema_a2], np.log(sig_a2_cut[extrema_a2]), 1, "2_extrem")
+t_plot = np.linspace(min(time_a2_cut[extrema_a2]), max(time_a2_cut[extrema_a2]))
+plt.errorbar(t_plot, lnr(t_plot, *aparams), yerr=0, label='Fit', fmt='-')
+plt.savefig("build/t_u_plot" + "2_extrem" + ".pdf")
+plt.close()
+
+
+# berechne halbwertszeit aus fit:
+t_half_exact = d_plot[thalb(diffkoeff(d_plot, *dparams))]
+
+
+# ausgeben
+print("\nT2 berechnet: ", t2_a)
+print("params aus cf: ", auparams)
+print(d_tau[thalb(d_amp)])
+print("exaktwert : ", t_half_exact)
+print("\n\nparams from diff_fit: ")
+for enum in enumerate(duparams):
+    print("\n", enum)
