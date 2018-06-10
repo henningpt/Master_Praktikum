@@ -304,17 +304,25 @@ berechnen.
 \label{subsec:Beugung}
 Kristallstrukturen können mit Hilfe von Beugung
 elektromagnetischer Wellen an Elektron und Atomkernen untersucht werden.
-Dabei eignet sich Röntgenstrahlung für die Untersuchung, da diese Wellenlängen um
-$\SI{1}{\angstrom}$ besitzt und somit in
-die Größenordnung der Gitterkonstanten liegt.
-Für die theoretische Beschreibung werden Elektron und Atomkernen
-als Hertzsche-Dipole betrachtet, die mit einem
-elektrischen Feld wechselwirken.
+Dabei eignet sich Röntgenstrahlung
+für die Untersuchung, da diese
+Wellenlängen besitzt, die in der
+Größenordnung der Gitterkonstanten liegen.
+Für die theoretische Beschreibung werden Elektron
+und Atomkernen
+als Hertzsche-Dipole betrachtet, die durch die
+Röntgenstrahlung in Schwingung versetzt
+werden und deshalb selbst
+Strahlung emittiern .
 Für die Intensität eines punktförmiges Streuzentrum mit
 Ladung $ze_0$ ergibt sich
 \begin{align}
 I(r,\theta,z) = I_0\left(\frac{\mu_0 (ze_0)^2}{4\pi zm_0}\right)\frac{1}{r^2}\frac{1+\cos^2 2\theta}{2}=z^2 I_e \label{6}.
 \end{align}
+Da die Intensität invers
+quadratisch zu der Masse $m_0$ des Streuzentrums ist,
+wird im folgenden die Atomkerne vernachlässigt und
+nur die Elektronenhülle des Atroms betrachtet.
 Durch die endliche Ausdehnung der Elektronenhülle,
 müssen jedoch Phasenunterschiede
 \begin{align*}
@@ -328,7 +336,7 @@ Intensität eines Einzelelektrons
 \begin{align}
 f^2=\frac{I_a}{I_e}
 \end{align}
-von eingeführt.
+eingeführt.
 
 Ebenfalls kann der Atomformfaktor $f$ als Fourier-Transformierte
 der Ladungsverteilung $\rho(\vec{r})$
@@ -343,9 +351,9 @@ der Ladungsverteilung $\rho(\vec{r})$
 % \end{align}
 angesehen werden.
 Somit ergibt sich die Streuamplitude
-% \begin{align}
-% I_{\mathrm{a}}=f^2\left(z,\frac{\sin\theta}{\lambda}\right)I_{\mathrm{e}}\left(r,\theta\right)
-% \end{align}
+\begin{align}
+I_{\mathrm{a}}=f^2\left(z,\frac{\sin\theta}{\lambda}\right)I_{\mathrm{e}}\left(r,\theta\right)
+\end{align}
 eines Atome.
 Die Streuamplitude $S$ einer Elementarzelle resultiert aus
 phasenrichtiger Aufsummation der
@@ -369,7 +377,7 @@ Jeder auftretende Reflex erfüllt diese Bedingung.
 Durch die dazu äquivalente Form
 \begin{align}
 \vec{k}-\vec{k}_0=\frac{n}{|\vec{d}|}=\vec{g}
-\intertext{mit dem Reziprokengittervektor\footnote{Die Basisvektoren und Reziprokenbasisvektoren erfüllen die Relation $A_i*a_j=\delta_{ij}$}}
+\intertext{mit dem reziproken Gittervektor\footnote{Die Basisvektoren und Reziprokenbasisvektoren erfüllen die Relation $A_i*a_j=\delta_{ij}$}}
 \vec{g}(hkl)=h\vec{A}+k\vec{B}+l\vec{C}
 \end{align}
 folgt für die Streuamplitude der $(hkl)$-Ebene
@@ -406,9 +414,7 @@ Zählrohr-Goniometers oder
 eines Filmstreifens wird der Beugungswinkel $\theta$
 bestimmt. Durch systematisches Probieren wird
 jedem Beugungswinkel $\theta$ eine Netzebenenschar
-${(\pm h \pm k \pm l)}$ zugeordnet und somit versucht
+${(h k l)}$ zugeordnet und somit versucht
 eine zu den Reflexen passende Kristallstruktur und
 die Gitterkonstante $a$
 zu ermitteln.
-
-Die zur Anfertigung des Theorieteils benötigten Informationen wurden der Versuchsanleitung entnommen.\cite{sample})

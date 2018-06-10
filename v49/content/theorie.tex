@@ -279,7 +279,7 @@ irreversible auf wie Wechselwirkung. Diese führen zur Abnahme der Echo-Stärke 
 ,wie in Abbildung \ref{fig:tau_ver} dargestellt,
 in Abhänigkeit von der Zeit in der Form
 \begin{align}
-  M_Y(t)=M_0 \exp\left(-\fra{t}{T_2}\right).
+  M_Y(t)=M_0 \exp\left(-\fra{t}{T_2}\right).\label{eqn:t2}
 \end{align}
 
 \begin{figure}
@@ -288,14 +288,54 @@ in Abhänigkeit von der Zeit in der Form
   \label{fig:tau_ver}
 \end{figure}
 
+\item[-] Carr-Pucell- und Meilboom-Bill-Methode\\
+Die beiden Methoden liefern im Vergleich zur Spin-Echo-Methode eine
+schnellere Möglichkeit der $T_2$-Bestimmung, da während der Messung die Magnetisierung
+nicht in die Gleichgewichtslage zurückkehren muss.
+Bei der Carr-Pucell-Methode wird ebenfalls ein $\SI{90}{\degree}$-Puls
+verwendent jedoch nach dem ersten $\SI{180}{\degree}$-Puls
+im äquidistanten Abstand von $2\tau$ weitere $\SI{180}{\degree}$-Puls
+auf die Probe gegeben. Der dadurch erzeugte Signalverlauf
+ist in der Abbildung \ref{fig:carr-pu} zu sehen.
 
-
-
-  \item[-] Carr-Pucell- und Meilboom-Bill-Methode\\
-
-
-
+\begin{figure}
+  \includegraphics[width=0.8\textwidth]{carr-pu.PNG}
+  \caption{Zeitlicher Verlauf des Signales bei der Carr-Purcell-Methode.}
+  \label{fig:tau_ver}
+\end{figure}
+Durch die aufeinanderfolgenden $\SI{180}{\degree}$-Pulsen werden
+weitere Hahn-Echos erzeugt und
+somit kann nur bei einem Messvorgang mehrere Messpaare von Zeit und
+Echoamplitude aufgenommen werden, um $T_2$ durch den Zusammenhang \eqref{eqn:t2} zu bestimmen.
+Eine genau $T_2$-Bestimmung gelingt aber nur dann,
+wenn die $\SI{180}{\degree}$-Pulse exakt eingestellt sind, da
+bei falscher Justage die Magnetisierung mit dem Winkel $\delta$ aus der x'-y'-Ebene
+dreht. Weil nur die Komponente die in der x'-y'-Ebene zum Signal beiträgt,
+wird dieses zu klein gemessen. Zusätzlich kommt hinzu, dass
+bei jedem weiterm Puls die Fehler addieren wird.
+Somit ergibt sich ein kleiners $T_2$.
+Die Meiboom-Gill-Methode hingegen verwendet eine
+Pulsfolge, die diesen Fehler reduziert. Dabei wird folgendermaßen
+vorgegangen, die $\SI{180}{\degree}-Pulse$ bewirken
+jetzt eine Dreheung um die $\vec{e}'_y$-Achse und nicht mehr
+um die $\vec{e}'_x$-Achse, mit dem Vorteil, dass dadurch bei jeder
+gerader Pulsanzahl trotz Drehung
+um $\SI{180}{\degree}+\delta$ die Magnetisierung wieder in der x'-y'-Ebene
+landet wie in Abbildung \ref{fig:mei-gil} zu sehen.
+Die Echoamplitude $M_y$ nach jedem geraden Puls kann somit zu
+$T_2$-Bestimmung benutzt werden.
+Zusätzlich ist die Amplituden durch die Drehung
+um die y'-Achse im vergleich zur Carr-Purcell-Methode stets positiv.
+\begin{figure}
+  \includegraphics[width=0.8\textwidth]{mei-gil.PNG}
+  \caption{Beispiel Verlauf eines Magnetisierungsvektors bei
+  der Meilboom-Gill-Methode.}
+  \label{fig:mei-gil}
+\end{figure}
 \end{itemize}
+
+\subsection{Einfluss der Diffusion auf Relaxationsverfahren}
+
 
 
 % formeln
@@ -309,7 +349,6 @@ M_Y(t) = M_0\exp\left(-\frac{t}{T_2}\right)
 \paragraph{Spin-Echo-Methode}
 \paragraph{Carr-Pucell-Methode}
 \paragraph{Meiboom-Gill-Methode}
-\subsection{Einfluss der Diffusion auf Relaxationsverfahren}
 
 
 \cite{sample}
