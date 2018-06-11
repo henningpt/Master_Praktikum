@@ -63,6 +63,7 @@ d_probe = 130 * 10**(-3)
 proben_rad = 0.001  # nicht endgültig
 v = 0.002
 lit_wolfram = 3.16e-10 # kittel
+lit_pbs = 5.92e-10 # kittel
 # functions
 def funp(string, arr):
     print("\n\n\n" + string)
@@ -411,7 +412,6 @@ def salz_auswerten(atomfakt,fobj_out):
         fobj_out.write("\n\nNH4CL ist auserwählt!!!!! Die relative Abweichung beträgt:"+
             str((a_cc_end-lit_NH4Cl)/lit_NH4Cl) + "\n")
 
-
     tabelle_fertig(r_salz, salz_winkel , ss, a_s_ss, "ss"+str(atomfakt))
     tabelle_fertig(r_salz, salz_winkel , cc, a_s_cc, "cc"+str(atomfakt))
     tabelle_fertig(r_salz, salz_winkel , fluor, a_s_fluor, "fluor"+str(atomfakt))
@@ -433,8 +433,6 @@ salz_auswerten(2,fobj_out) # ungleiche
 fobj_out.write("\n\nWolfram ist auserwählt!!!!! Die relative Abweichung beträgt:"+
       str((a_bcc_end-lit_wolfram)/lit_wolfram) +  "\n")
 
-
-print
 fobj_out.close()
 
 

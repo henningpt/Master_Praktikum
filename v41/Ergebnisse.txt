@@ -15,10 +15,12 @@ Salz zb =(6.06+/-0.18)e-10
 Salz cc =(3.81+/-0.11)e-10
 
 
-Steinsalz LiI ist auserwählt!!!!! Die relative Abweichung beträgt:0.009+/-0.031
+Steinsalz LiI ist auserwï¿½hlt!!!!! Die relative Abweichung betrï¿½gt:0.009+/-0.031
 
 
-NH4CL ist auserwählt!!!!! Die relative Abweichung beträgt:-0.015+/-0.029
+NH4CL ist auserwï¿½hlt!!!!! Die relative Abweichung betrï¿½gt:-0.015+/-0.029
+
+\Bleisulfit ist auserwÃ¤hlt!!!!! Die relative Abweichung betrÃ¤gt:-0.4564+/-0.0019
 
 
-Wolfram ist auserwählt!!!!! Die relative Abweichung beträgt:0.018+/-0.004
+Wolfram ist auserwÃ¤hlt!!!!! Die relative Abweichung betrÃ¤gt:0.018+/-0.004
