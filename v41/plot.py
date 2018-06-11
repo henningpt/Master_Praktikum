@@ -403,9 +403,13 @@ def salz_auswerten(atomfakt,fobj_out):
     fobj_out.write("Salz Fluorit a="+ str(a_fluor_end)+"\n")
     fobj_out.write("Salz zb ="+ str(a_zb_end)+"\n")
     fobj_out.write("Salz cc ="+ str(a_cc_end)+"\n")
+    lit_LiI = 6e-10
+    lit_NH4Cl = 3.87e-10
     if(atomfakt==2):
-        fobj_out.write("\n\nCäsiumclorid ist auserwählt!!!!! Die relative Abweichung beträgt:"+
-            str((a_cc_end-lit_cae_clo)/lit_cae_clo) + "\n")
+        fobj_out.write("\n\nSteinsalz LiI ist auserwählt!!!!! Die relative Abweichung beträgt:"+
+            str((a_ss_end-lit_LiI)/lit_LiI) + "\n")
+        fobj_out.write("\n\nNH4CL ist auserwählt!!!!! Die relative Abweichung beträgt:"+
+            str((a_cc_end-lit_NH4Cl)/lit_NH4Cl) + "\n")
 
 
     tabelle_fertig(r_salz, salz_winkel , ss, a_s_ss, "ss"+str(atomfakt))

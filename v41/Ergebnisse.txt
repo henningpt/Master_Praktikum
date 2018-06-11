@@ -15,7 +15,10 @@ Salz zb =(6.06+/-0.18)e-10
 Salz cc =(3.81+/-0.11)e-10
 
 
-Cäsiumclorid ist auserwählt!!!!! Die relative Abweichung beträgt:-0.075+/-0.027
+Steinsalz LiI ist auserwählt!!!!! Die relative Abweichung beträgt:0.009+/-0.031
+
+
+NH4CL ist auserwählt!!!!! Die relative Abweichung beträgt:-0.015+/-0.029
 
 
 Wolfram ist auserwählt!!!!! Die relative Abweichung beträgt:0.018+/-0.004
