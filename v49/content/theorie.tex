@@ -279,7 +279,7 @@ irreversible auf wie Wechselwirkung. Diese führen zur Abnahme der Echo-Stärke 
 ,wie in Abbildung \ref{fig:tau_ver} dargestellt,
 in Abhänigkeit von der Zeit in der Form
 \begin{align}
-  M_Y(t)=M_0 \exp\left(-\fra{t}{T_2}\right).\label{eqn:t2}
+  M_Y(t)=M_0 \exp\left(-\frac{t}{T_2}\right).\label{eqn:t2}
 \end{align}
 
 \begin{figure}
@@ -335,6 +335,24 @@ um die y'-Achse im vergleich zur Carr-Purcell-Methode stets positiv.
 \end{itemize}
 
 \subsection{Einfluss der Diffusion auf Relaxationsverfahren}
+Wenn eine Zeitabhängigkeit des lokalen
+$B_0\vec{e}_z$-Feldes für die Spins existiert, kann $T_2$ nicht mehr über die Gleichung
+\eqref{eqn:t2} bestimmt werden. Dies ist zum Beispiel
+durch die Brownsche Molekularbewegung gegeben, da
+die Spins in Folge der Inhomogenitäten des statischen Feldes
+in Bereiche unterschiedlicher Feldstärken gelangen.
+Infolge dessen wird die Larmor-Frequenz zeitabhängig
+und die Refokussierung der Spins wird gestört.
+Somit nimmt die
+Signalamplitude stärker als in Gleichung \eqref{eqn:t2}
+ab.
+Um diese thermische Bewegungen der Atome/Molekülen
+in Flüssigkeiten zu berücksichtigen
+werden die Blochschen Gleichungen um eine Term mit der
+Diffusionskonstante $D$ erweitert, ergibt sich
+\begin{align}
+\frac{\delta\vec{M}}{\delta t} = \gamma\left(\vec{M}\times\vec{B}\right)-\frac{M_x\vec{e}_x+M_y\vec{e}_y}{T_2}-\frac{\left(M_z-M_0\right)\vec{e}_z}{T_1} +(\vec{e}_x+\vec{e}_y+\vec{e}_z)D\Delta M.
+\end{align}
 
 
 
