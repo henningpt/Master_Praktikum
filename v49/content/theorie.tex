@@ -55,7 +55,7 @@ Abbildung \ref{fig:Proton} dargestellt ist.
 \begin{figure}
  \centering
  \includegraphics[width=0.5\textwidth]{Zeeman.PNG}
- \caption{Aufspaltung der Energieniveaus im Magnetfeld $B_0$ für $I=\tfrac{1}{2}$.}
+ \caption{Aufspaltung der Energieniveaus im Magnetfeld $B_0$ für $I=\tfrac{1}{2}$.\cite{sample}}
  \label{fig:Proton}
 \end{figure}
 Für Zimmertemperatur und Magnetfelder
@@ -110,7 +110,7 @@ Blochschen Gleichungen
 \begin{align}
   \frac{\symup{d}M_z}{\symup{d}t}=\frac{M_0-M_z}{T_1},
   &\frac{\symup{d}M_x}{\symup{d}t}=\gamma B_0 M_x\frac{M_x}{T_2},
-  &\frac{\symup{d}M_y}{\symup{d}t}=\gamma B_0 M_y\frac{M_y}{T_2}
+  &\frac{\symup{d}M_y}{\symup{d}t}=\gamma B_0 M_y\frac{M_y}{T_2} \label{eqn:bloch}
 \end{align}
 beschrieben.
 Die Zeitkonstante $T_1$ entspricht
@@ -164,7 +164,7 @@ eine Präzessionsbewegung um die Feldrichtung $B_{eff}$,
 die in der Abbildung \ref{fig:bfeld} dargestellt ist, aus
 \begin{figure}
   \includegraphics[width=0.3\textwidth]{bfeld.PNG}
-  \caption{}
+  \caption{\cite{sample}}
   \label{fig:bfeld}
 \end{figure}
 Für den Fall $B_0=\frac{\omega}{\gamma}$ entspricht grade $B_{eff}=B_1$
@@ -250,7 +250,7 @@ ein $\SI{180}{\degree}$-Puls
 auf die Probe gegeben, wird nach $2\tau$, wie in Abbildung \ref{fig:hahn-echo} dargestellt, das sognannte Hahn-Echo beobachtet.
 \begin{figure}
   \includegraphics[width=0.8\textwidth]{hahn-echo.PNG}
-  \caption{Hahn-Echo.}
+  \caption{Hahn-Echo.\cite{sample}}
   \label{fig:hahn-echo}
 \end{figure}
 Durch den $\SI{180}{\degree}$-Puls führen
@@ -264,7 +264,7 @@ Der zeitliche Verlauf der Spins ist in Abbildung
 
 \begin{figure}
   \includegraphics[width=0.8\textwidth]{spin-echo.PNG}
-  \caption{Zeitlicher Verlauf des Hahn-Echos.}
+  \caption{Zeitlicher Verlauf des Hahn-Echos.\cite{sample}}
   \label{fig:spin-echo}
 \end{figure}
 
@@ -284,7 +284,7 @@ in Abhänigkeit von der Zeit in der Form
 
 \begin{figure}
   \includegraphics[width=0.8\textwidth]{tau_ver.PNG}
-  \caption{Zeitlicher Verlauf des Hahn-Echos für unterschiedliche $\tau$.}
+  \caption{Zeitlicher Verlauf des Hahn-Echos für unterschiedliche $\tau$.\cite{sample}}
   \label{fig:tau_ver}
 \end{figure}
 
@@ -300,7 +300,7 @@ ist in der Abbildung \ref{fig:carr-pu} zu sehen.
 
 \begin{figure}
   \includegraphics[width=0.8\textwidth]{carr-pu.PNG}
-  \caption{Zeitlicher Verlauf des Signales bei der Carr-Purcell-Methode.}
+  \caption{Zeitlicher Verlauf des Signales bei der Carr-Purcell-Methode.\cite{sample}}
   \label{fig:tau_ver}
 \end{figure}
 Durch die aufeinanderfolgenden $\SI{180}{\degree}$-Pulsen werden
@@ -329,7 +329,7 @@ um die y'-Achse im vergleich zur Carr-Purcell-Methode stets positiv.
 \begin{figure}
   \includegraphics[width=0.8\textwidth]{mei-gil.PNG}
   \caption{Beispiel Verlauf eines Magnetisierungsvektors bei
-  der Meilboom-Gill-Methode.}
+  der Meilboom-Gill-Methode.\cite{sample}}
   \label{fig:mei-gil}
 \end{figure}
 \end{itemize}
@@ -353,20 +353,79 @@ Diffusionskonstante $D$ erweitert, ergibt sich
 \begin{align}
 \frac{\delta\vec{M}}{\delta t} = \gamma\left(\vec{M}\times\vec{B}\right)-\frac{M_x\vec{e}_x+M_y\vec{e}_y}{T_2}-\frac{\left(M_z-M_0\right)\vec{e}_z}{T_1} +(\vec{e}_x+\vec{e}_y+\vec{e}_z)D\Delta M.
 \end{align}
-
-
-
-% formeln
+Desweitern wird einem Feld
 \begin{align}
-% ddiffusionskonstante
-M_Y(t) = M_0\exp\left(-\frac{t}{T_2}\right)
-\symup{e}^(-\frac{D\gamma^2 G^2 t^3}{12} \label{}
+\vec{B}_0= (B_0 + Gz) \vec{e}_z
 \end{align}
+mit konstantem Feldgradienten $G$ in z-Richtung betrachtet
+und die Inhomogenitäten des Feldes in x- und y-Richtung vernachlässigt, da
+da diese die Lamor-Frequenz nur in 2.Ordung ändert.
+Wird nun die transversalen Magnetisierungskomponente
+$M_{tr}=M_x + \symup{i}M_y$
+betrachtet, kann die Gleichung mit dem Ansatz
+\begin{align}
+  M_{tr} = f(x,y,z,t) \exp\left(-\symup{i}\omega_Lt\right) \exp\left(-\frac{t}{T_2}\right)
+\end{align}
+gelöst werden.
+Dabei muss die Funktion $f$ die Gleichung
+\begin{align}
+\frac{\delta f}{\delta t} = -i\gamma Gzf + D\Delta f
+\end{align}
+zusätzlich erfüllen.
+Als Ergebnis erbgibt sich dann für die Echoamplitude
+\begin{align}
+M_Y(t)&= M_0\exp\left(-\frac{t}{T_2}\right)
+\exp\left(-\frac{t}{T_D}\right) \label{}
+\intertext{mit der Zeitkonstanten}
+T_D&=\frac{3}{D\gamma^2 G^2 \tau^2}.
+\end{align}
+Für eine Erfolgreiche $T_2$ Messung muss $T_D$ groß gegen $T_2$
+sein. Dies kann durch variation des freiwählbaren
+Parameters $\tau$ erfüllt werden.
 
-\subsection{Messmethoden}
-\paragraph{Spin-Echo-Methode}
-\paragraph{Carr-Pucell-Methode}
-\paragraph{Meiboom-Gill-Methode}
+Desweiteren ist es möglich die
+Diffusionskonstante mit der Spin-Echo-Methode
+zu messen, wenn der Feldgradient $G$ der Apparatur bekannt ist.
+Dafür wird $\tau$ variert und die Echoamplitude zu Zeitpunkt $t=2\tau$ bestimmt.
+Die Echoamplitude folgt somit der Gleichung
+\begin{align}
+M_Y(t) = M_0\exp\left(-\frac{t}{T_2}\right)
+\exp\left(-\frac{D\gamma^2 G^2 t^3}{12}\right) \label{eqn:32}
+\end{align}.
+Dies funktioniert solange
+\begin{align}
+  T_2^3 \ll \frac{12}{D\gamma^2 G^2}
+\end{align}
+gilt, da die Zeitabhängigkeit von $M_y$ durch den Diffusionsterm gegeben ist.
+\subsection{Bestimmung der longitudinalen Relaxationszeit $T_1$}
+Zur Bestimmung von $T_1$ werden ebenfalls Pulse verwendet.
+Jedoch wird mit einem $\SI{180}{\degree}$-Puls zunächst die Probenmagnetisierung
+aus der Gleichgewichtslage in die entgegengesetzte
+Richtung gedreht. Die Magnetisierung beginnt danach
+wieder zur Gleichgewichtslage zu streben.
+Nach einer Zeit $\tau$ wird
+die verbliebenen Magnetisierungskomponente in z-Richtung $M_z$
+mit einem $\SI{90}{\degree}$-Puls in die x-y-Ebene gedreht.
+Diese führt dann eine Präzessionsbewegung aus und induziert eine
+Indukionsspannung proportional zu $M_z(\tau)$ in der Spule.
+Durch Lösen der Blochschen Gleichung \eqref{eqn:bloch}
+mit den Anfangsbedingungen $M_x(0)=M_y(0)=0$ und $M_Z(0)=-M_0$
+ergibt sich der Zusammenhang
+\begin{align}
+  M_z(\tau) = M_0 \left(1 - 2 \exp\left(-\frac{tau}{T_1}\right)\right). \label{eqn:33}
+\end{align}
+mit der longitudinalen Relaxationszeit $T_1$ (siehe Abb. \ref{fig:M_z}).
 
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{M_z.PNG}
+  \caption{Schematische Verlauf der Magnetisierungskomponente $M_z$
+    in Abhängigkeit des Zeitspanne zwischen den Pulsen $\tau$ nach Gleichung \eqref{eqn:33}.\cite{sample}}
+  \label{fig:M_z}
+\end{figure}
 
-\cite{sample}
+%
+% \subsection{Messmethoden}
+% \paragraph{Spin-Echo-Methode}
+% \paragraph{Carr-Pucell-Methode}
+% \paragraph{Meiboom-Gill-Methode}

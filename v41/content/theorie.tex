@@ -61,7 +61,9 @@ Diese lassen sich in 7 Gruppen zusammenfassen.
 Die Gitterstruktur von vielen in der Natur vorkommenden Elementen,
 sind häufig gegeben durch die sogenannten kubischen Gitter.
 Bei kubischen Gittern besitzen die drei Translationsvektoren
-alle die selbe Länge und stehen jeweil senkrecht aufeinander.\\
+alle die selbe Länge, die Gitterkonstante $a$, und stehen jeweils senkrecht aufeinander.\\
+Im Folgenden werden verschiedene kubische Strukturen vorgestellt und dabei die Positionen der Atome innerhalb der
+Einheitszelle angegeben. Dabei wird in Einheiten der Gitterkonstante gerechnet.\\
 Es wird zwischen \textit{kubisch-primitiven},
 \textit{kubisch-flächenzentrierten}(\textbf{bcc}) und \\
 \textit{kubisch-raumzentrierten Gittern}(\textbf{fcc}) unterschieden.\\
@@ -147,11 +149,11 @@ und zusätzlich durch:
 Die bisher diskutierten Kristallstrukturen sind alle aus nur
 einem Element zusammengesetzt. Im Folgenden wird auf Strukturen
 eingegangen, die aus zwei verschiedenen Elementen bestehen.\\
-Die sogeannte \textit{Zinkblende-Struktur} entsteht aus der
+Die sogenannte \textit{Zinkblende-Struktur} entsteht aus der
 in \ref{subsubsec:kubische_gitter}
-aufgeführten Diamantstruktur, indem an den Stellen der zum
-kubisch-flächenzentrierten verschiedenen Vektoren der Einheitszelle
-ein anderer Element auftritt.\\
+aufgeführten Diamantstruktur, indem an den Stellen, der zum
+kubisch-flächenzentrierten verschiedenen Vektoren der Einheitszelle,
+ein anderes Element auftritt.\\
 Bei der \textit{Steinsalz-Struktur}
 sind die verschiedenen Elementen
 jeweils in zwei kubisch-flächenzentrierten Gittern angeordnet, die um eine
@@ -275,7 +277,7 @@ den selben Abstand. Dieser Netzebenenabstand $d$ wird bei der
 Strukturanalyse benötigt. In Abbildung \ref{fig:miller_abstand} wird
 die Berechnung von $d$ veranschaulicht. Der Vektor, dessen Betrag $d$ ergibt,
 muss einerseits orthogonal auf der eingezeichneten Netzebene und andererseits orthogonal
-auf einer Benachbarten. Aus Überlegungen zu den in Abbildung \ref{fig:miller_abstand}
+auf einer Benachbarten stehen. Aus Überlegungen zu den in Abbildung \ref{fig:miller_abstand}
 eingezeichneten rechtwinkligen Dreiecken unter der Bedingung
 \begin{align}
 \label{eqn:4}
@@ -315,7 +317,7 @@ Strahlung emittieren.
 Für die Intensität eines punktförmiges Streuzentrum mit
 Ladung $ze_0$ ergibt sich
 \begin{align}
-I(r,\theta,z) = I_0\left(\frac{\mu_0 (ze_0)^2}{4\pi zm_0}\right)\frac{1}{r^2}\frac{1+\cos^2 2\theta}{2}=z^2 I_e \label{6}.
+I(r,\theta,z) = I_0\left(\frac{\mu_0 (ze_0)^2}{4\pi zm_0}\right)^2\frac{1}{r^2}\frac{1+\cos^2 2\theta}{2}=z^2 I_e \label{6}.
 \end{align}
 Da die Intensität invers
 quadratisch zu der Masse $m_0$ des Streuzentrums ist,
@@ -359,9 +361,9 @@ einzelnen Atomstreuamplituden, wobei unterschiedliche
 Atome an den Orten $\vec{r_j}$
 andere Formfaktoren $f_j$ besitzen.
 Somit folgt für die Streuamplitude oder auch Strukturamplitude genannt
-% \begin{align}
-% S=\sum_j \symup{e}^{-2\pi \symup{i} \vec{r}_j\left(\vec{k}-\vec{k}_0\right)} I_{\mathrm{e}}.
-% \end{align}
+\begin{align}
+ S=\sum_j \symup{e}^{-2\pi \symup{i} \vec{r}_j\left(\vec{k}-\vec{k}_0\right)} I_{\mathrm{e}}.
+\end{align}
 Die Streuung findet nicht nur an
 einer Elementarzelle statt, sondern an
 Ebenenscharen im Kristall statt.
@@ -395,9 +397,9 @@ beobachtet wird $S\neq0$ oder nicht $S=0$.
 %
 \subsection{Debye-Scherrer Methode}
 \label{subsec:Methoden}
-Um die Kristallstruktur eines Probematerials
+Um die Kristallstruktur eines Probenmaterials
 zu ermitteln, wird bei der Debye-Scherrer Methode
-das Probematerial mit monochromatischer
+das Probenmaterial mit monochromatischer
 Röntgenstrahlung bestrahlt.
 Hierbei ist die Probe kein
 Einkristall, sondern eine

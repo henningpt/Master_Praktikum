@@ -21,12 +21,12 @@ Reflexe durch \eqref{eqn:5} zu
 \end{align}
 umformen.
 Um aus den berechneten Beugungswinkeln $\theta$ die Gitterkonstante a
-zu bestimmen, muss somit auch die zum Reflex gehörige Millerindice-Summe
+zu bestimmen, muss somit auch die zum Reflex gehörige Millerindize-Summe
 \begin{align*}
   m_{\mathrm{sum}}=h^{2} + k^{2} + l^{2}
 \end{align*}
 der Netzebenenschar hkl bekannt sein.
-Die Information für welchen Werten von $hkl$ Refexe auftreten
+Die Information für welche Werte von $hkl$ Refexe auftreten
 enthält die Strukturamplitude $S$ nach Gleichung \eqref{eqn:Streu}.
 Die Gleichung \eqref{eqn:Streu} wiederum benötigt die Basisvektoren
 der Elementarzelle. Da die der Proben unbekannt sind, werden
@@ -39,7 +39,7 @@ Durch die entsprechenden Basisvektoren
 werden Werte für $hkl$ bestimmt, wo die Strukturamplitude
 $S\neq0$ und somit ein Reflex auftritt.
 Durch die zweiatomige Basis bei den
-Salzstrukturen ist es nötig zwischen zwei Fälle zu differenzieren,
+Salzstrukturen ist es nötig zwischen zwei Fällen zu differenzieren,
 da der Atomformfaktor $f$ in Gleichung
 \eqref{eqn:Streu} nicht ausgeklammert werden kann.
 \begin{align*}
@@ -49,12 +49,12 @@ Bei Fall 1 verschwinden dadurch im Vergleich zu Fall 2 manche
 Reflexe.
 Die zu einem Reflex führenden Werte von $hkl$ wurden hier mit Hilfe von
 \textit{Python3} berechnet. Dabei ist nur $m_{\mathrm{sum}}$ entscheidend
-und von mehreren Ebenenscharen mit identische $m_{\mathrm{sum}}$ wird nur eine verwendet,
+und von mehreren Ebenenscharen mit identischen $m_{\mathrm{sum}}$ wird nur eine verwendet,
 da alle den gleichen Beugungswinkel $\theta$ besitzen.
 Es wird angenommen, dass alle möglichen Reflexe bei der Messung auftreten.
 Somit wird jedem Beugungswinkel \theta ein $m_{\mathrm{sum}}$ zugewiesen.
 Wobei der kleinste Beugungswinkel durch Beugung an der
-Ebenenschar mit der niedrigsten $m_{\mathrm{sum}}$ entsteht und so weiter.
+Ebenenschar mit dem niedrigsten $m_{\mathrm{sum}}$ entsteht und so weiter.
 Die Tabelle \ref{tab:bcc} enthält bsw. die Zuordnung für eine bcc-Struktur.
 Aus der Zuordnung von $m_{\mathrm{sum}}$ und $\theta$
 wird für jedem Messwert nach \eqref{eqn:Gitterkonst}
@@ -63,13 +63,13 @@ auf die Gitterkonstante
 wird nach den Gleichungen \eqref{eqn:sys1} und \eqref{eqn:sys2}
 berechnet. Die berechneten Gitterkonstanten werden
 gegen $\cos^2\left(\theta\right)$ aufgetragen und es wird
-eine Fit der Datenpunkte der Form an die Funktion
+ein Fit der Datenpunkte an die Funktion
 \begin{align}
   f(x)= mx+b
 \end{align}
 mit Hilfe von \textit{Python3} durchgeführt.
 Die beste Gitterkonstante entspricht dann $a(\SI{90}{\degree})$
-also dem y-Achsenabschnitt der ermittelten Geraden somit dem Fitparameter $b$.
+also dem y-Achsenabschnitt der ermittelten Geraden, somit dem Fitparameter $b$.
 Die verwendeten Geräte besitzen folgende Maße:
 \begin{align*}
   \rho &= \text{Probenradius} = \SI{1}{\milli\meter}\\
@@ -77,7 +77,7 @@ Die verwendeten Geräte besitzen folgende Maße:
   F &= \text{Abstand Fokus-Probe} = \SI{130}{\milli\meter}.
 \end{align*}
 Die Wellenlängen der
-$\mathrm{K}_{\alpha_1}-$
+$\mathrm{K}_{\alpha_1}$-
 und $\mathrm{K}_{\alpha_2}$-Strahlung
 werden für die Berechnungen gemittelt.
 Für eine Cu-Anode ergibt sich somit
@@ -86,8 +86,8 @@ Für eine Cu-Anode ergibt sich somit
 \end{align*}
 Für größere Streuwinkel $\theta$ in der
 Nähe von $\SI{90}{\degree}$
-führt dies zu einer Ringaufspaltung
-der Debye-Ring, die durch Mittelung der zwei Radien
+führt dies zu einer Aufspaltung
+der Debye-Ringe, die durch Mittelung der zwei Radien
 Berücksichtigung findet. Zusätzlich
 wird dem Streuwinkel \theta der Fehler
 \begin{align*}
@@ -115,14 +115,14 @@ Die Metallprobe wird sowohl unter der Annahme einer
 bcc-Struktur, siehe Tabelle \ref{tab:bcc} und Abbildung
  \ref{subfig:bcc},
 einer fcc-Struktur, siehe Tabelle \ref{tab:fcc} und Abbildung \ref{subfig:fcc},
-aus auch einer Diamant-Struktur, siehe Tabelle \ref{tab:dia} und Abbildung \ref{subfig:dia}
+als auch einer Diamant-Struktur, siehe Tabelle \ref{tab:dia} und Abbildung \ref{subfig:dia}
 untersucht.
 
 
 \begin{table}
   \centering
   \caption{Tabelle der Messwerte für die Kreisradien $r$ und die daraus nach \ref{eqn:winkel} resultierenden Winkel $\theta$
-  und die von bcc zugeordneten Reflexe durch die Millerindices $hkl$ und deren Quadratsumme $m_{\mathrm{sum}}$.
+  und die von bcc zugeordneten Reflexe durch die Millerindizes $hkl$ und deren Quadratsumme $m_{\mathrm{sum}}$.
   Ebenfalls aufgetragen sind die
   aus Gleichung \eqref{eqn:Gitterkonst} berechneten Gitterkonstanten $a$.}
   \label{tab:bcc}
@@ -148,7 +148,7 @@ $r/\si{\milli\meter}$ & $\theta / \si{\degree}$ &$h$ & $k$ & $l$ & $m_{\mathrm{s
 \begin{table}
 \centering
 \caption{Tabelle der Messwerte für die Kreisradien $r$ und die daraus nach \ref{eqn:winkel} resultierenden Winkel $\theta$
-    und die von fcc zugeordneten Reflexe durch die Millerindices hkl und deren Quadratsumme $m_{\mathrm{sum}}$.
+    und die von fcc zugeordneten Reflexe durch die Millerindizes hkl und deren Quadratsumme $m_{\mathrm{sum}}$.
     Ebenfalls aufgetragen sind die
     aus Gleichung \eqref{eqn:Gitterkonst} berechneten Gitterkonstanten $a$.}
   \label{tab:fcc}
@@ -175,7 +175,7 @@ $r/\si{\milli\meter}$ & $\theta / \si{\degree}$ &$h$ & $k$ & $l$ & $m_{\mathrm{s
 \begin{table}
 \centering
 \caption{Tabelle der Messwerte für die Kreisradien $r$ und die daraus nach \ref{eqn:winkel} resultierenden Winkel $\theta$
-    und die von bcc zugeordneten Reflexe durch die Millerindices hkl und deren Quadratsumme $m_{\mathrm{sum}}$.
+    und die von bcc zugeordneten Reflexe durch die Millerindizes hkl und deren Quadratsumme $m_{\mathrm{sum}}$.
     Ebenfalls aufgetragen sind die
     aus Gleichung \eqref{eqn:Gitterkonst} berechneten Gitterkonstanten $a$.}
   \label{tab:dia}
@@ -217,7 +217,7 @@ $r/\si{\milli\meter}$ & $\theta / \si{\degree}$ &$h$ & $k$ & $l$ & $m_{\mathrm{s
     \caption{Diamant-Struktur}
     \label{subfig:dia}
   \end{subfigure}
-  \caption{Die bestimmten Gitterkonstante $a$ für verschiedene angenommene Strukturen gegen $\cos^2\theta$ aufgetragen.}
+  \caption{Die bestimmten Gitterkonstanten $a$ für verschiedene angenommene Strukturen gegen $\cos^2\theta$ aufgetragen.}
   \label{fig:metall}
 \end{figure}
 \FloatBarrier
@@ -244,7 +244,7 @@ und Cäsiumchlorid-Struktur, siehe Tabelle \ref{tab:cc1}(\ref{tab:cc2}) und Abbi
 \begin{table}
 \centering
 \caption{Tabelle der Messwerte für die Kreisradien $r$ und die daraus nach \ref{eqn:winkel} resultierenden Winkel $\theta$
-    und die von der Steinsalz-Struktur für $f_1\approx f_2$ zugeordneten Reflexe durch die Millerindices hkl und deren Quadratsumme $m_{\mathrm{sum}}$.
+    und die von der Steinsalz-Struktur für $f_1\approx f_2$ zugeordneten Reflexe durch die Millerindizes hkl und deren Quadratsumme $m_{\mathrm{sum}}$.
     Ebenfalls aufgetragen sind die
     aus Gleichung \eqref{eqn:Gitterkonst} berechneten Gitterkonstanten $a$.}
   \label{tab:ss1}
@@ -283,7 +283,7 @@ $r/\si{\milli\meter}$ & $\theta / \si{\degree}$ &$h$ & $k$ & $l$ & $m_{\mathrm{s
 \begin{table}
 \centering
 \caption{Tabelle der Messwerte für die Kreisradien $r$ und die daraus nach \ref{eqn:winkel} resultierenden Winkel $\theta$
-    und die von der Fluorit-Struktur für $f_1\approx f_2$ zugeordneten Reflexe durch die Millerindices hkl und deren Quadratsumme $m_{\mathrm{sum}}$.
+    und die von der Fluorit-Struktur für $f_1\approx f_2$ zugeordneten Reflexe durch die Millerindizes hkl und deren Quadratsumme $m_{\mathrm{sum}}$.
     Ebenfalls aufgetragen sind die
     aus Gleichung \eqref{eqn:Gitterkonst} berechneten Gitterkonstanten $a$.}
   \label{tab:fluo1}
@@ -323,7 +323,7 @@ $r/\si{\milli\meter}$ & $\theta / \si{\degree}$ &$h$ & $k$ & $l$ & $m_{\mathrm{s
 \begin{table}
 \centering
 \caption{Tabelle der Messwerte für die Kreisradien $r$ und die daraus nach \ref{eqn:winkel} resultierenden Winkel $\theta$
-    und die von der Zinkblende-Struktur für $f_1\approx f_2$ zugeordneten Reflexe durch die Millerindices hkl und deren Quadratsumme $m_{\mathrm{sum}}$.
+    und die von der Zinkblende-Struktur für $f_1\approx f_2$ zugeordneten Reflexe durch die Millerindizes hkl und deren Quadratsumme $m_{\mathrm{sum}}$.
     Ebenfalls aufgetragen sind die
     aus Gleichung \eqref{eqn:Gitterkonst} berechneten Gitterkonstanten $a$.}
   \label{tab:zb1}
@@ -364,7 +364,7 @@ $r/\si{\milli\meter}$ & $\theta / \si{\degree}$ &$h$ & $k$ & $l$ & $m_{\mathrm{s
 \begin{table}
 \centering
 \caption{Tabelle der Messwerte für die Kreisradien $r$ und die daraus nach \ref{eqn:winkel} resultierenden Winkel $\theta$
-    und die von der Cäsiumchlorid-Struktur für $f_1\approx f_2$ zugeordneten Reflexe durch die Millerindices hkl und deren Quadratsumme $m_{\mathrm{sum}}$.
+    und die von der Cäsiumchlorid-Struktur für $f_1\approx f_2$ zugeordneten Reflexe durch die Millerindizes hkl und deren Quadratsumme $m_{\mathrm{sum}}$.
     Ebenfalls aufgetragen sind die
     aus Gleichung \eqref{eqn:Gitterkonst} berechneten Gitterkonstanten $a$.}
   \label{tab:cc1}
@@ -404,7 +404,7 @@ $r/\si{\milli\meter}$ & $\theta / \si{\degree}$ &$h$ & $k$ & $l$ & $m_{\mathrm{s
 \begin{table}
 \centering
 \caption{Tabelle der Messwerte für die Kreisradien $r$ und die daraus nach \ref{eqn:winkel} resultierenden Winkel $\theta$
-    und die von der Steinsalz-Struktur für $f_1\neq f_2$ zugeordneten Reflexe durch die Millerindices hkl und deren Quadratsumme $m_{\mathrm{sum}}$.
+    und die von der Steinsalz-Struktur für $f_1\neq f_2$ zugeordneten Reflexe durch die Millerindizes hkl und deren Quadratsumme $m_{\mathrm{sum}}$.
     Ebenfalls aufgetragen sind die
     aus Gleichung \eqref{eqn:Gitterkonst} berechneten Gitterkonstanten $a$.}
   \label{tab:ss2}
@@ -443,7 +443,7 @@ $r/\si{\milli\meter}$ & $\theta / \si{\degree}$ &$h$ & $k$ & $l$ & $m_{\mathrm{s
 \begin{table}
 \centering
 \caption{Tabelle der Messwerte für die Kreisradien $r$ und die daraus nach \ref{eqn:winkel} resultierenden Winkel $\theta$
-    und die von der Fluorit-Struktur für $f_1\neq f_2$ zugeordneten Reflexe durch die Millerindices hkl und deren Quadratsumme $m_{\mathrm{sum}}$.
+    und die von der Fluorit-Struktur für $f_1\neq f_2$ zugeordneten Reflexe durch die Millerindizes hkl und deren Quadratsumme $m_{\mathrm{sum}}$.
     Ebenfalls aufgetragen sind die
     aus Gleichung \eqref{eqn:Gitterkonst} berechneten Gitterkonstanten $a$.}
   \label{tab:fluo2}
@@ -483,7 +483,7 @@ $r/\si{\milli\meter}$ & $\theta / \si{\degree}$ &$h$ & $k$ & $l$ & $m_{\mathrm{s
 \begin{table}
 \centering
 \caption{Tabelle der Messwerte für die Kreisradien $r$ und die daraus nach \ref{eqn:winkel} resultierenden Winkel $\theta$
-    und die von der Zinkblende-Struktur für $f_1\neq f_2$ zugeordneten Reflexe durch die Millerindices hkl und deren Quadratsumme $m_{\mathrm{sum}}$.
+    und die von der Zinkblende-Struktur für $f_1\neq f_2$ zugeordneten Reflexe durch die Millerindizes hkl und deren Quadratsumme $m_{\mathrm{sum}}$.
     Ebenfalls aufgetragen sind die
     aus Gleichung \eqref{eqn:Gitterkonst} berechneten Gitterkonstanten $a$.}
   \label{tab:zb2}
@@ -524,7 +524,7 @@ $r/\si{\milli\meter}$ & $\theta / \si{\degree}$ &$h$ & $k$ & $l$ & $m_{\mathrm{s
 \begin{table}
 \centering
 \caption{Tabelle der Messwerte für die Kreisradien $r$ und die daraus nach \ref{eqn:winkel} resultierenden Winkel $\theta$
-    und die von der Cäsiumchlorid-Struktur für $f_1\neq f_2$ zugeordneten Reflexe durch die Millerindices hkl und deren Quadratsumme $m_{\mathrm{sum}}$.
+    und die von der Cäsiumchlorid-Struktur für $f_1\neq f_2$ zugeordneten Reflexe durch die Millerindizes hkl und deren Quadratsumme $m_{\mathrm{sum}}$.
     Ebenfalls aufgetragen sind die
     aus Gleichung \eqref{eqn:Gitterkonst} berechneten Gitterkonstanten $a$.}
   \label{tab:cc2}
@@ -590,7 +590,7 @@ $r/\si{\milli\meter}$ & $\theta / \si{\degree}$ &$h$ & $k$ & $l$ & $m_{\mathrm{s
     \caption{Cäsiumchlorid-Struktur}
     \label{subfig:cc1}
   \end{subfigure}
-  \caption{Die bestimmten Gitterkonstante $a$ für verschiedene angenommene Strukturen gegen $\cos^2\theta$ aufgetragen, wobei
+  \caption{Die bestimmten Gitterkonstanten $a$ für verschiedene angenommene Strukturen gegen $\cos^2\theta$ aufgetragen, wobei
   $f_1\approx f_2$ angenommen wird.}
   \label{fig:salz1}
 \end{figure}
@@ -622,7 +622,7 @@ $r/\si{\milli\meter}$ & $\theta / \si{\degree}$ &$h$ & $k$ & $l$ & $m_{\mathrm{s
     \caption{Cäsiumchlorid-Struktur}
     \label{subfig:cc2}
   \end{subfigure}
-  \caption{Die bestimmten Gitterkonstante $a$ für verschiedene angenommene Strukturen gegen $\cos^2\theta$ aufgetragen, wobei
+  \caption{Die bestimmten Gitterkonstanten $a$ für verschiedene angenommene Strukturen gegen $\cos^2\theta$ aufgetragen, wobei
   $f_1\neq f_2$ angenommen wird.}
   \label{fig:salz2}
 \end{figure}
