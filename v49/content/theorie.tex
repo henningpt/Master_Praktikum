@@ -1,19 +1,19 @@
 \section{Theorie}
 \label{sec:Theorie}
 Mittels der Kernspinresonanz
-können ein Teile der magnetische Momente von Atomkernen
+können ein Teil der magnetische Momente von Atomkernen
 in einer Probe
 durch Anlegen eines
 äußern Magnetfeldes
-gezielt verändet werden und somit
+gezielt verändert werden und somit
 eine makroskopische Magnetisierung der Probe
 erzeugen.
-Durch die Kernspinresonaz ist es möglich
-Aussagen zur Molekulstruktur wie z.B. chemischen Bindungen
+Durch die Kernspinresonanz ist es möglich
+Aussagen zur Molekülstruktur wie z.B. chemischen Bindungen
 zu machen.
-Desweiteren können auch mikroskopische
+Des Weiteren  können auch mikroskopische
 Relaxationsprozesse innerhalb der Probe
-durch anlegen eines
+durch Anlegen eines
 äußern magnetischen Wechselfeldes
 untersucht
 werden.
@@ -26,7 +26,7 @@ Zunächst soll die Magnetisierung einer Probe
 in einem Magnetfeld $\vec{B}=B_0\vec{e}_z$,
 die sich im thermischen Gleichgewicht befindet, betrachtet werden.
 Durch den Zeeman-Effekt
-spalten sich die Kernpinzustände mit
+spalten sich die Kernspinzustände mit
 Spinquantenzahl $I$ in
  $2I+1$ äquidistante Unterniveaus auf.
  Die Unterniveaus werden mittels
@@ -38,7 +38,7 @@ benachbarte Niveaus besitzen die Energiedifferenz
 \end{align*}
 Die Besetzung im thermischen Gleichgewicht
 bei der Temperatur $T$ erfolgt nach der
-Bolzmann-Verteilung. Es folgt demnach
+Boltzmann-Verteilung. Es folgt demnach
 für das Besetzungsverhältnis zweier benachbarter Niveaus
 \begin{align}
   \frac{N(m)}{N(m-1)} &= \exp\left(-\frac{\gamma B_0 \hbar }{k_B T}\right).
@@ -74,8 +74,8 @@ M_0=\frac{1}{4}\mu_0 \gamma^2 \frac{\hbar^2}{k_B} N \frac{B_0}{T}
 \end{align}
 mit $N$ der Anzahl der Momente pro Volumeneinheit.
 
-\subsection{Larmor-Präzession??}
-\label{subsec:zielsetzung}
+\subsection{Larmor-Präzession}
+\label{subsec:Larmor}
 Durch die große Anzahl von Einzelmomenten in einer Probe \approx $\SI{10e28}{\per\cubic\meter}$
 kann die Probenmagnetisierung $\vec{M}$ mit klassischen Methoden
 beschrieben werden.
@@ -99,12 +99,13 @@ die zeitliche Entwicklung
 =\left( \begin{array}{c} \phantom{-}A\cos\gamma B_0 t \\ -A\sin\gamma B_0 t \\ \text{const} \end{array}\right).
 \end{align}
 Die Magnetisierung $\vec{M}$ präzediert demnach um die
-$\vec{e}_z-Achse$ mit der Lamor-Frequenz $\omega_L=\gamma B_0$.
+$\vec{e}_z$-Achse mit der Larmorfrequenz $\omega_L=\gamma B_0$.
 
-\paragraph{Relaxationserscheinungen}
-Wird $\vec{M}$ aus der Gleichgewichtslage $\vec{M}_0$
-mit einem hochfrequenten Einstrahlung gebracht, strebt diese
-nach enden der Störung wieder zur $\vec{M}_0$.
+\subsection{Relaxationserscheinungen}
+Wird $\vec{M}$ mit einer hochfrequenten Einstrahlung
+aus der Gleichgewichtslage $\vec{M}_0$
+gebracht, strebt diese
+nach Enden der Störung wieder zur $\vec{M}_0$.
 Dieser Relaxationsprozess wird durch die
 Blochschen Gleichungen
 \begin{align}
@@ -114,17 +115,17 @@ Blochschen Gleichungen
 \end{align}
 beschrieben.
 Die Zeitkonstante $T_1$ entspricht
-der longitutdinalen oder Spin-Gitter-Relaxationszeit, sie
+der longitudinalen oder Spin-Gitter-Relaxationszeit, sie
 beschreibt die Änderung der Magnetisierungskomponente parallel zu
 $\vec{B}_0$. Die Zeitkonstante $T_2$ hingegen entspricht
 der transversalen oder Spin-Spin-Relaxationszeit, sie
 beschreibt die Änderung der Magnetisierungskomponenten
 senkrecht zu $\vec{B}_0$.
 
-\paragraph{HF-Einstrahlungsvorgänge}
+\subsection{HF-Einstrahlungsvorgänge}
 \label{para:HF}
 Um die Probenmagnetisierung aus der Gleichgewichtslage
-zu bringen, wird die Probe einem Hochfequenzfeld
+zu bringen, wird die Probe einem Hochfrequenzfeld
 \begin{align}
    \vec{B}_{HF}=2\vec{B}_1 \cos\omega t \label{eqn:Feld}
 \end{align}
@@ -135,20 +136,19 @@ zwei zirkular polarisierte Felder mit den Frequenz
 $+\omega$ und $-\omega$ zerlegt werden.
 Für Frequenzen $\omega\approx\omega_L$
 kann $-\omega$ vernachlässigt werden und
-das Feld kann als in der x-y-Ebende rotierendes Feld
+das Feld kann als in der x-y-Ebene rotierendes Feld
 gesehen werden. Das gesamte auf die Probe
 wirkende Feld ist somit
 \begin{align}
 \vec{B}_{ges}=  \left( \begin{array}{c} B_1 \cos \omega t \\ B_1 \sin \omega t \\ B_0 \end{array}\right).
 \end{align}
-
 Um eine Lösung der Kreiselgleichung
 für $\vec{M}(t)$ zu bestimmen,
-wird eine Koordinatentransformations
+wird eine Koordinatentransformation
 in ein mit der Frequenz $\omega$ um die $\vec{e}_z$ Achse
 rotierendes Koordinatensystem mit $\vec{e}'_x$, $\vec{e}'_y$ und $\vec{e}'_z=\vec{e}_z$.
 Durch diese Transformation wird die Zeitabhängigkeit des $B_1$-Feldes
-elimiert und das Feld zeigt dadurch konstant in $\vec{e}'_x$-Richtung.
+eliminiert und das Feld zeigt dadurch konstant in $\vec{e}'_x$-Richtung.
 Durch diese Transformation nimmt die Kreiselgleichung die Form
 \begin{align}
 \frac{\symup{d}\vec{M}}{\symup{d}t}=\gamma\left(\vec{M}\times\vec{B}_{ges}\right)-\vec{\omega}\times \vec{M}
@@ -156,20 +156,23 @@ Durch diese Transformation nimmt die Kreiselgleichung die Form
 an. Diese kann ebenfalls so dargestellt werden
 \begin{align}
 \frac{\symup{d}\vec{M}}{\symup{d}t}=\gamma\left(\vec{M}\times\vec{B}_{eff}\right)
-\intertext{mit dem effektives Magnetfeld}
+\intertext{mit dem effektiven Magnetfeld}
 \vec{B}_{eff}=  \vec{B}_0 +\vec{B}_1 + \frac{\vec{\omega}}{\gamma}.
 \end{align}
-Der Magnetisierungsvektor $\vec{M}$ führ somit
+Der Magnetisierungsvektor $\vec{M}$ führt somit
 eine Präzessionsbewegung um die Feldrichtung $B_{eff}$,
-die in der Abbildung \ref{fig:bfeld} dargestellt ist, aus
+die in der Abbildung \ref{fig:bfeld} dargestellt ist, aus.
+\FloatBarrier
 \begin{figure}
+  \centering
   \includegraphics[width=0.3\textwidth]{bfeld.PNG}
   \caption{\cite{sample}}
   \label{fig:bfeld}
 \end{figure}
+\FloatBarrier
 Für den Fall $B_0=\frac{\omega}{\gamma}$ entspricht grade $B_{eff}=B_1$
 und die $\vec{M}$ dreht sich aus der $\vec{e}_z$-Achse heraus.
-Der Drehwinkel $\delta(\Delta t)$ beträt dabei
+Der Drehwinkel $\delta(\Delta t)$ beträgt dabei
 \begin{align}
   \delta(\Delta t)=\gamma B_1 \Delta t.
 \end{align}
@@ -180,7 +183,7 @@ Einstrahlungszeit
 \end{align}
 Die Magnetisierung zeigt somit in die $\vec{e}'_y$-Richtung, dies
 entspricht einem $\SI{90}{\degree}$-Puls.
-Für einen $\SI{180}{\degree}$-Puls beträgt dei Einstrahlungszeit
+Für einen $\SI{180}{\degree}$-Puls beträgt die Einstrahlungszeit
 $\Delta t_{180}=2\Delta t_{90}$ und die Magnetisierung $\vec{M}$
 zeigt in $-\vec{e}_z$-Richtung.
 Durch Anwenden dieser diskreten Pulse lassen sich
@@ -190,30 +193,30 @@ Gleichgewichtszustand zurückstrebt, lassen sich so die
 Relaxationszeiten $T_1$ und $T_2$ messen.
 
 \subsection{Messmethoden}
-\paragraph{Bestimmung der Relacationszeit $T_2$}
-\begin{itemize}
-  \item[-] Freier Induktionszerfall (FID)\\
-  Für FID wird die Probe
-  in ein homogenes Magnetfeld $B_0\vec{e}_z$ platziert.
-  Zusätzlich befindet sich die Probe in einer
-  Spule, die senkrecht zu dem Feld steht.
-  Durch die Spule wird ein hochfequentes Magnetfeld
-  mit der Frequenz $\omega_L=\gamma B_0$ eingestrahlt.
-  Somit können wie in \ref{para:HF} $\SI{90}{\degree}$- oder $\SI{180}{\degree}$-Pulse
+\subsubsection{Bestimmung der Relaxationszeit $T_2$}
+\paragraph{Freier Induktionszerfall (FID)}\\
+Für FID wird die Probe
+in ein homogenes Magnetfeld $B_0\vec{e}_z$ platziert.
+Zusätzlich befindet sich die Probe in einer
+Spule, die senkrecht zu dem Feld steht.
+Durch die Spule wird ein hochfrequentes Magnetfeld
+mit der Frequenz $\omega_L=\gamma B_0$ eingestrahlt.
+Somit können wie in \ref{para:HF} $\SI{90}{\degree}$- oder $\SI{180}{\degree}$-Pulse
 realisiert werden.
 Bei dem freien Induktionszerfall wird die Probenmagnetisierung mit einem
-$\SI{90}{\degree}$-Puls in $\vec{e}'_y$-Richtung rotiert. Nach abschalten des Pulses
+$\SI{90}{\degree}$-Puls in $\vec{e}'_y$-Richtung rotiert. Nach
+Abschalten des Pulses
 führt die Magnetisierung dann eine Präzessionsbewegung in der
 x-y-Ebene auf Grundes des noch bestehenden $B_0\vec{e}_z$ Feldes aus.
-Die dadurch enstehende Induktionsspannung in der Spule wird in Abhängigkeit der Zeit aufgenommen.
+Die dadurch entstehende Induktionsspannung in der Spule wird in Abhängigkeit der Zeit aufgenommen.
 Der Zerfall der transversalen Magnetisierung und somit auch abnehmen der
 Induktionsspannung mit der Zeit, besitzt zwei Gründe.
-Zum einen existiert kein perfektes homogens Magnetfeld bei einer
-reale Apparatur und zum anderen
-existieren Dipolfeldern der nächsten Nachbarn und Spins in der Elektronenhülle,
-die ebenfalls eien Inhomogenität des Magnetfeldes in der Probe erzeugen.
+Zum einen existiert kein perfektes homogenes Magnetfeld bei einer
+realen Apparatur und zum anderen
+existieren Dipolfelder der nächsten Nachbarn und Spins in der Elektronenhülle,
+die ebenfalls einen Inhomogenität des Magnetfeldes in der Probe erzeugen.
 Die Larmorfrequenzen der einzelnen Spins ist somit nicht mehr für alle Spins
-gleich, sondern es existiert eine Verteilung der Larmorfrequenzen.
+gleich, sondern es existiert eine Verteilung der Larmorfrequenz.
 Dies führt zu einer Dephasierung
 der Spins, da manche Spins schnell oder langsamer
 als mit der Frequenz $\omega=\gamma B_0$ rotieren.
@@ -223,20 +226,20 @@ mit
 \begin{align}
   \frac{1}{T_2^*} = \frac{1}{T_2} + \frac{1}{T_{\Delta B}}
 \end{align}
-wobei $T_{\Delta B}$ der Zeitkonstante enspricht, die durch die Inhomogenität
+wobei $T_{\Delta B}$ der Zeitkonstante entspricht, die durch die Inhomogenität
 des $B_0\vec{e}_z$ hervorgerufen wird.
-Für ein hinreichend homogenens Feld ist $T_{\Delta B} \gg T_2$
+Für ein hinreichend homogenes Feld ist $T_{\Delta B} \gg T_2$
 und $T_2$ kann mit dem FID bestimmt werden.
 Jedoch für $T_{\Delta B}$ \textless $T_2$ ist eine $T_2$-Bestimmung wegen
-den apparativen Feldinhomogneitäten über FID nicht mehr möglich.
+der apparativen Feldinhomogenitäten über FID nicht mehr möglich.
 
-  \item[-] Spin-Echo-Verfahren\\
-  Die Spin-Echo-Methode bietet eine Möglichkeit die apparativen Störeffekte
-  bei der $T_2$-Bestimmung zu eliminieren.
-  Dabei werden mit mindestens zwei HF-Pulsen benötigt.
-  Mit einem $\SI{90}{\degree}$-Puls wird die Probenmagnetisierung in die
+\paragraph{Spin-Echo-Verfahren}\\
+Die Spin-Echo-Methode bietet eine Möglichkeit die apparativen Störeffekte
+bei der $T_2$-Bestimmung zu eliminieren.
+Dabei werden mit mindestens zwei HF-Pulse benötigt.
+Mit einem $\SI{90}{\degree}$-Puls wird die Probenmagnetisierung in die
 $\vec{e}'_y$-Richtung gedreht.
-Wegen den verschiedenen Larmorfequenzen der einezelnen Spins, beginnt die Dephasierung.
+Wegen der verschiedenen Larmorfrequenzen der einezelnen Spins, beginnt die Dephasierung.
 Im rotierendem Koordinatensystem drehen somit Spins mit $\omega_{L_\text{Spin}}<\omega_{Hf}$
 gegen und Spins mit $\omega_{L_\text{Spin}}>\omega_{Hf}$ mit dem
 Uhrzeigersinn um die $\vec{e}_z$-Achse.
@@ -247,10 +250,13 @@ sodass kaum ein Induktionssignal
 gemessen wird. Wird nach dem $\SI{90}{\degree}$-Puls
 zu Zeitpunkt $\tau$
 ein $\SI{180}{\degree}$-Puls
-auf die Probe gegeben, wird nach $2\tau$, wie in Abbildung \ref{fig:hahn-echo} dargestellt, das sognannte Hahn-Echo beobachtet.
+auf die Probe gegeben, wird nach $2\tau$,
+wie in Abbildung \ref{fig:hahn-echo} dargestellt,
+das sogenannte Hahn-Echo beobachtet.
 \begin{figure}
-  \includegraphics[width=0.8\textwidth]{hahn-echo.PNG}
-  \caption{Hahn-Echo.\cite{sample}}
+  \centering
+  \includegraphics[width=0.7\textwidth]{hahn-echo.PNG}
+  \caption{Signalverlauf des Hahn-Echos.\cite{sample}}
   \label{fig:hahn-echo}
 \end{figure}
 Durch den $\SI{180}{\degree}$-Puls führen
@@ -258,52 +264,54 @@ die Spins eine Drehung um die
 $\vec{e}'_x$-Achse aus und laufen wieder zusammen
 zum Zeitpunkt $2\tau$ sind alle Spins wieder in Phase und eine
 transversalen Probenmagnetisierung
-erzeugt wieder ein Spingal in der Spule.
+erzeugt wieder ein Spignal in der Spule.
 Der zeitliche Verlauf der Spins ist in Abbildung
 \ref{fig:spin-echo} dargestellt.
-
+\FloatBarrier
 \begin{figure}
-  \includegraphics[width=0.8\textwidth]{spin-echo.PNG}
-  \caption{Zeitlicher Verlauf des Hahn-Echos.\cite{sample}}
+  \centering
+  \includegraphics[width=0.6\textwidth]{spin-echo.PNG}
+  \caption{Zeitlicher Verlauf der verschiedenen Spinmagnetisierungen während des Hahn-Echos.\cite{sample}}
   \label{fig:spin-echo}
 \end{figure}
-
-Das Hahn-Echo-Signal besitzt im vergleich zum Startsignal
+\FloatBarrier
+Das Hahn-Echo-Signal besitzt im Vergleich zum Startsignal
 ein anderes Vorzeichen, da die transversale
 Magnetisierung zu Zeitpunkt $2\tau$ in $-\vec{e}_y$-Richtung zeigt.
 Für $T_2\rightarrow\infty$ erreicht die betragsmäßige
 Amplitude des Echos die
 ursprüngliche Höhe vor dem FID.
 Jedoch treten zu den reversiblen Dephasierungsprozessen auch
-irreversible auf wie Wechselwirkung. Diese führen zur Abnahme der Echo-Stärke $M_Y$
-,wie in Abbildung \ref{fig:tau_ver} dargestellt,
-in Abhänigkeit von der Zeit in der Form
+irreversible auf wie Wechselwirkung. Diese führen zur Abnahme der Echo-Stärke $M_Y$,
+wie in Abbildung \ref{fig:tau_ver} dargestellt,
+in Abhängigkeit von der Zeit in der Form
 \begin{align}
   M_Y(t)=M_0 \exp\left(-\frac{t}{T_2}\right).\label{eqn:t2}
 \end{align}
-
+\FloatBarrier
 \begin{figure}
-  \includegraphics[width=0.8\textwidth]{tau_ver.PNG}
+  \centering
+  \includegraphics[width=0.7\textwidth]{tau_ver.PNG}
   \caption{Zeitlicher Verlauf des Hahn-Echos für unterschiedliche $\tau$.\cite{sample}}
   \label{fig:tau_ver}
 \end{figure}
-
-\item[-] Carr-Pucell- und Meilboom-Bill-Methode\\
+\FloatBarrier
+\paragraph{Carr-Pucell- und Meilboom-Bill-Methode}\\
 Die beiden Methoden liefern im Vergleich zur Spin-Echo-Methode eine
 schnellere Möglichkeit der $T_2$-Bestimmung, da während der Messung die Magnetisierung
 nicht in die Gleichgewichtslage zurückkehren muss.
 Bei der Carr-Pucell-Methode wird ebenfalls ein $\SI{90}{\degree}$-Puls
-verwendent jedoch nach dem ersten $\SI{180}{\degree}$-Puls
+verwendet jedoch nach dem ersten $\SI{180}{\degree}$-Puls
 im äquidistanten Abstand von $2\tau$ weitere $\SI{180}{\degree}$-Puls
 auf die Probe gegeben. Der dadurch erzeugte Signalverlauf
 ist in der Abbildung \ref{fig:carr-pu} zu sehen.
-
 \begin{figure}
+  \centering
   \includegraphics[width=0.8\textwidth]{carr-pu.PNG}
   \caption{Zeitlicher Verlauf des Signales bei der Carr-Purcell-Methode.\cite{sample}}
-  \label{fig:tau_ver}
+  \label{fig:carr-pu}
 \end{figure}
-Durch die aufeinanderfolgenden $\SI{180}{\degree}$-Pulsen werden
+Durch die aufeinanderfolgenden $\SI{180}{\degree}$-Pulse werden
 weitere Hahn-Echos erzeugt und
 somit kann nur bei einem Messvorgang mehrere Messpaare von Zeit und
 Echoamplitude aufgenommen werden, um $T_2$ durch den Zusammenhang \eqref{eqn:t2} zu bestimmen.
@@ -312,8 +320,8 @@ wenn die $\SI{180}{\degree}$-Pulse exakt eingestellt sind, da
 bei falscher Justage die Magnetisierung mit dem Winkel $\delta$ aus der x'-y'-Ebene
 dreht. Weil nur die Komponente die in der x'-y'-Ebene zum Signal beiträgt,
 wird dieses zu klein gemessen. Zusätzlich kommt hinzu, dass
-bei jedem weiterm Puls die Fehler addieren wird.
-Somit ergibt sich ein kleiners $T_2$.
+bei jedem weiterem Puls die Fehler addieren wird.
+Somit ergibt sich ein kleineres $T_2$.
 Die Meiboom-Gill-Methode hingegen verwendet eine
 Pulsfolge, die diesen Fehler reduziert. Dabei wird folgendermaßen
 vorgegangen, die $\SI{180}{\degree}-Pulse$ bewirken
@@ -325,41 +333,41 @@ landet wie in Abbildung \ref{fig:mei-gil} zu sehen.
 Die Echoamplitude $M_y$ nach jedem geraden Puls kann somit zu
 $T_2$-Bestimmung benutzt werden.
 Zusätzlich ist die Amplituden durch die Drehung
-um die y'-Achse im vergleich zur Carr-Purcell-Methode stets positiv.
+um die y'-Achse im Vergleich zur Carr-Purcell-Methode stets positiv.
 \begin{figure}
-  \includegraphics[width=0.8\textwidth]{mei-gil.PNG}
-  \caption{Beispiel Verlauf eines Magnetisierungsvektors bei
+  \centering
+  \centering
+  \includegraphics[width=0.6\textwidth]{mei-gil.PNG}
+  \caption{Beispiel Verlauf einer Spinmagnetisierung bei
   der Meilboom-Gill-Methode.\cite{sample}}
   \label{fig:mei-gil}
 \end{figure}
-\end{itemize}
-
-\subsection{Einfluss der Diffusion auf Relaxationsverfahren}
+\subsection{Einfluss der Diffusion auf das Relaxationsverhalten}
 Wenn eine Zeitabhängigkeit des lokalen
 $B_0\vec{e}_z$-Feldes für die Spins existiert, kann $T_2$ nicht mehr über die Gleichung
 \eqref{eqn:t2} bestimmt werden. Dies ist zum Beispiel
 durch die Brownsche Molekularbewegung gegeben, da
 die Spins in Folge der Inhomogenitäten des statischen Feldes
 in Bereiche unterschiedlicher Feldstärken gelangen.
-Infolge dessen wird die Larmor-Frequenz zeitabhängig
+Infolge dessen wird die Larmorfrequenz zeitabhängig
 und die Refokussierung der Spins wird gestört.
 Somit nimmt die
 Signalamplitude stärker als in Gleichung \eqref{eqn:t2}
 ab.
-Um diese thermische Bewegungen der Atome/Molekülen
+Um diese thermischen Bewegungen der Atome/Molekülen
 in Flüssigkeiten zu berücksichtigen
 werden die Blochschen Gleichungen um eine Term mit der
-Diffusionskonstante $D$ erweitert, ergibt sich
+Diffusionskonstante $D$ erweitert und es ergibt sich
 \begin{align}
 \frac{\delta\vec{M}}{\delta t} = \gamma\left(\vec{M}\times\vec{B}\right)-\frac{M_x\vec{e}_x+M_y\vec{e}_y}{T_2}-\frac{\left(M_z-M_0\right)\vec{e}_z}{T_1} +(\vec{e}_x+\vec{e}_y+\vec{e}_z)D\Delta M.
 \end{align}
-Desweitern wird einem Feld
+Des Weiteren wird einem Feld
 \begin{align}
 \vec{B}_0= (B_0 + Gz) \vec{e}_z
 \end{align}
 mit konstantem Feldgradienten $G$ in z-Richtung betrachtet
-und die Inhomogenitäten des Feldes in x- und y-Richtung vernachlässigt, da
-da diese die Lamor-Frequenz nur in 2.Ordung ändert.
+und die Inhomogenitäten des Feldes in x- und y-Richtung vernachlässigt,
+da diese die Larmorfrequenz nur in 2.Ordung ändert.
 Wird nun die transversalen Magnetisierungskomponente
 $M_{tr}=M_x + \symup{i}M_y$
 betrachtet, kann die Gleichung mit dem Ansatz
@@ -372,7 +380,7 @@ Dabei muss die Funktion $f$ die Gleichung
 \frac{\delta f}{\delta t} = -i\gamma Gzf + D\Delta f
 \end{align}
 zusätzlich erfüllen.
-Als Ergebnis erbgibt sich dann für die Echoamplitude
+Als Ergebnis ergibt sich dann für die Echoamplitude
 \begin{align}
 M_Y(t)&= M_0\exp\left(-\frac{t}{T_2}\right)
 \exp\left(-\frac{t}{T_D}\right) \label{}
@@ -380,10 +388,10 @@ M_Y(t)&= M_0\exp\left(-\frac{t}{T_2}\right)
 T_D&=\frac{3}{D\gamma^2 G^2 \tau^2}.
 \end{align}
 Für eine Erfolgreiche $T_2$ Messung muss $T_D$ groß gegen $T_2$
-sein. Dies kann durch variation des freiwählbaren
+sein. Dies kann durch Variation des frei wählbaren
 Parameters $\tau$ erfüllt werden.
 
-Desweiteren ist es möglich die
+Des Weiteren ist es möglich die
 Diffusionskonstante mit der Spin-Echo-Methode
 zu messen, wenn der Feldgradient $G$ der Apparatur bekannt ist.
 Dafür wird $\tau$ variert und die Echoamplitude zu Zeitpunkt $t=2\tau$ bestimmt.
@@ -392,7 +400,7 @@ Die Echoamplitude folgt somit der Gleichung
 M_Y(t) = M_0\exp\left(-\frac{t}{T_2}\right)
 \exp\left(-\frac{D\gamma^2 G^2 t^3}{12}\right) \label{eqn:32}
 \end{align}.
-Dies funktioniert solange
+Dies funktioniert, solange
 \begin{align}
   T_2^3 \ll \frac{12}{D\gamma^2 G^2}
 \end{align}
@@ -407,7 +415,7 @@ Nach einer Zeit $\tau$ wird
 die verbliebenen Magnetisierungskomponente in z-Richtung $M_z$
 mit einem $\SI{90}{\degree}$-Puls in die x-y-Ebene gedreht.
 Diese führt dann eine Präzessionsbewegung aus und induziert eine
-Indukionsspannung proportional zu $M_z(\tau)$ in der Spule.
+Induktionsspannung proportional zu $M_z(\tau)$ in der Spule.
 Durch Lösen der Blochschen Gleichung \eqref{eqn:bloch}
 mit den Anfangsbedingungen $M_x(0)=M_y(0)=0$ und $M_Z(0)=-M_0$
 ergibt sich der Zusammenhang
@@ -420,7 +428,7 @@ mit der longitudinalen Relaxationszeit $T_1$ (siehe Abb. \ref{fig:M_z}).
   \centering
   \includegraphics[width=0.5\textwidth]{M_z.PNG}
   \caption{Schematische Verlauf der Magnetisierungskomponente $M_z$
-    in Abhängigkeit des Zeitspanne zwischen den Pulsen $\tau$ nach Gleichung \eqref{eqn:33}.\cite{sample}}
+    in Abhängigkeit der Zeitspanne zwischen den Pulsen $\tau$ nach Gleichung \eqref{eqn:33}.\cite{sample}}
   \label{fig:M_z}
 \end{figure}
 
