@@ -10,7 +10,7 @@ def tabelle(datensatz, Name, Rundungen):  # i=Spalten j=Zeilen
     # fobj_out.write(r"  \caption{}"+"\n")
     # fobj_out.write(r"  \label{}"+"\n")
     # fobj_out.write(r"\begin{tabular}{"+i_max*"S" +"} \n")
-    fobj_out.write(r"%"+i_max*"S" +"\n")
+    # fobj_out.write(r"%"+i_max*"S" +"\n")
     # fobj_out.write(r"\toprule"+"\n \\\ \n")
     # fobj_out.write(r"\midrule"+"\n")
     #runden und in strings umwandeln
