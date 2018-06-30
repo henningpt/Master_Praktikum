@@ -26,7 +26,7 @@ alpha = 1.024e-9 # apparatur konstante
 # lade daten
 t1_visk = unp.uarray(12.0 * 60.0 + 3.0 + 0.5, 2)
 t2_visk = unp.uarray(12.0 * 60.0 + 0.3, 2)  # zeiten viskosimeter
-
+diff_lit = unp.uarray(2.78e-9, 0.035e-9)
 
 t1_tau, t1_amp = np.genfromtxt("t1messung.txt", unpack=True)
 t1_tau *= 1e-3
@@ -250,3 +250,5 @@ print("\n\nt2 rel abweichung: ", abs(t2_a - t2_lit) / t2_lit)
 print("\n\nt1 rel abweichung: ", abs(-1.0 / t1uparams[0] - t1_lit) / t1_lit)
 
 print("\n\nViskosität rel abweichung: ", abs(viskositaet - visk_lit) / visk_lit)
+
+print("\n\nDiffkonstante rel abweichung: ", abs(duparams[1] - diff_lit) / diff_lit)

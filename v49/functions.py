@@ -46,6 +46,7 @@ def radius(vis, diff):
     return(con.k * (25.0 + 273.15) / (6.0   * np.pi * vis * diff))
 
 
+
 def grad(d, g, th):
     return(8.8 / (d * g * th))
 

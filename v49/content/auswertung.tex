@@ -1,3 +1,4 @@
+\newpage
 \section{Auswertung}
 \label{sec:Auswertung}
 
@@ -10,7 +11,7 @@ Um die $50$ Echoamplituden zu finden, werden ganzzahlige Vielfache von $\tau = \
 auf die Zeit, bei der die höchste Spannung gemessen wird, addiert und der jeweils nächstgelegene Messwert innerhalb eines beschränkten Intervalls ausgewählt.
 In Tabelle \ref{tab:t2_fitwerte}
 sind die auf diese Weise gefundenen Echos angegeben.
-Anschließend wird für den in Gleichung \eqref{eqn:11} gegebenen Zusammenhang unter \textit{Python3} mit Hilfe der Funktion \textit{curvefit} aus
+Anschließend wird für den in Gleichung \eqref{eqn:t2} gegebenen Zusammenhang unter \textit{Python3} mit Hilfe der Funktion \textit{curvefit} aus
 dem Paket \textit{Scipy} eine Regression der als Echos identifizierten Messwerte durchgeführt.\\
 Dabei ergeben sich für den Startwert $U_{0}$ und Relaxationszeit $T_{2}$ die folgenden Werte
 \begin{align*}
@@ -23,15 +24,15 @@ gezeigt.\\
 
 \begin{figure}[hhh]
   \centering
-  \includegraphics{build/t_u_plot2_extrem.pdf}
+  \includegraphics[width=0.7\textwidth]{build/t_u_plot2_extrem.pdf}
   \caption{Verwendete Messwerte(Signal logarithmiert) für $T_{2}$ Messung mit Meiboom-Gill-Methode, sowie zugehörige Regression.}
-  \label{fig:t2_plot_gesamt}
+  \label{fig:t2_gesamt}
 \end{figure}
 
 
 \begin{figure}[hhh]
   \centering
-  \includegraphics{build/t_u_plot2.pdf}
+  \includegraphics[width=0.7\textwidth]{build/t_u_plot2.pdf}
   \caption{Aufgenommene Messwerte für $T_{2}$ Messung mit Meiboom-Gill-Methode.}
   \label{fig:t2_plot}
 \end{figure}
@@ -39,7 +40,7 @@ gezeigt.\\
 
 \begin{figure}[hhh]
   \centering
-  \includegraphics[width=\textwidth]{mg.png}
+  \includegraphics[width=0.7\textwidth]{mg.png}
   \caption{Messwerte für $T_{2}$ Messung mit Meiboom-Gill-Methode(Bild am Oszilloskop).}
   \label{fig:meiboomgill}
 \end{figure}
@@ -61,25 +62,87 @@ ergibt.
   \centering
   \caption{Gefundene Echos für die Bestimmung der Relaxationszeit $T_{2}$.}
   \label{tab:t2_fitwerte}
-  \begin{tabular}{c c}
+  \begin{tabular}{c c|}
   \toprule
   $t \text{ in } \si{\milli\second}$ & $U \text{ in } \si{\milli\volt}$\\
   \midrule
-  \input{T2_messung.tex}
+  0.0	&	561.56   \\
+  81.2	&	461.06   \\
+  162.4	&	320.35   \\
+  238.0	&	219.85   \\
+  319.2	&	420.85   \\
+  400.4	&	320.35   \\
+  476.0	&	79.15   \\
+  560.0	&	239.95   \\
+  641.2	&	159.55   \\
+  722.4	&	219.85   \\
+  798.0	&	119.35   \\
+  879.2	&	280.15   \\
+  963.2	&	79.15   \\
+  1041.6	&	139.45   \\
+  1120.0	&	280.15   \\
+  1201.2	&	38.94   \\
+  1282.4	&	139.45   \\
+  \bottomrule
+\end{tabular}
+\begin{tabular}{|c c|}
+\toprule
+$t \text{ in } \si{\milli\second}$ & $U \text{ in } \si{\milli\volt}$\\
+\midrule
+  1358.0	&	119.35   \\
+  1439.2	&	199.75   \\
+  1523.2	&	79.15   \\
+  1598.8	&	100.50   \\
+  1677.2	&	59.04   \\
+  1761.2	&	119.35   \\
+  1842.4	&	99.25   \\
+  1918.0	&	79.15   \\
+  1999.2	&	119.35   \\
+  2080.4	&	79.15   \\
+  2161.6	&	59.04   \\
+  2220.4	&	0.00   \\
+  2321.2	&	79.15   \\
+  2396.8	&	38.94   \\
+  2478.0	&	18.84   \\
+  2559.2	&	119.35   \\
+  2643.2	&	38.94   \\
+  \bottomrule
+\end{tabular}
+\begin{tabular}{|c c}
+  \toprule
+  $t \text{ in } \si{\milli\second}$ & $U \text{ in } \si{\milli\volt}$\\
+  \midrule
+  2716.0	&	18.84   \\
+  2797.2	&	38.94   \\
+  2881.2	&	79.15   \\
+  2962.4	&	38.94   \\
+  3038.0	&	38.94   \\
+  3119.2	&	38.94   \\
+  3200.4	&	79.15   \\
+  3262.0	&	0.00   \\
+  3343.2	&	0.00   \\
+  3441.2	&	38.94   \\
+  3508.4	&	0.00   \\
+  3598.0	&	20.10   \\
+  3679.2	&	38.94   \\
+  3760.4	&	18.84   \\
+  3827.6	&	0.00   \\
+  3900.4	&	0.00   \\
+  3981.6	&	0.00   \\
   \bottomrule
   \end{tabular}
 \end{table}
 
 
 \FloatBarrier
-\subsubsection{Bestimmung des Diffusionskoeffizienten mit der Spin-Echo-Methode}
+\subsection{Bestimmung des Diffusionskoeffizienten mit der Spin-Echo-Methode}
 \label{subsec:D}
 Der Diffusionskonstante wird aus den in Tabelle \ref{tab:diffusion} angegebenen
 Messwerten bestimmt.
 Dazu wird eine Regression der Werte für den in Gleichung \eqref{eqn:32} gegebenen Zusammenhang mit
 \textit{curvefit} durchgeführt.
 Als Fitparameter werden der Vorfaktor $a$ sowie die Diffusionskonstante gewählt. Für $T_{2}$ wird der in Abschnitt
-\ref{subsubsec:T2} bestimmte Wert verwendet. Der Gradient $G$ wird aus dem Zusammenhang
+\ref{subsec:T2} bestimmte Wert verwendet. Der Gradient $G$ wird aus dem Zusammenhang
 \begin{align}
   \label{eqn:gradient}
   G = \frac{8.8}{d \, \gamma \, t_{\frac{1}{2}}}
@@ -106,6 +169,17 @@ Als Regressionsparameter ergeben sich
   D &= \SI{3.8325+-0.1131 e-5}{\meter\squared\per\second} \, .
 \end{align*}
 
+Der Literaturwert\cite{litwerte} für die Diffusionskonstante ist
+\begin{align*}
+  D^\text{lit.} = \SI{2.78+-0.035 e-9}{\meter\squared\per\second} \, ,
+\end{align*}
+sodass die relative Abweichung $f$ des experimentell bestimmten Werts
+vom Theoriewert
+\begin{align*}
+  f = \frac{T_{1} - T_{1}^\text{lit.}}{T_{1}^\text{lit.}} = \SI{1.38+-0.04 e4}{}
+\end{align*}
+
+
 \begin{table}
   \centering
   \caption{Verwendete Messwerte für die Bestimmung der Diffusionskonstanten.}
@@ -122,7 +196,7 @@ Als Regressionsparameter ergeben sich
 
 \begin{figure}[hhh]
   \centering
-  \includegraphics{build/t_u_plotdiff.pdf}
+  \includegraphics[width=0.7\textwidth]{build/t_u_plotdiff.pdf}
   \caption{Messwerte für die Bestimmung des Diffusionskoeffizienten, sowie zugehörige Regression.}
   \label{fig:diffusion}
 \end{figure}
@@ -141,7 +215,7 @@ Es wird mit dem Mittelwert der beiden Zeiten
   t^\text{visk.} &= \SI{721.9+-1.4}{\second}
 \end{align*}
 gerechnet.\\
-Um aus der gemessenen Zeit die Viskosität zu bestimmen wird der Zusammenhang\eqref{eqn:viskositaet}
+Um aus der gemessenen Zeit die Viskosität zu bestimmen wird der Zusammenhang
 \begin{align}
   \eta = a \left(t - \delta \right)
 \end{align}
@@ -149,18 +223,18 @@ verwendet. Dabei bezeichnet $a$ eine Apparaturkonstante die mit $a = \SI{1.024e-
 eine Apparaturkonstante die mit $\delta = \SI{0.8562+-0.0014}{}$ angegeben wird.
 Für die Viskosität ergibt sich auf diese Weise
 \begin{align*}
-  \eta = \SI{0.7364+-0.0014 e-3}{} \, .
+  \eta = \SI{0.7364+-0.0014 e-3}{\meter\squared\per\second} \, .
 \end{align*}
 
 % weglassen?
-Der Literaturwert\cite{lig_v} für die Viskosität ist
+Der Literaturwert\cite{litvisk} für die Viskosität ist
 \begin{align*}
-  \eta^\text{lit.} = \SI{}{} \, ,
+  \eta^\text{lit.} = \SI{0.891e-3}{\meter\squared\per\second} \, ,
 \end{align*}
 sodass die relative Abweichung $f$ des experimentell bestimmten Werts
 vom Theoriewert
 \begin{align*}
-  f = \frac{\eta - \eta^\text{lit.}}{\eta^\text{lit.}} = \SI{}{\percent}
+  f = \frac{\eta - \eta^\text{lit.}}{\eta^\text{lit.}} = \SI{17.4+-0.2}{\percent}
 \end{align*}
 
 
@@ -222,7 +296,7 @@ vom Theoriewert
 
 \begin{figure}[hhh]
   \centering
-  \includegraphics{build/t_u_plott1.pdf}
+  \includegraphics[width=0.7\textwidth]{build/t_u_plott1.pdf}
   \caption{Messwerte für die Bestimmung der Relaxationszeit $T_{1}$, sowie zugehörige Regression.}
   \label{fig:meiboomgill}
 \end{figure}
@@ -232,11 +306,60 @@ vom Theoriewert
   \centering
   \caption{Verwendete Messwerte für die Bestimmung der Relaxationszeit $T_{1}$.}
   \label{tab:t1}
-  \begin{tabular}{c c c}
+  \begin{tabular}{c c|}
   \toprule
   $t \text{ in } \si{\milli\second}$ & $U \text{ in } \si{\milli\volt}$\\
   \midrule
-    \input{T1_messung.tex}
+  0.5	&	-818.75   \\
+  1.0	&	-800.00   \\
+  1.5	&	-793.75   \\
+  2.0	&	-787.50   \\
+  2.5	&	-787.50   \\
+  3.0	&	-800.25   \\
+  3.5	&	-787.50   \\
+  4.0	&	-781.25   \\
+  4.5	&	-775.00   \\
+  5.0	&	-768.75   \\
+  5.5	&	-762.50   \\
+  10.0	&	-756.25   \\
+  15.0	&	-762.50   \\
+  30.0	&	-750.00   \\
+  60.0	&	-731.25   \\
+  100.0	&	-693.75   \\
+  120.0	&	-681.25   \\
+  180.0	&	-643.75   \\
+  240.0	&	-587.50   \\
+  300.0	&	-550.00   \\
+  360.0	&	-518.75   \\
+  420.0	&	-481.25   \\
+  \bottomrule
+  \end{tabular}
+  \begin{tabular}{|c c}
+  \toprule
+  $t \text{ in } \si{\milli\second}$ & $U \text{ in } \si{\milli\volt}$\\
+  \midrule
+  500.0	&	-443.75   \\
+  600.0	&	-381.25   \\
+  700.0	&	-325.00   \\
+  800.0	&	-287.50   \\
+  900.0	&	-243.75   \\
+  1000.0	&	-206.25   \\
+  1100.0	&	-181.25   \\
+  1200.0	&	-143.75   \\
+  1300.0	&	-112.50   \\
+  1400.0	&	-75.00   \\
+  1500.0	&	-68.75   \\
+  2000.0	&	106.25   \\
+  2500.0	&	218.75   \\
+  3000.0	&	312.50   \\
+  3500.0	&	406.25   \\
+  4000.0	&	481.25   \\
+  5000.0	&	550.00   \\
+  6000.0	&	606.25   \\
+  7000.0	&	662.50   \\
+  8000.0	&	700.00   \\
+  9000.0	&	725.00   \\
+  9999.0	&	743.75   \\
   \bottomrule
   \end{tabular}
 \end{table}
@@ -244,7 +367,7 @@ vom Theoriewert
 
 % \begin{figure}
 %   \centering
-%   \includegraphics{plot.pdf}
+%   \includegraphics[width=0.7\textwidth]{plot.pdf}
 %   \caption{Plot.}
 %   \label{fig:plot}
 % \end{figure}
