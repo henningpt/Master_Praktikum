@@ -7,4 +7,5 @@
 *.log
 *.toc
 *.db
+*.pyc
 build/
