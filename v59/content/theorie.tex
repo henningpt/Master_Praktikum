@@ -197,6 +197,8 @@ mit einem Laufzeitkabel generiert.
 
 \subsubsection{Demodulationsschaltungen}
 \label{subsubsec:demodulationschaltungen}
+\paragraph{Demodulationsschaltung für amplitudenmodulierte Signale}
+
 Um aus einem modulierten Signal wieder die gewünschte Information zu erhalten
 müssen Träger- und Modulationssignal voneinander getrennt werden.
 Dies geschieht mit einem Demodulator.\\
@@ -217,4 +219,13 @@ Spannung keine Phasenverschiebung gegenüber der Trägerfrequenz des
 modulierten Signals besitzt.
 Um dies zu umgehen, kann eine in Abbildung \ref{fig:gleichrichterdiode} gezeigte
 Schaltung verwendet werden. In dieser wird eine Gleichrichter-Diode verwendet,
-die 
+die dafür sorgt, dass keine negativen Spannungen mehr auftreten.
+Es ergibt sich dann der in Abbildung \ref{fig:gleichgerichtet}
+skizzierte Spannungsverlauf.
+
+\paragraph{Demodulationsschaltung für frequenzmodulierte Signale}
+Um ein frequenzmoduliertes Signal zu demodulieren, kann ein
+\textit{Flankenmodulator} genutzt werden.
+Eine schematische Darstellung eines solchen ist in Abbildung \ref{fig:demodulationfrequenz}
+gezeigt. Für die Demodulation wird der Schwingkreis so eingestellt, dass
+die steile Flanke der Resonanzkurve, $\omega_{\text{T}}$ beinhaltet.
