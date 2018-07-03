@@ -117,12 +117,14 @@ und $\omega_{\text{T}}-\omega_{\text{M}}$ existieren.
 Dabei sind die Seitenlinien $\omega_{\text{T}}\pm\omega_{\text{M}}$
 um $\sfrac{\pi}{2}$ zur Trägerschwingung verschoben.
 
+
 \subsection{Schaltungen}
 \label{subsec:Schaltungen}
 Um die im Kapitel \ref{subsec:Modulationsverfahren}
 beschriebenen Modulationsverfahren so wie Demodulationsverfahren zu realisiert, werden
 bestimmte elektronische Schaltungen
 benötigt auf die im folgenden näher eingegangen werden soll.
+
 \subsection{Modulationsschaltungen}
 \label{subsubsec:Modulationsschaltungen}
 \paragraph{Amplitudenmodulation}
@@ -130,9 +132,9 @@ Für die Amplitudenmodulation
 wird ein Gerät benötigt, das ein
 Produkt zweier Spannungen bildet.
 Bauteile mit einer nicht-lineare Kennlinie
-erfüllen diese Bedingung wie zum Beispiel ein
+erfüllen diese Bedingung wie zum Beispiel eine
 Diode.
-Somit lässt sich ein Modulatorschaltung
+Somit lässt sich eine Modulatorschaltung
 wie in Abbildung \ref{fig:diode}
 mit einer Diode realisieren.
 \begin{figure}
@@ -152,10 +154,10 @@ Freuenzbandes $[\omega_{\text{T}}-\omega_{\text{M}},\omega_{\text{T}}+\omega_{\t
 können diese mit Hilfe eines Bandfilters unterdrückt werden.
 Eine bessere Methode zur  Amplitudenmodulation
 stellt ein
-Ringmodulator dar, da dieser
+\textit{Ringmodulator} dar, da dieser
 erst garnicht die unerwünschten komponenten
 erzeugt.
-Ein Ringmodulator besteht aus
+Ein \textit{Ringmodulator} besteht aus
 4 zu einem Ring geschaltenten Dioden,
 wie in Abbildung
 \ref{fig:Ringmodulator} dargestellt.
@@ -168,7 +170,7 @@ wie in Abbildung
   \label{fig:Ringmodulator}
 \end{figure}
 
-Für übereinstimmende elektrische Eigneschaften
+Für übereinstimmende elektrische Eigenschaften
 der 4 Dioden und einer Modulationsspannung $U_{\text{M}}=0$
 tritt zwischen den Punkten $\alpha$ und $\beta$
 
@@ -181,8 +183,32 @@ tritt zwischen den Punkten $\alpha$ und $\beta$
 Für eine Frequenzmodulation, die einen geringen Frequenzhub besitzt,
 kann die in Abbildung \ref{fig:Ringmodulator_frequenz} dargestellte
 Schaltung verwendet werden.
-Der Ringmodulator erzeugt die Frequenzen $\text{\faxmachine}$
+Der \textit{Ringmodulator} erzeugt die Frequenzen der beiden Seitenbänder.
+Zu diesem Signal wird zusätzlich die um $\SI{90}{\degree}$ phasenverschobene
+Spannung der Trägerschwingung addiert. Dabei wird die der Phasenschift
+mit einem Laufzeitkabel generiert.
 
+\begin{figure}
+  \centering
+  \includegraphics{figures/Ringmodulator.PNG}
+  \caption{Schaltbild für ein Ringmodulator.}
+  \label{fig:Ringmodulator}
+\end{figure}
 
 \subsubsection{Demodulationsschaltungen}
 \label{subsubsec:demodulationschaltungen}
+Um aus einem modulierten Signal wieder die gewünschte Information zu erhalten
+müssen Träger- und Modulationssignal voneinander getrennt werden.
+Dies geschieht mit einem Demodulator.\\
+Als Demodulator kann der in Kapitel \ref{subsubsec:Modulationschaltungen}
+vorgestellte \textit{Ringmodulator} genutzt werden.
+Dazu wird auf den Eingang \textbf{R} das moudulierte Signal und
+auf \textbf{L} das Trägersignal, so erzeugt die Schaltung
+gemäß \eqref{eqn:hierfehltwas} ein Signal mit den Frequenzen
+$\omega_{\text{M}}$, $2\omega_{\text{T}} - \omega_{\text{M}}$
+und $2\omega_{\text{T}} + \omega_{\text{M}}$.
+Um aus diesem Signal auschließlich $\omega_{\text{M}}$ zu gewinnen,
+werden die beiden übrigen Frequenzen, die üblicherweise deutlich größer sind,
+mit Hilfe eines Tiefpasses herausgefiltert.\\
+In Abbildung \ref{fig:demodulatorschaltung} ist eine Schaltung gezeigt,
+bei der der Ringmodulator zur Demodulation genutzt wird.
