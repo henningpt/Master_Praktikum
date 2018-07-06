@@ -1,23 +1,261 @@
 \section{Theorie}
 \label{sec:Theorie}
+Die Modulation und Demodulation
+elektrischer Schwingungen wird
+zur Informationsübertragung genutzt.
+Dabei wird mit Hilfe der Modulation
+(siehe Kapitel \ref{subsubsec:Modulationsverfahren})
+Amplitude, Frequenz oder auch die Phase
+der Welle dem Nachrichtensignal entsprechend
+verändert.
+Um der modulierten Welle die Information
+wieder zu entnehmen werden am Empfangsort
+Demodulationsverfahren verwendent.
 
-\subsection{Zielsetzung}
-\label{subsec:zielsetzung}
+\subsection{Modulationsverfahren}
+\label{subsec:Modulationsverfahren}
+Es existeren in der Hochfrequenztechnik einige
+Verfahren zur Modulation, die Unterschiedlichen
+Anforderungen erfüllen. Grob können diese
+jedoch in 2 Verfahren unterteilt
+werden, einmal die Amplitudenmodulation \ref{subsubsec:Amplitudenmodulation}
+und die Frequenzmodulation \ref{subsubsec:Frequenzmodulation}.
 
 
-\subsection{Kristallstukturen}
-\label{subsec:kristallstruktur}
+\subsubsection{Amplitudenmodulation}
+\label{subsubsec:Amplitudenmodulation}
+Die Amplitudenmodulation kennzeichnet sich
+dadurch, dass sich dabei die Signalamplitude
+des Trägers $U_{\text{T}}(t)$ periodisch verändert.
+Die Veränderung der Amplitude ist dabei gegeben
+durch die Frequenz der Modulationsschwingung
+$U_{\text{M}}(t)$.
+Ausgehend von den Darstellungen der Signale
+\begin{align}
+  U_{\text{T}} &= \hat{U}_{\text{T}} \, \cos \omega_{\text{T}} \, t \\
+  U_{\text{M}} &= \hat{U}_{\text{M}} \, \cos \omega_{\text{M}} \, t
+\end{align}
+mit den jeweiligen Kreisfrequenzen $\omega_{\text{T}}$ und $\omega_{\text{M}}$,
+ergibt sich für das aus der Amplitudenmodulation resultierende Signal
+\begin{align}
+  \label{eqn:1}
+  U_{3}(t) = \hat{U}_{\text{T}} \, \left( 1 + m \, \cos \omega_{\text{M}} t \right) \, .
+\end{align}
+
+Dabei ist $m$, der zu $U_{\text{M}}Q$ proportionale, Modulationsgrad.
+Der zugehörige Proportionalitätsfaktor heißt $\gamma$.
+Es gilt $0 \leq m \geq 1$.
+In Abbildung \ref{fig:amplitudenmodulation_1} ist das Signal aus Gleichung
+\eqref{eqn:1} dargestellt.
+Dieses lässt sich so Umformen, dass die auftretenden Frequenzen direkt
+ablesbar sind
+\begin{align}
+  \label{eqn:2}
+  U_{\text{T}} &= \hat{U}_{\text{T}} \, \left( \cos \omega_{\text{T}} t \, + \, \frac{m}{2} \cos t\left( \omega_{\text{T}} + \omega_{\text{T}} \right) \, + \, \frac{m}{2}  m  \cos t \left( \omega_{\text{M}} - \omega_{\text{T}} \right)\right) \, .
+\end{align}
+Im Gegensatz zu den beiden Frequenzen $\omega_{\text{T}} + \omega_{\text{M}}$ und $\omega_{\text{T}} - \omega_{\text{M}}$, tritt die Frequenz $\omega_{\text{T}}$
+unabhängig von $U_{\text{M}}$ auf und spielt somit
+für die Informationsübertragung keine Rolle. Daher soll $\omega_{\text{T}}$
+aus Gründen der Energieeffizienz herausgefiltert werden.
+Aus den beiden übrigen Frequenzenlinien werden, wenn das Modulationssignal
+aus mehreren Frequenzen zusammengesetzt ist, Frequenzbänder.
+Diese tragen jeweils die selbe Information, sodass eines der beiden ohne
+Informationsverlust unterdrückt werden kann(\textit{Einseitenbandmodulation}).\\ \\
+
+Probleme der Amplitudenmodulation stellen die geringe Toleranz gegenüber
+Störungen, sowie die geringe Verzerrungsfreiheit.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{figures/amplitudenmodulation.PNG}
+  \caption{Zeitlicher Verlauf einer amplitudenmodulierten Schwingung.\cite{sample}}
+  \label{fig:amplitudenmodulation_1}
+\end{figure}
 
 
-\subsection{Netzebenen}
-\label{subsec:Netzebenen}
+\subsubsection{Frequenzmodulation}
+\label{subsubsec:Frequenzmodulation}
+Bei der Frequenzmodulation wird die
+momentane Schwingungsfreuquenz
+abhängig
+von dem Modulationssignal und die
+Amplitude der Schwingung bleibt konstant.
+Die Schwingung nimmt dann folgende Form an
+\begin{align}
+U(t) = \hat{U} \sin\left(\omega_{\text{T}} t + m\frac{\omega_{\text{T}}}{\omega_{\text{M}}} \cos\omega_{\text{M}}t \right),\label{eqn:3}
+\intertext{mit der Momentanfrequenz}
+f(t)=\frac{\omega_{\text{T}}}{2\pi} \left(1-m\sin\omega_{\text{M}}t\right)\label{eqn:f}
+\end{align}
+wobei $m$ dem Modulationsgrad
+entspricht.
+Die Variationsbreite
+der Schwingungsfrequenz
+wird Frequenzhub genannt und entspricht
+$m\sfrac{\omega_{\text{T}}}{2\pi}$.
+Die Abbildung \ref{fig:Frequenzmodulation}
+enthält einen beispielhaften Verlauf
+einer Frequenzmodulation.
 
-% ab hier dag
-\subsection{Beugung von Röntgenstrahlung an Kristallen}
-\label{subsec:BeugungKristall}
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{figures/frequenzmodulator.PNG}
+  \caption{Zeitlicher Verlauf einer frequenzmodulierten Schwingung.}
+  \label{fig:Frequenzmodulation}
+\end{figure}
+
+Wird nur der Fall eines
+niedrigens Frequenzhubes
+\begin{align*}
+  betrachtet, kann die Gleichung
+  m\frac{\omega_{\text{T}}}{\omega_{\text{M}}} \ll 1
+\end{align*}
+\eqref{eqn:3} durch Nährungen
+in die Form
+\begin{align}
+\hat{U}(t)=\hat{U}\left(\sin \omega t + \frac12 m\frac{\omega_{\text{T}}}{\omega_{\text{M}}}\cos t(\omega_{\text{T}}+\omega_{\text{M}})
++ \frac12 m\frac{\omega_{\text{T}}}{\omega_{\text{M}}}\cos t(\omega_{\text{T}}-\omega_{\text{M}}) \right)
+\end{align}
+gebracht werden.
+Daraus kann entnommen werden, dass
+bei schwach fequenzmodulierten Schwingungen
+ebenso wie bei amplitudenmodulierten
+drei Teilschwingungnen mit den Frequenzen $\omega_{\text{T}},\omega_{\text{T}}+\omega_{\text{M}}$
+und $\omega_{\text{T}}-\omega_{\text{M}}$ existieren.
+Dabei sind die Seitenlinien $\omega_{\text{T}}\pm\omega_{\text{M}}$
+um $\sfrac{\pi}{2}$ zur Trägerschwingung verschoben.
+
+\FloatBarrier
+
+\subsection{Schaltungen}
+\label{subsec:Schaltungen}
+Um die im Kapitel \ref{subsec:Modulationsverfahren}
+beschriebenen Modulationsverfahren so wie Demodulationsverfahren zu realisiert, werden
+bestimmte elektronische Schaltungen
+benötigt auf die im folgenden näher eingegangen werden soll.
+
+\subsection{Modulationsschaltungen}
+\label{subsubsec:Modulationsschaltungen}
+\paragraph{Amplitudenmodulation}
+Für die Amplitudenmodulation
+wird ein Gerät benötigt, das ein
+Produkt zweier Spannungen bildet.
+Bauteile mit einer nicht-lineare Kennlinie
+erfüllen diese Bedingung wie zum Beispiel eine
+Diode.
+Somit lässt sich eine Modulatorschaltung
+wie in Abbildung \ref{fig:diode}
+mit einer Diode realisieren.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{figures/diode.PNG}
+  \caption{Primitive Modulatorschaltung mit Diode.}
+  \label{fig:diode}
+\end{figure}
+Über die Reihenentwicklung der
+Diodenkennlinie ergibt der gewünschte
+Term $U_{\text{T}}U_{\text{M}}$ jedoch
+treten dabei weitere störende Terme
+auf wie z.B. $U_{\text{M}}, U_{\text{M}}^2$ und $U_{\text{T}}^2$.
+Da diese normalerweise Frequenzen
+besitzen, die weit außerhalb des
+Freuenzbandes $[\omega_{\text{T}}-\omega_{\text{M}},\omega_{\text{T}}+\omega_{\text{M}}]$ liegen,
+können diese mit Hilfe eines Bandfilters unterdrückt werden.
+Eine bessere Methode zur  Amplitudenmodulation
+stellt ein
+\textit{Ringmodulator} dar, da dieser
+erst garnicht die unerwünschten komponenten
+erzeugt.
+Ein \textit{Ringmodulator} besteht s
+4 zu einem Ring geschaltenten Dioden,
+wie in Abbildung
+\ref{fig:Ringmodulator} dargestellt.
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{figures/ringmodulator.PNG}
+  \caption{Schaltbild für ein Ringmodulator.}
+  \label{fig:Ringmodulator}
+\end{figure}
+
+Für übereinstimmende elektrische Eigenschaften
+der 4 Dioden und einer Modulationsspannung $U_{\text{M}}=0$
+tritt zwischen den Punkten $\alpha$ und $\beta$
 
 
 
-\subsection{Debye-Scherrer Methode zur Strukturbestimmung}
-\label{Strukturbestimmung}
-\cite{sample}
+
+
+
+\paragraph{Frequenzmodulation}
+Für eine Frequenzmodulation, die einen geringen Frequenzhub besitzt,
+kann die in Abbildung \ref{fig:Ringmodulator_frequenz} dargestellte
+Schaltung verwendet werden.
+Der \textit{Ringmodulator} erzeugt die Frequenzen der beiden Seitenbänder.
+Zu diesem Signal wird zusätzlich die um $\SI{90}{\degree}$ phasenverschobene
+Spannung der Trägerschwingung addiert. Dabei wird die der Phasenschift
+mit einem Laufzeitkabel generiert.
+
+\begin{figure}
+  \centering
+  \includegraphics{figures/frequenzmodulator.PNG}
+  \caption{Schaltbild eines Ringmodulators für frequenzmodulierte Signale.}
+  \label{fig:Ringmodulator_frequenz}
+\end{figure}
+
+\subsubsection{Demodulationsschaltungen}
+\label{subsubsec:demodulationschaltungen}
+\paragraph{Demodulationsschaltung für amplitudenmodulierte Signale}
+
+Um aus einem modulierten Signal wieder die gewünschte Information zu erhalten
+müssen Träger- und Modulationssignal voneinander getrennt werden.
+Dies geschieht mit einem Demodulator.\\
+Als Demodulator kann der in Kapitel \ref{subsubsec:Modulationschaltungen}
+vorgestellte \textit{Ringmodulator} genutzt werden.
+Dazu wird auf den Eingang \textbf{R} das moudulierte Signal und
+auf \textbf{L} das Trägersignal, so erzeugt die Schaltung
+gemäß \eqref{eqn:hierfehltwas} ein Signal mit den Frequenzen
+$\omega_{\text{M}}$, $2\omega_{\text{T}} - \omega_{\text{M}}$
+und $2\omega_{\text{T}} + \omega_{\text{M}}$.
+Um aus diesem Signal auschließlich $\omega_{\text{M}}$ zu gewinnen,
+werden die beiden übrigen Frequenzen, die üblicherweise deutlich größer sind,
+mit Hilfe eines Tiefpasses herausgefiltert.\\
+In Abbildung \ref{fig:demodulatorschaltung} ist eine solche Schaltung gezeigt,
+bei der der Ringmodulator zur Demodulation genutzt wird. Allerdings
+birgt diese Methode den Nachteil, dass die Für die Demodulation genütze
+Spannung keine Phasenverschiebung gegenüber der Trägerfrequenz des
+modulierten Signals besitzt.
+Um dies zu umgehen, kann eine in Abbildung \ref{fig:gleichrichterdiode} gezeigte
+Schaltung verwendet werden. In dieser wird eine Gleichrichter-Diode verwendet,
+die dafür sorgt, dass keine negativen Spannungen mehr auftreten.
+Es ergibt sich dann der in Abbildung \ref{fig:gleichgerichtet}
+skizzierte Spannungsverlauf.
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{figures/demodulator.PNG}
+  \caption{Schaltbild zur Demodulation eines amplitudenmodulierten Signals.\cite{sample}}
+  \label{fig:demodulatorschaltung}
+\end{figure}
+
+\FloatBarrier
+
+\paragraph{Demodulationsschaltung für frequenzmodulierte Signale}
+Um ein frequenzmoduliertes Signal zu demodulieren, kann ein
+\textit{Flankenmodulator} genutzt werden.
+Eine schematische Darstellung eines solchen ist in Abbildung \ref{fig:flankenmodulator}
+gegeben. Für die Demodulation wird der Schwingkreis so eingestellt, dass
+die steile Flanke der Resonanzkurve, $\omega_{\text{T}}$ beinhaltet.
+Da sich die Frequenz der modulierten Schwingung gemäß des Modulationssignals
+verändert, erzeugt der Schwingkreies eine amplitudenmodulierte Spannung
+$U_{\text{C}}(\omega)$. Aus dieser kann dann wie zuvor beschrieben das
+Modulationssignal gewonnen werden.
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{figures/flankenmodulator.PNG}
+  \caption{Schaltbild eines Flankenmodulators.\cite{sample}}
+  \label{fig:flankenmodulator}
+\end{figure}
