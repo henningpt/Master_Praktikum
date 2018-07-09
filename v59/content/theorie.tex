@@ -160,12 +160,12 @@ Da diese normalerweise Frequenzen
 besitzen, die weit außerhalb des
 Freuenzbandes $[\omega_{\text{T}}-\omega_{\text{M}},\omega_{\text{T}}+\omega_{\text{M}}]$ liegen,
 können diese mit Hilfe eines Bandfilters unterdrückt werden.
-Eine bessere Methode zur  Amplitudenmodulation
+Eine bessere Methode zur Amplitudenmodulation
 stellt ein
 \textit{Ringmodulator} dar, da dieser
 erst garnicht die unerwünschten komponenten
 erzeugt.
-Ein \textit{Ringmodulator} besteht s
+Ein \textit{Ringmodulator} besteht aus
 4 zu einem Ring geschaltenten Dioden,
 wie in Abbildung
 \ref{fig:Ringmodulator} dargestellt.
@@ -181,10 +181,20 @@ wie in Abbildung
 Für übereinstimmende elektrische Eigenschaften
 der 4 Dioden und einer Modulationsspannung $U_{\text{M}}=0$
 tritt zwischen den Punkten $\alpha$ und $\beta$
-
-
-
-
+keine Spannung auf. Für eine Modulationsspannung
+$U_{\text{M}}\neq0$ folgt somit eine
+Spannung $U_{\text{R}}$ am Ausgang, die die
+Geichung
+\begin{align}
+  U_{\text{R}}(t) &= \gamma U_{\text{M}}(t)U_{\text{T}}(t)
+\intertext{erfüllt. Somit ergibt sich durch Einsetzten
+der Modulation- und Trägerspannung}
+  U_{\text{T}}(t) &=\hat{U}_{\text{T}}\cos\omega_{\text{T}}t\\
+  U_{\text{M}}(t) &= \hat{U}_{\text{M}}\cos(\omega_{\text{M}}t+\phi)
+\intertext{eine Ausgangsspannung }
+U_{\text{R}}(t) &=\gamma \hat{U}_{\text{T}} \hat{U}_{\text{M}}\frac{1}{2}\cos\left((\omega_{\text{T}}+\omega_{\text{M}})t+\phi\right) + \gamma \hat{U}_{\text{T}} \hat{U}_{\text{M}}\frac{1}{2}\cos\left((\omega_{\text{T}}-\omega_{\text{M}})t-\phi\right)
+\end{align}
+ohne Trägerabstrahlung.
 
 
 \paragraph{Frequenzmodulation}
