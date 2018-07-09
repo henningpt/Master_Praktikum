@@ -1,6 +1,30 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+# (a)
+
+
+# (b)
+
+
+# (c)
+
+
+# (d)
+
+
+# (e)
+
+
+# (f)
+
+
+# (g)
+
+
+# (h)
+
+
 x = np.linspace(1e6,5e6,21)
 y =np.genfromtxt("messwerte_e.txt",unpack=True)
 # x = np.linspace(0, 10, 1000)
