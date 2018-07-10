@@ -105,7 +105,7 @@ Schwingung, die durch die Schaltung aus Abbildung \ref{fig:15}
 gebildet wird.
 Da für die  $\SI{90}{\degree}$-Phasenverschiebung ein Laufzeitkabel mit der
 Zeit T=$\SI{250}{\nano\second}$ verwendet wird, muss somit die
-Trägerfrequenz gerade genau $f_{\text{T}}\SI{1}{\mega\hertz}$
+Trägerfrequenz gerade genau $f_{\text{T}}=\SI{1.00(5)}{\mega\hertz}$
 betragen, um eine Phasenverschiebung um $\SI{90}{\degree}$
 zu erzeugen. Als Modulationsfrequenz wird
 $f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$ verwendet.
@@ -194,21 +194,28 @@ $f/\si{\mega\hertz}$ & $\phi / \si{\degree}$ &$ U_{\text{G}}/ \si{\milli\volt}$ 
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{build/plot.pdf}
-  \caption{Amplitude in Abhängigkeit von der Phase.}
+  \caption{Gemessener Gleichstrom $U_{\text{G}}$ in Abhängigkeit von der Phase.}
   \label{fig:plot}
 \end{figure}
 
 \subsubsection{(f) Demodulation einer amplitudenmodulierten Schwingung
 mit Hilfe eines Ringmodulators}
 \label{subsubsec:auswertung_f}
+Die Demudaltion mit einem Ringmodulators wird mit der Schaltung
+aus Abbildung \ref{fig:7} durchgeführt. Das Ergebniss ist
+in der Abbildung \ref{fig:amp_demod_ring} dargestellt.
+Dabei beträt die Trägerfrequenz $f_{\text{T}}=\SI{1.00(5)}{\mega\hertz}$
+und Modulationsfrequenz $f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$.
+
 
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{osci/amp_demod.png}
-  \caption{Demodulation von amplitudenmoduliertem Signal mit Hilfe eines
-  Ringmodulator nach Schaltung \ref{fig:7}.}
+  \caption{Demodulation von einem amplitudenmoduliertem Signal mit Hilfe eines
+  Ringmodulator nach Schaltung \ref{fig:7}. Dargestellt ist das demodulierte Signal(grün) so wie das zu modulierende Signal.}
   \label{fig:amp_demod_ring}
 \end{figure}
+
 
 
 
@@ -216,11 +223,15 @@ mit Hilfe eines Ringmodulators}
 \subsubsection{(g) Demodulation einer amplitudenmodulierten Schwingung
 mit Hilfe einer Gleichrichterdiode}
 \label{subsubsec:auswertung_g}
+Die Abbildung\ref{fig:diode_punkt_A} enthält die Spannung $U_{\text{A}}$ am Punkt A aus der
+Schaltung \ref{fig:8}
+
+
 
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{osci/amp_demod_diode_A.png}
-  \caption{Signal am Punkt A bei der Demodulation von amplitudenmoduliertem Signal mit Hilfe einer
+  \caption{Signal $U_{\text{A}}$ am Punkt A bei der Demodulation von amplitudenmoduliertem Signal mit Hilfe einer
   Diode und einem Tiefpass nach Schaltung \ref{fig:8}.}
   \label{fig:diode_punkt_A}
 \end{figure}
