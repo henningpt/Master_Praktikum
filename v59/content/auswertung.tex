@@ -1,3 +1,4 @@
+\newpage
 \section{Auswertung}
 \label{sec:Auswertung}
 
@@ -6,7 +7,7 @@
 Hilfe eines Ringmodulators}
 \label{subsec:auswertung_a}
 In der Abbildung \ref{fig:ringamp_zeit} ist das Modulationssignal
-sowie die amplitudenmodulierte Schwingung, die mit einem Ringmodulatorschaltung \ref{fig:5}
+sowie die amplitudenmodulierte Schwingung, die mit einem Ringmodulatorschaltung \ref{fig:Ringmodulator}
 erzeugt wird,
 in Abhänigkeit der Zeit dargestellt.
 Die Modulationsfrequenz beträgt $\SI{100(5)}{\kilo\hertz}$
@@ -19,7 +20,7 @@ und die Trägerfrequenz $\SI{1.00(5)}{\mega\hertz}$.
   \label{fig:ringamp_zeit}
 \end{figure}
 
-
+\FloatBarrier
 \subsection{(b) Untersuchung des Frequenzspektrums einer
 amplitudenmodulierten Schwingung}
 \label{subsec:auswertung_b}
@@ -44,6 +45,7 @@ bestimmt werden.
 Deutlich wird ebendfalls das es keine Trägerabstrahlung vorliegt und
 keine Terme höherer Ordnung auftreten.
 
+\FloatBarrier
 \subsection{(c) Erzeugen einer amplitudenmodulierten Schwingung
 mit Hilfe einer Gleichrichterdiode}
 \label{subsec:auswertung_c}
@@ -97,11 +99,11 @@ Schwingung einer Diode im Frequenzraum mit Oberschwingungen.}
 
 
 
-
+\FloatBarrier
 \subsection{(d) Erzeugen einer frequenzmodulierten Schwingung}
 \label{subsec:auswertung_d}
 Die Abbildung \ref{fig:freq_zeit} enthält eine zeitabhänige frequenzmodulierte
-Schwingung, die durch die Schaltung aus Abbildung \ref{fig:15}
+Schwingung, die durch die Schaltung aus Abbildung \ref{fig:Ringmodulator_frequenz}
 gebildet wird.
 Da für die  $\SI{90}{\degree}$-Phasenverschiebung ein Laufzeitkabel mit der
 Zeit T=$\SI{250}{\nano\second}$ verwendet wird, muss somit die
@@ -114,7 +116,7 @@ $f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$ verwendet.
   \centering
   \includegraphics[width=0.7\textwidth]{osci/freq_mod.png}
   \caption{Trägerspammung ($U_{\text{T}}$ gelb) und Frequenzmodulierte
-  Schwingung($U_3$ grün), die nach dem Aufbau aus Abb.\ref{fig:15} erzeugt wird.}
+  Schwingung($U_3$ grün), die nach dem Aufbau aus Abb.\ref{fig:Ringmodulator_frequenz} erzeugt wird.}
   \label{fig:freq_zeit}
 \end{figure}
 Der Modulationsgrad $m$ wird bei der Frequenzmodulation
@@ -132,11 +134,11 @@ Schwingung im Frequenzraum.}
 Ebenfalls sind die Mischterme sowie die Trägerabstrahlung erkennbar.
 
 
-
+\FloatBarrier
 \subsection{(e) Untersuchung der Phasenabhängigkeit eines
 phasenempfindlichen Gleichrichters}
 \label{subsec:auswertung_e}
-Durch die Schaltung \ref{fig:15} wird ein phasenempfindlicher
+Durch die Schaltung \ref{fig:schaltung_e} wird ein phasenempfindlicher
 Gleichrichter erzeugt. Um die Phase \phi zwischen
 $\SI{0}{\degree}$ bis $\SI{360}{\degree}$ zu varieren, wird
 auf Grund des Laufzeitkabel mit festem T=$\SI{250}{\nano\second}$
@@ -198,11 +200,13 @@ $f/\si{\mega\hertz}$ & $\phi / \si{\degree}$ &$ U_{\text{G}}/ \si{\milli\volt}$ 
   \label{fig:plot}
 \end{figure}
 
+
+\FloatBarrier
 \subsection{(f) Demodulation einer amplitudenmodulierten Schwingung
 mit Hilfe eines Ringmodulators}
 \label{subsubsec:auswertung_f}
 Die Demudaltion mit einem Ringmodulators wird mit der Schaltung
-aus Abbildung \ref{fig:7} durchgeführt. Das Ergebniss ist
+aus Abbildung \ref{fig:demodulatorschaltung} durchgeführt. Das Ergebniss ist
 in der Abbildung \ref{fig:amp_demod_ring} dargestellt.
 Dabei beträt die Trägerfrequenz $f_{\text{T}}=\SI{1.00(5)}{\mega\hertz}$
 und Modulationsfrequenz $f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$.
@@ -212,26 +216,26 @@ und Modulationsfrequenz $f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$.
   \centering
   \includegraphics[width=0.7\textwidth]{osci/amp_demod.png}
   \caption{Demodulation von einem amplitudenmoduliertem Signal mit Hilfe eines
-  Ringmodulator nach Schaltung \ref{fig:7}. Dargestellt ist das demodulierte Signal(grün) so wie das zu modulierende Signal.}
+  Ringmodulator nach Schaltung \ref{fig:demodulatorschaltung}. Dargestellt ist das demodulierte Signal(grün) so wie das zu modulierende Signal.}
   \label{fig:amp_demod_ring}
 \end{figure}
 
 
 
 
-
+\FloatBarrier
 \subsubsection{(g) Demodulation einer amplitudenmodulierten Schwingung
 mit Hilfe einer Gleichrichterdiode}
 \label{subsubsec:auswertung_g}
 Die Abbildung\ref{fig:diode_punkt_A} enthält die Spannung $U_{\text{A}}$ am Punkt A aus der
-Schaltung \ref{fig:8}
+Schaltung \ref{fig:gleichrichterdiode}
 
 
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{osci/amp_demod_diode_A.png}
   \caption{Signal $U_{\text{A}}$ am Punkt A bei der Demodulation von amplitudenmoduliertem Signal mit Hilfe einer
-  Diode und einem Tiefpass nach Schaltung \ref{fig:8}.}
+  Diode und einem Tiefpass nach Schaltung \ref{fig:gleichrichterdiode}.}
   \label{fig:diode_punkt_A}
 \end{figure}
 
@@ -240,13 +244,14 @@ Schaltung \ref{fig:8}
   \centering
   \includegraphics[width=0.7\textwidth]{osci/amp_demod_diode.png}
   \caption{Demoduliertes Signal von einem amplitudenmoduliertem Signal mit Hilfe einer
-  Diode und einem Tiefpass nach Schaltung \ref{fig:8}.}
+  Diode und einem Tiefpass nach Schaltung \ref{fig:gleichrichterdiode}.}
   \label{fig:diode_demod_amp}
 \end{figure}
 
 
 
-\subsection{(h) Demoduolation einer frequenzmodulierten Schwingung
+\FloatBarrier
+\subsection{(h) Demodulation einer frequenzmodulierten Schwingung
 mit Hilfe eines Flankendemodulators}
 \label{subsec:auswertung_h}
 
@@ -254,7 +259,7 @@ mit Hilfe eines Flankendemodulators}
   \centering
   \includegraphics[width=0.7\textwidth]{osci/freq_demod_amp.png}
   \caption{Umwandelung eines Frequenzmodulierten Signales in ein Amplitudenmoduliertes
-Signal mit durch einen Schwingkreis nach Abbildung \ref{fig:11}.}
+Signal mit durch einen Schwingkreis nach Abbildung \ref{fig:flankenmodulator}.}
 \label{fig:freq_zu_amp}
 \end{figure}
 
@@ -264,6 +269,6 @@ Signal mit durch einen Schwingkreis nach Abbildung \ref{fig:11}.}
   \centering
   \includegraphics[width=0.7\textwidth]{osci/freq_demod.png}
   \caption{Demodulierung eines frequenzmodulierten Signales
-  mit der Schaltung \ref{fig:11}.}
+  mit der Schaltung \ref{fig:flankenmodulator}.}
 \label{fig:demod_frequenz}
 \end{figure}
