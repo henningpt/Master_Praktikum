@@ -49,18 +49,47 @@ print("\n mittelwert von beiden modulationsgeraden" ,modulationsgerad_mittel)
 
 # (d)
 #frequenzmodulierte schwingung
-# def momentan_f(t,f_t,f_m):
-#     return f_t (1 - )
-f_T=1e6
-f_M=1e5
-t_mess=250e-9
+delta_t= unp.uarray(250e-9,5e-9)
+f_T=unp.uarray(1e6,5e4)
+f_M=unp.uarray(1e5,1e3)
+def modulationsgrad_f(delta_t,f):
+    return 2*np.pi*f*delta_t/(3+unp.cos(2*np.pi*f*delta_t ) )
+
+m_d = modulationsgrad_f(delta_t,f_M)
+print("\n\n\n d) Modulationsgrad frequenz_Zeit", m_d)
+
+
+
+P_mitte_f = unp.uarray( -1.10, 0.05)
+P_links_f  = unp.uarray(-14.00,0.05)
+P_rechts_f = unp.uarray(-14.04,0.05)
+
+P_links_f  =dBm_in_Watt(P_links) #in dBm
+P_rechts_f = dBm_in_Watt(P_rechts)
+P_mitte_f = dBm_in_Watt(P_mitte)
+
+
+U_mittel_RL_f= unp.uarray(np.mean([unp.nominal_values((P_rechts_f)**(1/2)),unp.nominal_values((P_links_f)**(1/2))]),1/np.sqrt(2)*np.std([unp.nominal_values((P_rechts_f**(1/2))),unp.nominal_values((P_links_f)**(1/2))]))
+U_mitte_f = (P_mitte_f)**(1/2)
+
+print("Spannung in sqrt(R)", (P_links_f)**(1/2),(P_mitte_f)**(1/2),(P_rechts_f)**(1/2))
+print("\nMittel_wert von links und Rechts", U_mittel_RL_f )
+print("\nU_mitte=", U_mitte_f)
+m_d_leistung_f = 2* U_mittel_RL_f /U_mitte_f *(f_M/f_T)
+print("\nModulationsgrad m aus Leistung", m_d_leistung_f)
+
+modulationsgerad_mittel =   unp.uarray(np.mean([unp.nominal_values(m_d_leistung_f),unp.nominal_values(m_d)]),1/np.sqrt(2)*np.std([unp.nominal_values(m_d_leistung_f),unp.nominal_values(m_d)]))
+print("\n test::::: mittelwert von beiden modulationsgeraden" ,(m_d_leistung_f+m_d)/2 )
+print("\n mittelwert von beiden modulationsgeraden" ,modulationsgerad_mittel)
+
+
+
 
 # (e)
 
 
 
 # (f)
-
 
 # (g)
 

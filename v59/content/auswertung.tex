@@ -167,9 +167,55 @@ $f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$ verwendet.
   Schwingung($U_3$ grün), die nach dem Aufbau aus Abb.\ref{fig:Ringmodulator_frequenz} erzeugt wird.}
   \label{fig:freq_zeit}
 \end{figure}
-Der Modulationsgrad $m$ wird bei der Frequenzmodulation
-aus der Verschmierung in x-Richtung des Signals bestimmt.
-??
+Der Modulationsgrad $m$ wird
+bei der Frequenzmodulation
+aus der maximalen Verschmierung
+$\Delta t=t_2-t_1$ in x-Richtung des Signals bestimmt
+und der Modulationsfrequenz $f_{\text{M}}$.
+Die sichtbare Verschmierung in der
+Abbildung \ref{fig:freq_zeit}
+entsteht durch die unterschiedlichen
+Funktionsscharen von $U(t)_{\phi}$ die
+die zeitabhänige Kreisfrequenz
+\begin{align}
+\omega(t)_{\phi}=\omega_\text{T}\left(1-m\sin(\omega_\text{M}t + \phi)\right)\\
+\end{align}
+beitzten aber mit unterschiedlichen Phasen $\phi$ starten.
+Dies hat zu Folge das die Funktionen zu Beginn
+auseinanderlaufen, somit die Verschmierung
+zunimmt, um danach wieder
+zusammenzulaufen.
+Die Verschmierung liegt zwischen
+der Schwingung mit den Frequenzen
+$\omega_{\phi=\pi}(t)$
+und $\omega_{\phi=0}(t)$.
+Die Verschmierung
+wird für die
+Werte $t_1=\frac{\pi}{ \omega_{\text{M}}}$
+und $t_2 = t_1+\Delta t$ maximal.
+Die Gesamtphase $\Phi$ der Schwingung $U(t)$
+zu Zeitpunkt $t$
+ergibt sich aus
+\begin{align}
+  \Phi(t)&= \int_0^t \omega(t).
+\intertext{Da die Verschmierung
+horizontal gemessen wird
+befindet sich die Schwingungen in der gleichen
+Gesamtphase}
+\Phi(t_1)_{\phi=\pi}&=\Phi(t_2)_{\phi=0}\\
+\int_0^{t_1} \omega(t)_{\phi=\pi} \symup{d}t &= \int_0^{t_2} \omega(t)_{\phi=0} \symup{d}t.
+\intertext{durch Einsetzten von $t_1$ und $t_2$ für die maximale Verschmierung folgt für
+den Modulationsgrad}
+m = \frac{\Delta t \omega_{\text{M} }}{3+\cos\omega_{\text{M}}\Delta t}
+&=\frac{2\pi\Delta t f_{\text{M} }}{3+\cos2\pi f_{\text{M}} \Delta t}. \label{eqn:modu_freq}
+\intertext{Aus der Abbildung \ref{fig:freq_zeit} wird die maximale Verschmierung
+zu}
+\Delta t &= \SI{250(5)}{\nano\second}
+\intertext{bestimmt.
+Für den Modulationsgrad $m$ folgt aus Gleichung \eqref{eqn:modu_freq}}
+m &= \num{0.039(4)}.
+\end{align}
+
 Die Abbildung \ref{fig:frequenz_freq} enthält die frequenzmodulierte Schwingung
 im Frequenzraum.
 \begin{figure}
@@ -180,6 +226,43 @@ Schwingung im Frequenzraum.}
 \label{fig:frequenz_freq}
 \end{figure}
 Ebenfalls sind die Mischterme sowie die Trägerabstrahlung erkennbar.
+Deweiteren kann der Modulationsgrad wieder
+über die Leistungsamplituden berechnet werden.
+Für ein Frequenzmoduliertes Signal gilt jedoch der Zusammmenhang
+\begin{align}
+m=\frac{2\overline{\hat{U}_{f_{\text{T}}\pm f_{\text{M}}}}}{U_{f_{\text{T}}}} \frac{f_{\text{M}}}{f_{\text{T}}}. \label{eqn:m_leistung_f}
+\end{align}
+Für die Amplituden der entsprechenden Frequenzen
+folgt aus Abbildung \ref{fig:frequenz_freq}
+\begin{align}
+  % \si{\deci\belmilliwatt}
+  % \si{\dBm}
+P_{f_{\text{T}}-f_{\text{M}}}&=\SI{-1.10(5)}{\deci\belmilliwatt}\\
+P_{f_{\text{T}}}&=\SI{-14.00(5)}{\deci\belmilliwatt}\\
+P_{f_{\text{T}}+f_{\text{M}}}&=\SI{-14.04(5)}{\deci\belmilliwatt}.
+\end{align}
+Die Spannungen sind somit
+\begin{align}
+   \hat{U}_{f_{\text{T}}-f_{\text{M}}}&=\sqrt{R}\SI{0.0316(1)}{\milli\volt\per\sqrt{\ohm}}\\
+  \hat{U}_{f_{\text{T}}}&=\sqrt{R}\SI{0.031(1)}{\milli\volt\per\sqrt{\ohm}}\\
+  \hat{U}_{f_{\text{T}}+f_{\text{M}}}&=\sqrt{R}\SI{0.031(1)}{\milli\volt\per\sqrt{\ohm}}
+\end{align}
+und der Mittelwert der äußeren Spannungen ist
+\begin{align}
+  \overline{\hat{U}_{f_{\text{T}}\pm f_{\text{M}}}} = \sqrt{R}\SI{0.031(0)}{\milli\volt\per\sqrt{\ohm}}.
+\end{align}
+Für
+dem Modulationsgrad $m$ ergibt sich
+\begin{align}
+m=\num{0.20(1)}.
+\end{align}
+Aus den beiden bestimmten Modulationsgraden
+ergibt sich der Mittelwert
+\begin{align}
+\overline{m}=\num{0.12(6)}.
+\end{align}
+
+
 
 
 \FloatBarrier
