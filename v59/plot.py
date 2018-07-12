@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from tabelle import tabelle
 import uncertainties.unumpy as unp
-
+from scipy.optimize import curve_fit
 #a)
 
 
@@ -50,8 +50,10 @@ print("\n mittelwert von beiden modulationsgeraden" ,modulationsgerad_mittel)
 # (d)
 #frequenzmodulierte schwingung
 delta_t= unp.uarray(250e-9,5e-9)
+
 f_T=unp.uarray(1e6,5e4)
 f_M=unp.uarray(1e5,1e3)
+
 def modulationsgrad_f(delta_t,f):
     return 2*np.pi*f*delta_t/(3+unp.cos(2*np.pi*f*delta_t ) )
 
@@ -96,17 +98,25 @@ print("\n mittelwert von beiden modulationsgeraden" ,modulationsgerad_mittel)
 
 # (h)
 
+def cos_fit(x,a):
+    return a*np.cos(np.pi * x/180)
+
 T=250e-9
 x = np.linspace(1e6,5e6,21)
+x_lim = np.linspace(0,360,10000)
 y =np.genfromtxt("messwerte_e.txt",unpack=True)
 # x = np.linspace(0, 10, 1000)
 # y = x ** np.sin(x)
 phase = (x*T*360)%360
-
+params, cov =curve_fit(cos_fit,phase,y)
+uparams = unp.uarray(params, np.sqrt(np.diag(cov)))
+print("\n\n fitparameter", uparams)
 tabelle(np.array([x*1e-6,phase,y]),"phasenmessung",np.array([1,1,1]))
-
-plt.plot(phase,y,'x' , label='Messwerte')
+plt.plot(x_lim, cos_fit(x_lim,*params),label=r"Fit")
+plt.plot(phase, y, 'x' , label=r'Messwerte')
 plt.legend(loc='best')
+plt.xlabel(r"$\phi / \si{\degree}$")
+plt.ylabel(r"$U(\phi) / \si{\milli\volt}$")
 # in matplotlibrc leider (noch) nicht möglich
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 # plt.tight_layout()

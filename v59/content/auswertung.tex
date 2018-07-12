@@ -7,11 +7,11 @@
 Hilfe eines Ringmodulators}
 \label{subsec:auswertung_a}
 In der Abbildung \ref{fig:ringamp_zeit} ist das Modulationssignal
-sowie die amplitudenmodulierte Schwingung, die mit einem Ringmodulatorschaltung \ref{fig:Ringmodulator}
+sowie die amplitudenmodulierte Schwingung, die mit einem Ringmodulatorschaltung \ref{fig:5}
 erzeugt wird,
 in Abhänigkeit der Zeit dargestellt.
-Die Modulationsfrequenz beträgt $\SI{100(5)}{\kilo\hertz}$
-und die Trägerfrequenz $\SI{1.00(5)}{\mega\hertz}$.
+Die Modulationsfrequenz $f_{\text{M}}$ beträgt $\SI{100(5)}{\kilo\hertz}$
+und die Trägerfrequenz $f_{\text{T}}$ $\SI{1.00(5)}{\mega\hertz}$.
 
 \begin{figure}
   \centering
@@ -164,7 +164,7 @@ $f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$ verwendet.
   \centering
   \includegraphics[width=0.7\textwidth]{osci/freq_mod.png}
   \caption{Trägerspammung ($U_{\text{T}}$ gelb) und Frequenzmodulierte
-  Schwingung($U_3$ grün), die nach dem Aufbau aus Abb.\ref{fig:Ringmodulator_frequenz} erzeugt wird.}
+  Schwingung($U_3$ grün), die nach dem Aufbau aus Abb.\ref{fig:6} erzeugt wird.}
   \label{fig:freq_zeit}
 \end{figure}
 Der Modulationsgrad $m$ wird
@@ -269,15 +269,23 @@ ergibt sich der Mittelwert
 \subsection{(e) Untersuchung der Phasenabhängigkeit eines
 phasenempfindlichen Gleichrichters}
 \label{subsec:auswertung_e}
-Durch die Schaltung \ref{fig:schaltung_e} wird ein phasenempfindlicher
+Durch die Schaltung \ref{fig:15} wird ein phasenempfindlicher
 Gleichrichter erzeugt. Um die Phase \phi zwischen
 $\SI{0}{\degree}$ bis $\SI{360}{\degree}$ zu varieren, wird
 auf Grund des Laufzeitkabel mit festem T=$\SI{250}{\nano\second}$
-die Frequenz im Bereich von $\SI{1}{\mega\hertz}$-$\SI{5}{\mega\hertz}$
+die Frequenz im Bereich von $\SI{1}{\mega\hertz}-\SI{5}{\mega\hertz}$
 durchlaufen. Die Tablle \ref{tab:messwerte} enthält die gemessenen
 Gleichspannungen $U_{\text{G}}$ für die entsprechende Phase $\phi$ und Frequenz $f$.
 In der Abbildung \ref{fig:plot} ist die Gleichspannungen $U_{\text{G}}$
 gegen die Phase aufgetragen.
+Desweitern wir eine Funktion der Form
+\begin{align}
+  U(\phi)=a \, \cos(\phi)
+\end{align}
+an die Messwerte gefittet,
+um den Zusammenhang zwischen dem Kosinus der
+Phasen $\phi$ und Gleichspannung zu bestätigen.
+\
 \begin{table}
   \centering
   \caption{Messwerte der Gleichspannungen $U_{\text{G}}$, Phase \phi und Frequenz.}
@@ -337,7 +345,7 @@ $f/\si{\mega\hertz}$ & $\phi / \si{\degree}$ &$ U_{\text{G}}/ \si{\milli\volt}$ 
 mit Hilfe eines Ringmodulators}
 \label{subsubsec:auswertung_f}
 Die Demudaltion mit einem Ringmodulators wird mit der Schaltung
-aus Abbildung \ref{fig:demodulatorschaltung} durchgeführt. Das Ergebniss ist
+aus Abbildung \ref{fig:7} durchgeführt. Das Ergebniss ist
 in der Abbildung \ref{fig:amp_demod_ring} dargestellt.
 Dabei beträt die Trägerfrequenz $f_{\text{T}}=\SI{1.00(5)}{\mega\hertz}$
 und Modulationsfrequenz $f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$.
@@ -347,7 +355,7 @@ und Modulationsfrequenz $f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$.
   \centering
   \includegraphics[width=0.7\textwidth]{osci/amp_demod.png}
   \caption{Demodulation von einem amplitudenmoduliertem Signal mit Hilfe eines
-  Ringmodulator nach Schaltung \ref{fig:demodulatorschaltung}. Dargestellt ist das demodulierte Signal(grün) so wie das zu modulierende Signal.}
+  Ringmodulator nach Schaltung \ref{fig:7}. Dargestellt ist das demodulierte Signal(grün) so wie das zu modulierende Signal.}
   \label{fig:amp_demod_ring}
 \end{figure}
 
@@ -423,6 +431,6 @@ Signal mit durch einen LC-Schwingkreis nach Abbildung \ref{fig:11}.}
   \centering
   \includegraphics[width=0.7\textwidth]{osci/freq_demod.png}
   \caption{Demodulierung eines frequenzmodulierten Signales
-  mit der Schaltung \ref{fig:flankenmodulator}.}
+  mit der Schaltung \ref{fig:11}.}
 \label{fig:demod_frequenz}
 \end{figure}
