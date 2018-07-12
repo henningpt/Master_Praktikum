@@ -58,6 +58,11 @@
   separate-uncertainty=true,   % immer Fehler mit \pm
   per-mode=symbol-or-fraction, % / in inline math, fraction in display math
 ]{siunitx}
+\DeclareSIUnit{\belmilliwatt}{Bm}
+\DeclareSIUnit{\dBm}{\deci\belmilliwatt}
+
+
+
 
 % chemische Formeln
 \usepackage[
@@ -102,6 +107,10 @@
 
 % schöne Tabellen
 \usepackage{booktabs}
+
+% kein Einrückung bei Zeilenumbruch
+\setlength{\parindent}{0pt}
+
 
 % Verbesserungen am Schriftbild
 \usepackage{microtype}

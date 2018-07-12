@@ -72,7 +72,7 @@ Aus Abbildung \ref{fig:diode_zeit} folgt der Abstand $\Delta U$ zwischen dem max
 \begin{align}
 \Delta U &= U_{\text{T}}(1+m)-U_{\text{T}}(1-m) =2U_{\text{T}}m = \SI{0.27(2)}{\volt}
 \intertext{und somit für den Modulationsgrad}
-    m &=  \frac{\Delta U }{2U_{\text{T}}}=  \SI{0.11(1)}{}
+    m &=  \frac{\Delta U }{2U_{\text{T}}}=  \num{0.11(1)} \label{eqn:m_oszi}
 \end{align}
 
 \begin{figure}
@@ -88,8 +88,17 @@ sowie
 die auftetenden Mischterme durch die nicht linerare
 Kennlinie
 der Diode deutlich.
-Ebenfalls wird der Modulationsgrad $m$ bestimmt.
-U= \sqrt P R
+Ebenfalls wird der Modulationsgrad $m$ aus den Frequenzspektrum bestimmt.
+Für die Spannung der Peaks bei den Frequenzen $\omega_{\text{T}}-\omega_{\text{M}}$ ,$\omega_{\text{T}}$  und $\omega_{\text{T}}+\omega_{\text{M}}$
+gilt der in Abbildung \ref{fig:2} dargestellte
+Zusammenhang.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\textwidth]{figures/frequenzspektrum.PNG}
+  \caption{Frequenzspektrum für eine amplitudenmoduliertes Signal.}
+  \label{fig:2}
+\end{figure}
 Die Abbildung \ref{fig:diode_frequenz_gross}
 für einene größeren Frequenzbereich
 verdeutlich dies ebenfalls, da Terme bis
@@ -106,11 +115,44 @@ Schwingung einer Diode im Frequenzraum mit Oberschwingungen.}
 
 
 
+Aus der Abbildung \ref{fig:diode_frequenz_klein} können die Leistungen
+\begin{align}
+  % \si{\deci\belmilliwatt}
+  % \si{\dBm}
+P_{f_{\text{T}}-f_{\text{M}}}&=\SI{-9.53(5)}{\deci\belmilliwatt}\\
+P_{f_{\text{T}}}&=\SI{-30.37(5)}{\deci\belmilliwatt}\\
+P_{f_{\text{T}}+f_{\text{M}}}&=\SI{-30.38(5)}{\deci\belmilliwatt}
+\end{align}
+der entsprechenden Frequenzen entnommen werden.
+Für die Spannungen ergibt sich dann nach
+\begin{align}
+  U= \sqrt{P R}
+\end{align}
+die folgenden Werte
+\begin{align}
+   \hat{U}_{f_{\text{T}}-f_{\text{M}}}&=\sqrt{R}\SI{0.957(6)}{\milli\volt\per\sqrt{\ohm}}\\
+  \hat{U}_{f_{\text{T}}}&=\sqrt{R}\SI{10.56(6)}{\milli\volt\per\sqrt{\ohm}}\\
+  \hat{U}_{f_{\text{T}}+f_{\text{M}}}&=\sqrt{R}\SI{0.958(6)}{\milli\volt\per\sqrt{\ohm}}.
+\end{align}
+Die beiden äußeren Spannungen werden gemittelt
+\begin{align}
+  \overline{\hat{U}_{f_{\text{T}}\pm f_{\text{M}}}} = \sqrt{R}\SI{0.9577(4)}{\milli\volt\per\sqrt{\ohm}}
+\end{align}
+und für
+dem Modulationsgrad $m$ ergibt sich
+\begin{align}
+m=\frac{2\overline{\hat{U}_{f_{\text{T}}\pm f_{\text{M}}}}}{U_{f_{\text{T}}}} = \num{0.182(1)}. \label{eqn:m_leistung}
+\end{align}
+Aus den beiden bestimmten Modulationsgraden aus \eqref{eqn:m_oszi} und \eqref{eqn:m_leistung}ergibt sich der Mittelwert
+\begin{align}
+\overline{m}=\num{0.143(2)}.
+\end{align}
+
 \FloatBarrier
 \subsection{(d) Erzeugen einer frequenzmodulierten Schwingung}
 \label{subsec:auswertung_d}
 Die Abbildung \ref{fig:freq_zeit} enthält eine zeitabhänige frequenzmodulierte
-Schwingung, die durch die Schaltung aus Abbildung \ref{fig:Ringmodulator_frequenz}
+Schwingung, die durch die Schaltung aus Abbildung \ref{fig:6}
 gebildet wird.
 Da für die  $\SI{90}{\degree}$-Phasenverschiebung ein Laufzeitkabel mit der
 Zeit T=$\SI{250}{\nano\second}$ verwendet wird, muss somit die

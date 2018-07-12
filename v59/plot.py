@@ -23,15 +23,29 @@ print("modulationsgerad bei aufgabenteil aus oszi c)", m_c)
 def dBm_in_Watt(x):
     return 10**(x/10)*1e-3
 
-P_mitte = -9.528#in dBm
-P_links  = -30.38
-P_rechts = -30.37
+P_mitte = unp.uarray(-9.53,0.05)#in dBm
+P_links  = unp.uarray(-30.38,0.05)
+P_rechts = unp.uarray(-30.37,0.05)
 
 P_links  =dBm_in_Watt(P_links) #in dBm
 P_rechts = dBm_in_Watt(P_rechts)
 P_mitte = dBm_in_Watt(P_mitte)
 
-print("Spannung in sqrt(R)", np.sqrt(P_links),np.sqrt(P_mitte),np.sqrt(P_rechts) )
+
+U_mittel_RL= unp.uarray(np.mean([unp.nominal_values((P_rechts)**(1/2)),unp.nominal_values((P_links)**(1/2))]),1/np.sqrt(2)*np.std([unp.nominal_values((P_rechts**(1/2))),unp.nominal_values((P_links)**(1/2))]))
+U_mitte = (P_mitte)**(1/2)
+
+print("Spannung in sqrt(R)", (P_links)**(1/2),(P_mitte)**(1/2),(P_rechts)**(1/2))
+print("\nMittel_wert von links und Rechts", U_mittel_RL )
+print("\nU_mitte=", U_mitte)
+m_c_leistung = 2* U_mittel_RL /U_mitte
+print("\nModulationsgrad m aus Leistung", m_c_leistung)
+
+
+modulationsgerad_mittel =   unp.uarray(np.mean([unp.nominal_values(m_c_leistung),unp.nominal_values(m_c)]),1/np.sqrt(2)*np.std([unp.nominal_values(m_c_leistung),unp.nominal_values(m_c)]))
+print("\n test::::: mittelwert von beiden modulationsgeraden" ,(m_c_leistung+m_c)/2 )
+print("\n mittelwert von beiden modulationsgeraden" ,modulationsgerad_mittel)
+
 
 # (d)
 #frequenzmodulierte schwingung
