@@ -77,6 +77,17 @@
 \floatplacement{figure}{htbp}
 \floatplacement{table}{htbp}
 
+
+% ~ Floatbarrier vor subsec ende
+\makeatletter
+\AtBeginDocument{%
+  \expandafter\renewcommand\expandafter\subsection\expandafter{%
+    \expandafter\@fb@secFB\subsection
+  }%
+}
+\makeatother
+
+
 % Floats innerhalb einer Section halten
 \usepackage[
   section, % Floats innerhalb der Section halten
