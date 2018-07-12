@@ -11,6 +11,7 @@ erzeugt wird,
 in Abhänigkeit der Zeit dargestellt.
 Die Modulationsfrequenz beträgt $\SI{100(5)}{\kilo\hertz}$
 und die Trägerfrequenz $\SI{1.00(5)}{\mega\hertz}$.
+
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{osci/amp_ringmodulator.png}
@@ -52,7 +53,11 @@ Die Abbildungen \ref{fig:diode_zeit} und \ref{fig:diode_frequenz_klein}
 enthälten
 sowohl das zeitabhänige Signal und das Signal im Frequenzraum.
 Als Frequenzen werden $f_{\text{T}}=\SI{2.50(5)}{\mega\hertz}$ und
-$f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$ verwendet.
+$f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$ mit den Amplituden
+$U_{\text{T}}=\SI{1.30(5)}{\volt}$ und
+$U_{\text{M}}=\SI{0.25(5)}{\volt}$.
+verwendet.
+
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{osci/amp_mod_diode.png}
@@ -63,9 +68,9 @@ $f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$ verwendet.
 
 Aus Abbildung \ref{fig:diode_zeit} folgt der Abstand $\Delta U$ zwischen dem maximum und minimum Einhüllenden
 \begin{align}
-  \Delta U &= U_{\text{T}}(1+m)-U_{\text{T}}(1-m) =2*U_{\text{T}} = \SI{0.27(2)}{\volt}
+\Delta U &= U_{\text{T}}(1+m)-U_{\text{T}}(1-m) =2U_{\text{T}}m = \SI{0.27(2)}{\volt}
 \intertext{und somit für den Modulationsgrad}
-    m &= ?? .
+    m &=  \frac{\Delta U }{2U_{\text{T}}}=  \SI{0.11(1)}{}
 \end{align}
 
 \begin{figure}
@@ -81,11 +86,13 @@ sowie
 die auftetenden Mischterme durch die nicht linerare
 Kennlinie
 der Diode deutlich.
+Ebenfalls wird der Modulationsgrad $m$ bestimmt.
+U= \sqrt P R
 Die Abbildung \ref{fig:diode_frequenz_gross}
 für einene größeren Frequenzbereich
 verdeutlich dies ebenfalls, da Terme bis
 zu $\mathcal{O}\left(U^4\right)$
-also Frequenzen mit beispielsweise $4U_{\text{T}}$
+also Frequenzen mit beispielsweise $4f_{\text{T}}$
 deutlich sichtbar sind.
 \begin{figure}
   \centering
@@ -105,7 +112,7 @@ Schwingung, die durch die Schaltung aus Abbildung \ref{fig:15}
 gebildet wird.
 Da für die  $\SI{90}{\degree}$-Phasenverschiebung ein Laufzeitkabel mit der
 Zeit T=$\SI{250}{\nano\second}$ verwendet wird, muss somit die
-Trägerfrequenz gerade genau $f_{\text{T}}=\SI{1.00(5)}{\mega\hertz}$
+Trägerfrequenz gerade genau $f_{\text{T}} = \SI{1.00(5)}{\mega\hertz}$
 betragen, um eine Phasenverschiebung um $\SI{90}{\degree}$
 zu erzeugen. Als Modulationsfrequenz wird
 $f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$ verwendet.
@@ -223,14 +230,18 @@ und Modulationsfrequenz $f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$.
 \subsubsection{(g) Demodulation einer amplitudenmodulierten Schwingung
 mit Hilfe einer Gleichrichterdiode}
 \label{subsubsec:auswertung_g}
-Die Abbildung\ref{fig:diode_punkt_A} enthält die Spannung $U_{\text{A}}$ am Punkt A aus der
-Schaltung \ref{fig:8}
+Die Abbildung \ref{fig:diode_punkt_A} enthält
+die Spannung $U_{\text{A}}$ am Punkt A aus der
+Schaltung \ref{fig:8} und die Abbildung \ref{fig:diode_demod_amp}
+zeigt das durch den Tiefpass gefiltert demodulierte Signal.
+Die Trägerfrequenz beträgt wieder $f_{\text{T}}=\SI{1.00(5)}{\mega\hertz}$
+und Modulationsfrequenz $f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$.
 
 
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{osci/amp_demod_diode_A.png}
-  \caption{Signal $U_{\text{A}}$ am Punkt A bei der Demodulation von amplitudenmoduliertem Signal mit Hilfe einer
+  \caption{Signal $U_{\text{A}}$ am Punkt A bei der Demodulation eines amplitudenmodulierten Signales mit Hilfe einer
   Diode und einem Tiefpass nach Schaltung \ref{fig:8}.}
   \label{fig:diode_punkt_A}
 \end{figure}
@@ -239,22 +250,41 @@ Schaltung \ref{fig:8}
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{osci/amp_demod_diode.png}
-  \caption{Demoduliertes Signal von einem amplitudenmoduliertem Signal mit Hilfe einer
+  \caption{Demoduliertes Signal eines amplitudenmodulierten Signales mit Hilfe einer
   Diode und einem Tiefpass nach Schaltung \ref{fig:8}.}
-  \label{fig:diode_demod_amp}
+\label{fig:diode_demod_amp}
 \end{figure}
 
-
+Zu beobachten ist, dass das demodulierte Signal eine doppelt so große Frequenz
+und eine zwei Großenordung kleinere Amplitude als das Ausgangssignal
+besitzt.
 
 \subsection{(h) Demoduolation einer frequenzmodulierten Schwingung
 mit Hilfe eines Flankendemodulators}
 \label{subsec:auswertung_h}
+Die Abbildung \ref{fig:freq_zu_amp}
+zeigt ein amplitudenmoduliertes Signal, das aus einem LC-Schwingkreis
+wie in Schaltung \ref{fig:11} und einem frequenzmodulierten Signal wie in Abbildung
+\ref{fig:freq_zeit} zu sehen, erzeugt wurde.
+Aufgrund des verwendeten LC-Schwingkreises, der eine Resonanzfrequenz $f_{res}< \SI{1}{\mega\hertz}$ besitzt,
+wird die abfallende Flanke der Resonanzkurve zur Umwandelung von
+frequenzmodulierten zu amplitudenmodulierten Signal genutzt,
+da die Trägerfrequenz
+aufgrund des Laufzeitkabel nur $f_{\text{T}}=\SI{1.00(5)}{\mega\hertz}$ betragen darf.
+Dies hat zu folge, dass eine Phase von $\SI{180}{\degree}$ zwischen demoduliertem und Ausgangssignal
+erwartet wird.
+Als Modulationsfrequenz dient wieder $f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$.
+
+Das so erzeugt amplitudenmodulierte Signal wird wie in Kapitel \ref{subsubsec:auswertung_g}
+mit einer Diode und einem Tiefpass demoduliert, zu sehen in Abbildung \ref{fig:demod_frequenz}.
+Jedoch ist die erwartete Phasenverschiebung nicht deutlich erkennbar.
+
 
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{osci/freq_demod_amp.png}
   \caption{Umwandelung eines Frequenzmodulierten Signales in ein Amplitudenmoduliertes
-Signal mit durch einen Schwingkreis nach Abbildung \ref{fig:11}.}
+Signal mit durch einen LC-Schwingkreis nach Abbildung \ref{fig:11}.}
 \label{fig:freq_zu_amp}
 \end{figure}
 
