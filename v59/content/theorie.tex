@@ -102,7 +102,7 @@ einer Frequenzmodulation.
 \end{figure}
 
 Wird nur der Fall eines
-niedrigens Frequenzhubes
+niedrigen Frequenzhubes
 betrachtet, kann die Gleichung
 \begin{align*}
 m \, \frac{\omega_{\text{T}}}{\omega_{\text{M}}} \ll 1
@@ -138,7 +138,7 @@ benötigt auf die im Folgenden näher eingegangen werden soll.
 Für die Amplitudenmodulation
 wird ein Gerät benötigt, das ein
 Produkt zweier Spannungen bildet.
-Bauteile mit einer nichtlinearen Kennlinie
+Bauteile mit einer nicht linearen Kennlinie
 erfüllen diese Bedingung wie zum Beispiel eine
 Diode.
 Somit lässt sich eine Modulatorschaltung
@@ -165,7 +165,7 @@ stellt ein
 erst gar nicht die unerwünschten Komponenten
 erzeugt.
 Ein \textit{Ringmodulator} besteht aus
-4 zu einem Ring geschaltenten Dioden,
+4 zu einem Ring geschalteten Dioden,
 wie in Abbildung
 \ref{fig:5} dargestellt.
 
@@ -182,7 +182,8 @@ tritt zwischen den Punkten $\alpha$ und $\beta$
 keine Spannung auf. Für eine Modulationsspannung
 $U_{\text{M}}\neq0$ folgt somit eine
 Spannung $U_{\text{R}}$ am Ausgang, die die
-Geichung
+Gleichung
+\FloatBarrier
 \begin{align}
   U_{\text{R}}(t) &= \gamma U_{\text{M}}(t)U_{\text{T}}(t)
 \intertext{erfüllt. Somit ergibt sich durch Einsetzten
@@ -229,12 +230,12 @@ auf \textbf{L} das Trägersignal, so erzeugt die Schaltung
 ein Signal mit den Frequenzen
 $\omega_{\text{M}}$, $2\omega_{\text{T}} - \omega_{\text{M}}$
 und $2\omega_{\text{T}} + \omega_{\text{M}}$.
-Um aus diesem Signal auschließlich $\omega_{\text{M}}$ zu gewinnen,
+Um aus diesem Signal ausschließlich $\omega_{\text{M}}$ zu gewinnen,
 werden die beiden übrigen Frequenzen, die üblicherweise deutlich größer sind,
 mit Hilfe eines Tiefpasses herausgefiltert.\\
 In Abbildung \ref{fig:7} ist eine solche Schaltung gezeigt,
 bei der der Ringmodulator zur Demodulation genutzt wird. Allerdings
-birgt diese Methode den Nachteil, dass die für die Demodulation genutze
+birgt diese Methode den Nachteil, dass die für die Demodulation genutzt
 Spannung keine Phasenverschiebung gegenüber der Trägerfrequenz des
 modulierten Signals besitzt.
 Um dies zu umgehen, kann eine in Abbildung \ref{fig:8} gezeigte
@@ -286,4 +287,11 @@ Modulationssignal gewonnen werden.
 \includegraphics[width=0.7\textwidth]{figures/flankenmodulator.PNG}
 \caption{Schaltbild eines Flankendemodulators.\cite{sample}}
 \label{fig:11}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{figures/resonanzkurve.PNG}
+\caption{Resonanzkurve des im Flankenmodulator verwendetetn Schwingkreises.\cite{sample}}
+\label{fig:12}
 \end{figure}
