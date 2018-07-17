@@ -245,6 +245,12 @@ M = 18.01528/1000 / con.N_A
 
 print("Radius über Molekuelargewicht=" ,(M/(rho*4 * np.sqrt(2)))**(1/3) )
 
+b = 31e-6
+
+print("Radius über Van der Waal kovolumen=" ,(3*b/(16*np.pi*con.N_A))**(1/3) )
+
+
+
 print("\n\nt2 rel abweichung: ", abs(t2_a - t2_lit) / t2_lit)
 
 print("\n\nt1 rel abweichung: ", abs(-1.0 / t1uparams[0] - t1_lit) / t1_lit)

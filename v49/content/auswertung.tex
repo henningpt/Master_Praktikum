@@ -2,12 +2,24 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
+Zur Optimierung des FID werden folgende gewählt:
+\begin{align}
+&\text{Phase:} & \phi&= \SI{111}{\degree}\\
+&\text{Pulslänge:} & t_{\SI{90}{\degree}}& =  \SI{4.74}{\micro\second}\\
+&\text{Resonanzfrequenz:} & f_{\text{res}}&= \SI{21.71575}{\mega\hertz}\\
+&\text{Shim-Parameter:} & x&=\num{-2.02} & y&=\num{-5.24} & z&=\num{3.68} & z^2&=\num{-2.74}
+\end{align}
+
 \subsection{Bestimmung der Relaxationszeit $T_{2}$ mit der Meiboom-Gill-Methode}
 \label{subsec:T2}
-
 Um die Relaxationszeit $T_{2}$ zu bestimmen, werden die Signale, der mit dem Oszilloskop aufgenommenen
 Burst-Sequenz der Meiboom-Gill Methode(siehe Abbildung \ref{fig:meiboomgill} und \ref{fig:t2_gesamt}) gegen die Zeit aufgetragen.
-Um die $50$ Echoamplituden zu finden, werden ganzzahlige Vielfache von $\tau = \SI{20}{\milli\second}$ multipliziert mit $4$
+Zusätzlich wird eine Burst-Sequenz der Carr-Pucell Methode(siehe Abbildung \ref{fig:carrpucell}) aufgenommen, in der die
+Problematik eines zu kurzen/langen $\SI{180}{\degree}$-Pulses deutlich wird, da
+sich die Fehler bei der Carr-Pucell Mehtode aufsummieren.
+Die Amplitude fällt deshalb schneller als bei der Meibomm-Gill Methode
+ab und liefert ein zu kleines $T_2$.
+Um die $50$ Echoamplituden aus der Meilbomm-Gill-Sequenz zu finden, werden ganzzahlige Vielfache von $\tau = \SI{20}{\milli\second}$ multipliziert mit $4$
 auf die Zeit, bei der die höchste Spannung gemessen wird, addiert und der jeweils nächstgelegene Messwert innerhalb eines beschränkten Intervalls ausgewählt.
 In Tabelle \ref{tab:t2_fitwerte}
 sind die auf diese Weise gefundenen Echos angegeben.
@@ -44,6 +56,14 @@ gezeigt.\\
   \caption{Messwerte für $T_{2}$ Messung mit Meiboom-Gill-Methode(Bild am Oszilloskop).}
   \label{fig:meiboomgill}
 \end{figure}
+
+\begin{figure}[hhh]
+  \centering
+  \includegraphics[width=0.7\textwidth]{cp.png}
+  \caption{Messwerte für $T_{2}$ Messung mit Carr-Purcell-Methode(Bild am Oszilloskop).}
+  \label{fig:carrpucell}
+\end{figure}
+
 
 Der Literaturwert\cite{litwerte} für die Relaxationszeit $T_{2}$ von bidestilliertem Wasser
 beträgt
@@ -147,8 +167,8 @@ Als Fitparameter werden der Vorfaktor $a$ sowie die Diffusionskonstante gewählt
   \label{eqn:gradient}
   G = \frac{8.8}{d \, \gamma \, t_{\frac{1}{2}}}
 \end{align}
-gewonnen. Dabei bezeichnet $d$ den Probendurchmesser, von $\SI{4.4}{\milli\meter}$, \gamma das gyromagnetische Verhältnis
-von Protonen in Wasser und $t_{\frac{1}{2}}$ die Halbwertszeit.
+gewonnen. Dabei bezeichnet $d$ den Probendurchmesser, von $\SI{4.4}{\milli\meter}$, $\gamma$ das gyromagnetische Verhältnis
+von Protonen in Wasser und $t_{\frac{1}{2}}$ die Halbwertszeit des Echos.
 Wird der Ausdruck \eqref{eqn:gradient} in Gleichung \eqref{eqn:32} eingesetzt, ist leicht zu erkennen, dass $\gamma$ wegfällt und nur noch $d$ und $t_{\frac{1}{2}}$ eingesetzt werden müssen.
 Die Halbwertszeit wird anhand der Messwerte abgeschätzt, indem die Zeit gewählt wird, deren zugehöriges Signal am ehesten
 gleich der Hälfte des maximalen Signals ist.
@@ -169,9 +189,10 @@ Als Regressionsparameter ergeben sich
   D &= \SI{3.8325+-0.1131 e-5}{\meter\squared\per\second} \, .
 \end{align*}
 
-Der Literaturwert\cite{litwerte} für die Diffusionskonstante ist
+Der Literaturwert \cite{wang1965self} für die Diffusionskonstante bei der Temperatur
+$\SI{25}{\degree\celsius}$ ist
 \begin{align*}
-  D^\text{lit.} = \SI{2.78+-0.035 e-9}{\meter\squared\per\second} \, ,
+  D^\text{lit.} = \SI{2.57(2) e-9}{\meter\squared\per\second} \, ,
 \end{align*}
 sodass die relative Abweichung $f$ des experimentell bestimmten Werts
 vom Theoriewert
@@ -227,7 +248,7 @@ Für die Viskosität ergibt sich auf diese Weise
 \end{align*}
 
 % weglassen?
-Der Literaturwert\cite{litvisk} für die Viskosität ist
+Der Literaturwert\cite{litvisk} für die Viskosität bei einer Temperatur von $\SI{25}{\degree\celsius}$ ist
 \begin{align*}
   \eta^\text{lit.} = \SI{0.891e-3}{\meter\squared\per\second} \, ,
 \end{align*}
@@ -241,7 +262,9 @@ vom Theoriewert
 \FloatBarrier
 \subsubsection{Bestimmung des Molekülradius}
 \label{subsubsec:molekuelradius}
-Mit bekanntem Diffusionskoeffizienten $D$ und Viskosität $\eta$ kann gemäß
+Mit bekanntem Diffusionskoeffizienten $D$ und Viskosität $\eta$
+und bei einer Temperatur $T=\SI{25}{\degree\celsius}$
+kann gemäß
 der Stokesschen Formel folgender Zusammenhang für den Molekülradius $R$ hergeleitet werden
 \begin{align}
   \label{eqn:stokes}
@@ -251,17 +274,32 @@ Mit den vorher bestimmten Werten ergibt sich für den Molekülradius
 \begin{align*}
   R = \SI{7.74+-0.23}{\femto\meter} \, .
 \end{align*}
-Dieser Wert soll nun verglichen werden, mit dem Molekülradius, der ermittelt werden kann, indem angenommen wird, dass sich
-Kugelförmige Wassermoleküle in einer hexagonal dichtesten Packung anordnen.
-Für diese Annahme ergibt sich ein Radius von
+Dieser Wert soll nun verglichen werden, mit einem Molekülradius, der ermittelt werden kann,
+indem angenommen wird, dass sich
+Kugelförmige Wassermoleküle in einer hexagonal dichtesten Packung anordnen
+und einem Molekülradius, der sich durch die Annahme ergibt, dass sich das Wasser als eines van-der-Waals-Gas
+beschreiben lässt.
+Für die erste Annahme ergibt sich ein Radius von
 \begin{align*}
-  R = \sqrt{\frac{m}{4\sqrt{2} \, \rho}} \, .
+  R_{\text{hexagonal}} = \sqrt{\frac{m}{4\sqrt{2} \, \rho}} \, .
 \end{align*}
-Wobei $\rho$ die Dichte von Wasser bei Raumtemperatur und $m$ das Atomgewicht von Wasser bezeichnet.
+Wobei $\rho=\SI{997.2995}{\kilo\gram\per\meter\tothe{3}}$  \cite{litdicht} die Dichte von Wasser bei Raumtemperatur $T=\SI{24}{\degree\celsius}$
+und $m=\SI{29.915e-27}{\kilo\gram}$ \cite{litatomgewicht} das Atomgewicht von Wasser bezeichnet.
 Mit diesem Zusammenhang ergibt sich
 \begin{align*}
-  R = \SI{1.744}{\angstrom}
+  R_{\text{hexagonal}} = \SI{1.744}{\angstrom}.
 \end{align*}
+Für die zweite Annnahme ergibt sich ein Radius von
+\begin{align}
+R_{\text{van-der-Waal}}= \left(\frac{3b}{16\pi N_A}\right)^{\frac{1}{3}}
+\end{align}
+, da das Kovolumen $b$ ungefähr das
+vierfache des Eigenvolumen eines Moleküle ist.
+Für Wasser mit $b=\SI{31e-6}{\meter\tothe{3}\per\mol}$ \cite{litwaal} ergibt sich ein Radius von
+\begin{align}
+R_{\text{van-der-Waal}}= \SI{1.454}{\angstrom}.
+\end{align}
+
 \subsubsection{Bestimmung der Relaxationszeit $T_{1}$}
 \label{subsubsec:T1}
 Zur Bestimmung der Relaxationszeit $T_{1}$ werden die in Tabelle \ref{tab:t1} angegebenen
