@@ -31,14 +31,14 @@ durch die Frequenz der Modulationsschwingung
 $U_{\text{M}}(t)$.
 Ausgehend von den Darstellungen der Signale
 \begin{align}
-U_{\text{T}} &= \hat{U}_{\text{T}} \, \cos \omega_{\text{T}} \, t \\
-U_{\text{M}} &= \hat{U}_{\text{M}} \, \cos \omega_{\text{M}} \, t
+U_{\text{T}} &= \hat{U}_{\text{T}} \, \cos (\omega_{\text{T}}) \, t& &
+U_{\text{M}} &= \hat{U}_{\text{M}} \, \cos (\omega_{\text{M}}) \, t
 \end{align}
 mit den jeweiligen Kreisfrequenzen $\omega_{\text{T}}$ und $\omega_{\text{M}}$,
 ergibt sich für das aus der Amplitudenmodulation resultierende Signal
 \begin{align}
 \label{eqn:1}
-U_{3}(t) = \hat{U}_{\text{T}} \, \left( 1 + m \, \cos \omega_{\text{M}} t \right) \, .
+U_{3}(t) = \hat{U}_{\text{T}} \, \left( 1 + m \, \cos(\omega_{\text{M}} t) \right) \, .
 \end{align}
 
 Dabei ist $m$ der zu $U_{\text{M}}$ proportionale Modulationsgrad.
@@ -50,9 +50,9 @@ Dieses lässt sich so umformen, dass die auftretenden Frequenzen direkt
 ablesbar sind
 \begin{align}
 \label{eqn:2}
-U_{\text{T}} &= \hat{U}_{\text{T}} \, \left( \cos \omega_{\text{T}} t \, + \, \frac{m}{2} \cos t\left( \omega_{\text{T}} + \omega_{\text{T}} \right) \, + \, \frac{m}{2} m \cos t \left( \omega_{\text{M}} - \omega_{\text{T}} \right)\right) \, .
+U_{\text{T}} &= \hat{U}_{\text{T}} \, \left( \cos(\omega_{\text{T}} t) \, + \, \frac{m}{2} \cos\left(\left( \omega_{\text{T}} + \omega_{\text{T}} \right)t\right) \, + \, \frac{m}{2} m \cos  \left( \left( \omega_{\text{M}} - \omega_{\text{T}} \right)t\right)\right) \, .
 \end{align}
-Im Gegensatz zu den beiden Frequenzen $\omega_{\text{T}} + \omega_{\text{M}}$ und $\omega_{\text{T}} - \omega_{\text{M}}$, tritt die Frequenz $\omega_{\text{T}}$
+Im Gegensatz zu den beiden Frequenzen $\omega_{\text{T}} + \omega_{\text{M}}$ und $\omega_{\text{T}} - \omega_{\text{M}}$ tritt die Frequenz $\omega_{\text{T}}$
 unabhängig von $U_{\text{M}}$ auf und spielt somit
 für die Informationsübertragung keine Rolle. Daher soll $\omega_{\text{T}}$
 aus Gründen der Energieeffizienz herausgefiltert werden.
@@ -80,9 +80,9 @@ von dem Modulationssignal und die
 Amplitude der Schwingung bleibt konstant.
 Die Schwingung nimmt dann folgende Form an
 \begin{align}
-U(t) = \hat{U} \sin\left(\omega_{\text{T}} t + m\frac{\omega_{\text{T}}}{\omega_{\text{M}}} \cos\omega_{\text{M}}t \right),\label{eqn:3}
+U(t) = \hat{U} \sin\left(\omega_{\text{T}} t + m\frac{\omega_{\text{T}}}{\omega_{\text{M}}} \cos\left(\omega_{\text{M}}t\right) \right),\label{eqn:3}
 \intertext{mit der Momentanfrequenz}
-f(t)=\frac{\omega_{\text{T}}}{2\pi} \left(1-m\sin\omega_{\text{M}}t\right)\label{eqn:f}
+f(t)=\frac{\omega_{\text{T}}}{2\pi} \left(1-m\sin\left(\omega_{\text{M}}t\right)\right)\label{eqn:f}
 \end{align}
 wobei $m$ dem Modulationsgrad
 entspricht.
@@ -101,17 +101,17 @@ einer Frequenzmodulation.
 \label{fig:frequenzmodulation}
 \end{figure}
 
-Wird nur der Fall eines
-niedrigen Frequenzhubes
-betrachtet, kann die Gleichung
+Wird nur der Fall einer
+Schmalband-Frequenzmodulation, bei der gilt
 \begin{align*}
-m \, \frac{\omega_{\text{T}}}{\omega_{\text{M}}} \ll 1
+m \, \frac{\omega_{\text{T}}}{\omega_{\text{M}}} \ll 1,
 \end{align*}
+betrachtet, kann die Gleichung
 \eqref{eqn:3} durch Nährungen
 in die Form
 \begin{align}
-\hat{U}(t)=\hat{U}\left(\sin \omega t + \frac12 m\frac{\omega_{\text{T}}}{\omega_{\text{M}}}\cos t(\omega_{\text{T}}+\omega_{\text{M}})
-+ \frac12 m\frac{\omega_{\text{T}}}{\omega_{\text{M}}}\cos t(\omega_{\text{T}}-\omega_{\text{M}}) \right)
+\hat{U}(t)=\hat{U}\left(\sin( \omega t) + \frac12 m\frac{\omega_{\text{T}}}{\omega_{\text{M}}}\cos \left((\omega_{\text{T}}+\omega_{\text{M}})t\right)
++ \frac12 m\frac{\omega_{\text{T}}}{\omega_{\text{M}}}\cos\left((\omega_{\text{T}}-\omega_{\text{M}})t \right)\right)
 \end{align}
 gebracht werden.
 Daraus kann entnommen werden, dass
@@ -129,7 +129,7 @@ um $\sfrac{\pi}{2}$ zur Trägerschwingung verschoben.
 Um die im Kapitel \ref{subsec:modulationsverfahren}
 beschriebenen Modulationsverfahren so wie Demodulationsverfahren zu realisieren, werden
 bestimmte elektronische Schaltungen
-benötigt auf die im Folgenden näher eingegangen werden soll.
+benötigt, auf die im Folgenden näher eingegangen werden soll.
 
 \subsubsection{Modulationsschaltungen}
 \label{subsubsec:modulationsschaltungen}
@@ -139,7 +139,7 @@ Für die Amplitudenmodulation
 wird ein Gerät benötigt, das ein
 Produkt zweier Spannungen bildet.
 Bauteile mit einer nicht linearen Kennlinie
-erfüllen diese Bedingung wie zum Beispiel eine
+erfüllen diese Bedingung, wie zum Beispiel eine
 Diode.
 Somit lässt sich eine Modulatorschaltung
 wie in Abbildung \ref{fig:diode}
@@ -151,8 +151,8 @@ mit einer Diode realisieren.
 \label{fig:diode}
 \end{figure}
 Über die Reihenentwicklung der
-Diodenkennlinie ergibt der gewünschte
-Term $U_{\text{T}}U_{\text{M}}$ jedoch
+Diodenkennlinie ergibt sich der gewünschte
+Term $U_{\text{T}}U_{\text{M}}$, jedoch
 treten dabei weitere störende Terme
 auf wie z.B. $U_{\text{M}}, U_{\text{M}}^2$ und $U_{\text{T}}^2$.
 Da diese normalerweise Frequenzen
@@ -165,7 +165,7 @@ stellt ein
 erst gar nicht die unerwünschten Komponenten
 erzeugt.
 Ein \textit{Ringmodulator} besteht aus
-4 zu einem Ring geschalteten Dioden,
+vier zu einem Ring geschalteten Dioden,
 wie in Abbildung
 \ref{fig:5} dargestellt.
 
@@ -177,7 +177,7 @@ wie in Abbildung
 \end{figure}
 
 Für übereinstimmende elektrische Eigenschaften
-der 4 Dioden und einer Modulationsspannung $U_{\text{M}}=0$
+der vier Dioden und einer Modulationsspannung $U_{\text{M}}=0$
 tritt zwischen den Punkten $\alpha$ und $\beta$
 keine Spannung auf. Für eine Modulationsspannung
 $U_{\text{M}}\neq0$ folgt somit eine
@@ -188,10 +188,13 @@ Gleichung
   U_{\text{R}}(t) &= \gamma U_{\text{M}}(t)U_{\text{T}}(t)
 \intertext{erfüllt. Somit ergibt sich durch Einsetzten
 der Modulation- und Trägerspannung}
-  U_{\text{T}}(t) &=\hat{U}_{\text{T}}\cos\omega_{\text{T}}t\\
-  U_{\text{M}}(t) &= \hat{U}_{\text{M}}\cos(\omega_{\text{M}}t+\phi)
-\intertext{eine Ausgangsspannung }
-U_{\text{R}}(t) &=\gamma \hat{U}_{\text{T}} \hat{U}_{\text{M}}\frac{1}{2}\cos\left((\omega_{\text{T}}+\omega_{\text{M}})t+\phi\right) + \gamma \hat{U}_{\text{T}} \hat{U}_{\text{M}}\frac{1}{2}\cos\left((\omega_{\text{T}}-\omega_{\text{M}})t-\phi\right)
+  U_{\text{T}}(t) =\hat{U}_{\text{T}}\cos\omega_{\text{T}}t& &
+  U_{\text{M}}(t) = \hat{U}_{\text{M}}\cos(\omega_{\text{M}}t+\phi)
+  \end{align}
+
+eine Ausgangsspannung
+\begin{align}
+U_{\text{R}}(t) =\gamma \hat{U}_{\text{T}} \hat{U}_{\text{M}}\frac{1}{2}\cos\left((\omega_{\text{T}}+\omega_{\text{M}})t+\phi\right) + \gamma \hat{U}_{\text{T}} \hat{U}_{\text{M}}\frac{1}{2}\cos\left((\omega_{\text{T}}-\omega_{\text{M}})t-\phi\right)
 \end{align}
 ohne Trägerabstrahlung.
 
@@ -226,7 +229,8 @@ Dies geschieht mit einem Demodulator.\\
 Als Demodulator kann der in Kapitel \ref{subsubsec:modulationsschaltungen}
 vorgestellte \textit{Ringmodulator} genutzt werden.
 Dazu wird auf den Eingang \textbf{R} das modulierte Signal und
-auf \textbf{L} das Trägersignal, so erzeugt die Schaltung
+auf \textbf{L} das Trägersignal gegeben.
+Am Ausgang \textbf{X} ergibt sich somit
 ein Signal mit den Frequenzen
 $\omega_{\text{M}}$, $2\omega_{\text{T}} - \omega_{\text{M}}$
 und $2\omega_{\text{T}} + \omega_{\text{M}}$.
@@ -235,12 +239,15 @@ werden die beiden übrigen Frequenzen, die üblicherweise deutlich größer sind
 mit Hilfe eines Tiefpasses herausgefiltert.\\
 In Abbildung \ref{fig:7} ist eine solche Schaltung gezeigt,
 bei der der Ringmodulator zur Demodulation genutzt wird. Allerdings
-birgt diese Methode den Nachteil, dass die für die Demodulation genutzt
+verlangt diese Methode, dass die für die Demodulation genutzt
 Spannung keine Phasenverschiebung gegenüber der Trägerfrequenz des
-modulierten Signals besitzt.
+modulierten Signals besitzen darf. Dies ist ein Problem, was die Umsetztung dieser
+Schaltung in
+der Praxis erschwert.
 Um dies zu umgehen, kann eine in Abbildung \ref{fig:8} gezeigte
 Schaltung verwendet werden. In dieser wird eine Gleichrichter-Diode verwendet,
-die dafür sorgt, dass keine negativen Spannungen mehr auftreten.
+die dafür sorgt, dass keine negativen Spannungen mehr auftreten und
+ein Tiefpass, der die hohen Frequenzen heraus filtert.
 Es ergibt sich dann der in Abbildung \ref{fig:gleichgerichtet}
 skizzierte Spannungsverlauf.
 
@@ -250,7 +257,7 @@ skizzierte Spannungsverlauf.
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{figures/demodulator.PNG}
-\caption{Schaltbild zur Demodulation eines amplitudenmodulierten Signals.\cite{sample}}
+\caption{Schaltbild zur Demodulation eines amplitudenmodulierten Signals mit Hilfe eines Ringmodulators.\cite{sample}}
 \label{fig:7}
 \end{figure}
 
@@ -264,7 +271,8 @@ skizzierte Spannungsverlauf.
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{figures/spannung_diode.PNG}
-\caption{Spannungsverlauf nach Gleichrichten durch Diode.\cite{sample}}
+\caption{Spannungsverlauf nach Gleichrichten durch Diode in schwarz
+und der Spannungsverlauf des demodulierten Signals nach der Filterung durch den Tiefpass in rot.\cite{sample}}
 \label{fig:gleichgerichtet}
 \end{figure}
 
@@ -276,8 +284,8 @@ Um ein frequenzmoduliertes Signal zu demodulieren, kann ein
 \textit{Flankendemodulator} genutzt werden.
 Eine schematische Darstellung eines solchen ist in Abbildung \ref{fig:11}
 gegeben. Für die Demodulation wird der Schwingkreis so eingestellt, dass
-die steile Flanke der Resonanzkurve, $\omega_{\text{T}}$ beinhaltet.
-Da sich die Frequenz der modulierten Schwingung gemäß dem Modulationssignals
+die steile Flanke der Resonanzkurve $\omega_{\text{T}}$ beinhaltet, wie in Abbildung \ref{fig:12} zu sehen.
+Da sich die Frequenz der modulierten Schwingung gemäß des Modulationssignals
 verändert, erzeugt der Schwingkreis eine amplitudenmodulierte Spannung
 $U_{\text{C}}(\omega)$. Aus dieser kann dann wie zuvor beschrieben das
 Modulationssignal gewonnen werden.
