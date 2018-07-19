@@ -118,25 +118,32 @@ t2_a = -1 / auparams[1] # berechne T2 fuer meiboom-gill methode
 
 # function fuer diffusion
 
-def diffkoeff(t, a, D):
-    return(a * np.e**(-t / t2_a.nominal_value) * np.e**(- D * (8.8 / (dprob * float(d_tau[thalb(d_amp)])))**2 * t**3 / 12.0))
 
 def diffkoeff_allgemein(t, a, b):
-    return(a * np.e**(-t / unp.nominal_values(t2_lit)) * np.e**(-t**3 * b))
+    return(a * np.e**(-t / unp.nominal_values(t2_a)) * np.e**(-t**3 * b))
 
-
-# fit fuer Diffusionvalue
-dparams, dcov = cf(diffkoeff, d_tau, d_amp)
-duparams = unp.uarray(dparams, np.sqrt(np.diag(dcov)))
 
 dparams_allg, dcov_allg = cf(diffkoeff_allgemein, d_tau, d_amp)
 duparams_allg = unp.uarray(dparams_allg, np.sqrt(np.diag(dcov_allg)))
 
-print("\n\nNOMINALVALUES: ", duparams_allg[1])
 
 # berechne t_1/2 aus D_lit und fit parameter b
 t_halb_D = unp.sqrt( 8.8**2  * diff_lit  / (duparams_allg[1]  * 12.0 * dprob**2) )
 print("\n\nHALBWERTSZEIT AUS LITERATURWERT: ", t_halb_D)
+
+
+fit_faktor = 8.8 / (12.0 * dprob**2 * unp.nominal_values(t_halb_D)**2 )
+def diffkoeff(t, a, D):
+    return(a * np.e**(-t / t2_a.nominal_value) * np.e**(- D * t**3 * fit_faktor))
+
+
+# fit fuer Diffusionvalue
+dparams, dcov = cf(diffkoeff, d_tau, d_amp, p0=[0.75, 15e-9])
+duparams = unp.uarray(dparams, np.sqrt(np.diag(dcov)))
+
+
+print("\n\nNOMINALVALUES: ", duparams_allg[1])
+
 
 
 # fit fuer t1
@@ -197,7 +204,7 @@ plt.close()
 stplot(d_tau, d_amp, 0, 'diff_test')
 d_plot = np.linspace(min(d_tau), max(d_tau))
 plt.errorbar(d_plot, diffkoeff_allgemein(d_plot, *dparams_allg), label='Fit', fmt='-')
-plt.errorbar(d_plot, diffkoeff_allgemein(d_plot, 0.8, 10000), label='Fit besser', fmt='-')
+plt.errorbar(d_plot, diffkoeff(d_plot, 0.75, 15e-9), label='Fit besser', fmt='-')
 # plt.plot(d_plot, diffkoeff(d_plot, 0.79, 1e-9))
 plt.legend(loc='best')
 plt.savefig("build/t_u_plotdiff_test.pdf")
