@@ -3,30 +3,33 @@
 \label{sec:Auswertung}
 
 
-\subsection{(a) Erzeugen einer amplitudenmodulierten Schwingung mit
+\subsection{Erzeugen und Untersuchung einer amplitudenmodulierten Schwingung mit
 Hilfe eines Ringmodulators}
 \label{subsec:auswertung_a}
 In der Abbildung \ref{fig:ringamp_zeit} ist das Modulationssignal
 sowie die amplitudenmodulierte Schwingung, die mit einer Ringmodulatorschaltung \ref{fig:5}
 erzeugt wird,
 in Abhängigkeit der Zeit dargestellt.
-Die Modulationsfrequenz $f_{\text{M}}$ beträgt $\SI{100(5)}{\kilo\hertz}$
-und die Trägerfrequenz $f_{\text{T}}$ $\SI{1.00(5)}{\mega\hertz}$.
+Das Modulationssignal besitzt die Frequenz $f_{\text{M}}=\SI{100(5)}{\kilo\hertz}$ und die Amplitude
+$\hat{U}_{\text{M}}=\SI{7(1)}{\milli\volt}$
+und das Trägersignal die Frequenz
+$f_{\text{T}}=\SI{1.00(5)}{\mega\hertz}$ und die Amplitude
+$\hat{U}_{\text{T}}=\SI{0.9}{\volt}$.
 
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{osci/amp_ringmodulator.png}
   \caption{Amplitudenmodulierte
-  Schwingung eines Ringmodulators und das entsprechende Modulationssignal.}
+  Schwingung eines Ringmodulators in grün und das entsprechende Modulationssignal in gelb.}
   \label{fig:ringamp_zeit}
 \end{figure}
 
 \FloatBarrier
-\subsection{(b) Untersuchung des Frequenzspektrums einer
-amplitudenmodulierten Schwingung}
-\label{subsec:auswertung_b}
+% \subsection{(b) Untersuchung des Frequenzspektrums einer
+% amplitudenmodulierten Schwingung}
+% \label{subsec:auswertung_b}
 
-Die in Kapitel \ref{subsec:auswertung_a} erzeugete
+Die erzeugete
 amplitudenmodulierte Schwingung wird in Abbildung \ref{fig:ringamp_frequenz}
 im Frequenzraum dargestellt.
 \begin{figure}
@@ -39,15 +42,19 @@ im Frequenzraum dargestellt.
 Aus der Abbildung \ref{fig:ringamp_frequenz}
 können die beiden aus der Modulation resultierenden Frequenzen
 \begin{align}
-  f_{\text{T}}+f_{\text{M}}&=\SI{0.87(5)}{\mega\hertz} \\
+  f_{\text{T}}+f_{\text{M}}&=\SI{0.87(5)}{\mega\hertz}&
   f_{\text{T}}-f_{\text{M}}&=\SI{1.07(5)}{\mega\hertz}
+\intertext{bestimmt werden. Die bestimmten Werte liegen im Bereich der Fehlertoleranz der Theoriewerte     }
+\left(f_{\text{T}}+f_{\text{M}}\right)_{\text{theorie}} &=\SI{0.90(5)}{\mega\hertz}&
+\left(f_{\text{T}}-f_{\text{M}}\right)_{\text{theorie}} &=\SI{1.10(5)}{\mega\hertz}
 \end{align}
-bestimmt werden.
-Deutlich wird ebenfalls das keine Trägerabstrahlung vorliegt und
+
+
+Deutlich wird ebenfalls, dass keine Trägerabstrahlung vorliegt und
 keine Terme höherer Ordnung auftreten.
 
 \FloatBarrier
-\subsection{(c) Erzeugen einer amplitudenmodulierten Schwingung
+\subsection{Erzeugen einer amplitudenmodulierten Schwingung
 mit Hilfe einer Gleichrichterdiode}
 \label{subsec:auswertung_c}
 Anstelle des Ringmodulator wird eine Diode wie in Schaltung \ref{fig:14} zur Amplitudenmodulation verwendet.
@@ -84,11 +91,14 @@ Schwingung einer Diode im Frequenzraum.}
   \label{fig:diode_frequenz_klein}
 \end{figure}
 Aus der Abbildung \ref{fig:diode_frequenz_klein}
-wird die Trägerabstrahlung
+wird die Trägerabstrahlung also
+ein Peak bei der Frequenz $\SI{2.50(5)}{\mega\hertz}$
 sowie
 die auftretenden Mischterme durch die nicht lineare
 Kennlinie
-der Diode deutlich.
+der Diode deutlich,
+wie zum Beispiel Peaks von $\mathcal{O}\left(U^3\right)$ bei $f_{\text{T}}+f_{\text{M}}+f_{\text{M}} = \SI{2.70(5)}{\mega\hertz}$
+und $f_{\text{T}}-f_{\text{M}}-f_{\text{M}} = \SI{2.30(5)}{\mega\hertz}$.
 Die Abbildung \ref{fig:diode_frequenz_gross}
 für einen größeren Frequenzbereich
 verdeutlicht dies ebenfalls, da Terme bis
@@ -104,7 +114,7 @@ Schwingung einer Diode im Frequenzraum mit Oberschwingungen.}
 \end{figure}
 
 Ebenfalls wird der Modulationsgrad $m$ anhand des Frequenzspektrums bestimmt.
-Für die Spannung der Peaks bei den Frequenzen $\omega_{\text{T}}-\omega_{\text{M}}$ ,$\omega_{\text{T}}$  und $\omega_{\text{T}}+\omega_{\text{M}}$
+Für die Spannung der Peaks bei den Frequenzen $\omega_{\text{T}}-\omega_{\text{M}}$, $\omega_{\text{T}}$  und $\omega_{\text{T}}+\omega_{\text{M}}$
 gilt der in Abbildung \ref{fig:2} dargestellte
 Zusammenhang.
 
@@ -119,9 +129,9 @@ Aus der Abbildung \ref{fig:diode_frequenz_klein} können die Leistungen
 \begin{align}
   % \si{\deci\belmilliwatt}
   % \si{\dBm}
-P_{f_{\text{T}}-f_{\text{M}}}&=\SI{-9.53(5)}{\deci\belmilliwatt}\\
+P_{f_{\text{T}}-f_{\text{M}}}&=\SI{-9.53(5)}{\deci\belmilliwatt} \notag \\
 P_{f_{\text{T}}}&=\SI{-30.37(5)}{\deci\belmilliwatt}\\
-P_{f_{\text{T}}+f_{\text{M}}}&=\SI{-30.38(5)}{\deci\belmilliwatt}
+P_{f_{\text{T}}+f_{\text{M}}}&=\SI{-30.38(5)}{\deci\belmilliwatt}\notag
 \end{align}
 der entsprechenden Frequenzen entnommen werden.
 Für die Spannungen ergeben sich nach
@@ -130,9 +140,9 @@ Für die Spannungen ergeben sich nach
 \end{align}
 die folgenden Werte
 \begin{align}
-   \hat{U}_{f_{\text{T}}-f_{\text{M}}}&=\sqrt{R}\SI{0.957(6)}{\milli\volt\per\sqrt{\ohm}}\\
+   \hat{U}_{f_{\text{T}}-f_{\text{M}}}&=\sqrt{R}\SI{0.957(6)}{\milli\volt\per\sqrt{\ohm}}\notag\\
   \hat{U}_{f_{\text{T}}}&=\sqrt{R}\SI{10.56(6)}{\milli\volt\per\sqrt{\ohm}}\\
-  \hat{U}_{f_{\text{T}}+f_{\text{M}}}&=\sqrt{R}\SI{0.958(6)}{\milli\volt\per\sqrt{\ohm}}.
+  \hat{U}_{f_{\text{T}}+f_{\text{M}}}&=\sqrt{R}\SI{0.958(6)}{\milli\volt\per\sqrt{\ohm}}.\notag
 \end{align}
 Die beiden äußeren Spannungen werden gemittelt
 \begin{align}
@@ -143,13 +153,13 @@ dem Modulationsgrad $m$ ergibt sich
 \begin{align}
 m=\frac{2\overline{\hat{U}_{f_{\text{T}}\pm f_{\text{M}}}}}{U_{f_{\text{T}}}} = \num{0.182(1)}. \label{eqn:m_leistung}
 \end{align}
-Aus den beiden bestimmten Modulationsgraden aus \eqref{eqn:m_oszi} und \eqref{eqn:m_leistung}ergibt sich der Mittelwert
-\begin{align}
-\overline{m}=\num{0.143(2)}.
-\end{align}
+% Aus den beiden bestimmten Modulationsgraden aus \eqref{eqn:m_oszi} und \eqref{eqn:m_leistung}ergibt sich der Mittelwert
+% \begin{align}
+% \overline{m}=\num{0.143(2)}.
+% \end{align}
 
 \FloatBarrier
-\subsection{(d) Erzeugen einer frequenzmodulierten Schwingung}
+\subsection{Erzeugen einer frequenzmodulierten Schwingung}
 \label{subsec:auswertung_d}
 Die Abbildung \ref{fig:freq_zeit} enthält eine zeitabhängige frequenzmodulierte
 Schwingung, die durch die Schaltung aus Abbildung \ref{fig:6}
@@ -160,40 +170,43 @@ Trägerfrequenz gerade genau $f_{\text{T}} = \SI{1.00(5)}{\mega\hertz}$
 betragen, um eine Phasenverschiebung um $\SI{90}{\degree}$
 zu erzeugen. Als Modulationsfrequenz wird
 $f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$ verwendet.
-
+Die Amplituden betragen jeweils
+$\hat{U}_{\text{M}}=\SI{7(1)}{\milli\volt}$
+und
+$\hat{U}_{\text{T}}=\SI{0.9}{\volt}$.
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{osci/freq_mod.png}
-  \caption{Trägerspammung ($U_{\text{T}}$ gelb) und frequenzmodulierte
-  Schwingung($U_3$ grün), die nach dem Aufbau aus Abb.\ref{fig:6} erzeugt wird.}
+  \caption{Trägerspammung ($U_{\text{T}}$, gelb) und frequenzmodulierte
+  Schwingung($U_3$, grün), die nach dem Aufbau aus Abb.\ref{fig:6} erzeugt wird.}
   \label{fig:freq_zeit}
 \end{figure}
 Der Modulationsgrad $m$ wird
 bei der Frequenzmodulation
 aus der maximalen Verschmierung
-$\Delta t=t_2-t_1$ in x-Richtung des Signals bestimmt
-und der Modulationsfrequenz $f_{\text{M}}$.
+$\Delta t=t_2-t_1$ in x-Richtung des Signals
+und der Modulationsfrequenz $f_{\text{M}}$ bestimmt.
 Die sichtbare Verschmierung in der
 Abbildung \ref{fig:freq_zeit}
 entsteht durch die unterschiedlichen
 Funktionsscharen von $U(t)_{\phi}$ die
 die zeitabhängige Kreisfrequenz
 \begin{align}
-\omega(t)_{\phi}=\omega_\text{T}\left(1-m\sin(\omega_\text{M}t + \phi)\right)\\
+\omega(t)_{\phi}=\omega_\text{T}\left[1-m\sin(\omega_\text{M}t + \phi)\right]
 \end{align}
 beitzten aber mit unterschiedlichen Phasen $\phi$ starten.
 Dies hat zu Folge das die Funktionen zu Beginn
 auseinanderlaufen, sodass die Verschmierung
 zunimmt, um danach wieder
 zusammenzulaufen.
-Die Verschmierung liegt zwischen
-der Schwingung mit den Frequenzen
-$\omega_{\phi=\pi}(t)$
-und $\omega_{\phi=0}(t)$.
 Die Verschmierung
 wird für die
-Werte $t_1=\frac{\pi}{ \omega_{\text{M}}}$
+Werte $t_1=\sfrac{\pi}{ \omega_{\text{M}}}$
 und $t_2 = t_1+\Delta t$ maximal.
+Die maximale Verschmierung liegt zwischen
+der Schwingung mit den Frequenzen
+$\omega_{\phi=\pi}(t)$
+und $\omega_{\phi=0}(t)$, da bei $\phi=0$ und bei $\phi=\pi$
 Die Gesamtphase $\Phi$ der Schwingung $U(t)$
 zu Zeitpunkt $t$
 ergibt sich aus
@@ -203,8 +216,8 @@ ergibt sich aus
 horizontal gemessen wird,
 befindet sich die Schwingungen in der gleichen
 Gesamtphase}
-\Phi(t_1)_{\phi=\pi}&=\Phi(t_2)_{\phi=0}\\
-\int_0^{t_1} \omega(t)_{\phi=\pi} \symup{d}t &= \int_0^{t_2} \omega(t)_{\phi=0} \symup{d}t.
+& \Phi(t_1)_{\phi=\pi}&=\Phi(t_2)_{\phi=0}\notag\\
+&\leftrightarrow \int_0^{t_1} \omega(t)_{\phi=\pi} \symup{d}t &= \int_0^{t_2} \omega(t)_{\phi=0} \symup{d}t.
 \intertext{durch Einsetzten von $t_1$ und $t_2$ für die maximale Verschmierung folgt für
 den Modulationsgrad}
 m = \frac{\Delta t \omega_{\text{M} }}{3+\cos\omega_{\text{M}}\Delta t}
@@ -227,6 +240,10 @@ Schwingung im Frequenzraum.}
 \label{fig:frequenz_freq}
 \end{figure}
 Ebenfalls sind die Mischterme sowie die Trägerabstrahlung erkennbar.
+Also laut Theorie ein Peak bei der Trägerfrequenz $f_{\text{T}}=\SI{1.00(5)}{\mega\hertz}$
+und zum Beispiel Peaks bei den Frequenzen
+$f_{\text{T}}+f_{\text{T}}+f_{\text{M}} = \SI{2.10(5)}{\mega\hertz}$
+und $f_{\text{T}}+f_{\text{T}}-f_{\text{M}} = \SI{1.90(5)}{\mega\hertz}$.
 Desweiteren kann der Modulationsgrad wieder
 über die Leistungsamplituden berechnet werden.
 Für ein Frequenzmoduliertes Signal gilt jedoch der Zusammenhang
@@ -238,9 +255,9 @@ folgt aus Abbildung \ref{fig:frequenz_freq}
 \begin{align}
   % \si{\deci\belmilliwatt}
   % \si{\dBm}
-P_{f_{\text{T}}-f_{\text{M}}}&=\SI{-1.10(5)}{\deci\belmilliwatt}\\
-P_{f_{\text{T}}}&=\SI{-14.00(5)}{\deci\belmilliwatt}\\
-P_{f_{\text{T}}+f_{\text{M}}}&=\SI{-14.04(5)}{\deci\belmilliwatt}.
+P_{f_{\text{T}}-f_{\text{M}}}&=\SI{-14.00(5)}{\deci\belmilliwatt}\notag\\
+P_{f_{\text{T}}}&=\SI{-1.10(5)}{\deci\belmilliwatt}\\
+P_{f_{\text{T}}+f_{\text{M}}}&=\SI{-14.04(5)}{\deci\belmilliwatt}.\notag
 \end{align}
 Die Spannungen sind somit
 \begin{align}
@@ -267,7 +284,7 @@ ergibt sich der Mittelwert
 
 
 \FloatBarrier
-\subsection{(e) Untersuchung der Phasenabhängigkeit eines
+\subsection{Untersuchung der Phasenabhängigkeit eines
 phasenempfindlichen Gleichrichters}
 \label{subsec:auswertung_e}
 Durch die Schaltung \ref{fig:15} wird ein phasenempfindlicher
@@ -281,12 +298,17 @@ In der Abbildung \ref{fig:plot} ist die Gleichspannung $U_{\text{G}}$
 gegen die Phase aufgetragen.
 Desweiteren wird eine Funktion der Form
 \begin{align}
-  U(\phi)=a \, \cos(\phi)
+  U_{\text{G}}(\phi)=a \, \cos(\phi+\phi_0)
 \end{align}
 an die Messwerte gefittet,
 um den Zusammenhang zwischen dem Kosinus der
 Phasen $\phi$ und der Gleichspannung zu bestätigen.
-\
+Für die Amplitude $a$ und der Offsetphase $\phi_0$
+ergeben sich die folgenden Werte
+\begin{align}
+a&=\SI{67.2(9)}{\milli\volt}& &\phi_0=\SI{3.40(1)}{\radian}.
+\end{align}
+
 \begin{table}
   \centering
   \caption{Messwerte der Gleichspannungen $U_{\text{G}}$, Phase \phi und Frequenz.}
@@ -342,7 +364,7 @@ $f/\si{\mega\hertz}$ & $\phi / \si{\degree}$ &$ U_{\text{G}}/ \si{\milli\volt}$ 
 
 
 \FloatBarrier
-\subsection{(f) Demodulation einer amplitudenmodulierten Schwingung
+\subsection{Demodulation einer amplitudenmodulierten Schwingung
 mit Hilfe eines Ringmodulators}
 \label{subsubsec:auswertung_f}
 Die Demodulation mit einem Ringmodulators wird mit der Schaltung
@@ -356,7 +378,7 @@ und die Modulationsfrequenz $f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$.
   \centering
   \includegraphics[width=0.7\textwidth]{osci/amp_demod.png}
   \caption{Demodulation von einem amplitudenmoduliertem Signal mit Hilfe eines
-  Ringmodulator nach Schaltung \ref{fig:7}. Dargestellt ist das demodulierte Signal(grün) so wie das zu modulierende Signal.}
+  Ringmodulator nach Schaltung \ref{fig:7}. Dargestellt ist das demodulierte Signal (grün) so wie das Modulationssignal (gelb).}
   \label{fig:amp_demod_ring}
 \end{figure}
 
@@ -364,11 +386,11 @@ und die Modulationsfrequenz $f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$.
 
 
 \FloatBarrier
-\subsection{(g) Demodulation einer amplitudenmodulierten Schwingung
+\subsection{Demodulation einer amplitudenmodulierten Schwingung
 mit Hilfe einer Gleichrichterdiode}
 \label{subsubsec:auswertung_g}
 Die Abbildung \ref{fig:diode_punkt_A} enthält
-die Spannung $U_{\text{A}}$ am Punkt A aus der
+die Spannung $U_{\text{A}}$ am Punkt A hinter der Diode aus der
 Schaltung \ref{fig:8} und die Abbildung \ref{fig:diode_demod_amp}
 zeigt das durch den Tiefpass gefilterte demodulierte Signal.
 Die Trägerfrequenz beträgt wieder $f_{\text{T}}=\SI{1.00(5)}{\mega\hertz}$
@@ -378,8 +400,8 @@ und die Modulationsfrequenz $f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$.
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{osci/amp_demod_diode_A.png}
-  \caption{Signal $U_{\text{A}}$ am Punkt A bei der Demodulation eines amplitudenmodulierten Signales mit Hilfe einer
-  Diode und einem Tiefpass nach Schaltung \ref{fig:8}.}
+  \caption{Signal $U_{\text{A}}$ (grün) am Punkt A bei der Demodulation eines amplitudenmodulierten Signales mit Hilfe einer
+  Diode und einem Tiefpass nach Schaltung \ref{fig:8} und das Modulationssignal (gelb).}
   \label{fig:diode_punkt_A}
 \end{figure}
 
@@ -387,17 +409,16 @@ und die Modulationsfrequenz $f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$.
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{osci/amp_demod_diode.png}
-  \caption{Demoduliertes Signal eines amplitudenmodulierten Signales mit Hilfe einer
-  Diode und einem Tiefpass nach Schaltung \ref{fig:8}.}
+  \caption{Demoduliertes Signal (grün) eines amplitudenmodulierten Signales mit Hilfe einer
+  Diode und einem Tiefpass nach Schaltung \ref{fig:8} und das Modulationssignal (gelb).}
 \label{fig:diode_demod_amp}
 \end{figure}
 
 Zu beobachten ist, dass das demodulierte Signal eine doppelt so große Frequenz
 und eine um zwei Größenordung kleinere Amplitude als das Ausgangssignal
-
 besitzt.
 \FloatBarrier
-\subsection{(h) Demodulation einer frequenzmodulierten Schwingung
+\subsection{Demodulation einer frequenzmodulierten Schwingung
 mit Hilfe eines Flankendemodulators}
 \label{subsec:auswertung_h}
 Die Abbildung \ref{fig:freq_zu_amp}
@@ -422,7 +443,7 @@ Jedoch ist die erwartete Phasenverschiebung nicht deutlich erkennbar.
   \centering
   \includegraphics[width=0.7\textwidth]{osci/freq_demod_amp.png}
   \caption{Umwandelung eines Frequenzmodulierten Signales in ein Amplitudenmoduliertes
-Signal mit durch einen LC-Schwingkreis nach Abbildung \ref{fig:11}.}
+Signal (grün) mit durch einen LC-Schwingkreis nach Abbildung \ref{fig:11}  und das Modulationssignal (gelb).}
 \label{fig:freq_zu_amp}
 \end{figure}
 
@@ -432,6 +453,6 @@ Signal mit durch einen LC-Schwingkreis nach Abbildung \ref{fig:11}.}
   \centering
   \includegraphics[width=0.7\textwidth]{osci/freq_demod.png}
   \caption{Demodulierung eines frequenzmodulierten Signales
-  mit der Schaltung \ref{fig:11}.}
+  mit der Schaltung \ref{fig:11} (grün)  und das Modulationssignal (gelb).}
 \label{fig:demod_frequenz}
 \end{figure}

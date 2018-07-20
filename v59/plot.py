@@ -6,12 +6,27 @@ from scipy.optimize import curve_fit
 #a)
 
 
+
+
+
 # (b)
 
-
 # (c)
+print("Aufgabe b)\n\n")
+f_M=unp.uarray(100,5)
+f_T=unp.uarray(1000,50)
+print("theorie Frequenzbander =", f_M+f_T, f_T-f_M )
+
 #modulationsgerad Berechung
 print("Aufgabe c)\n\n")
+
+f_M=unp.uarray(100,10)
+f_T=unp.uarray(2500,50)
+print("theorie Frequenzbander =", f_M+f_M+f_T, f_T-f_M-f_M )
+
+
+
+
 U_delta = unp.uarray(0.27,0.02)
 U_T = unp.uarray(2.6,0.1)/2
 U_M = unp.uarray(0.5,0.1)/2
@@ -98,8 +113,8 @@ print("\n mittelwert von beiden modulationsgeraden" ,modulationsgerad_mittel)
 
 # (h)
 
-def cos_fit(x,a):
-    return a*np.cos(np.pi * x/180)
+def cos_fit(x,a,phi):
+    return a*np.cos(np.pi * x/180+phi)
 
 T=250e-9
 x = np.linspace(1e6,5e6,21)
@@ -108,7 +123,7 @@ y =np.genfromtxt("messwerte_e.txt",unpack=True)
 # x = np.linspace(0, 10, 1000)
 # y = x ** np.sin(x)
 phase = (x*T*360)%360
-params, cov =curve_fit(cos_fit,phase,y)
+params, cov =curve_fit(cos_fit,phase,y,p0=[67,np.pi])
 uparams = unp.uarray(params, np.sqrt(np.diag(cov)))
 print("\n\n fitparameter", uparams)
 tabelle(np.array([x*1e-6,phase,y]),"phasenmessung",np.array([1,1,1]))
@@ -116,7 +131,7 @@ plt.plot(x_lim, cos_fit(x_lim,*params),label=r"Fit")
 plt.plot(phase, y, 'x' , label=r'Messwerte')
 plt.legend(loc='best')
 plt.xlabel(r"$\phi / \si{\degree}$")
-plt.ylabel(r"$U(\phi) / \si{\milli\volt}$")
+plt.ylabel(r"$U_G(\phi) / \si{\milli\volt}$")
 # in matplotlibrc leider (noch) nicht möglich
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 # plt.tight_layout()
