@@ -31,7 +31,7 @@ durch die Frequenz der Modulationsschwingung
 $U_{\text{M}}(t)$.
 Ausgehend von den Darstellungen der Signale
 \begin{align}
-U_{\text{T}} &= \hat{U}_{\text{T}} \, \cos (\omega_{\text{T}}) \, t& &
+U_{\text{T}} &= \hat{U}_{\text{T}} \, \cos (\omega_{\text{T}}) \, t&
 U_{\text{M}} &= \hat{U}_{\text{M}} \, \cos (\omega_{\text{M}}) \, t
 \end{align}
 mit den jeweiligen Kreisfrequenzen $\omega_{\text{T}}$ und $\omega_{\text{M}}$,
@@ -43,14 +43,15 @@ U_{3}(t) = \hat{U}_{\text{T}} \, \left( 1 + m \, \cos(\omega_{\text{M}} t) \righ
 
 Dabei ist $m$ der zu $U_{\text{M}}$ proportionale Modulationsgrad.
 Der zugehörige Proportionalitätsfaktor heißt $\gamma$.
-Es gilt $0 \leq m \leq 1$.
+Im Falle einer sinnvollen Anwendung gilt $0 \leq m \leq 1$.
 In Abbildung \ref{fig:amplitudenmodulation_1} ist das Signal aus Gleichung
 \eqref{eqn:1} dargestellt.
 Dieses lässt sich so umformen, dass die auftretenden Frequenzen direkt
 ablesbar sind
 \begin{align}
 \label{eqn:2}
-U_{\text{T}} &= \hat{U}_{\text{T}} \, \left( \cos(\omega_{\text{T}} t) \, + \, \frac{m}{2} \cos\left(\left( \omega_{\text{T}} + \omega_{\text{T}} \right)t\right) \, + \, \frac{m}{2} m \cos  \left( \left( \omega_{\text{M}} - \omega_{\text{T}} \right)t\right)\right) \, .
+U_{\text{T}} &= \hat{U}_{\text{T}} \, \left( \cos(\omega_{\text{T}} t) \, + \, \frac{m}{2} \cos\left[\left( \omega_{\text{T}} + \omega_{\text{T}} \right)t \right] \,
++ \, \frac{m}{2} m \cos \left[ \left( \omega_{\text{M}} - \omega_{\text{T}} \right)t\right]\right) \, .
 \end{align}
 Im Gegensatz zu den beiden Frequenzen $\omega_{\text{T}} + \omega_{\text{M}}$ und $\omega_{\text{T}} - \omega_{\text{M}}$ tritt die Frequenz $\omega_{\text{T}}$
 unabhängig von $U_{\text{M}}$ auf und spielt somit
@@ -59,7 +60,7 @@ aus Gründen der Energieeffizienz herausgefiltert werden.
 Aus den beiden übrigen Frequenzlinien werden, wenn das Modulationssignal
 aus mehreren Frequenzen zusammengesetzt ist, Frequenzbänder.
 Diese tragen jeweils dieselbe Information, sodass eines der beiden ohne
-Informationsverlust unterdrückt werden kann(\textit{Einseitenbandmodulation}).\\ \\
+Informationsverlust unterdrückt werden kann(\textit{Einseitenbandmodulation}).
 
 Probleme der Amplitudenmodulation stellen die geringe Toleranz gegenüber
 Störungen, sowie die geringe Verzerrungsfreiheit dar.
@@ -110,8 +111,8 @@ betrachtet, kann die Gleichung
 \eqref{eqn:3} durch Nährungen
 in die Form
 \begin{align}
-\hat{U}(t)=\hat{U}\left(\sin( \omega t) + \frac12 m\frac{\omega_{\text{T}}}{\omega_{\text{M}}}\cos \left((\omega_{\text{T}}+\omega_{\text{M}})t\right)
-+ \frac12 m\frac{\omega_{\text{T}}}{\omega_{\text{M}}}\cos\left((\omega_{\text{T}}-\omega_{\text{M}})t \right)\right)
+\hat{U}(t)=\hat{U}\left(\sin( \omega t) + \frac12 m\frac{\omega_{\text{T}}}{\omega_{\text{M}}}\cos \left[(\omega_{\text{T}}+\omega_{\text{M}})t\right]
++ \frac12 m\frac{\omega_{\text{T}}}{\omega_{\text{M}}}\cos\left[(\omega_{\text{T}}-\omega_{\text{M}})t \right]\right)
 \end{align}
 gebracht werden.
 Daraus kann entnommen werden, dass
@@ -186,15 +187,17 @@ Gleichung
 \FloatBarrier
 \begin{align}
   U_{\text{R}}(t) &= \gamma U_{\text{M}}(t)U_{\text{T}}(t)
-\intertext{erfüllt. Somit ergibt sich durch Einsetzten
-der Modulation- und Trägerspannung}
+\end{align}
+erfüllt. Somit ergibt sich durch Einsetzten
+der Modulation- und Trägerspannung
+\begin{align}
   U_{\text{T}}(t) =\hat{U}_{\text{T}}\cos\omega_{\text{T}}t& &
   U_{\text{M}}(t) = \hat{U}_{\text{M}}\cos(\omega_{\text{M}}t+\phi)
   \end{align}
 
 eine Ausgangsspannung
 \begin{align}
-U_{\text{R}}(t) =\gamma \hat{U}_{\text{T}} \hat{U}_{\text{M}}\frac{1}{2}\cos\left((\omega_{\text{T}}+\omega_{\text{M}})t+\phi\right) + \gamma \hat{U}_{\text{T}} \hat{U}_{\text{M}}\frac{1}{2}\cos\left((\omega_{\text{T}}-\omega_{\text{M}})t-\phi\right)
+U_{\text{R}}(t) =\gamma \hat{U}_{\text{T}} \hat{U}_{\text{M}}\frac{1}{2}\cos\left[(\omega_{\text{T}}+\omega_{\text{M}})t+\phi\right] + \gamma \hat{U}_{\text{T}} \hat{U}_{\text{M}}\frac{1}{2}\cos\left[(\omega_{\text{T}}-\omega_{\text{M}})t-\phi\right]
 \end{align}
 ohne Trägerabstrahlung.
 
@@ -225,7 +228,8 @@ Spannung der Trägerschwingung addiert.
 \mbox{}\\
 Um aus einem modulierten Signal wieder die gewünschte Information zu erhalten,
 müssen Träger- und Modulationssignal voneinander getrennt werden.
-Dies geschieht mit einem Demodulator.\\
+Dies geschieht mit einem Demodulator.
+
 Als Demodulator kann der in Kapitel \ref{subsubsec:modulationsschaltungen}
 vorgestellte \textit{Ringmodulator} genutzt werden.
 Dazu wird auf den Eingang \textbf{R} das modulierte Signal und
@@ -236,7 +240,8 @@ $\omega_{\text{M}}$, $2\omega_{\text{T}} - \omega_{\text{M}}$
 und $2\omega_{\text{T}} + \omega_{\text{M}}$.
 Um aus diesem Signal ausschließlich $\omega_{\text{M}}$ zu gewinnen,
 werden die beiden übrigen Frequenzen, die üblicherweise deutlich größer sind,
-mit Hilfe eines Tiefpasses herausgefiltert.\\
+mit Hilfe eines Tiefpasses herausgefiltert.
+
 In Abbildung \ref{fig:7} ist eine solche Schaltung gezeigt,
 bei der der Ringmodulator zur Demodulation genutzt wird. Allerdings
 verlangt diese Methode, dass die für die Demodulation genutzt
@@ -284,7 +289,7 @@ Um ein frequenzmoduliertes Signal zu demodulieren, kann ein
 \textit{Flankendemodulator} genutzt werden.
 Eine schematische Darstellung eines solchen ist in Abbildung \ref{fig:11}
 gegeben. Für die Demodulation wird der Schwingkreis so eingestellt, dass
-die steile Flanke der Resonanzkurve $\omega_{\text{T}}$ beinhaltet, wie in Abbildung \ref{fig:12} zu sehen.
+die steile Flanke der Resonanzkurve die Trägerfrequenz $\omega_{\text{T}}$ beinhaltet, wie in Abbildung \ref{fig:12} zu sehen.
 Da sich die Frequenz der modulierten Schwingung gemäß des Modulationssignals
 verändert, erzeugt der Schwingkreis eine amplitudenmodulierte Spannung
 $U_{\text{C}}(\omega)$. Aus dieser kann dann wie zuvor beschrieben das

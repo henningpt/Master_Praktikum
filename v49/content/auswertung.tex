@@ -19,16 +19,18 @@ Problematik eines zu kurzen/langen $\SI{180}{\degree}$-Pulses deutlich wird, da
 sich die Fehler bei der Carr-Pucell Mehtode aufsummieren.
 Die Amplitude fällt deshalb schneller als bei der Meibomm-Gill Methode
 ab und liefert ein zu kleines $T_2$.
-Um die $50$ Echoamplituden aus der Meilbomm-Gill-Sequenz zu finden, werden ganzzahlige Vielfache von $\tau = \SI{20}{\milli\second}$ multipliziert mit $4$
-auf die Zeit, bei der die höchste Spannung gemessen wird, addiert und der jeweils nächstgelegene Messwert innerhalb eines beschränkten Intervalls ausgewählt.
+Um die Echoamplituden aus der Meilbomm-Gill-Sequenz zu finden, werden
+zunächst Werte, deren Betrag unterhalb von \SI{0.02}{\volt} liegen, herausgefiltert.
+Anschließend werden jeweils in einer Umgebung von $20$ Messwerten, lokale
+Maxima gesucht.
 In Tabelle \ref{tab:t2_fitwerte}
 sind die auf diese Weise gefundenen Echos angegeben.
 Anschließend wird für den in Gleichung \eqref{eqn:t2} gegebenen Zusammenhang unter \textit{Python3} mit Hilfe der Funktion \textit{curvefit} aus
 dem Paket \textit{Scipy} eine Regression der als Echos identifizierten Messwerte durchgeführt.\\
 Dabei ergeben sich für den Startwert $U_{0}$ und Relaxationszeit $T_{2}$ die folgenden Werte
 \begin{align*}
-  U_{0} &= \SI{0.50+-0.03}{\volt} \\
-  T_{2} &= \SI{ 1.04+-0.11}{\second} \, .
+  U_{0} &= \SI{0.90+-0.04}{\volt} \\
+  T_{2} &= \SI{1.49+-0.08}{\second} \, .
 \end{align*}
 In Abbildung \ref{fig:t2_plot} sind die verwendeten Messwerte, sowie der Graph der zugehörigen Regression
 gezeigt.\\
@@ -73,7 +75,7 @@ beträgt
 sodass sich eine relative Abweichung $f$ des experimentell bestimmten Werts
 von
 \begin{align*}
-  f = \frac{T_{2} - T_{2}^\text{lit.}}{T_{2}^\text{lit.}} = \SI{32+-8}{\percent}
+  f = \frac{T_{2} - T_{2}^\text{lit.}}{T_{2}^\text{lit.}} = \SI{2+-8}{\percent}
 \end{align*}
 ergibt.
 
@@ -170,7 +172,6 @@ Als Fitparameter werden der Vorfaktor $a$ sowie die Diffusionskonstante gewählt
 gewonnen. Dabei bezeichnet $d$ den Probendurchmesser, von $\SI{4.4}{\milli\meter}$, $\gamma$ das gyromagnetische Verhältnis
 von Protonen in Wasser und $t_{\frac{1}{2}}$ die Halbwertszeit des Echos.
 Wird der Ausdruck \eqref{eqn:gradient} in Gleichung \eqref{eqn:32} eingesetzt, ist leicht zu erkennen, dass $\gamma$ wegfällt und nur noch $d$ und $t_{\frac{1}{2}}$ eingesetzt werden müssen.
-Die Halbwertszeit wird anhand der Messwerte abgeschätzt, indem die Zeit gewählt wird, deren zugehöriges Signal am ehesten
 gleich der Hälfte des maximalen Signals ist.
 Da in Gleichung \eqref{eqn:32} die Zeit $t$ verwendet wird, allerdings $\tau$ gemessen wurde, müssen
 die gemessenen Werte für die Zeit noch gemäß
@@ -178,15 +179,27 @@ die gemessenen Werte für die Zeit noch gemäß
   t = 2 \tau
 \end{align}
 umgerechnet werden.
-Für die Halbwertsbreite ergibt sich grob
+Für die Halbwertsbreite wurde kein Wert gemessen.
+Daher wird zunächst ein Fit der Form
+\begin{align}
+  M(t) = \alpha \, e^{-\frac{t}{T_{2}}} \, e^{-\beta t^{3}}
+\end{align}
+an die Messwerte vorgenommen.
+Aus dem Parameter $b$ kann über
+\begin{align}
+  \sqrt{\frac{8.8^{2}  D_{\text{lit}}} {\beta  * 12.0 * d^{2} } }
+\end{align}
+die Halbwertsbreite bestimmt Werden.
+Es ergibt sich grob
 \begin{align*}
-  t_{\frac{1}{2}} = \SI{0.05}{\second}.
+  t_{\frac{1}{2}} = \SI{355+-6}{\micro\second}.
 \end{align*}
+Mit dem bestimmten Wert für die Halbwertsbreite wird nun die Regression zur Bestimmung der Diffusionskonstanten durchgeführt.
 In Abbildung \ref{fig:diffusion} sind die Messwerte, sowie der Graph der Regression dargestellt.\\
 Als Regressionsparameter ergeben sich
 \begin{align*}
-  a &= \SI{0.7539+-0.0061}{\volt}\\
-  D &= \SI{3.8325+-0.1131 e-5}{\meter\squared\per\second} \, .
+  a &= \SI{0.763+-0.005}{\volt}\\
+  D &= \SI{17.34+-0.54 e-9}{\meter\squared\per\second} \, .
 \end{align*}
 
 Der Literaturwert \cite{wang1965self} für die Diffusionskonstante bei der Temperatur
@@ -197,7 +210,7 @@ $\SI{25}{\degree\celsius}$ ist
 sodass die relative Abweichung $f$ des experimentell bestimmten Werts
 vom Theoriewert
 \begin{align*}
-  f = \frac{T_{1} - T_{1}^\text{lit.}}{T_{1}^\text{lit.}} = \SI{1.38+-0.04 e4}{}
+  f = \frac{T_{1} - T_{1}^\text{lit.}}{T_{1}^\text{lit.}} = \SI{780+-29}{}
 \end{align*}
 
 

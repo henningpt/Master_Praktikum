@@ -138,7 +138,7 @@ def diffkoeff(t, a, D):
 
 
 # fit fuer Diffusionvalue
-dparams, dcov = cf(diffkoeff, d_tau, d_amp, p0=[0.75, 15e-9])
+dparams, dcov = cf(diffkoeff, d_tau, d_amp, p0=[0.75, 1.97e-9])
 duparams = unp.uarray(dparams, np.sqrt(np.diag(dcov)))
 
 

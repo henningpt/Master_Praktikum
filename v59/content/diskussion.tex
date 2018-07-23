@@ -26,19 +26,22 @@ realisiert werden.
 Dies ist einerseits durch das typische Bild im Zeitraum eines
 Amplitudenmodulierten Signals, dessen negative Halbwellen
 abgeschnitten wurden
-und andererseits durch auftretenden Frequenzen hoherer
-Ordnung
+und andererseits durch auftretenden Frequenzen höherer
+Ordnung(siehe Kapitel \ref{subsubsec:modulationsschaltungen})
 im Frequenzraum, sowie der zu beobachtenden
-Trägerabstrahlung, zu erkennen. \\
+Trägerabstrahlung, zu erkennen.
+
 Desweiteren kann der Modulationsgrad $m$ des Signals
 über zwei verschiedene
 Methoden bestimmt werden. Dabei ergeben sich mit
 \begin{align*}
-m=\num{0.11(1)}(\textbf{Amplitude})& &\text{und}& &m=\num{0.182(1)}(\textbf{Leistung})
+m=\num{0.64(9)}(\textbf{Amplitude})& &\text{und}& & m = \num{0.182(1)}\notag
+(\textbf{Leistung})
 \end{align*}
-zwei ähnliche Werte
-im geforderten Wertebereich.
-
+zwei unterschiedliche Werte. Dies lässt sich dadurch erklären das bei dem Oszillographen
+nicht alle Oberwellen des Signals herausgefiltert werden konnten.
+Somit lässt sich davon ausgehen, dass der Wert, der über das Frequenzspektrum bestimmt
+wurde, zuverlässiger ist.
 \paragraph{Erzeugen einer frequenzmodulierten Schwingung}
 Der Ringmodulator mit Laufzeitkabel eignet sich zur Erzeugung
 eines frequenzmodulierten Signales, wie anhand des aufgenommenen Bilds
@@ -48,15 +51,18 @@ die Verschmierung als auch über eine Frequenzanalyse
 ein Modulationsgrad bestimmt werden.
 Es ergeben sich die beiden Werte
 \begin{align}
-  m = \num{0.039(4)}& &\text{und}& &m=\num{0.20(1)}.
+  m = \num{0.039(4)}(\textbf{Verschmierung})& &\text{und}& &m=\num{0.0452(1)}(\textbf{Leistung}).
 \end{align}
-Auffällig ist der deutlich größere Unterschied der beiden Werte,
+Aufällig ist die deutlich geringere relative Abweichung der beiden Werte,
 als bei der Bestimmung für die Amplitudenmodulation.
-Dies ist möglicherweise dadurch zu erklären, dass
-die bei der Bestimmung durch Frequenzanalyse, Näherungen vorgenommen
-wurden, deren Gültigkeit infrage gestellt werden könnte, da
-$m \, \sfrac{\omega_{\text{T}}}{\omega_{\text{T}}}\ll1$
-nicht eindeutig erfüllt ist.
+Dies lässt sich zum Teil dadurch begründen, dass beim Betrachten der Verschmierung nicht die
+Amplituden und somit auch nicht die unerwünschten Oberschwingungen eingehen,
+wie es bei der Amplitudenmodulation der Fall ist.
+% Dies ist möglicherweise dadurch zu erklären, dass
+% die bei der Bestimmung durch Frequenzanalyse, Näherungen vorgenommen
+% wurden, deren Gültigkeit infrage gestellt werden könnte, da
+% $m \, \sfrac{\omega_{\text{T}}}{\omega_{\text{T}}}\ll1$
+% nicht eindeutig erfüllt ist.
 
 \paragraph{Untersuchung der Phasenabhängigkeit eines
 phasenempfindlichen Gleichrichters}
@@ -81,7 +87,8 @@ Tiefpass, kann das Signal demoduliert werden.
 Allerdings nur in Verbindung mit nennenswerten
 Amplitudenverlust und Frequenzverdoppelung.
 Der Amplitudenverlust kann dadurch erklärt werden, dass sowohl
-an Diode als auch Tiefpass Spannung abfällt.\\
+an Diode als auch Tiefpass Spannung abfällt.
+
 Die verdoppelte Frequenz resultiert aus dem Abschneiden
 der Halbwellen der Schwebung durch die Diode.
 Da die Schwebung die doppelte Frequenz besitzt, ergibt sich nach der Filterung
