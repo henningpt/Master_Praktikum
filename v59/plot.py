@@ -27,16 +27,19 @@ print("theorie Frequenzbander =", f_M+f_M+f_T, f_T-f_M-f_M )
 
 
 
-U_delta = unp.uarray(0.27,0.02)
+U_delta = unp.uarray(0.28,0.02)
 U_T = unp.uarray(2.6,0.1)/2
 U_M = unp.uarray(0.5,0.1)/2
+U_max =  unp.uarray(0.28+0.08,0.02)
+print("U_max=", U_max)
 print("U_t=" , U_T)
 print("U_M=", U_M)
-m_c = U_delta / ( U_T * 2 )
+m_c = 1 / (2 * U_max / U_delta - 1 )
 
 print("modulationsgerad bei aufgabenteil aus oszi c)", m_c)
 def dBm_in_Watt(x):
-    return 10**(x/10)*1e-3
+    P= 10**(x/10)*1e-3
+    return P
 
 P_mitte = unp.uarray(-9.53,0.05)#in dBm
 P_links  = unp.uarray(-30.38,0.05)
@@ -46,20 +49,31 @@ P_links  =dBm_in_Watt(P_links) #in dBm
 P_rechts = dBm_in_Watt(P_rechts)
 P_mitte = dBm_in_Watt(P_mitte)
 
+print("\n\nP_mitte: ", P_mitte)
+print("\n\nP_rechts: ", P_rechts)
+print("\n\nP_links: ", P_links)
 
-U_mittel_RL= unp.uarray(np.mean([unp.nominal_values((P_rechts)**(1/2)),unp.nominal_values((P_links)**(1/2))]),1/np.sqrt(2)*np.std([unp.nominal_values((P_rechts**(1/2))),unp.nominal_values((P_links)**(1/2))]))
-U_mitte = (P_mitte)**(1/2)
+# U_mittel_RL= unp.uarray(np.mean([unp.nominal_values((P_rechts)**(1/2)),unp.nominal_values((P_links)**(1/2))]),1/np.sqrt(2)*np.std([unp.nominal_values((P_rechts**(1/2))),unp.nominal_values((P_links)**(1/2))]))
+# U_mitte = (P_mitte)**(1/2)
 
-print("Spannung in sqrt(R)", (P_links)**(1/2),(P_mitte)**(1/2),(P_rechts)**(1/2))
-print("\nMittel_wert von links und Rechts", U_mittel_RL )
-print("\nU_mitte=", U_mitte)
-m_c_leistung = 2* U_mittel_RL /U_mitte
-print("\nModulationsgrad m aus Leistung", m_c_leistung)
+# print("Spannung in sqrt(R)", (P_links)**(1/2),(P_mitte)**(1/2),(P_rechts)**(1/2))
+print("\n\n m - = ",2 * (P_links / P_mitte)**(0.5))
+print("\n\n m + = ",2 * (P_rechts / P_mitte)**(0.5))
+m_mittel_value=np.mean([unp.nominal_values(2 * (P_links / P_mitte)**(0.5)),unp.nominal_values(2 * (P_rechts / P_mitte)**(0.5))])
+m_mittel_std=np.std([unp.nominal_values(2 * (P_links / P_mitte)**(0.5)),unp.nominal_values(2 * (P_rechts / P_mitte)**(0.5))])
+m_mittel= unp.uarray(m_mittel_value,m_mittel_std)
+print("\n\n m_mittel=",m_mittel)
 
 
-modulationsgerad_mittel =   unp.uarray(np.mean([unp.nominal_values(m_c_leistung),unp.nominal_values(m_c)]),1/np.sqrt(2)*np.std([unp.nominal_values(m_c_leistung),unp.nominal_values(m_c)]))
-print("\n test::::: mittelwert von beiden modulationsgeraden" ,(m_c_leistung+m_c)/2 )
-print("\n mittelwert von beiden modulationsgeraden" ,modulationsgerad_mittel)
+# print("\nMittel_wert von links und Rechts", U_mittel_RL )
+# print("\nU_mitte=", U_mitte)
+# m_c_leistung = 2* U_mittel_RL /U_mitte
+# print("\nModulationsgrad m aus Leistung", m_c_leistung)
+
+
+#modulationsgerad_mittel =   unp.uarray(np.mean([unp.nominal_values(m_c_leistung),unp.nominal_values(m_c)]),1/np.sqrt(2)*np.std([unp.nominal_values(m_c_leistung),unp.nominal_values(m_c)]))
+#print("\n test::::: mittelwert von beiden modulationsgeraden" ,(m_c_leistung+m_c)/2 )
+#print("\n mittelwert von beiden modulationsgeraden" ,modulationsgerad_mittel)
 
 
 # (d)
@@ -81,23 +95,40 @@ P_mitte_f = unp.uarray( -1.10, 0.05)
 P_links_f  = unp.uarray(-14.00,0.05)
 P_rechts_f = unp.uarray(-14.04,0.05)
 
-P_links_f  =dBm_in_Watt(P_links) #in dBm
-P_rechts_f = dBm_in_Watt(P_rechts)
-P_mitte_f = dBm_in_Watt(P_mitte)
+P_links_f  =dBm_in_Watt(P_links_f) #in dBm
+P_rechts_f = dBm_in_Watt(P_rechts_f)
+P_mitte_f = dBm_in_Watt(P_mitte_f)
+
+quotient = f_M / f_T
+# quotient = 1.0
+print("\n\n m - = ",2 * quotient*(P_links_f / P_mitte_f)**(0.5))
+print("\n\n m + = ",2 * quotient*(P_rechts_f / P_mitte_f)**(0.5))
+
+m_mittel_f_value=np.mean([unp.nominal_values(2 *quotient *(P_links_f / P_mitte_f)**(0.5)),unp.nominal_values(2 * quotient*(P_rechts_f / P_mitte_f)**(0.5))])
+m_mittel_f_std=np.std([unp.nominal_values(2 *quotient *(P_links_f / P_mitte_f)**(0.5)),unp.nominal_values(2 *quotient* (P_rechts_f / P_mitte_f)**(0.5))])
+m_mittel_f= unp.uarray(m_mittel_f_value,m_mittel_f_std)
 
 
-U_mittel_RL_f= unp.uarray(np.mean([unp.nominal_values((P_rechts_f)**(1/2)),unp.nominal_values((P_links_f)**(1/2))]),1/np.sqrt(2)*np.std([unp.nominal_values((P_rechts_f**(1/2))),unp.nominal_values((P_links_f)**(1/2))]))
-U_mitte_f = (P_mitte_f)**(1/2)
+print("\n\n m_mittel=",m_mittel_f)
 
-print("Spannung in sqrt(R)", (P_links_f)**(1/2),(P_mitte_f)**(1/2),(P_rechts_f)**(1/2))
-print("\nMittel_wert von links und Rechts", U_mittel_RL_f )
-print("\nU_mitte=", U_mitte_f)
-m_d_leistung_f = 2* U_mittel_RL_f /U_mitte_f *(f_M/f_T)
-print("\nModulationsgrad m aus Leistung", m_d_leistung_f)
 
-modulationsgerad_mittel =   unp.uarray(np.mean([unp.nominal_values(m_d_leistung_f),unp.nominal_values(m_d)]),1/np.sqrt(2)*np.std([unp.nominal_values(m_d_leistung_f),unp.nominal_values(m_d)]))
-print("\n test::::: mittelwert von beiden modulationsgeraden" ,(m_d_leistung_f+m_d)/2 )
-print("\n mittelwert von beiden modulationsgeraden" ,modulationsgerad_mittel)
+# U_mittel_RL_f= unp.uarray(np.mean([unp.nominal_values((P_rechts_f)**(1/2)),unp.nominal_values((P_links_f)**(1/2))]),1/np.sqrt(2)*np.std([unp.nominal_values((P_rechts_f**(1/2))),unp.nominal_values((P_links_f)**(1/2))]))
+# U_mitte_f = (P_mitte_f)**(1/2)
+
+print("\n\nP_mitte_f: ", P_mitte_f)
+print("\nP_rechts_f: ", P_rechts_f)
+print("\nP_links_f: ", P_links_f)
+
+# print("Spannung in sqrt(R)", (P_links_f)**(1/2),(P_mitte_f)**(1/2),(P_rechts_f)**(1/2))
+# print("\nMittel_wert von links und Rechts", U_mittel_RL_f )
+# print("\nU_mitte=", U_mitte_f)
+# m_d_leistung_f = 2* U_mittel_RL_f /U_mitte_f *(f_M/f_T)
+# print("\nModulationsgrad m aus Leistung", m_d_leistung_f)
+
+#
+# modulationsgerad_mittel =   unp.uarray(np.mean([unp.nominal_values(m_d_leistung_f),unp.nominal_values(m_d)]),1/np.sqrt(2)*np.std([unp.nominal_values(m_d_leistung_f),unp.nominal_values(m_d)]))
+# print("\n test::::: mittelwert von beiden modulationsgeraden" ,(m_d_leistung_f+m_d)/2 )
+# print("\n mittelwert von beiden modulationsgeraden" ,modulationsgerad_mittel)
 
 
 

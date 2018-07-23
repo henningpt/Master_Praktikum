@@ -48,8 +48,8 @@ können die beiden aus der Modulation resultierenden Frequenzen
 \left(f_{\text{T}}+f_{\text{M}}\right)_{\text{theorie}} &=\SI{0.90(5)}{\mega\hertz}&
 \left(f_{\text{T}}-f_{\text{M}}\right)_{\text{theorie}} &=\SI{1.10(5)}{\mega\hertz}
 \end{align}
-
-
+und der Abstand der beiden Frequenzen beträgt $\Delta f = \SI{0.20(5)}{\mega\hertz}$
+somit im Bereich des Theoriewertes von $2f_{\text{T}}$.
 Deutlich wird ebenfalls, dass keine Trägerabstrahlung vorliegt und
 keine Terme höherer Ordnung auftreten.
 
@@ -78,9 +78,11 @@ verwendet.
 Aus Abbildung \ref{fig:diode_zeit} folgt der
 Abstand $\Delta U$ zwischen Maximum und Minimum der Einhüllenden
 \begin{align}
-\Delta U &= U_{\text{T}}(1+m)-U_{\text{T}}(1-m) =2U_{\text{T}}m = \SI{0.27(2)}{\volt}
-\intertext{und somit für den Modulationsgrad}
-    m &=  \frac{\Delta U }{2U_{\text{T}}}=  \num{0.11(1)} \label{eqn:m_oszi}
+\Delta U &= U_{\text{T}}(1+m)-U_{\text{T}}(1-m) =2U_{\text{T}}m = \SI{0.28(2)}{\volt}
+\intertext{Dabei lässt $U_{\text{T}}$, gemäß Gleichung \eqref{eqn:1}, durch}
+U_{\text{T}} &= \frac{U_{\text{max}}}{1 + m}
+\intertext{ausdrücken und es ergibt sich mit  $U_{\text{max}}=\SI{0.36(2)}{\volt}$ ein Modulationsgrad von}
+    m &=  \frac{1}{2\frac{U_{\text{max}}}{\Delta U} - 1}=  \num{0.64(9)} \label{eqn:m_oszi}
 \end{align}
 
 \begin{figure}
@@ -97,12 +99,12 @@ sowie
 die auftretenden Mischterme durch die nicht lineare
 Kennlinie
 der Diode deutlich,
-wie zum Beispiel Peaks von $\mathcal{O}\left(U^3\right)$ bei $f_{\text{T}}+f_{\text{M}}+f_{\text{M}} = \SI{2.70(5)}{\mega\hertz}$
+wie zum Beispiel Peaks von $\mathcal{O}\left(U_{3}^3\right)$ bei $f_{\text{T}}+f_{\text{M}}+f_{\text{M}} = \SI{2.70(5)}{\mega\hertz}$
 und $f_{\text{T}}-f_{\text{M}}-f_{\text{M}} = \SI{2.30(5)}{\mega\hertz}$.
 Die Abbildung \ref{fig:diode_frequenz_gross}
 für einen größeren Frequenzbereich
 verdeutlicht dies ebenfalls, da Terme bis
-zu $\mathcal{O}\left(U^4\right)$
+zu $\mathcal{O}\left(U_{3}^4\right)$
 also Frequenzen mit beispielsweise $4f_{\text{T}}$
 deutlich sichtbar sind.
 \begin{figure}
@@ -129,30 +131,40 @@ Aus der Abbildung \ref{fig:diode_frequenz_klein} können die Leistungen
 \begin{align}
   % \si{\deci\belmilliwatt}
   % \si{\dBm}
-P_{f_{\text{T}}-f_{\text{M}}}&=\SI{-9.53(5)}{\deci\belmilliwatt} \notag \\
-P_{f_{\text{T}}}&=\SI{-30.37(5)}{\deci\belmilliwatt}\\
-P_{f_{\text{T}}+f_{\text{M}}}&=\SI{-30.38(5)}{\deci\belmilliwatt}\notag
+L_{f_{\text{T}}-f_{\text{M}}}&=\SI{-9.53(5)}{\deci\belmilliwatt} \notag\\
+L_{f_{\text{T}}}&=\SI{-30.37(5)}{\deci\belmilliwatt} \\
+L_{f_{\text{T}}+f_{\text{M}}}&=\SI{-30.38(5)}{\deci\belmilliwatt} \notag
 \end{align}
 der entsprechenden Frequenzen entnommen werden.
-Für die Spannungen ergeben sich nach
+Mit dem Zusammenhang
 \begin{align}
-  U= \sqrt{P R}
+  P=10^{\frac{L}{10}-3} \label{eqn:dbm_in_watt}
 \end{align}
-die folgenden Werte
+ergeben sich die Leistungen in Watt.
+Die Spannungen ergeben sich nach
 \begin{align}
-   \hat{U}_{f_{\text{T}}-f_{\text{M}}}&=\sqrt{R}\SI{0.957(6)}{\milli\volt\per\sqrt{\ohm}}\notag\\
-  \hat{U}_{f_{\text{T}}}&=\sqrt{R}\SI{10.56(6)}{\milli\volt\per\sqrt{\ohm}}\\
-  \hat{U}_{f_{\text{T}}+f_{\text{M}}}&=\sqrt{R}\SI{0.958(6)}{\milli\volt\per\sqrt{\ohm}}.\notag
+  U= \sqrt{P R} \label{eqn:leistung_in_spannung}.
 \end{align}
-Die beiden äußeren Spannungen werden gemittelt
+% wobei der Widerstand $R=\Si{50}{\ohm}$ beträgt.
+% die folgenden Werte
+% \begin{align}
+%    \hat{U}_{f_{\text{T}}-f_{\text{M}}}&=\sqrt{R}\SI{0.957(6)}{\milli\volt\per\sqrt{\ohm}}\notag\\
+%   \hat{U}_{f_{\text{T}}}&=\sqrt{R}\SI{10.56(6)}{\milli\volt\per\sqrt{\ohm}}\\
+%   \hat{U}_{f_{\text{T}}+f_{\text{M}}}&=\sqrt{R}\SI{0.958(6)}{\milli\volt\per\sqrt{\ohm}}.\notag
+% \end{align}
+% Die beiden äußeren Spannungen werden gemittelt
+% \begin{align}
+%   \overline{\hat{U}_{f_{\text{T}}\pm f_{\text{M}}}} = \sqrt{R}\SI{0.9577(4)}{\milli\volt\per\sqrt{\ohm}}
+% \end{align}
+Die Gleichung für den Modulationsgrad $m$ ist somit
 \begin{align}
-  \overline{\hat{U}_{f_{\text{T}}\pm f_{\text{M}}}} = \sqrt{R}\SI{0.9577(4)}{\milli\volt\per\sqrt{\ohm}}
+m_{\pm}=\frac{2 \sqrt{P_{f_{\text{T}}\pm f_{\text{M}} }}}{P_{f_{\text{T}}}}. \label{eqn:m_leistung}\\
 \end{align}
-und für
-dem Modulationsgrad $m$ ergibt sich
-\begin{align}
-m=\frac{2\overline{\hat{U}_{f_{\text{T}}\pm f_{\text{M}}}}}{U_{f_{\text{T}}}} = \num{0.182(1)}. \label{eqn:m_leistung}
-\end{align}
+\begin{align*}
+m_+ &= \num{0.1816(15)} \\
+m_- &= \num{0.1814(15)}  \\
+\overline{m_\pm} &= \num{0.182(1)}
+\end{align*}
 % Aus den beiden bestimmten Modulationsgraden aus \eqref{eqn:m_oszi} und \eqref{eqn:m_leistung}ergibt sich der Mittelwert
 % \begin{align}
 % \overline{m}=\num{0.143(2)}.
@@ -206,7 +218,8 @@ und $t_2 = t_1+\Delta t$ maximal.
 Die maximale Verschmierung liegt zwischen
 der Schwingung mit den Frequenzen
 $\omega_{\phi=\pi}(t)$
-und $\omega_{\phi=0}(t)$, da bei $\phi=0$ und bei $\phi=\pi$
+und $\omega_{\phi=0}(t)$, da bei $\phi=0$ die Phase am langsamsten
+und bei $\phi=\pi$ am schnellsten fortschreitet.
 Die Gesamtphase $\Phi$ der Schwingung $U(t)$
 zu Zeitpunkt $t$
 ergibt sich aus
@@ -216,12 +229,14 @@ ergibt sich aus
 horizontal gemessen wird,
 befindet sich die Schwingungen in der gleichen
 Gesamtphase}
-& \Phi(t_1)_{\phi=\pi}&=\Phi(t_2)_{\phi=0}\notag\\
-&\leftrightarrow \int_0^{t_1} \omega(t)_{\phi=\pi} \symup{d}t &= \int_0^{t_2} \omega(t)_{\phi=0} \symup{d}t.
-\intertext{durch Einsetzten von $t_1$ und $t_2$ für die maximale Verschmierung folgt für
-den Modulationsgrad}
-m = \frac{\Delta t \omega_{\text{M} }}{3+\cos\omega_{\text{M}}\Delta t}
-&=\frac{2\pi\Delta t f_{\text{M} }}{3+\cos2\pi f_{\text{M}} \Delta t}. \label{eqn:modu_freq}
+\Phi(t_1)_{\phi=\pi}&=\Phi(t_2)_{\phi=0}\notag\\
+\Leftrightarrow \int_0^{t_1} \omega(t)_{\phi=\pi} \symup{d}t &= \int_0^{t_2} \omega(t)_{\phi=0} \symup{d}t.
+\end{align}
+durch Einsetzten von $t_1$ und $t_2$ für die maximale Verschmierung folgt für
+den Modulationsgrad
+\begin{align}
+m &= \frac{\Delta t \omega_{\text{M} }}{3+\cos\omega_{\text{M}}\Delta t}
+=\frac{2\pi\Delta t f_{\text{M} }}{3+\cos2\pi f_{\text{M}} \Delta t}. \label{eqn:modu_freq}
 \intertext{Aus der Abbildung \ref{fig:freq_zeit} wird die maximale Verschmierung
 zu}
 \Delta t &= \SI{250(5)}{\nano\second}
@@ -246,39 +261,43 @@ $f_{\text{T}}+f_{\text{T}}+f_{\text{M}} = \SI{2.10(5)}{\mega\hertz}$
 und $f_{\text{T}}+f_{\text{T}}-f_{\text{M}} = \SI{1.90(5)}{\mega\hertz}$.
 Desweiteren kann der Modulationsgrad wieder
 über die Leistungsamplituden berechnet werden.
-Für ein Frequenzmoduliertes Signal gilt jedoch der Zusammenhang
-\begin{align}
-m=\frac{2\overline{\hat{U}_{f_{\text{T}}\pm f_{\text{M}}}}}{U_{f_{\text{T}}}} \frac{f_{\text{M}}}{f_{\text{T}}}. \label{eqn:m_leistung_f}
-\end{align}
 Für die Amplituden der entsprechenden Frequenzen
 folgt aus Abbildung \ref{fig:frequenz_freq}
 \begin{align}
   % \si{\deci\belmilliwatt}
   % \si{\dBm}
-P_{f_{\text{T}}-f_{\text{M}}}&=\SI{-14.00(5)}{\deci\belmilliwatt}\notag\\
-P_{f_{\text{T}}}&=\SI{-1.10(5)}{\deci\belmilliwatt}\\
-P_{f_{\text{T}}+f_{\text{M}}}&=\SI{-14.04(5)}{\deci\belmilliwatt}.\notag
+L_{f_{\text{T}}-f_{\text{M}}}&=\SI{-14.00(5)}{\deci\belmilliwatt}\notag\\
+L_{f_{\text{T}}}&=\SI{-1.10(5)}{\deci\belmilliwatt}\\
+L_{f_{\text{T}}+f_{\text{M}}}&=\SI{-14.04(5)}{\deci\belmilliwatt}.\notag
 \end{align}
-Die Spannungen sind somit
+Die Leistung lassen sich wieder über Zusammenhang \eqref{eqn:dbm_in_watt}
+umrechnen und mit der Gleichung
+\eqref{eqn:leistung_in_spannung} ergibt sich der Zusammenhang
+für ein Frequenzmoduliertes Signal
 \begin{align}
-   \hat{U}_{f_{\text{T}}-f_{\text{M}}}&=\sqrt{R}\SI{0.0316(1)}{\milli\volt\per\sqrt{\ohm}}\\
-  \hat{U}_{f_{\text{T}}}&=\sqrt{R}\SI{0.031(1)}{\milli\volt\per\sqrt{\ohm}}\\
-  \hat{U}_{f_{\text{T}}+f_{\text{M}}}&=\sqrt{R}\SI{0.031(1)}{\milli\volt\per\sqrt{\ohm}}
+m_\pm=\frac{2\sqrt{P_{f_{\text{T}}\pm f_{\text{M}} } } }{\sqrt{P_{f_{\text{T}} } }}  \frac{f_{\text{M}}}{f_{\text{T}}}. \label{eqn:m_leistung_f}
 \end{align}
-und der Mittelwert der äußeren Spannungen ist
-\begin{align}
-  \overline{\hat{U}_{f_{\text{T}}\pm f_{\text{M}}}} = \sqrt{R}\SI{0.031(0)}{\milli\volt\per\sqrt{\ohm}}.
-\end{align}
+
+
+% Die Spannungen sind somit
+% \begin{align}
+%    \hat{U}_{f_{\text{T}}-f_{\text{M}}}&=\sqrt{R}\SI{0.0316(1)}{\milli\volt\per\sqrt{\ohm}}\\
+%   \hat{U}_{f_{\text{T}}}&=\sqrt{R}\SI{0.031(1)}{\milli\volt\per\sqrt{\ohm}}\\
+%   \hat{U}_{f_{\text{T}}+f_{\text{M}}}&=\sqrt{R}\SI{0.031(1)}{\milli\volt\per\sqrt{\ohm}}
+% \end{align}
+% und der Mittelwert der äußeren Spannungen ist
+% \begin{align}
+%   \overline{\hat{U}_{f_{\text{T}}\pm f_{\text{M}}}} = \sqrt{R}\SI{0.031(0)}{\milli\volt\per\sqrt{\ohm}}.
+% \end{align}
+
+
 Für
-den Modulationsgrad $m$ ergibt sich
-\begin{align}
-m=\num{0.20(1)}.
-\end{align}
-Aus den beiden bestimmten Werten für den Modulationsgrad
-ergibt sich der Mittelwert
-\begin{align}
-\overline{m}=\num{0.12(6)}.
-\end{align}
+den Modulationsgrad $m_{\pm}$ ergibt sich
+\begin{align*}
+  m_+&= \num{0.0451(23)}\\
+   m_-&= \num{0.0453(23)} \\
+  \overline{m_{\pm}} &= \num{0.0452(1)}
+\end{align*}
 
 
 
@@ -308,51 +327,51 @@ ergeben sich die folgenden Werte
 \begin{align}
 a&=\SI{67.2(9)}{\milli\volt}& &\phi_0=\SI{3.40(1)}{\radian}.
 \end{align}
-
-\begin{table}
-  \centering
-  \caption{Messwerte der Gleichspannungen $U_{\text{G}}$, Phase \phi und Frequenz.}
-  \label{tab:messwerte}
-\begin{tabular}{c c c|}
-\toprule
-$f/\si{\mega\hertz}$ & $\phi / \si{\degree}$ &$ U_{\text{G}}/ \si{\milli\volt}$ \\
-  \midrule
-   1.0	&	90.0	&	13.0   \\
-   1.2	&	108.0	&	34.7   \\
-   1.4	&	126.0	&	50.7   \\
-   1.6	&	144.0	&	60.0   \\
-   1.8	&	162.0	&	67.0   \\
-   2.0	&	180.0	&	69.1   \\
-   2.2	&	198.0	&	61.7   \\
-\bottomrule
-\end{tabular}
-\begin{tabular}{|c c c|}
-  \toprule
-  $f/\si{\mega\hertz}$ & $\phi / \si{\degree}$ &$ U_{\text{G}}/ \si{\milli\volt}$ \\
-    \midrule
-   2.4	&	216.0	&	45.3   \\
-   2.6	&	234.0	&	21.2   \\
-   2.8	&	252.0	&	2.1   \\
-   3.0	&	270.0	&	-18.8   \\
-   3.2	&	288.0	&	-36.5   \\
-   3.4	&	306.0	&	-50.9   \\
-   3.6	&	324.0	&	-60.3   \\
-   \bottomrule
-   \end{tabular}
-  \begin{tabular}{|c c c}
-    \toprule
-    $f/\si{\mega\hertz}$ & $\phi / \si{\degree}$& $ U_{\text{G}}/ \si{\milli\volt}$ \\
-      \midrule
-   3.8	&	342.0	&	-64.4   \\
-   4.0	&	0.0	&	-65.5   \\
-   4.2	&	18.0	&	-58.0   \\
-   4.4	&	36.0	&	-43.2   \\
-   4.6	&	54.0	&	-21.0   \\
-   4.8	&	72.0	&	0.5   \\
-   5.0	&	90.0	&	21.9   \\
-\bottomrule
-\end{tabular}
-\end{table}
+%
+% \begin{table}
+%   \centering
+%   \caption{Messwerte der Gleichspannungen $U_{\text{G}}$, Phase \phi und Frequenz.}
+%   \label{tab:messwerte}
+% \begin{tabular}{c c c|}
+% \toprule
+% $f/\si{\mega\hertz}$ & $\phi / \si{\degree}$ &$ U_{\text{G}}/ \si{\milli\volt}$ \\
+%   \midrule
+%    1.0	&	90.0	&	13.0   \\
+%    1.2	&	108.0	&	34.7   \\
+%    1.4	&	126.0	&	50.7   \\
+%    1.6	&	144.0	&	60.0   \\
+%    1.8	&	162.0	&	67.0   \\
+%    2.0	&	180.0	&	69.1   \\
+%    2.2	&	198.0	&	61.7   \\
+% \bottomrule
+% \end{tabular}
+% \begin{tabular}{|c c c|}
+%   \toprule
+%   $f/\si{\mega\hertz}$ & $\phi / \si{\degree}$ &$ U_{\text{G}}/ \si{\milli\volt}$ \\
+%     \midrule
+%    2.4	&	216.0	&	45.3   \\
+%    2.6	&	234.0	&	21.2   \\
+%    2.8	&	252.0	&	2.1   \\
+%    3.0	&	270.0	&	-18.8   \\
+%    3.2	&	288.0	&	-36.5   \\
+%    3.4	&	306.0	&	-50.9   \\
+%    3.6	&	324.0	&	-60.3   \\
+%    \bottomrule
+%    \end{tabular}
+%   \begin{tabular}{|c c c}
+%     \toprule
+%     $f/\si{\mega\hertz}$ & $\phi / \si{\degree}$& $ U_{\text{G}}/ \si{\milli\volt}$ \\
+%       \midrule
+%    3.8	&	342.0	&	-64.4   \\
+%    4.0	&	0.0	&	-65.5   \\
+%    4.2	&	18.0	&	-58.0   \\
+%    4.4	&	36.0	&	-43.2   \\
+%    4.6	&	54.0	&	-21.0   \\
+%    4.8	&	72.0	&	0.5   \\
+%    5.0	&	90.0	&	21.9   \\
+% \bottomrule
+% \end{tabular}
+% \end{table}
 
 
 \begin{figure}
@@ -372,7 +391,7 @@ aus Abbildung \ref{fig:7} durchgeführt. Das Ergebnis ist
 in der Abbildung \ref{fig:amp_demod_ring} dargestellt.
 Dabei beträgt die Trägerfrequenz $f_{\text{T}}=\SI{1.00(5)}{\mega\hertz}$
 und die Modulationsfrequenz $f_{\text{M}}=\SI{0.10(1)}{\mega\hertz}$.
-
+Die Amplituden sind $U_{\text{T}}=\SI{0.9(1)}{\volt}$ und $U_{\text{M}}=\SI{0.11(5)}{\volt}$
 
 \begin{figure}
   \centering
