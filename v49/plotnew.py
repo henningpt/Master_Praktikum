@@ -251,6 +251,8 @@ print("\n\nmolekülradius: ", molrad)
 #tabelle(datensatz, Name, Rundungen):  # i=Spalten j=Zeilen
 tabelle(np.array([d_tau*1000,d_amp*1000]),"Diff_messung",np.array([1,2]))
 tabelle(np.array([t1_tau*1000,t1_amp*1000]),"T1_messung",np.array([1,2]))
+
+
 tabelle(np.array([time_a2_cut[extrema_a2]*1000, sig_a2_cut[extrema_a2]*1000]),"T2_messung",np.array([1,2]))
 
 

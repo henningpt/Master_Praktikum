@@ -3,15 +3,53 @@
 \label{sec:Diskussion}
 
 % T2
-Die bestimmte Relaxationszeit $T_{2}$ wurde mit einer relativen Abweichung von $\SI{32+-8}{\percent}$ zum Literaturwert bestimmt.
-Die auftretende Abweichung lässt sich vor allem dadurch begründen, dass, wie in Abbildung \ref{fig:t2_gesamt}
-zu erkennen, sicherlich nicht immer die richtigen Messpunkte als Echos identifiziert wurden.
+Die bestimmte Relaxationszeit $T_{2}$ wurde mit einer
+relativen Abweichung von $\SI{2+-8}{\percent}$
+zum Literaturwert bestimmt.
+Wobei jedoch einfachheitshalber nicht nur, wie in Kapitel \ref{subsubsec:T2mess}
+gefordert, nach jedem geraden
+Puls die Echoamplitude verwendet wird, sondern Maxima von bestimmten Invervallen verwendet werden.
+Trotzdem ist es möglich so die Relaxationszeit $T_{2}$ über die
+Meibomm-Gill-Methode zu bestimmen.
+% Die auftretende Abweichung lässt sich vor allem dadurch begründen,
+%  dass, wie in Abbildung \ref{fig:t2_gesamt}
+% zu erkennen, sicherlich nicht immer die richtigen Messpunkte
+% als Echos identifiziert wurden.
 % Diffusion
-Bei der Messung der Diffusionskonstanten $D$ wurde ein um $4$ Zehnerpotenzen vom Literaturwert variierender Wert ermittelt.
-Diese lässt auf einen unbekannten systematischen Fehler schließen, da der Graph der Regression eine so starke Abweichung nicht erklären kann.
-Der Moleküladius wurde im Femtometerbereich ermittelt, allerdings liegt der Vergleichswert im realistischeren Angstrom Bereich.
-Dieser Unterschied lässt sich durch die zuvor falsch bestimmte Diffusionskonstante zurückführen.
+
+Wie erwartet, ergibt sich der Literaturwert für die Diffusionskonstante $D$
+mit einer Abweichung von $\SI{0.00(3)}{\percent}$, da die Halbwertszeit $t_{\frac{1}{2}}$
+genau auf den Literaturwert angepasst wurde.
+Für die gegebene Apparatur liegt die Halbwertszeit in einem Intervall
+von $\SI{70}{\micro\second}-\SI{250}{\micro\second}$ \cite{talk}.
+Da die ermittelte Halbwertszeit von $\SI{355(6)}{\micro\second}$
+außerhalb des Invervalles liegt, kann daraus gedeutet werden,
+dass die Diffusionskonstante des Literaturwert für die Apparatur nicht genau zutrifft.
+Mögliche Ursachen dafür sind die Temperaturabhängikeit und unterschiedliche
+Magnetfeldgradienten bei der Messung.
+
+Der Moleküladius über den Literaturwert der Diffusionskonstante $D$
+liegt im Bereich zwischen den beiden anderen Methoden. Deshalb eignet sich die
+Difussionsmeessung ebenfalls, um eine Abschätzung des Moleküladius vorzunehmen.
+Die relativen Abweichungen $f$ betragen jeweils
+\begin{align*}
+  f_{\text{hexagonal}}&=\num{14(3)}{\percent}
+  f_{\text{van-der-Waal}}&=\num{4(3)}{\percent}.
+\end{align*}
+Deutlich wird, dass die Abweichung zur hexagonal dichtesten Packung
+höher ist, als die zum van-der-Waal-Gases.
+Dies lässt sich dadurch erklären, dass bei dem van-der-Waals-Gas
+ebenfalls
+wie bei der Diffusionsmessung eine Bewegung der Teilchen vorliegt
+und nicht star angeordnete Teilchen wie bei der dichtesten Packung.
+% Dieser Unterschied lässt sich durch die zuvor falsch bestimmte Diffusionskonstante zurückführen.
+
+
+
+% Bei der Messung der Diffusionskonstanten $D$ wurde ein um $4$ Zehnerpotenzen vom Literaturwert variierender Wert ermittelt.
+% Diese lässt auf einen unbekannten systematischen Fehler schließen, da der Graph der Regression eine so starke Abweichung nicht erklären kann.
 % T1
-Bei der Messung der Relaxationszeit $T_{1}$ wurde ein Wert mit einer Abweichung von $\SI{27+-4}{\percent}$ zum Literaturwert bestimmt.
-Eine Fehlerquelle die diese Abweichung erklärt,
-ist dass das verwendete Magnetfeld möglicherweise nicht konstant oder nicht ausreichend stark war.
+Bei der Messung der Relaxationszeit $T_{1}$ wurde ein Wert mit einer Abweichung von $\SI{25+-4}{\percent}$ zum Literaturwert bestimmt.
+Eine Fehlerquelle, die diese Abweichung erklärt,
+ist, dass sowohl Temperatur als auch Larmorfrequenz bei dem Literaturwert unbekannt sind.
+Desweiteren können Feldinhomogenitäten diesen Wert ebenfalls beeinflussen.
