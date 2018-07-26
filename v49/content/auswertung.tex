@@ -2,7 +2,7 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
-Zur Optimierung des FID werden folgende gewählt:
+Zur Optimierung des FID werden folgende Parameter gewählt:
 \begin{align}
 &\text{Phase:} & \phi&= \SI{111}{\degree}\\
 &\text{Pulslänge:} & t_{\SI{90}{\degree}}& =  \SI{4.74}{\micro\second}\\
@@ -116,8 +116,8 @@ Als Fitparameter werden der Vorfaktor $a$ sowie die Diffusionskonstante gewählt
 \end{align}
 gewonnen. Dabei bezeichnet $d$ den Probendurchmesser, von $\SI{4.4}{\milli\meter}$, $\gamma$ das gyromagnetische Verhältnis
 von Protonen in Wasser und $t_{\frac{1}{2}}$ die Halbwertszeit des Echos.
-Wird der Ausdruck \eqref{eqn:gradient} in Gleichung \eqref{eqn:32} eingesetzt, ist leicht zu erkennen, dass $\gamma$ wegfällt und nur noch $d$ und $t_{\frac{1}{2}}$ eingesetzt werden müssen.
-gleich der Hälfte des maximalen Signals ist.
+Wird der Ausdruck \eqref{eqn:gradient} in Gleichung \eqref{eqn:32} eingesetzt, ist leicht zu erkennen, dass $\gamma$ wegfällt und
+nur noch $d$ und $t_{\frac{1}{2}}$ eingesetzt werden müssen.
 Da in Gleichung \eqref{eqn:32} die Zeit $t$ verwendet wird, allerdings $\tau$ gemessen wurde, müssen
 die gemessenen Werte für die Zeit noch gemäß
 \begin{align}
@@ -130,12 +130,17 @@ Daher wird zunächst ein Fit der Form
   M(t) = \alpha \, e^{-\frac{t}{T_{2}}} \, e^{-\beta t^{3}}
 \end{align}
 an die Messwerte vorgenommen.
-Aus dem Parameter $b$ kann über
+Aus dem Parameter $\beta$ kann über
 \begin{align}
-  \sqrt{\frac{8.8^{2}  D_{\text{lit}}} {\beta  * 12.0 * d^{2} } }
+  t_{\frac{1}{2}} = \sqrt{\frac{8.8^{2} D_{\text{lit}}}{12 \, \beta d^{2} } }
 \end{align}
 die Halbwertsbreite bestimmt Werden.
-Es ergibt sich grob
+Für die Parameter $\alpha$ und $\beta$ ergeben sich
+\begin{align*}
+  \alpha &= \SI{0.751+-0.006}{\volt}\\
+  \beta &= \SI{5196.12+-161.33}{\per\second\cubed} \, .
+\end{align*}
+Für die Halbwertszeit ergibt sich grob
 \begin{align*}
   t_{\frac{1}{2}} = \SI{355+-6}{\micro\second}.
 \end{align*}
@@ -143,19 +148,19 @@ Mit dem bestimmten Wert für die Halbwertsbreite wird nun die Regression zur Bes
 In Abbildung \ref{fig:diffusion} sind die Messwerte, sowie der Graph der Regression dargestellt.\\
 Als Regressionsparameter ergeben sich
 \begin{align*}
-  a &= \SI{0.763+-0.005}{\volt}\\
-  D &= \SI{17.34+-0.54 e-9}{\meter\squared\per\second} \, .
+  a &= \SI{0.751+-0.006}{\volt}\\
+  D &= \SI{1.97+-0.54 e-9}{\meter\squared\per\second} \, .
 \end{align*}
 
 Der Literaturwert \cite{wang1965self} für die Diffusionskonstante bei der Temperatur
-$\SI{25}{\degree\celsius}$ ist
+$\SI{25}{\celsius}$ ist
 \begin{align*}
-  D^\text{lit.} = \SI{2.57(2) e-9}{\meter\squared\per\second} \, ,
+  D^\text{lit.} = \SI{1.97+-0.06 e-9}{\meter\squared\per\second} \, ,
 \end{align*}
 sodass die relative Abweichung $f$ des experimentell bestimmten Werts
 vom Theoriewert
 \begin{align*}
-  f = \frac{T_{1} - T_{1}^\text{lit.}}{T_{1}^\text{lit.}} = \SI{780+-29}{}
+  f = \frac{T_{1} - T_{1}^\text{lit.}}{T_{1}^\text{lit.}} = \SI{0.00(3)}{}
 \end{align*}
 
 
@@ -206,7 +211,7 @@ Für die Viskosität ergibt sich auf diese Weise
 \end{align*}
 
 % weglassen?
-Der Literaturwert\cite{litvisk} für die Viskosität bei einer Temperatur von $\SI{25}{\degree\celsius}$ ist
+Der Literaturwert\cite{litvisk} für die Viskosität bei einer Temperatur von $\SI{25}{\celsius}$ ist
 \begin{align*}
   \eta^\text{lit.} = \SI{0.891e-3}{\meter\squared\per\second} \, ,
 \end{align*}
@@ -221,7 +226,7 @@ vom Theoriewert
 \subsubsection{Bestimmung des Molekülradius}
 \label{subsubsec:molekuelradius}
 Mit bekanntem Diffusionskoeffizienten $D$ und Viskosität $\eta$
-und bei einer Temperatur $T=\SI{25}{\degree\celsius}$
+und bei einer Temperatur $T=\SI{25}{\celsius}$
 kann gemäß
 der Stokesschen Formel folgender Zusammenhang für den Molekülradius $R$ hergeleitet werden
 \begin{align}
@@ -230,7 +235,7 @@ der Stokesschen Formel folgender Zusammenhang für den Molekülradius $R$ hergel
 \end{align}
 Mit den vorher bestimmten Werten ergibt sich für den Molekülradius
 \begin{align*}
-  R = \SI{7.74+-0.23}{\femto\meter} \, .
+  R = \SI{1.51(5)}{\angstrom} \, .
 \end{align*}
 Dieser Wert soll nun verglichen werden, mit einem Molekülradius, der ermittelt werden kann,
 indem angenommen wird, dass sich
@@ -241,7 +246,7 @@ Für die erste Annahme ergibt sich ein Radius von
 \begin{align*}
   R_{\text{hexagonal}} = \sqrt{\frac{m}{4\sqrt{2} \, \rho}} \, .
 \end{align*}
-Wobei $\rho=\SI{997.2995}{\kilo\gram\per\meter\tothe{3}}$  \cite{litdicht} die Dichte von Wasser bei Raumtemperatur $T=\SI{24}{\degree\celsius}$
+Wobei $\rho=\SI{997.2995}{\kilo\gram\per\meter\tothe{3}}$  \cite{litdicht} die Dichte von Wasser bei Raumtemperatur $T=\SI{24}{\celsius}$
 und $m=\SI{29.915e-27}{\kilo\gram}$ \cite{litatomgewicht} das Atomgewicht von Wasser bezeichnet.
 Mit diesem Zusammenhang ergibt sich
 \begin{align*}
@@ -261,21 +266,24 @@ R_{\text{van-der-Waal}}= \SI{1.454}{\angstrom}.
 \subsubsection{Bestimmung der Relaxationszeit $T_{1}$}
 \label{subsubsec:T1}
 Zur Bestimmung der Relaxationszeit $T_{1}$ werden die in Tabelle \ref{tab:t1} angegebenen
-Messwerte verwendet und in Abbildung \ref{fig:T_1bestimmung} gegeneinander aufgetragen. Um $T_{1}$ aus Gleichung \eqref{eqn:33} zu bestimmen wird von dieser $M_{0}$ abgezogen und anschließlich logarithmiert, sodass sich
+Messwerte verwendet und in Abbildung \ref{fig:T_1bestimmung} gegeneinander aufgetragen.
+Um $T_{1}$ aus Gleichung \eqref{eqn:33} zu bestimmen wird eine Regression
+mit der Funktion
 \begin{align}
   \label{eqn:t1_bestimmung}
-  -\frac{1}{T_{1}} t + \ln 2
+  g(\tau) = a \, \left( 1 - 2 e^{-\frac{\tau}{T_{1}}} \right)
 \end{align}
-ergibt.
-Somit lässt sich $T_{1}$ aus der Steigung des linearen Zusammenhangs \eqref{eqn:t1_bestimmung} bestimmen.
-Die lineare Regression ergibt für Steigung $s$ und Achsenabschnitt $b$
+der Messwerte vorgenommen. In Abbildung \ref{fig:T_1bestimmung} ist
+der mit Hilfe der Regression erzeugte Funktionsgraph dargestellt.
+Somit lässt sich $T_{1}$ aus den Regressionsparameter
 \begin{align*}
-  s &= \SI{-0.2214+-0.0029}{}\\
-  b &= \SI{0.4212+-0.0157}{} \, .
+  a &= \SI{0.7628+-0.0048}{\volt}\\
+  T_{1} &= \SI{2.3328+-0.0296}{\second}
 \end{align*}
-Somit ergibt sich für die gesuchte Relaxationszeit
+entnehmen.
+Es ergibt sich sich für die gesuchte Relaxationszeit
 \begin{align*}
-  T_{1} = \SI{2.26+-0.03}{\second} \, .
+  T_{1} = \SI{2.33+-0.03}{\second} \, .
 \end{align*}
 
 
@@ -286,7 +294,7 @@ Der Literaturwert\cite{litwerte} für die bestimmte Relaxationszeit ist
 sodass die relative Abweichung $f$ des experimentell bestimmten Werts
 vom Theoriewert
 \begin{align*}
-  f = \frac{T_{1} - T_{1}^\text{lit.}}{T_{1}^\text{lit.}} = \SI{27+-4}{\percent}
+  f = \frac{T_{1} - T_{1}^\text{lit.}}{T_{1}^\text{lit.}} = \SI{25+-4}{\percent}
 \end{align*}
 
 

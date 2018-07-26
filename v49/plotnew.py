@@ -131,8 +131,8 @@ duparams_allg = unp.uarray(dparams_allg, np.sqrt(np.diag(dcov_allg)))
 t_halb_D = unp.sqrt( 8.8**2  * diff_lit  / (duparams_allg[1]  * 12.0 * dprob**2) )
 print("\n\nHALBWERTSZEIT AUS LITERATURWERT: ", t_halb_D)
 
-
-fit_faktor = 8.8 / (12.0 * dprob**2 * unp.nominal_values(t_halb_D)**2 )
+fit_faktor = 8.8**2 / (12.0 * dprob**2 * unp.nominal_values(t_halb_D)**2 )
+# t_halb_D = unp.uarray([250e-6, 0])
 def diffkoeff(t, a, D):
     return(a * np.e**(-t / t2_a.nominal_value) * np.e**(- D * t**3 * fit_faktor))
 
@@ -240,7 +240,9 @@ for enum in enumerate(t1uparams):
     print("\n", enum)
 print("\n\nmolekülradius: ", molrad)
 
-
+print("\n\ndiff fit allgemein: ")
+for enum in enumerate(duparams_allg):
+    print("\n", enum)
 
 #
 # print("\n\nT1 bestimmt: ", -1.0 / t1uparams[0])
@@ -260,7 +262,8 @@ tabelle(np.array([time_a2_cut[extrema_a2]*1000, sig_a2_cut[extrema_a2]*1000]),"T
 rho = 997
 M = 18.01528/1000 / con.N_A
 
-print("Radius über Molekuelargewicht=" ,(M/(rho*4 * np.sqrt(2)))**(1/3) )
+radius_mol = (M/(rho*4 * np.sqrt(2)))**(1/3)
+print("Radius über Molekuelargewicht=" ,radius_mol)
 
 print("\n\nt2 rel abweichung: ", abs(t2_a - t2_lit) / t2_lit)
 
@@ -269,3 +272,8 @@ print("\n\nt1 rel abweichung: ", abs(t1uparams[1] - t1_lit) / t1_lit)
 print("\n\nViskosität rel abweichung: ", abs(viskositaet - visk_lit) / visk_lit)
 
 print("\n\nDiffkonstante rel abweichung: ", abs(duparams[1] - diff_lit) / diff_lit)
+
+print("\n\nRelative Abweichunng Radius zu Radius aus molgewicht: ", abs(molrad - radius_mol) / radius_mol)
+
+radius_van = 1.454e-10
+print("\n\nRelative Abweichunng Radius zu Radius aus van der waal: ", abs(molrad - radius_van) / radius_van)
