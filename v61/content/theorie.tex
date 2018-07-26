@@ -43,7 +43,7 @@ Die Abbildung \ref{fig:ab_em} enthält die drei
 zuvor beschriebenen möglichen Wechselwirkung.
 \begin{figure}
   \centering
-  \includegraphics{figures/ab_und_emiss.PNG}
+  \includegraphics[width=0.7\textwidth]{figures/ab_und_emiss.PNG}
   \caption{Schematische Darstellung
   für die möglichen Wechselwirkung
    eines Strahlungsfeld
@@ -126,3 +126,27 @@ Bei diesem ist das Lasermedium gegeben
 
 \subsection{Lasermoden}
 \label{subsec:lasermoden}
+Bei einem Laser ist die
+Resonatorlägne $L$ ist deutlich größer
+als die Wellenlängen $\lambda$. Deshalb erfüllen viel Frequenzen
+die Resonanzbedingung für eine stehende Welle im Resonator.
+Die longitudianle Mode $q$ entspricht der Anzahl der Wellenlängen
+im Resonator. Zusätzich bilden sich im Resonator
+Aufgrund von Verkippung oder Spiegelunebenheiten
+transversale Moden aus.
+Eine gesamte Mode des Resontors wird
+$\text{TEM}_{lpq}$ (transverse electromagnetic mode)
+gennant. Dabei entsprechen $l$ und $p$ die Knoten in
+x- und y-Richtung und werde auch
+transversale Modenzahl gennant.
+Die beobachtbare Intensitätsverteilungen für bestimme Moden
+ergeben sich aus der Feldverteilung $E_{lpq}$, die
+sich mit Hilfe von Laguerre-Polynome $L_p^q(u)$
+berechnen lassen. Für
+die Intensitätsverteilungen der $\text{TEM}_{00}$ Grundmode folgt Beispielsweise
+eine Gausverteilung der Form
+\begin{align}
+I(d)=I_0\exp\left(-2\left(\frac{d-d_0}{\omega}\right)^2\right).
+\end{align}
+mit der Maximalintensität $I_0$, dem Abstand zur optischen Achse $(d-d_0)$
+und dem Strahldurchmesser $2\omega$.
