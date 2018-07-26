@@ -93,7 +93,8 @@ Dieser Vorgang wird auch Pumpen genannt.
 
 
 
-\subsection{Konzeptioneller Aufbau des allgemeinen Lasers, sowie des Helium-Neon-Lasers}
+\subsection{Konzeptioneller Aufbau des allgemeinen Lasers,
+sowie des Helium-Neon-Lasers}
 \label{subsec:konzeptioneller_aufbau}
 
 Wie schon in Abschnitt \ref{subsec:absorption_und_emission}
@@ -102,22 +103,58 @@ Pumpquelle und Resonator.\\
 In Abbildung \ref{fig:laserkonzept} ist gezeigt,
 wie ein Laser prinzipiell aufgebaut ist.
 In Abschnitt \ref{subsec:absorption_und_emission}
-wurde bereits auf die das Zusammenspiel von Lasermedium
+wurde bereits auf das grundsätzliche Zusammenspiel von Lasermedium
 und Pumpquelle eingegangen.\\
 Aufgabe des Resonators ist es nun dafür zu sorgen,
-dass der Laserstrahl nach Möglichkeit große Strecke innerhalb
-des Lasermediums durchläuft. Dies ist notwendig,
+die Strecke, die der Laserstrahl innerhalb
+des Lasermediums durchläuft, zu maximieren. Dies ist notwendig,
 um dem Laserfeld möglichst viel Energie zugeführt
 werden kann. Um dies zu gewährleisten besteht der Resonator
 aus einem totalreflektierenden und einem teilreflektierenden Spiegel,
 deren Spiegelflächen von der optischen Achse durchtoßen werden.
 (Siehe Abbildung \ref{fig:laserkonzept})
 Auf der Seite des teilreflektierenden Spiegels wird der Laserstrahl
-zur Verwendung ausgekoppelt.
+zur Verwendung ausgekoppelt.\\
+Für die Bauart der Spiegel kann separat die Wahl zwischen planparallel und
+sphärisch getroffen werden. Allerdings muss gewährleistet werden, dass
+die nur sehr geringe Verluste auftreten. Daher wird
+die Apparatur üblicherweise so gewählt, dass die Brennpunkte der beiden Spiegel
+identisch sind.
+Um sicherzustellen, dass die Energiezufuhr des Laserfelds größer ist als
+die Verluste, muss gelten
+\begin{align}
+  0 \leq g_{1} \, g_{2} \ll 1 \, .
+\end{align}
+Dabei bezeichnen $g_{i}$ die Resonatorparameter.
+Diese ergeben sich durch
+\begin{align}
+  g_{i} = 1 - \frac{L}{r_{i}} \, ,
+\end{align}
+aus Resonatorlänge $L$ und den Krummüngsradien der Spiegel $r_{i}$.
+
+\FloatBarrier
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{figures/laserkonzept.png}
+  \caption{Prinzipieller Aufbau eines Lasers.\cite{sample}}
+  \label{fig:laserkonzept}
+\end{figure}
+\FloatBarrier
 
 In dem in diesem Protokoll beschriebenen
 Versuch wird ein Helium-Neon-Laser verwendet.
-Bei diesem ist das Lasermedium gegeben
+Bei wird ein Gasgemisch aus Helium und
+Neon (Verhältnis $5:1$, Druck $\sim \SI{133}{\pascal}$) verwendet.
+Dabei dient Neon als Lasermedium und Helium wird für das Pumpen
+des Lasers eingesetzt. Um die Besetzungsinversion im Lasermedium
+zu erreichen, werden zunächst die Heliumatome über ein
+Eletrisches Feld in nur kurzzeitig stabile Zustände gebracht.
+Diese geben können nun ihre
+überschüssige Energie über Stöße an die Neonatome abgegeben,
+wodurch die notwendige Besetzungsinversion erreicht wird.
+Der Helium-Neon-Laser weist ein diskretes Spektrum auf, dessen
+prominenteste Linie bei $\lambda = \SI{632.8}{\nano\meter}$ im
+roten Bereich des sichtbaren elektromagnetischen Spektrums liegt.
 
 
 
