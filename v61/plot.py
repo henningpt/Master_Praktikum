@@ -9,11 +9,13 @@ L = np.linspace(0,6)
 r_1 = 1.4
 r_2 = 1.4
 
+
 # gemessene intensitaeten
 I = np.genfromtxt("messwerte_e.txt", unpack=True)
 I_polar = np.genfromtxt("polarisation.txt", unpack=True)
 phi_plot = np.linspace(0, 360, 37)
 I_mode01 = np.genfromtxt("mode01.txt", unpack=True)
+
 
 # beugungssachenD
 lschirm = 142 # achtung this is cm !!
@@ -23,6 +25,7 @@ g100 = unp.uarray([18.5, 37.0, 55.5, 86.0, 96.5, 2 * 59.5], np.ones(6) * banderr
 g80  *= 0.5
 g100 *= 0.5
 
+
 # functions
 def wavelen(gconst, dist, dn):
     arr = np.array(dn)
@@ -30,7 +33,9 @@ def wavelen(gconst, dist, dn):
         arr[n - 1] = gconst * unp.sin(unp.arctan(dn[n - 1] / dist)) / n
     return(arr)
 
+
 # rechungen
+
 
 # wellenlaenge aus gitter
 lambda80  = wavelen(0.001 / 80, lschirm, g80)
@@ -91,6 +96,10 @@ plt.close()
 def mode01_asym(x,I_01,I_02,w1,w2,d_01,d_02):
     return I_01 * np.exp(-2*((x-d_01)/w1)**2) + I_02 * np.exp(-2*((x-d_02)/w2)**2)
 
+
+
+
+# plots:
 d_plot_mode01 = np.linspace(-20, 10, 31)
 x_mode_01 = np.linspace(-20,10,1000)
 params_mode_01, cov_mode_01 =curve_fit(mode01_asym,d_plot_mode01,I_mode01,p0=[800,200,1,1,-10,0])
