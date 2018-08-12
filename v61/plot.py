@@ -164,3 +164,7 @@ print("\nmittelwert2: ",np.mean(longi_messung2))
 
 print("\nrelative abweichung1 : ",(np.mean(longi_messung1)-const.c)/const.c)
 print("\nrelative abweichung2 : ",(np.mean(longi_messung2)-const.c)/const.c)
+
+tabelle(np.array([unp.nominal_values(delta_freq_L1)*1e-6,unp.std_devs(delta_freq_L1)*1e-6,unp.nominal_values(longi_messung1)*1e-8,unp.std_devs(longi_messung1)*1e-8]),"freq_L1_table",np.array([0,0,2,2]))
+tabelle(np.array([unp.nominal_values(delta_freq_L2)*1e-6,unp.std_devs(delta_freq_L2)*1e-6,unp.nominal_values(longi_messung2)*1e-8,unp.std_devs(longi_messung2)*1e-8]),"freq_L2_table",np.array([0,0,2,2]))
+tabelle(np.array([unp.nominal_values(freq_L1)*1e-6,unp.std_devs(freq_L1)*1e-6,unp.nominal_values(freq_L2)[:-1]*1e-6,unp.std_devs(freq_L2)[:-1]*1e-6]),"freq_table",np.array([0,0,0,0]))
