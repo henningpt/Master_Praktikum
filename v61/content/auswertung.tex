@@ -6,20 +6,146 @@
 \subsection{Stabilitätsbedingung}
 \label{subsec:Stabil}
 
+
+
 \subsection{TEM-Moden}
 \label{subsec:tem}
+Die longitudialen Moden
 
 \begin{figure}
+  \includegraphics{pictures/}
+  \caption{}
+  \label{}
+\end{figure}
+
+
+Weiterhin werden zwei transversale Moden des Lasers untersucht.
+Zum einen die \textbf{$\text{TEM}_{00}$},
+deren Intensiätsmaximum in der Mitte des Strahls lokalisiert ist(siehe Abbildung \ref{fig:mode00}).
+An die aufgenommenen Messwerte wird ein Gaußfit gemäß Gleichung \ref{eqn:TEM00} vorgenommen.
+In Abbildung \ref{fig:mode00} ist der entsprechende Graph neben den Messwerten dargstellt.
+Es ergeben für die Fitparameter
+\begin{align}
+  I_0=\SI{}{\nano\ampere}\\
+  d_0=\SI{}{\milli\meter}
+\end{align}
+\begin{figure}
   \centering
-  \includegraphics{mode01.pdf}
-  \caption{Plot.}
+  \includegraphics{build/mode00.pdf}
+  \caption{Gemessene Intensitätsverteilung der \textbf{$\text{TEM}_{00}$}-Mode und Gaußfit an die Messwerte.}
+  \label{fig:mode00}
+\end{figure}
+
+Zum anderen wird die \textbf{$\text{TEM}_{01}$} untersucht, deren Intensitätsmaxima durch
+zwei gleich weit vom Strahlzentrum entfernte Gaußpeaks gegeben sind.
+An die aufgenommenen Messwerte wird ein Gaußfit gemäß Gleichung \ref{eqn:TEM01} vorgenommen.
+In Abbildung \ref{fig:mode01} ist der entsprechende Graph neben den Messwerten dargstellt.
+\begin{align}
+  I_{(0,1)}(d)=I_{0,1}\exp\left(-2\left(\frac{d-d_{0,1}}{\omega_1}\right)^2\right)+I_{0,2}\exp\left(-2\left(\frac{d-d_{0,2}}{\omega2}\right)^2\right) \label{eqn:TEM01asy}
+\end{align}
+Es werden die Fitparameter
+ \begin{align}
+   I_{0,1}&=\SI{}{\nano\ampere}&   d_{0,1}&=\SI{}{\milli\meter}\\
+   I_{0,2}&=\SI{}{\nano\ampere}&   d_{0,2}&=\SI{}{\milli\meter}
+ \end{align}
+gefunden.
+\begin{figure}
+  \centering
+  \includegraphics{build/mode01.pdf}
+  \caption{Gemessene Intensitätsverteilung der \textbf{$\text{TEM}_{01}$}-Mode und Gaußfit an die Messwerte.}
   \label{fig:plot}
 \end{figure}
 
 
+
 \subsection{Polarisation}
 \label{subsec:Polarisation}
+Die Messwert zur Bestimmung der Polarisation des Lasers sind in Tabelle \ref{tab:polarisation} aufgelistet.
+In Abbildung \ref{fig:polarisation} wird die Intensität $I$ in Ahängigkeit von dem Polarisationswinkel $\phi$
+aufgetragen und die Funktion
+\begin{align}
+I(\phi)=I_0 \cos\left(\phi-\phi_0\right)
+\end{align}
+an die Messwerte an gefittet.
+Für die Funktion ergeben sich die Parameter
+\begin{align}
+I_0  & = \SI{142.4(6)}{\nano\ampere},\\
+\phi & = \SI{68.3(2)}{\degree}.
+\end{align}
+
+\begin{table}
+  \centering
+  \caption{Messwerte der Intensität in Abhängigkeit von dem Winkel des Polarisationsfilters.}
+  \label{tab:polarisation}
+  \begin{tabular}{c c | c c}
+\toprule
+    $\phi / \si{\degree}$ & $I/\si{\nano\ampere}$ & $\phi / \si{\degree}$ & $I/\si{\nano\ampere}$\\
+\midrule
+0	&	24.8   & 190	&	29.2 \\
+10	&	51.2 &  200	&	38.0  \\
+20	&	83.3 &  210	&	64.5  \\
+30	&	119.8&  220	&	71.0   \\
+40	&	144.9&  230	&	97.9   \\
+50	&	144.1&  240	&	130.1  \\
+60	&	111.7&  250	&	112.2  \\
+70	&	201.3&  260	&	125.6  \\
+80	&	209.4& 270	&	96.9    \\
+90	&	130.1& 280	&	76.0    \\
+100	&	101.7& 290	&	88.6    \\
+110	&	74.8 & 300	&	51.0   \\
+120	&	45.3 & 310	&	38.5   \\
+130	&	26.4 & 320	&	18.4   \\
+140	&	12.4 & 330	&	4.4    \\
+150	&	2.8  & 340	&	0.5   \\
+160	&	0.5  & 350	&	4.8   \\
+170	&	2.5  & 360	&	26.1  \\
+180	&	11.7 &  &  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\begin{figure}
+  \centering
+  \includegraphics{build/polarisation.pdf}
+  \caption{Intensität in Abhängigkeit des Polarisationswinkel.}
+  \label{fig:polarisation}
+\end{figure}
+
+
+
 
 \subsection{Wellenlängenbestimmung}
-\label{subsec:
-}
+\label{subsec:wellenlaenge}
+
+Die Wellenlänge der charakteristischen roten Linie des He-Ne-Lasers, wird mit Hilfe
+von zwei optischen Gittern ($g_{1} = \SI{80}{\per\centi\meter} \ g_{2} = \SI{100}{\per\centi\meter}$) bestimmt.
+Es wird jeweils ein Wert zu jedem Maximum bestimmt. Aus dem Mittel der Werte aus den einzelnen Maxima
+wird für jedes Gitter eine Wellenlänge berechnet.
+In Tabelle \ref{tab:wellenlaenge} sind jeweils die Werte für Schirmabstand $L$ und Abstände der Maxima
+zum Maximum $0.$-Ordnung $d_{\text{i}}$ zusammen mit den bestimmten Wellenlängen angegeben.\\
+Es ergibt sich eine mittlere Wellenlänge von
+\begin{align*}
+  \lambda_{1} &= \SI{6.53(2) e-7}{\nano\meter}\\
+  \lambda_{2} &= \SI{6.58(1) e-7}{\nano\meter} \, .
+\end{align*}
+
+
+\begin{table}
+\centering
+  \caption{Mit zwei optischen Gittern bestimmte Wellenlängen mit jeweiligen relevanten Größen.}
+  \label{tab:wellenlaenge}
+\begin{tabular}{c|c c || c c}
+  & \multicolumn{2}{c}{$g_{1} = \SI{80}{\per\centi\meter}$} & \multicolumn{2}{c}{$g_{2} = \SI{100}{\per\centi\meter}$} \\
+\toprule
+Ordnung $i$ &    $d_i / \si{\centi\meter}$  & $\lambda / \si{\nano\meter}$ &    $d_i / \si{\centi\meter}$  & $\lambda / \si{\nano\meter}$ \\
+\midrule
+1 & \phantom{0}7.2 \pm	\, 0.1	&	637.4	\pm	\,8.8	&	\phantom{0}9.2  	\pm	\, 0.1	&	650.0	\pm	\,7.0   \\
+2 & 14.5	         \pm	\, 0.1	&	634.9	\pm	\,4.3	&	18.5	            \pm	\, 0.1	&	645.9	\pm	\,3.4   \\
+3 & 21.8	         \pm	\, 0.1	&	630.8	\pm	\,2.8	&	27.8	            \pm	\, 0.1	&	639.3	\pm	\,2.2   \\
+4 & 29.2	         \pm	\, 0.1	&	630.5	\pm	\,2.1	&	43.0	            \pm	\, 0.1	&	724.6	\pm	\,1.5   \\
+5 & 41.2	         \pm	\, 0.1	&	697.4	\pm	\,1.6	&	48.2	            \pm	\, 0.1	&	643.4	\pm	\,1.2   \\
+6 & 49.5	         \pm	\, 0.1	&	685.8	\pm	\,1.2	&	59.5	            \pm	\, 0.1	&	644.1	\pm	\,0.9   \\
+\bottomrule
+\end{tabular}
+\end{table}

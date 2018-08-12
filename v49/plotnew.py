@@ -277,3 +277,6 @@ print("\n\nRelative Abweichunng Radius zu Radius aus molgewicht: ", abs(molrad -
 
 radius_van = 1.454e-10
 print("\n\nRelative Abweichunng Radius zu Radius aus van der waal: ", abs(molrad - radius_van) / radius_van)
+
+
+print("\n\nGradient aus t1/2 ( G in tesla/meter): ", grad(dprob, gyrom, t_halb_D))
