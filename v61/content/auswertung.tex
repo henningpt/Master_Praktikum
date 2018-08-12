@@ -5,6 +5,56 @@
 
 \subsection{Stabilitätsbedingung}
 \label{subsec:Stabil}
+Für die beiden Resonatorspiegel werden zwei Spiegel mit einem
+Krümmungsradius von $r_{1,2}=\SI{1.4}{\meter}$ verwendet.
+Aus Gleichung \eqref{eqn:stabil_params} ergeben sich die beiden
+Resonatorparameter in Abhängigkeit der Resonatorlänge $L$.
+Laut Stabilitätsbedingung ist der Laser stabil,
+wenn $g_1\cdot g_2$ zwischen null und eins liegt.
+Die Abbildung \ref{fig:oberaffengeilerplot} enthält $g_1 \cdot g_2$
+in Abhängigkeit von der Resonatorlänge $L$.
+Desweitern enthält die Abbildung \ref{fig:oberaffengeilerplot}
+die Messwerte
+für die maximale durch Justage
+erreichte Laserleistung $P$
+bei einer bestimmten Resonatorlänge
+aus der Tabelle \ref{tab:stabil}
+und den zugehörigen Parameter $g_1 \cdot g_2$.
+
+\begin{table}
+  \centering
+  \caption{Unterschiedliche Resonatorlänge $L$ und der zugehörige Stabilitätsparameter $g_1 \cdot g_2$
+  sowie die maximal erreichte Laserleistung $P$ bei entsprechender Resonatorlänge.}
+  \label{tab:stabil}
+  \begin{tabular}{ccc}
+\toprule
+$L/ \si{\meter}$ & $g_1 \cdot g_2$ & $ P/ \si{\milli\watt}$\\
+\midrule
+0.53	&	0.3862	&	4.20   \\
+0.69	&	0.2572	&	4.56   \\
+0.83	&	0.1658	&	4.81   \\
+0.98	&	0.0900	&	4.63   \\
+1.13	&	0.0372	&	4.13   \\
+1.28	&	0.0073	&	3.38   \\
+1.43	&	0.0005	&	4.39   \\
+1.58	&	0.0165	&	2.52   \\
+1.73	&	0.0556	&	2.42   \\
+\bottomrule
+  \end{tabular}
+\end{table}
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\textwidth]{build/g1g2_Leistung.pdf}
+  \caption{Sowohl maximal gemessene
+  Laserleistung $P$ aus auch
+  Stabilitätsparameter $g_1\cdot g_2$ gegen
+   die Resonatorlänge $L$ aufgetragen sowie
+   die Stabilitätsgrenzen in schwarz.
+  }
+  \label{fig:oberaffengeilerplot}
+\end{figure}
 
 
 
@@ -33,6 +83,7 @@ Zusätzlich wird einer weiteren Resonatorlänge von $L = \SI{83.5}{\centi\meter}
 vergleiche Abbildung \ref{fig:L2_freq} und Tabelle \ref{tab:L2_freq}.
 
 \begin{figure}
+\centering
   \includegraphics[width=0.7\textwidth]{pictures/freq_1.jpg}
   \caption{Frequenzspektrum bei einer Resonatorlänge von $L=\SI{73.5}{\centi\meter}$.}
   \label{fig:L1_freq}
@@ -58,6 +109,7 @@ vergleiche Abbildung \ref{fig:L2_freq} und Tabelle \ref{tab:L2_freq}.
 
 
 \begin{figure}
+  \centering
   \includegraphics[width=0.7\textwidth]{pictures/freq_2.jpg}
   \caption{Frequenzspektrum bei einer Resonatorlänge von $L = \SI{83.5}{\centi\meter}$.}
   \label{fig:L2_freq}
@@ -92,9 +144,7 @@ An die aufgenommenen Messwerte wird ein Gaußfit gemäß Gleichung \ref{eqn:TEM0
 In Abbildung \ref{fig:mode00} ist der entsprechende Graph neben den Messwerten dargstellt.
 Es ergeben für die Fitparameter
 \begin{align}
-  I_0=\SI{62.3(9)}{\nano\ampere}\\
-  \omega=\SI{13.8(2)}{\milli\meter}
-  d_0=\SI{12.9(1)}{\milli\meter}
+  I_0&=\SI{62.3(9)}{\nano\ampere} &  \omega&=\SI{13.8(2)}{\milli\meter} &  d_0&=\SI{12.9(1)}{\milli\meter}
 % I_0,w,d_0)
 \end{align}
 \begin{figure}
@@ -109,12 +159,12 @@ zwei gleich weit vom Strahlzentrum entfernte Gaußpeaks gegeben sind.
 An die aufgenommenen Messwerte wird ein Gaußfit gemäß Gleichung \ref{eqn:TEM01} vorgenommen.
 In Abbildung \ref{fig:mode01} ist der entsprechende Graph neben den Messwerten dargstellt.
 \begin{align}
-  I_{(0,1)}(d)=I_{0,1}\exp\left(-2\left(\frac{d-d_{0,1}}{\omega_1}\right)^2\right)+I_{0,2}\exp\left(-2\left(\frac{d-d_{0,2}}{\omega_2}\right)^2\right) \label{eqn:TEM01asy}
+  I_{(0,1)}(d)=I_{0,1}\exp\left(-2\left(\frac{d-d_{0,1}}{\omega_1}\right)^2\right)+I_{0,2}\exp\left(-2\left(\frac{d-d_{0,2}}{\omega_2}\right)^2\right) \label{eqn:TEM01}
 \end{align}
 Es werden die Fitparameter
  \begin{align}
-   I_{0,1}&=\SI{777(23)}{\nano\ampere}& \omgea_{1}&=\SI{4.8(2)}{\milli\meter} &   d_{0,1}&=\SI{-8.8(1)}{\milli\meter}\\
-   I_{0,2}&=\SI{184(26)}{\nano\ampere}& \omgea_{2}&=\SI{3.8(6)}{\milli\meter} &   d_{0,2}&=\SI{0.9(3)}{\milli\meter}
+   I_{0,1}&=\SI{777(23)}{\nano\ampere}& \omega_{1}&=\SI{4.8(2)}{\milli\meter} &   d_{0,1}&=\SI{-8.8(1)}{\milli\meter}\\
+   I_{0,2}&=\SI{184(26)}{\nano\ampere}& \omega_{2}&=\SI{3.8(6)}{\milli\meter} &   d_{0,2}&=\SI{0.9(3)}{\milli\meter}
  \end{align}
 % I_01,I_02,w1,w2,d_01,d_02
 gefunden.

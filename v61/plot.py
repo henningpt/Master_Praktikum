@@ -48,7 +48,7 @@ print("GITTER 100 unp.mean: ", np.mean(lambda100))
 
 
 #Stabilitätsbedingung
-L = np.linspace(0,4)
+L = np.linspace(0,3)
 r_1 = 1.4
 r_2 = 1.4
 plt.figure(1)
@@ -70,13 +70,32 @@ def g1g2(L):
     r_2=1.4
     return((1-L/r_1)*(1-L/r_2))
 
+
+r_1 = 1.4
+r_2 = 1.4
+
 laenge_laser, leistung_laser = np.genfromtxt("stabil.txt",unpack=True)
 laenge_laser*=1e-2
 print("lol",g1g2(laenge_laser)[g1g2(laenge_laser)<0])
-plt.figure(2)
-plt.plot(g1g2(laenge_laser), leistung_laser, 'x')
-plt.savefig("build/g1g2_Leistung.pdf")
-plt.close()
+f, axarr = plt.subplots(2, sharex=True)
+axarr[0].plot(laenge_laser, leistung_laser,'x',label=r'Messwerte')
+axarr[0].set_ylabel(r'$P /\si{\milli\watt}$')
+
+axarr[0].legend(loc="upper right")
+
+axarr[1].plot(laenge_laser, g1g2(laenge_laser),'x')
+axarr[1].plot(L,(1-L/r_1)*(1-L/r_2) , '-' , label=r'$g1\cdot g2$',alpha=0.5)
+axarr[1].plot(L,L*0+1,'k',alpha=0.5)
+axarr[1].plot(L,L*0,'k',alpha=0.5)
+axarr[1].set_xlabel(r'$L /\si{\meter}$')
+axarr[1].set_ylabel(r'$g_1\cdot g_2$')
+axarr[1].legend(loc="upper right")
+#axarr[0].set_title('Sharing X axis')
+f.savefig("build/g1g2_Leistung.pdf")
+# plt.figure(2)
+# plt.plot(g1g2(laenge_laser), leistung_laser, 'x')
+# plt.savefig("build/g1g2_Leistung.pdf")
+# plt.close()
 tabelle(np.array([laenge_laser,g1g2(laenge_laser),leistung_laser]),"stabil_table",np.array([3,4,2]))
 
 #00 mode intensity
