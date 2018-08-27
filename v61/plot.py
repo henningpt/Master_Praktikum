@@ -22,6 +22,7 @@ g100 = unp.uarray([18.5, 37.0, 55.5, 86.0, 96.5, 2 * 59.5], np.ones(6) * banderr
 g80  *= 0.5
 g100 *= 0.5
 
+lit_wavelen = 632.8 * 10**(-9)
 
 # functions
 def wavelen(gconst, dist, dn):
@@ -45,6 +46,9 @@ print("\nGITTER 80: ", lambda80)
 print("GITTER 80 unp.mean: ", np.mean(lambda80))
 print("\nGITTER 100: ", lambda100)
 print("GITTER 100 unp.mean: ", np.mean(lambda100))
+
+print("\nAbweichung 1 lit wert: ", (np.mean(lambda80) - lit_wavelen) / lit_wavelen)
+print("\nAbweichung 2 lit wert: ", (np.mean(lambda100) - lit_wavelen) / lit_wavelen)
 
 
 #Stabilitätsbedingung
@@ -92,6 +96,7 @@ axarr[1].set_ylabel(r'$g_1\cdot g_2$')
 axarr[1].legend(loc="upper right")
 #axarr[0].set_title('Sharing X axis')
 f.savefig("build/g1g2_Leistung.pdf")
+plt.close()
 # plt.figure(2)
 # plt.plot(g1g2(laenge_laser), leistung_laser, 'x')
 # plt.savefig("build/g1g2_Leistung.pdf")
@@ -109,6 +114,8 @@ params_mode_00, cov_mode_00 =curve_fit(mode00,d_plot,I,p0=[60,1,15])
 uparams_mode_00 = unp.uarray(params_mode_00, np.sqrt(np.diag(cov_mode_00)))
 plt.plot(d_plot, I, 'x')
 plt.plot(x_mode_00,mode00(x_mode_00,*params_mode_00),'-')
+plt.xlabel(r'$d / \mathrm{mm}$')
+plt.ylabel(r'$I / \mathrm{nA}$')
 #plt.plot(x_mode_00,mode00(x_mode_00,60,1,15),'-',label=r"test")
 plt.legend(loc='best')
 # in matplotlibrc leider (noch) nicht möglich
@@ -129,6 +136,8 @@ params_pol, cov_pol =curve_fit(polarisation,phi_plot,I_polar,p0=[142,0])
 uparams_pol = unp.uarray(params_pol, np.sqrt(np.diag(cov_pol)))
 plt.plot(phi_plot, I_polar, 'x')
 plt.plot(x_pol,polarisation(x_pol,*params_pol),'-')
+plt.xlabel(r'$\Phi / \circ$')
+plt.ylabel(r'$ I / \mathrm{nA}$')
 plt.savefig('build/polarisation.pdf')
 plt.close()
 
@@ -146,10 +155,12 @@ def mode01_asym(x,I_01,I_02,w1,w2,d_01,d_02):
 # plots:
 d_plot_mode01 = np.linspace(-20, 10, 31)
 x_mode_01 = np.linspace(-20,10,1000)
-params_mode_01, cov_mode_01 =curve_fit(mode01_asym,d_plot_mode01,I_mode01,p0=[800,200,1,1,-10,0])
+params_mode_01, cov_mode_01 = curve_fit(mode01_asym,d_plot_mode01,I_mode01,p0=[800,200,1,1,-10,0])
 uparams_mode_01 = unp.uarray(params_mode_01, np.sqrt(np.diag(cov_mode_01)))
 plt.plot(d_plot_mode01, I_mode01, 'x')
 plt.plot(x_mode_01, mode01_asym(x_mode_01,*params_mode_01),'r')
+plt.xlabel(r'$d / \mathrm{mm}$')
+plt.ylabel(r'$I / \mathrm{nA}$')
 plt.savefig('build/mode01.pdf')
 plt.close()
 print("\n \n Mode01fitparameter:",uparams_mode_01)

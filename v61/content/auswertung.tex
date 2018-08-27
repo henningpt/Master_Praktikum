@@ -47,10 +47,10 @@ $L/ \si{\meter}$ & $g_1 \cdot g_2$ & $ P/ \si{\milli\watt}$\\
 \begin{figure}
   \centering
   \includegraphics[width=0.9\textwidth]{build/g1g2_Leistung.pdf}
-  \caption{Sowohl maximal gemessene
-  Laserleistung $P$ aus auch
-  Stabilitätsparameter $g_1\cdot g_2$ gegen
-   die Resonatorlänge $L$ aufgetragen sowie
+  \caption{Maximal gemessene
+  Laserleistung $P$ und
+  Stabilitätsparameter $g_1\cdot g_2$ aufgetragen gegen
+   die Resonatorlänge $L$, sowie
    die Stabilitätsgrenzen in schwarz.
   }
   \label{fig:oberaffengeilerplot}
@@ -68,19 +68,19 @@ ergibt sich aus der Resonazbedingung
 \end{align}
 aus der Resonatorlänge $L$ und der Lichtgeschwindigkeit $c$.
 Aus dem Frequenzunterschied $\Delta \nu$ zweier benachbarter longitudialer Moden
-ergibt sich aus Gleichung \label{eqn:longi_mode}
+ergibt sich aus Gleichung \label{eqn:longi_mode} der Zusammenhang
 \begin{align}
-  c = 2L\Delta \nu  \label{eqn:Lichtgeschwindigkeit}
+  c = 2L\Delta \nu \, ,  \label{eqn:Lichtgeschwindigkeit}
 \end{align}
-ein Gleichung mit der die Lichtgeschwindigkeit aus bekannter Resonatorlänge und Frequenzspektrum
+mit dem die Lichtgeschwindigkeit aus bekannter Resonatorlänge und Frequenzspektrum
 berechnet werden kann.
 In der Abbildung \ref{fig:L1_freq} ist ein Frequenzspekturm für ein Laser mit einer Resonatorlänge $L=\SI{73.5}{\centi\meter}$
 dargestellt. Aus diesem werden die Frequenzen $\nu$ abgelesen
  und die Frequenzdifferenzen $\Delta \nu $ bestimmt und die Lichtgeschwindigkeit $c$ nach Gleichung \ref{eqn:Lichtgeschwindigkeit}
 berechnet.
 Die Tabelle \ref{tab:freq_L1} enthält die entsprechenden Ergebnisse.
-Zusätzlich wird einer weiteren Resonatorlänge von $L = \SI{83.5}{\centi\meter}$  untersucht,
-vergleiche Abbildung \ref{fig:L2_freq} und Tabelle \ref{tab:L2_freq}.
+Zusätzlich wird eine weitere Resonatorlänge $L = \SI{83.5}{\centi\meter}$  untersucht
+(vergleiche Abbildung \ref{fig:L2_freq} und Tabelle \ref{tab:L2_freq}).
 
 \begin{figure}
 \centering
@@ -91,8 +91,8 @@ vergleiche Abbildung \ref{fig:L2_freq} und Tabelle \ref{tab:L2_freq}.
 
 \begin{table}
   \centering
-\caption{Frequenzen $\nu$ bei einer Resonatorlänge von $L=\SI{73.5}{\centi\meter}$ und die entsprechenen berechneten Größen die Frequenzdifferenzen $\Delta \nu$ und die Lichtgeschwindigkeit $c$.  }
-\label{tab:L1_freq}
+\caption{Frequenzen $\nu$ bei einer Resonatorlänge von $L=\SI{73.5}{\centi\meter}$ und die entsprechenden berechneten Größen die Frequenzdifferenzen $\Delta \nu$ und die Lichtgeschwindigkeit $c$.  }
+\label{tab:freq_L1}
 \begin{tabular}{c c c }
    \toprule
    $\nu /\si{\mega\hertz}$ & $\Delta \nu / \si{\mega\hertz}$ & $c / \SI{e8}{\meter\per\second}$\\
@@ -117,7 +117,7 @@ vergleiche Abbildung \ref{fig:L2_freq} und Tabelle \ref{tab:L2_freq}.
 
 \begin{table}
   \centering
-\caption{Frequenzen $\nu$ bei einer Resonatorlänge von $L = \SI{83.5}{\centi\meter}$ und die entsprechenen berechneten Größen die Frequenzdifferenzen $\Delta \nu$ und die Lichtgeschwindigkeit $c$.  }
+\caption{Frequenzen $\nu$ bei einer Resonatorlänge von $L = \SI{83.5}{\centi\meter}$ und die entsprechenden berechneten Größen die Frequenzdifferenzen $\Delta \nu$ und die Lichtgeschwindigkeit $c$.  }
 \label{tab:L2_freq}
 \begin{tabular}{c c c }
    \toprule
@@ -142,9 +142,9 @@ Zum einen die \textbf{$\text{TEM}_{00}$},
 deren Intensiätsmaximum in der Mitte des Strahls lokalisiert ist(siehe Abbildung \ref{fig:mode00}).
 An die aufgenommenen Messwerte wird ein Gaußfit gemäß Gleichung \ref{eqn:TEM00} vorgenommen.
 In Abbildung \ref{fig:mode00} ist der entsprechende Graph neben den Messwerten dargstellt.
-Es ergeben für die Fitparameter
+Es ergeben sich die Fitparameter
 \begin{align}
-  I_0&=\SI{62.3(9)}{\nano\ampere} &  \omega&=\SI{13.8(2)}{\milli\meter} &  d_0&=\SI{12.9(1)}{\milli\meter}
+  I_0&=\SI{62.3(9)}{\nano\ampere} &  \omega&=\SI{13.8(2)}{\milli\meter} &  d_0&=\SI{12.9(1)}{\milli\meter} \, .
 % I_0,w,d_0)
 \end{align}
 \begin{figure}
@@ -172,20 +172,21 @@ gefunden.
   \centering
   \includegraphics{build/mode01.pdf}
   \caption{Gemessene Intensitätsverteilung der \textbf{$\text{TEM}_{01}$}-Mode und Gaußfit an die Messwerte.}
-  \label{fig:plot}
+  \label{fig:mode01}
 \end{figure}
 
 
 
 \subsection{Polarisation}
 \label{subsec:Polarisation}
-Die Messwert zur Bestimmung der Polarisation des Lasers sind in Tabelle \ref{tab:polarisation} aufgelistet.
-In Abbildung \ref{fig:polarisation} wird die Intensität $I$ in Ahängigkeit von dem Polarisationswinkel $\phi$
+Die Messwerte zur Bestimmung der Polarisation des Lasers sind in Tabelle \ref{tab:polarisation} aufgelistet.
+In Abbildung \ref{fig:polarisation} wird die Intensität $I$(gemessen wird ein elektrischer Strom in $\si{\nano\ampere}$)
+in Abhängigkeit von dem Polarisationswinkel $\phi$
 aufgetragen und die Funktion
 \begin{align}
 I(\phi)=I_0 \cos\left(\phi-\phi_0\right)
 \end{align}
-an die Messwerte an gefittet.
+an die Messwerte gefittet.
 Für die Funktion ergeben sich die Parameter
 \begin{align}
 I_0  & = \SI{142.4(6)}{\nano\ampere},\\
@@ -239,7 +240,7 @@ I_0  & = \SI{142.4(6)}{\nano\ampere},\\
 
 Die Wellenlänge der charakteristischen roten Linie des He-Ne-Lasers, wird mit Hilfe
 von zwei optischen Gittern ($g_{1} = \SI{80}{\per\centi\meter} \ g_{2} = \SI{100}{\per\centi\meter}$) bestimmt.
-Es wird jeweils ein Wert zu jedem Maximum bestimmt. Aus dem Mittel der Werte aus den einzelnen Maxima
+Es wird jeweils ein Wert zu jedem Maximum bestimmt. Aus dem Mittel der Werte der einzelnen Maxima
 wird für jedes Gitter eine Wellenlänge berechnet.
 In Tabelle \ref{tab:wellenlaenge} sind jeweils die Werte für Schirmabstand $L$ und Abstände der Maxima
 zum Maximum $0.$-Ordnung $d_{\text{i}}$ zusammen mit den bestimmten Wellenlängen angegeben.\\
