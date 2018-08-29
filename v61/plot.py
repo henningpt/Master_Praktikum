@@ -83,7 +83,7 @@ laenge_laser*=1e-2
 print("lol",g1g2(laenge_laser)[g1g2(laenge_laser)<0])
 f, axarr = plt.subplots(2, sharex=True)
 axarr[0].plot(laenge_laser, leistung_laser,'x',label=r'Messwerte')
-axarr[0].set_ylabel(r'$P /\si{\milli\watt}$')
+axarr[0].set_ylabel(r'$P /\mathrm{mW}$')
 
 axarr[0].legend(loc="upper right")
 
@@ -91,7 +91,7 @@ axarr[1].plot(laenge_laser, g1g2(laenge_laser),'x')
 axarr[1].plot(L,(1-L/r_1)*(1-L/r_2) , '-' , label=r'$g1\cdot g2$',alpha=0.5)
 axarr[1].plot(L,L*0+1,'k',alpha=0.5)
 axarr[1].plot(L,L*0,'k',alpha=0.5)
-axarr[1].set_xlabel(r'$L /\si{\meter}$')
+axarr[1].set_xlabel(r'$L /\mathrm{m}$')
 axarr[1].set_ylabel(r'$g_1\cdot g_2$')
 axarr[1].legend(loc="upper right")
 #axarr[0].set_title('Sharing X axis')
@@ -145,20 +145,22 @@ print("\n \n Polarisationsfitparameter:",uparams_pol)
 print("in degree:",uparams_pol[1]*180/np.pi)
 tabelle(np.array([phi_plot,I_polar]),"polarisation_table",np.array([0,1]))
 
-
 def mode01_asym(x,I_01,I_02,w1,w2,d_01,d_02):
     return I_01 * np.exp(-2*((x-d_01)/w1)**2) + I_02 * np.exp(-2*((x-d_02)/w2)**2)
 
 
+def mode01_sym(x, I_0, omega, d_0):
+    diffsq = (x - d_0)**2
+    return(I_0 * diffsq * np.exp(-2 * diffsq / omega**2))
 
 
 # plots:
 d_plot_mode01 = np.linspace(-20, 10, 31)
 x_mode_01 = np.linspace(-20,10,1000)
-params_mode_01, cov_mode_01 = curve_fit(mode01_asym,d_plot_mode01,I_mode01,p0=[800,200,1,1,-10,0])
+params_mode_01, cov_mode_01 = curve_fit(mode01_sym,d_plot_mode01,I_mode01,p0=[800,12,-3])
 uparams_mode_01 = unp.uarray(params_mode_01, np.sqrt(np.diag(cov_mode_01)))
 plt.plot(d_plot_mode01, I_mode01, 'x')
-plt.plot(x_mode_01, mode01_asym(x_mode_01,*params_mode_01),'r')
+plt.plot(x_mode_01, mode01_sym(x_mode_01,*params_mode_01),'r')
 plt.xlabel(r'$d / \mathrm{mm}$')
 plt.ylabel(r'$I / \mathrm{nA}$')
 plt.savefig('build/mode01.pdf')
@@ -198,3 +200,6 @@ print("\nrelative abweichung2 : ",(np.mean(longi_messung2)-const.c)/const.c)
 tabelle(np.array([unp.nominal_values(delta_freq_L1)*1e-6,unp.std_devs(delta_freq_L1)*1e-6,unp.nominal_values(longi_messung1)*1e-8,unp.std_devs(longi_messung1)*1e-8]),"freq_L1_table",np.array([0,0,2,2]))
 tabelle(np.array([unp.nominal_values(delta_freq_L2)*1e-6,unp.std_devs(delta_freq_L2)*1e-6,unp.nominal_values(longi_messung2)*1e-8,unp.std_devs(longi_messung2)*1e-8]),"freq_L2_table",np.array([0,0,2,2]))
 tabelle(np.array([unp.nominal_values(freq_L1)*1e-6,unp.std_devs(freq_L1)*1e-6,unp.nominal_values(freq_L2)[:-1]*1e-6,unp.std_devs(freq_L2)[:-1]*1e-6]),"freq_table",np.array([0,0,0,0]))
+
+
+print("\n\nFERTIG")
