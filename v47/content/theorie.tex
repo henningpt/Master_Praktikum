@@ -17,16 +17,44 @@ als auch mit Hilfe der Messwerte bestimmt.
 Bei einer rein klassischen Betrachtung, wird jedem Atom pro Freiheitsgrad eine mittlere
 Energie von $\sfrac{k_{\text{B}i}}{2}$ zugeordnet. Die Atome im dreidimensionalen
 Festkörper sind auf drei Bewegungsrichtungen, also sechs Freiheitsgrade, eingeschränkt, sodass
-ein Atom eine mittlere Wärmeenergie von
+ein Mol eine mittlere Wärmeenergie von
 \begin{align}
-	<u> = 3 k_{\text{B}} T \lable{eqn:t1}
+	U = 3 k_{\text{B}} T \, N_{\text{L}} = 3 \, R \label{eqn:t2}
 \end{align}
-besitzt. Durch multiplizieren
+besitzt. Dabei bezeichnet $N_{\text{L}}$ die
+Lohschmidtsche Zahl und
+$R$ die allgemeine Gaskonstante.
+Um die spezifische Molwärme $C_{\text{V}}$ zu erhalten,
+wird die Energie eines Mols (siehe Gleichung \eqref{eqn:t2})
+nach der Temperatur $T$ abgeleitet.
+Es ergibt sich also
+\begin{align}
+	C_{\text{V}} = \frac{\partial U}{\partial T} \bigg\vert_{\text{V}} = 3 \, R \, . \label{eqn:t4}
+\end{align}
+
+Damit wird klar, dass in der klassischen Theorie,
+die Molwärme sowohl unabhängig von der Beschaffenheit des
+Festkörpers, als auch der Temperatur ist.
+
 
 \subsection{Einsteinsches Modell}
 \label{subsec:einstein}
-
-
+Im einsteinschen Modell, wird, im Gegensatz zum klassischen
+Modell, berücksichtigt, dass die Energie, mit
+der die Atome im Festköper Schwingen, quantisiert ist.
+Ausgehend von einer festgelegten Kreisfrequenz $\omega$,
+werden nur Energien der Form
+\begin{align*}
+	E_{n} = \hbar \omega n
+\end{align*}
+zugelassen. Wobei $n$ eine natürliche Zahl ist.
+Diese möglichen Energiezustände sollen der Boltzmann-Statistik
+folgen. Sodass der Energieerwartungswert für ein Atom durch
+\begin{align}
+	\langle u \rangle_{\text{Einstein}} = \frac{\sum^{\infty}_{n = 0}
+	\hbar \omega n e^{\frac{-\hbar \omega n}{k_{\text{B}} T}}}{\sum^{\infty}_{n = 0}
+	e^{\frac{-\hbar \omega n}{k_{\text{B}} T}}}
+\end{align}
 \subsection{Debye-Modell}
 \label{subsec:debye}
 
