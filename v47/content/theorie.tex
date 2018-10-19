@@ -52,9 +52,22 @@ Diese möglichen Energiezustände sollen der Boltzmann-Statistik
 folgen. Sodass der Energieerwartungswert für ein Atom durch
 \begin{align}
 	\langle u \rangle_{\text{Einstein}} = \frac{\sum^{\infty}_{n = 0}
-	\hbar \omega n e^{\frac{-\hbar \omega n}{k_{\text{B}} T}}}{\sum^{\infty}_{n = 0}
-	e^{\frac{-\hbar \omega n}{k_{\text{B}} T}}}
+	E_{n} e^{\frac{-E_{n}}{k_{\text{B}} T}}}{\sum^{\infty}_{n = 0}
+	e^{\frac{-E_{n}}{k_{\text{B}} T}}} \label{eqn:5}
 \end{align}
+
+Damit ergibt sich dann für die Molwärme
+\begin{align}
+	3 \frac{R \hbar^{2} \omega^{2}}{k_{\text{B}}} \frac{1}{T^{2}}
+	\frac{e^{\frac{\hbar \omega}{k_{\text{B}} T}}}{e^{\frac{\hbar \omega}{k_{\text{B}} T}} - 1}
+\end{align}
+
+Dabei gilt
+\begin{align}
+	\lim_{T \rightarrow \infty} C_{\text{V,Einstein}} = 3R \, .
+\end{align}
+Es lässt sich also erkennen, dass sich für große Temperaturen
+das klassische und das einsteinsche annähern. 
 \subsection{Debye-Modell}
 \label{subsec:debye}
 
