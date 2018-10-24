@@ -19,7 +19,7 @@ Energie von $\sfrac{k_{\text{B}i}}{2}$ zugeordnet. Die Atome im dreidimensionale
 Festkörper sind auf drei Bewegungsrichtungen, also sechs Freiheitsgrade, eingeschränkt, sodass
 ein Mol eine mittlere Wärmeenergie von
 \begin{align}
-	U = 3 k_{\text{B}} T \, N_{\text{L}} = 3 \, R \label{eqn:t2}
+	U = 3 k_{\text{B}} T \, N_{\text{L}} = 3 R T\label{eqn:t2}
 \end{align}
 besitzt. Dabei bezeichnet $N_{\text{L}}$ die
 Lohschmidtsche Zahl und
@@ -78,7 +78,9 @@ Dazu wird eine Verteilungsfunktion $Z(\omega)$ eingeführt.
 Diese beschreibt das Spektrum der Schwingungsfrequenzen.
 Für die Molwärme gilt also
 \begin{align}
-	C_{\text{V}} = \frac{\mathrm{d}}{\mathrm{d}T} \int_{0}^{\omega_{\text{max}}} Z(\omega) \frac{\hbar \omega}{}
+	C_{\text{V}} = \frac{\mathrm{d}}{\mathrm{d}T}
+	\int_{0}^{\omega_{\text{max}}} Z(\omega)
+	\frac{\hbar \omega}{e^{\frac{\hbar \omega}{k_{\text{B}} T} - 1}}
 \end{align}
 
 
