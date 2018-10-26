@@ -63,7 +63,7 @@ t_ges = np.append(t_1,t_2)*60
 print(t_ges)
 
 T_probe = Temperatur(R_probe) + const.zero_Celsius
-T_mantel = Temperatur(R_mantel)
+T_mantel = Temperatur(R_mantel)  + const.zero_Celsius
 print("T_probe=", T_probe)
 T_diff = T_probe[1:]-T_probe[:-1]
 t_diff = t_ges[1:]-t_ges[:-1]
@@ -71,8 +71,10 @@ C_P = Molwaerme_druck(U,I,masse_Cu,T_probe[1:]-T_probe[:-1], t_ges[1:]-t_ges[:-1
 
 
 plt.figure(1)
-plt.plot(t_ges, Temperatur(R_probe),'x' ,label='Probe')
-plt.plot(t_ges, Temperatur(R_mantel),'x' ,label='Mantel')
+plt.plot(t_ges, T_probe,'x' ,label='Probe')
+plt.plot(t_ges, T_mantel,'x' ,label='Mantel')
+plt.xlabel("Zeit t/s")
+plt.ylabel("Temperatur T/K")
 plt.legend(loc='best')
 plt.savefig('build/temperatur_verlauf.pdf')
 
