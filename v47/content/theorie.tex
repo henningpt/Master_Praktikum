@@ -56,7 +56,7 @@ folgen. Sodass der Energieerwartungswert für ein Atom durch
 	e^{\frac{-E_{n}}{k_{\text{B}} T}}} \label{eqn:5}
 \end{align}
 
-Damit ergibt sich dann für die Molwärme
+Damit ergibt sich dann für die MolwärmZ8
 \begin{align}
 	3 \frac{R \hbar^{2} \omega^{2}}{k_{\text{B}}} \frac{1}{T^{2}}
 	\frac{e^{\frac{\hbar \omega}{k_{\text{B}} T}}}{e^{\frac{\hbar \omega}{k_{\text{B}} T}} - 1}
@@ -82,7 +82,16 @@ Für die Molwärme gilt also
 	\int_{0}^{\omega_{\text{max}}} Z(\omega)
 	\frac{\hbar \omega}{e^{\frac{\hbar \omega}{k_{\text{B}} T} - 1}}
 \end{align}
-
-
-
+Im allgemeinen ist $Z(\omega)$  beliebig kompliziert.
+Allerdings, wird im Debye-Modell die Annahme getroffen,
+dass die Phasengeschwindigkeit unabhängig von Frequenz wie
+Ausbreitungsrichtung ist.
+Auf diese Weise vereinfacht sich $Z(\omega)$ derart, dass
+ausschließlich die Eigenschwingungen eines Würfels(Kantenlänge $L$)
+auf einem Intervall $\left[ \omega, \omega + \mathrm{d}\omega \right]
+zu berücksichtigen sind.
+Damit ergibt sich
+\begin{align}
+	Z(\omega) \mathrm{d}\omega = \omega^{2} \mathrm{d}\omega
+\end{align}
 \cite{sample}
