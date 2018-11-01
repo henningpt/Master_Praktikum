@@ -29,7 +29,8 @@ wird die Energie eines Mols (siehe Gleichung \eqref{eqn:t2})
 nach der Temperatur $T$ abgeleitet.
 Es ergibt sich also
 \begin{align}
-	C_{\text{V}} = \frac{\partial U}{\partial T} \bigg\vert_{\text{V}} = 3 \, R \, . \label{eqn:t4}
+	C_{\text{V}} = \frac{\partial U}{\partial T}
+	\bigg\vert_{\text{V}} = 3 \, R \, . \label{eqn:t3}
 \end{align}
 
 Damit wird klar, dass in der klassischen Theorie,
@@ -58,13 +59,13 @@ folgen. Sodass der Energieerwartungswert für ein Atom durch
 
 Damit ergibt sich dann für die MolwärmZ8
 \begin{align}
-	3 \frac{R \hbar^{2} \omega^{2}}{k_{\text{B}}} \frac{1}{T^{2}}
-	\frac{e^{\frac{\hbar \omega}{k_{\text{B}} T}}}{e^{\frac{\hbar \omega}{k_{\text{B}} T}} - 1}
+	3 R \frac{\hbar^{2} \omega^{2}}{k_{\text{B}}} \frac{1}{T^{2}}
+	\frac{e^{\frac{\hbar \omega}{k_{\text{B}} T}}}{e^{\frac{\hbar \omega}{k_{\text{B}} T}} - 1}\label{eqn:t7}
 \end{align}
 
 Dabei gilt
 \begin{align}
-	\lim_{T \rightarrow \infty} C_{\text{V,Einstein}} = 3R \, .
+	\lim_{T \rightarrow \infty} C_{\text{V,Einstein}} = 3R \, . \label{eqn:t8}
 \end{align}
 Es lässt sich also erkennen, dass  für große Temperaturen
 das einsteinsche Modell in das Klassische übergeht.
@@ -79,8 +80,8 @@ Diese beschreibt das Spektrum der Schwingungsfrequenzen.
 Für die Molwärme gilt also
 \begin{align}
 	C_{\text{V}} = \frac{\mathrm{d}}{\mathrm{d}T}
-	\int_{0}^{\omega_{\text{max}}} Z(\omega)
-	\frac{\hbar \omega}{e^{\frac{\hbar \omega}{k_{\text{B}} T} - 1}}
+	\int_{0}^{\omega_{\text{max}}} \mathrm{d}\omega Z(\omega)
+	\frac{\hbar \omega}{e^{\frac{\hbar \omega}{k_{\text{B}} T} - 1}} \label{eqn:t9}
 \end{align}
 Im allgemeinen ist $Z(\omega)$  beliebig kompliziert.
 Allerdings, wird im Debye-Modell die Annahme getroffen,
@@ -88,10 +89,52 @@ dass die Phasengeschwindigkeit unabhängig von Frequenz wie
 Ausbreitungsrichtung ist.
 Auf diese Weise vereinfacht sich $Z(\omega)$ derart, dass
 ausschließlich die Eigenschwingungen eines Würfels(Kantenlänge $L$)
-auf einem Intervall $\left[ \omega, \omega + \mathrm{d}\omega \right]
+auf einem Intervall $\left[ \omega, \omega + \mathrm{d}\omega \right]$
 zu berücksichtigen sind.
 Damit ergibt sich
 \begin{align}
-	Z(\omega) \mathrm{d}\omega = \omega^{2} \mathrm{d}\omega
+	Z(\omega) \mathrm{d}\omega =  \omega^{2} \frac{L^{3}}{2 \pi^{2}}
+	\left( \frac{1}{v_{\text{l}}^{3}} +
+	\frac{2}{v_{\text{tr}}^{3}} \right) \mathrm{d}\omega \, . \label{eqn:t10}
 \end{align}
+
+Mit der longitudinalen Phasengeschwindigkeit $v_{\text{l}}$
+und der transversalen $v_{\text{tr}}$.
+In einem aus $N_{\text{L}}$ Atomen zusammengesetzter Festkörper,
+existieren im dreidimensionalen Raum $3N_{\text{L}}$ Eigenschwingungen.
+Aufgrund dieser Begrenzung, ist es notwendig, dass eine
+Frequenz $\omega_{\text{D}}$, welche die Obere Schranke der auftretenden
+Frequenzen darstellt, existiert.
+Diese wird als Debye-Frequenz bezeichnet und lässt sich
+aus dem Zusammenhang
+\begin{align}
+	\int_{0}^{\omega_{\text{D}}} \mathrm{d}\omega = 3 N_{\text{L}} \label{eqn:t11}
+\end{align}
+gewinnen.
+Es ergibt sich damit
+\begin{align}
+	\omega_{\text{D}}^{3} = \frac{18 \pi^{2} N_{\text{L}}}{L^{3}}
+	\frac{1}{\frac{1}{v_{\text{l}}^{3}} + \frac{2}{v_{\text{tr}}}} \, .\label{eqn:t12}
+\end{align}
+
+Mithilfe von Gleichung \ref{eqn:t9}, \ref{eqn:t10} und \ref{eqn:t12}
+lässt sich die spezifische Wärmekapazität als
+\begin{align}
+	C_{\text{V, Debye}} = \frac{\mathrm{d}}{\mathrm{d}T} \frac{9 N_{\text{L}} \hbar}{\omega_{\text{D}}^{3}}
+	= \int_{0}^{\omega_{0}} \mathrm{d}\omega \frac{\omega^{3}}{e^{\frac{\hbar \omega}{k_{\text{B}} T}} - 1} \label{eqn:t14}
+\end{align}
+schreiben.
+Mit den Definitionen
+\begin{align*}
+	x &:= \frac{\hbar \omega}{k_{\text{B}} T}\\
+	\frac{\theta_{\text{D}}}{T} &:= \frac{\hbar \omega_{\text{D}}}{\k_{\text{B}} T}
+\end{align*}
+wird der Ausdruck für die Wärmekapazität \ref{eqn:t14} zu
+\begin{align}
+	C_{\text{V, Debye}} = 9 R \left(\frac{T}{\theta_{\text{D}}})\right)^{3}
+	\int_{0}^{\frac{\theta_{\text{D}}}{T}} \frac{x^{4} e^{x}}{\left( e^{x} - 1 \right)^{2}} \, . \label{eqn:t17}
+\end{align}
+
+Bei einer Betrachtung von \ref{eqn:t17} im Grenzwert sehr großer Temperaturen,
+ergibt sich für $C_{\text{V}}$ wieder die Konstante $3R$.
 \cite{sample}
