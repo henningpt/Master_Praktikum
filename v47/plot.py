@@ -7,7 +7,17 @@ import scipy.constants as const
 from uncertainties.unumpy import (nominal_values as noms,
                                   std_devs as stds)
 
-
+def omega_D(m, rho, molare_masse):
+    v_l  = 4.7e3   # in Meter/sekunde
+    v_tr = 2.26e3   # in Meter/sekunde
+    # N_L  = m / (Atommasse * const.physical_constants['atomic mass constant'][0])
+    N_L = (m / molare_masse) * const.N_A
+    Volumen = m / rho
+    omega = (18 * np.pi**2 * N_L / (Volumen * ( 1/v_l**3 + 2/(v_tr**3) )) )**(1/3)
+            # ((18*np.pi**2*teilchenzahl)/volumen*1/((1/vlong**3)+(2/vtrans**3)))**(1/3)
+    print("Omega_D = ", omega )
+    print("Temp_D = ", const.hbar * omega / const.k )
+    return const.hbar * omega / const.k
 
 def Temperatur(R):
     return(0.00133 * R**2 + 2.296 * R  - 243.02)
@@ -138,7 +148,6 @@ C_V_170 = np.delete(C_V_170,[2,9],None)
 T_170 = np.delete(T_170,[2,9],None)
 
 params_debye , cov_debye = curve_fit(fit_polynom_grad7, debyefunktion_C_V , debyefunktion_O_T )
-
 uparams_debye = unp.uarray(params_debye, np.sqrt(np.diag(cov_debye)))
 
 
@@ -146,21 +155,31 @@ uparams_debye = unp.uarray(params_debye, np.sqrt(np.diag(cov_debye)))
 plt.figure(6)
 plt.plot(debyefunktion_C_V,debyefunktion_O_T ,'x' ,label='Alpha')
 plt.plot(debyefunktion_C_V, fit_polynom_grad7(debyefunktion_C_V,*params_debye))
+plt.xlabel("C_V")
+plt.ylabel("theta/T")
+plt.legend(loc='best')
 plt.savefig('build/debyefunktion.pdf')
 plt.close
 
-Gemessen_O_T = fit_polynom_grad7(C_V_170,*uparams_debye)
+Gemessen_O_T = fit_polynom_grad7(C_V_170,*params_debye)
 print("Test",Gemessen_O_T)
 print("parmas mit fehler", uparams_debye )
 debye_temperatur_kupfer = Gemessen_O_T * T_170
 print('debye Temperatur', debye_temperatur_kupfer)
 print('mittelwert debye Temperatur', np.mean(noms(debye_temperatur_kupfer) ), np.std(noms(debye_temperatur_kupfer) ) )
-
+T_D_mittel = unp.uarray(np.mean(noms(debye_temperatur_kupfer)),np.std(noms(debye_temperatur_kupfer) ) )
 
 
 tabelle(np.array([noms(C_V_170),stds(C_V_170), noms(Gemessen_O_T), stds(Gemessen_O_T), noms(T_170), stds(T_170), noms(debye_temperatur_kupfer), stds(debye_temperatur_kupfer)]),
     "temperatur_debye",np.array([2,2,2,2,1,1,1,1]))
 
+#theoriewert
+CU_rho = 8.96e3    # wolfram
+CU_Molmasse = 63.546e-3 #wolfram
+T_D = omega_D(masse_Cu , CU_rho , CU_Molmasse)
+print("relative Abweichung zum Theoriewert", (T_D-T_D_mittel)/T_D )
+T_D_lit= 345
+print("relative Abweichung zum Litwert", (T_D_lit-T_D_mittel)/T_D_lit )
 
 # plt.xlabel(r'$\alpha \:/\: \si{\ohm}$')
 # plt.ylabel(r'$y \:/\: \si{\micro\joule}$')
