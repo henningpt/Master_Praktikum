@@ -25,8 +25,9 @@ def Temperatur(R):
 def fit_polynom_grad4(x,a,b,c,d,e):
     return a * x**4 + b * x**3 + c * x**2 + d * x + e
 
-def fit_polynom_grad7(x,a,b,c,d,e,f):
-    return a * x **4 + b * x **3 + c * x**2 + d * x + f + e/x
+def fit_polynom_grad7(x,a,b,c,d,e,f,g):
+    # return a * x **4 + b * x **3 + c * x**2 + d * x + e + f/x
+    return a * x **3 + b * x **2 + c * x   + d + e/x  + f * x**(-2) + g * x**(-3)
 
 def Molwaerme_druck(U,I,masse,Delta_T,delta_t):
         print("Delta_T=", Delta_T)
@@ -77,6 +78,10 @@ T_mantel = Temperatur(R_mantel)  + const.zero_Celsius
 print("T_probe=", T_probe)
 T_diff = T_probe[1:]-T_probe[:-1]
 t_diff = t_ges[1:]-t_ges[:-1]
+
+
+
+
 C_P = Molwaerme_druck(U,I,masse_Cu,T_probe[1:]-T_probe[:-1], t_ges[1:]-t_ges[:-1])
 
 
@@ -93,8 +98,8 @@ plt.plot(t_ges, Temperatur(R_mantel)-Temperatur(R_probe),'x' ,label='Mantel')
 plt.savefig('build/temperatur_diff.pdf')
 plt.close
 
-T_mittel = unp.uarray(T_probe[:-1] + T_diff/2, T_diff/2)
 
+T_mittel = unp.uarray(T_probe[:-1] + T_diff/2, T_diff/2)
 plt.figure(3)
 plt.errorbar(T_probe[:-1] + T_diff/2 ,noms(C_P),xerr = T_diff/2 , yerr = stds(C_P), fmt='x' )
 plt.savefig('build/molwaerme_druck_const.pdf')
@@ -107,6 +112,7 @@ plt.savefig('build/alpha_CU.pdf')
 plt.close
 
 C_V = Molwaerme_volumen(C_P, fit_polynom_grad4(T_mittel,*params_alpha), CU_kompress, CU_molvol, T_mittel)
+
 
 
 tabelle(np.array([t_ges ,R_probe ,T_probe , R_mantel, T_mantel]),
@@ -142,10 +148,22 @@ debyefunktion_O_T = np.linspace(0,15.9,160)
 
 print(debyefunktion_C_V)
 print(debyefunktion_O_T)
-
+debye_temp_lit = 345
 
 C_V_170 = np.delete(C_V_170,[2,9],None)
 T_170 = np.delete(T_170,[2,9],None)
+
+plt.figure(10)
+plt.plot(noms(T_170), noms(C_V_170), 'x', label=r"Verwendete Messwerte")
+plt.errorbar(T_probe[:-1] + T_diff/2 ,noms(C_V),xerr = T_diff/2 , yerr = stds(C_V), fmt='x',label=r'Messwerte', zorder=-1 )
+plt.plot(debye_temp_lit/debyefunktion_O_T[10:], debyefunktion_C_V[10:], ".", label=r"Debyemodell")
+plt.plot(debye_temp_lit/debyefunktion_O_T[10:],3*const.R+debye_temp_lit/debyefunktion_O_T[10:]*0,'-',label=r'Klassisch')
+plt.legend(loc="best")
+plt.savefig('build/molwaerme_V_const_und_theo.pdf')
+plt.close
+
+
+
 
 params_debye , cov_debye = curve_fit(fit_polynom_grad7, debyefunktion_C_V , debyefunktion_O_T )
 uparams_debye = unp.uarray(params_debye, np.sqrt(np.diag(cov_debye)))
@@ -153,10 +171,10 @@ uparams_debye = unp.uarray(params_debye, np.sqrt(np.diag(cov_debye)))
 
 
 plt.figure(6)
-plt.plot(debyefunktion_C_V,debyefunktion_O_T ,'x' ,label='Alpha')
-plt.plot(debyefunktion_C_V, fit_polynom_grad7(debyefunktion_C_V,*params_debye))
-plt.xlabel("C_V")
-plt.ylabel("theta/T")
+plt.plot(debyefunktion_C_V,debyefunktion_O_T ,'x' ,label=r'Debyefunktion')
+plt.plot(debyefunktion_C_V, fit_polynom_grad7(debyefunktion_C_V,*params_debye),label = r'Fitfunktion')
+plt.xlabel(r'$C_V$')
+plt.ylabel(r'$\frac{\theta_D}{T}$')
 plt.legend(loc='best')
 plt.savefig('build/debyefunktion.pdf')
 plt.close
@@ -180,6 +198,7 @@ T_D = omega_D(masse_Cu , CU_rho , CU_Molmasse)
 print("relative Abweichung zum Theoriewert", (T_D-T_D_mittel)/T_D )
 T_D_lit= 345
 print("relative Abweichung zum Litwert", (T_D_lit-T_D_mittel)/T_D_lit )
+print("relative Abweichung zum Litwert des Theoriewertes", (T_D_lit-T_D)/T_D_lit )
 
 # plt.xlabel(r'$\alpha \:/\: \si{\ohm}$')
 # plt.ylabel(r'$y \:/\: \si{\micro\joule}$')
