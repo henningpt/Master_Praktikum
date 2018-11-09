@@ -3,47 +3,53 @@
 
 Aus der Messung ergibt sich ein Wert für die Debyetemperatur von Kupfer
 \begin{align}
-  \theta_{D_{Kupfer}} = \SI{330(49)}{\kelvin}.
+\theta_{D_{Kupfer}} = \SI{328(42)}{\kelvin}.
 \end{align}
 Die hohe Ungenauigkeit resultiert zum Einen daraus, dass für die Temperatur zur Berechnung von
-$C_V$ ein $T_{mittel}$ verwendet wird und dabei ein Fehler relustiert, der proportional
+$C_V$ ein $T_{mittel}$ verwendet wird und dabei ein Fehler resultiert, der proportional
 zu den Temperaturschritt $\Delta T$ ist. Zum Anderen wurde
-nur zu  Beginn der Messung der Heizstrom $I$ und die Heizspannung $U$
-gemessen und die leichten autretenden Abweichungen während der Messung als Fehler betrachtet.
+nur zu Beginn der Messung der Heizstrom $I$ und die Heizspannung $U$
+gemessen und die leichten auftretenden Abweichungen während der Messung als Fehler betrachtet.
 Um die Ungenauigkeit auf die Gemessene Debyetemperatur zu verringert muss somit die
 Temperatur in geringeren Abständen gemessen werden und $I$ und $U$ zu jedem
-Messwert erneut gemessen werden. (Wobei bei zu kleinen
-Abständen die Thermische Fluktuationen die Messung ebenfalls verfäschen können)
+Messwert erneut gemessen werden. Wobei jedoch zu kleine
+Messabstände die Messung durch thermische Fluktuationen ebenfalls verfälschen können.
+Ein weiteres Problem ist die thermische Isolation der Probe, um Wärmeverluste zu minimieren. Insbesondere das Kompensieren der Wärmestrahlung über
+den Zylinder, stellt sich als Problematisch heraus, da Temperatur von Zylinder und Probe, um Kompensation zu gewährleisten, identisch sein müssen.
+In der Tabelle \ref{tab:Messwerte} wird die Abweichungen zwischen den Temperaturen aufgetragen, die bis zu $\SI{8.8}{\kelvin}$
+beträgt. Um eine genauere Messung zu erhalten, sollte diese Abweichung verringert werden.
 
 Über die Gleichung \eqref{eqn:5} und \eqref{eqn:debye_temp}
 ergibt sich ein Theoriewert von Kupfer der Debyetemperatur
 \begin{align}
-  \theta_{D_{theo}} = \SI{332.5}{\kelvin}.
+\theta_{D_{theo}} = \SI{332.5}{\kelvin}.
 \end{align}
 Der Literaturwert für die Debyetemperatur von
 Kupfer beträgt
 \begin{align}
-  \theta_{D_{lit}} = \SI{345}{\kelvin}   \text{\cite{debyetemp}.}
+\theta_{D_{lit}} = \SI{345}{\kelvin} \text{\cite{debyetemp}.}
 \end{align}
 Die relative Abweichung des gemessenen Wertes beträgt zum Theoriewert somit
 \begin{align}
-a_{theo} = \SI{1(15)}{\percent}
+a_{theo} = \SI{1(13)}{\percent}
 \end{align}
 und zum Literaturwert
 \begin{align}
-  a_{lit}= \SI{4(14)}{\percent}.
+a_{lit}= \SI{5(12)}{\percent}.
 \end{align}
 Der Theoriewert besitzt eine relative Abweichung von
 \begin{align}
-  a_{theo,lit}=\SI{3.6}{\percent}
+a_{theo,lit}=\SI{3.6}{\percent}
 \end{align}
 zum Literaturwert.
-Auf Grund der Abweichung der Messwerte zum Theoriewert
+Aufgrund der Abweichung der Messwerte zum Theoriewert
 scheint die Messwerte die Theorie zu bestätigen bis auf die
 hohe Ungenauigkeit des Messwertes. Jedoch zeigt
-der Literaturwert eine gewisse Abweichung zu dem Theoriewert.
-Dies deutet darauf hin, dass die Theorie noch nicht alle
-effekte berücksichtig die und die Messung zu ungenau durchgeführt wurde.
+der Literaturwert eine geringe Abweichung zu dem Theoriewert.
+Dies deutet darauf hin, dass die Theorie möglicherweise noch nicht alle
+Effekte berücksichtigt. Weiter weicht der gemessene Wert ebenfalls leicht von Literaturwert ab,
+mögliche Ursache dafür sind einmal die zuvor beschriebene Problematik der Kompensation von Wärmestrahlung
+und weitere systematische Fehler.
 Zusammenfassend lässt sich sagen, dass es bei genauerer Messung
-duchaus möglich sein könnte, über den Versuchsaufbau die spezifische
-Wärmekapazit einer Probe zu bestimmen.
+durchaus möglich sein könnte, über den Versuchsaufbau
+die Molwärme einer Probe zu bestimmen.

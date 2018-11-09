@@ -49,7 +49,9 @@ alpha_CU = np.array([7.00, 8.50, 9.75, 10.70, 11.50, 12.10, 12.65,
 T_alpha = np.linspace(70,300,24)
 
 params_alpha , cov_alpha = curve_fit(fit_polynom_grad4, T_alpha , alpha_CU)
+uparams_alpha = unp.uarray(params_alpha, np.sqrt(np.diag(cov_alpha)))
 
+print("fitparams alpha", uparams_alpha)
 T_alpha_fit = np.linspace(70,300,50)
 
 R_mantel , R_probe = np.genfromtxt("messwerte.txt", unpack=True)
@@ -115,8 +117,10 @@ C_V = Molwaerme_volumen(C_P, fit_polynom_grad4(T_mittel,*params_alpha), CU_kompr
 
 
 
-tabelle(np.array([t_ges ,R_probe ,T_probe , R_mantel, T_mantel]),
-    "messwerte_tabelle",np.array([0,1,1,1,1]))
+tabelle(np.array([t_ges ,R_probe ,T_probe , R_mantel, T_mantel,T_mantel-T_probe]),
+    "messwerte_tabelle",np.array([0,1,1,1,1,1]))
+
+print("T_mantel-T_probe", np.max(abs(T_mantel-T_probe)))
 
 alpha_Messung = fit_polynom_grad4(T_mittel,*params_alpha)
 print('test',np.array([T_mittel, alpha_Messung]))
@@ -154,10 +158,12 @@ C_V_170 = np.delete(C_V_170,[2,9],None)
 T_170 = np.delete(T_170,[2,9],None)
 
 plt.figure(10)
-plt.plot(noms(T_170), noms(C_V_170), 'x', label=r"Verwendete Messwerte")
-plt.errorbar(T_probe[:-1] + T_diff/2 ,noms(C_V),xerr = T_diff/2 , yerr = stds(C_V), fmt='x',label=r'Messwerte', zorder=-1 )
-plt.plot(debye_temp_lit/debyefunktion_O_T[10:], debyefunktion_C_V[10:], ".", label=r"Debyemodell")
 plt.plot(debye_temp_lit/debyefunktion_O_T[10:],3*const.R+debye_temp_lit/debyefunktion_O_T[10:]*0,'-',label=r'Klassisch')
+plt.errorbar(T_probe[:-1] + T_diff/2 ,noms(C_V),xerr = T_diff/2 , yerr = stds(C_V), fmt='x',label=r'Messwerte', zorder=-1 )
+plt.plot(debye_temp_lit/debyefunktion_O_T[10:], debyefunktion_C_V[10:], "-", label=r"Debyemodell")
+plt.plot(noms(T_170), noms(C_V_170), '.', label=r"Verwendete Messwerte")
+plt.xlabel(r"$T/K$")
+plt.ylabel(r"$C_V /  [C_V]$")
 plt.legend(loc="best")
 plt.savefig('build/molwaerme_V_const_und_theo.pdf')
 plt.close
@@ -165,21 +171,21 @@ plt.close
 
 
 
-params_debye , cov_debye = curve_fit(fit_polynom_grad7, debyefunktion_C_V , debyefunktion_O_T )
+params_debye , cov_debye = curve_fit(fit_polynom_grad4, debyefunktion_C_V[(debyefunktion_C_V<22) & (debyefunktion_C_V>14)] , debyefunktion_O_T[(debyefunktion_C_V<22) & (debyefunktion_C_V>14)] )
 uparams_debye = unp.uarray(params_debye, np.sqrt(np.diag(cov_debye)))
-
+print("debyefitparameter", uparams_debye)
 
 
 plt.figure(6)
 plt.plot(debyefunktion_C_V,debyefunktion_O_T ,'x' ,label=r'Debyefunktion')
-plt.plot(debyefunktion_C_V, fit_polynom_grad7(debyefunktion_C_V,*params_debye),label = r'Fitfunktion')
-plt.xlabel(r'$C_V$')
+plt.plot(debyefunktion_C_V, fit_polynom_grad4(debyefunktion_C_V,*params_debye),label = r'Fitfunktion')
+plt.xlabel(r'$C_V/ [C_V]}$')
 plt.ylabel(r'$\frac{\theta_D}{T}$')
 plt.legend(loc='best')
 plt.savefig('build/debyefunktion.pdf')
 plt.close
 
-Gemessen_O_T = fit_polynom_grad7(C_V_170,*params_debye)
+Gemessen_O_T = fit_polynom_grad4(C_V_170,*params_debye)
 print("Test",Gemessen_O_T)
 print("parmas mit fehler", uparams_debye )
 debye_temperatur_kupfer = Gemessen_O_T * T_170
