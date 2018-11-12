@@ -1,7 +1,7 @@
 \section{Theorie}
 \label{sec:Theorie}
 
-\subsection{Zielsetzung}
+\subsection*{Zielsetzung}
 \label{subsec:zielsetzung}
 In dem hier beschriebenen Versuch wird untersucht,
 inwiefern die Molwärme von der Temperatur abhängt.
@@ -33,14 +33,15 @@ Es ergibt sich also
 	\bigg\vert_{\text{V}} = 3 \, R \, . \label{eqn:t3}
 \end{align}
 
-Damit wird klar, dass in der klassischen Theorie,
+Dieses Ergebnis ist bekannt als das Dulong-Petit-Gesetz.
+Aus \eqref{eqn:t3} wird klar, dass in der klassischen Theorie,
 die Molwärme sowohl unabhängig von der Beschaffenheit des
 Festkörpers, als auch der Temperatur ist.
 
 
 \subsection{Einsteinsches Modell}
 \label{subsec:einstein}
-Im einsteinschen Modell, wird, im Gegensatz zum klassischen
+Im einsteinschen Modell wird, im Gegensatz zum klassischen
 Modell, berücksichtigt, dass die Energie, mit
 der die Atome im Festkörper Schwingen, quantisiert ist.
 Ausgehend von einer festgelegten Kreisfrequenz $\omega$,
@@ -59,7 +60,7 @@ folgen. Sodass der Energieerwartungswert für ein Atom durch
 
 Damit ergibt sich dann für die Molwärme
 \begin{align}
-	3 R \frac{\hbar^{2} \omega^{2}}{k_{\text{B}}} \frac{1}{T^{2}}
+	C_{\text{V,Einstein}} = 3 R \frac{\hbar^{2} \omega^{2}}{k_{\text{B}}} \frac{1}{T^{2}}
 	\frac{e^{\frac{\hbar \omega}{k_{\text{B}} T}}}{e^{\frac{\hbar \omega}{k_{\text{B}} T}} - 1}\label{eqn:t7}
 \end{align}
 
@@ -82,7 +83,7 @@ Für die Molwärme gilt also
 \begin{align}
 	C_{\text{V}} = \frac{\mathrm{d}}{\mathrm{d}T}
 	\int_{0}^{\omega_{\text{max}}} \mathrm{d}\omega Z(\omega)
-	\frac{\hbar \omega}{e^{\frac{\hbar \omega}{k_{\text{B}} T} - 1}} \label{eqn:t9}
+	\frac{\hbar \omega}{e^{\frac{\hbar \omega}{k_{\text{B}} T} - 1}} \, . \label{eqn:t9}
 \end{align}
 Im allgemeinen ist $Z(\omega)$  beliebig kompliziert.
 Allerdings, wird im Debye-Modell die Annahme getroffen,
@@ -139,8 +140,4 @@ wird der Ausdruck für die Wärmekapazität \ref{eqn:t14} zu
 Bei einer Betrachtung von \ref{eqn:t17} im Grenzwert sehr großer Temperaturen,
 ergibt sich für $C_{\text{V}}$ wieder die Konstante $3R$.
 
-Da die Wärmekapazität kubisch mit der Temperatur ansteigt, kann der Beitrag freier Elektronen, der linear mit $T$ anwächst, im Festkörper vernachlässigt werden.
-
-
-
-\cite{sample}
+Da die Wärmekapazität kubisch mit der Temperatur ansteigt, kann der Beitrag freier Elektronen, der linear mit $T$ anwächst, im Festkörper vernachlässigt werden. \cite{sample}
