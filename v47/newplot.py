@@ -154,8 +154,8 @@ print(debyefunktion_C_V)
 print(debyefunktion_O_T)
 debye_temp_lit = 345
 
-# C_V_170 = np.delete(C_V_170,[2,9],None)
-# T_170 = np.delete(T_170,[2,9],None)
+C_V_170 = np.delete(C_V_170,[2,9],None)
+T_170 = np.delete(T_170,[2,9],None)
 
 plt.figure(10)
 plt.plot(debye_temp_lit/debyefunktion_O_T[10:],3*const.R+debye_temp_lit/debyefunktion_O_T[10:]*0,'-',label=r'Klassisch')
