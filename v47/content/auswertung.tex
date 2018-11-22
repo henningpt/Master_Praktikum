@@ -158,7 +158,7 @@ ergibt.
     150	&	4.5	&	14.89	\pm	0.50	&	114.6	\pm	2.3	&	11.79	\pm	0.16	&	14.74	\pm	0.50   \\
     150	&	4.1	&	16.60	\pm	0.56	&	118.9	\pm	2.0	&	12.08	\pm	0.13	&	16.45	\pm	0.56   \\
     150	&	3.8	&	17.61	\pm	0.60	&	122.9	\pm	1.9	&	12.33	\pm	0.11	&	17.44	\pm	0.60   \\
-    150	&	7.5	&	9.06	\pm	0.31	&	128.6	\pm	3.7	&	12.65	\pm	0.20	&	8.88	\pm 0.31   \\ 
+    150	&	7.5	&	9.06	\pm	0.31	&	128.6	\pm	3.7	&	12.65	\pm	0.20	&	8.88	\pm 0.31   \\
     300	&	6.8	&	20.01	\pm	0.68	&	135.7	\pm	3.4	&	13.00	\pm	0.16	&	19.80	\pm	0.68   \\
     300	&	6.5	&	20.69	\pm	0.70	&	142.3	\pm	3.3	&	13.30	\pm	0.14	&	20.46	\pm	0.70   \\
     300	&	7.0	&	19.20	\pm	0.65	&	149.1	\pm	3.5	&	13.57	\pm	0.13	&	18.95	\pm	0.65   \\
@@ -199,27 +199,32 @@ für den Literaturwert von $\theta_D = \SI{345}{\kelvin}$  \cite{debyetemp}
 \begin{figure}
  \centering
  \includegraphics[width=0.7\textwidth]{molwaerme_V_const_und_theo.pdf}
-   \caption{ $C_V$ in Abhängigkeit der Temperatur der Messwert und die verschieden Theoriekurven. So wie die Messwerte die zur Bestimmung der Debyetemperatur verwendet werden.}
+   \caption{ $C_V$ in Abhängigkeit der Temperatur
+    der Messwert und die verschieden
+    Theoriekurven. So wie die Messwerte,
+   die zur Bestimmung der Debyetemperatur
+    verwendet werden und in der
+    Tabelle \ref{tab:Debyetemperatur}
+    nochmals aufgelistet sind.
+.}
    \label{fig:cool}
  \end{figure}
 
- Um aus den verwendeten Werten von $C_V$ aus Abbildung \ref{fig:cool} die Debyetemperatur $\theta_D$ von Kupfer zu bestimmen,
- wird an die Werte der Debyefunktion, die in Tabelle \ref{fig:debye} aufgetragen sind, im Bereich von $\sfrac{C_V}{[C_V]}  \in [14,22]$
- eine Polynom 4. Grades
- \begin{align}
-\frac{\theta}{T}  = f(C_V) = a C_V^4 + b  C_V^3 + c  C_V^2 + d C_V + e
- \end{align}
- gefittet.
- Es ergeben sich die folgenden Fitparameter:
- \begin{align}
- a&=\SI{-4.0(3)e-5}{}    & b&=\SI{2.0(2)e-3}{}   & c &=\SI{-0.044(5)}{}  \\
- d&=\SI{0.11(6)}{}    & e&=\SI{6.2(3)}{}
- \end{align}
+ Um aus den verwendeten Werten von $C_V$ aus
+Abbildung \ref{fig:cool} die Debyetemperatur
+ $\theta_D$ von Kupfer zu bestimmen,
+werden die benötigten Werte der Debyefunktion
+mit Hilfe von \textbf{Python 3} und der
+Funktion \textbf{numpy.interp} \cite{interp}
+berechnet. Als Grundlage der interpolation
+dienen die Werte der Debyefunktion aus der
+Tabelle \ref{fig:debye}.
 
- Die Abbildung \ref{fig:debye_fit} enthält sowohl
- die Werte der Debyefunktion
- aus der Tabelle \ref{fig:debye} und die Fitfunktion
- $f(C_V)$.
+Die Abbildung \ref{fig:debye_fit} enthält sowohl
+die Werte der Debyefunktion
+aus der Tabelle \ref{fig:debye} und die bestimmten
+interpolierten Werte, die ebenfalls noch in der Tabelle
+\ref{tab:tab:Debyetemperatur} aufgelistet sind.
 
  \begin{table}
   \centering
@@ -233,8 +238,8 @@ für den Literaturwert von $\theta_D = \SI{345}{\kelvin}$  \cite{debyetemp}
   \begin{figure}
    \centering
    \includegraphics[width=0.7\textwidth]{debyefunktion.pdf}
-     \caption{Werte der Debyefunktion und die Fitfunktion
-     $f(C_V)$ $\theta_D/T$ in Abhängigkeit von $C_V$.}
+     \caption{Werte der Debyefunktion und die interpolierten
+     Werte in der Form $\theta_D/T$ in Abhängigkeit von $C_V$.}
      \label{fig:debye_fit}
    \end{figure}
 
@@ -242,7 +247,7 @@ für den Literaturwert von $\theta_D = \SI{345}{\kelvin}$  \cite{debyetemp}
 
  Die Debyetemperatur $\theta_D$ ergibt sich somit aus
  \begin{align}
-   \theta_D = \frac{f(C_V(T))}{T}. \label{eqn:theta_D}
+   \theta_D = \frac{C_V}{T}. \label{eqn:theta_D}
  \end{align}
 Die Tabelle \ref{tab:Debyetemperatur} enthält alle
 Temperatur bis zur Temperatur $T_{max}$ und die nach Gleichung \eqref{eqn:theta_D}

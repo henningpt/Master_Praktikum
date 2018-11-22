@@ -154,8 +154,8 @@ print(debyefunktion_C_V)
 print(debyefunktion_O_T)
 debye_temp_lit = 345
 
-# C_V_170 = np.delete(C_V_170,[2,9],None)
-# T_170 = np.delete(T_170,[2,9],None)
+C_V_170 = np.delete(C_V_170,[2,9],None)
+T_170 = np.delete(T_170,[2,9],None)
 
 plt.figure(10)
 plt.plot(debye_temp_lit/debyefunktion_O_T[10:],3*const.R+debye_temp_lit/debyefunktion_O_T[10:]*0,'-',label=r'Klassisch')
@@ -175,17 +175,19 @@ params_debye , cov_debye = curve_fit(fit_polynom_grad4, debyefunktion_C_V[(debye
 uparams_debye = unp.uarray(params_debye, np.sqrt(np.diag(cov_debye)))
 print("debyefitparameter", uparams_debye)
 
+print('cooler Test',noms(C_V_170),np.interp(noms(C_V_170), debyefunktion_C_V, debyefunktion_O_T))
 
 plt.figure(6)
-plt.plot(debyefunktion_C_V,debyefunktion_O_T ,'x' ,label=r'Debyefunktion')
-plt.plot(debyefunktion_C_V, fit_polynom_grad4(debyefunktion_C_V,*params_debye),label = r'Fitfunktion')
+plt.plot(debyefunktion_C_V,debyefunktion_O_T ,'+' ,label=r'Debyefunktion')
+# plt.plot(debyefunktion_C_V, fit_polynom_grad4(debyefunktion_C_V,*params_debye),label = r'Fitfunktion')
+plt.plot(noms(C_V_170) , np.interp(noms(C_V_170), debyefunktion_C_V[::-1], debyefunktion_O_T[::-1]),'x',label = r'interpolierte Werte')
 plt.xlabel(r'$C_V/ [C_V]}$')
 plt.ylabel(r'$\frac{\theta_D}{T}$')
 plt.legend(loc='best')
 plt.savefig('build/debyefunktion.pdf')
 plt.close
 
-Gemessen_O_T = fit_polynom_grad4(C_V_170,*params_debye)
+Gemessen_O_T = np.interp(noms(C_V_170), debyefunktion_C_V[::-1], debyefunktion_O_T[::-1])
 print("Test",Gemessen_O_T)
 print("parmas mit fehler", uparams_debye )
 debye_temperatur_kupfer = Gemessen_O_T * T_170
