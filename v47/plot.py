@@ -6,6 +6,7 @@ from scipy.optimize import curve_fit
 import scipy.constants as const
 from uncertainties.unumpy import (nominal_values as noms,
                                   std_devs as stds)
+from scipy import interpolate
 
 def omega_D(m, rho, molare_masse):
     v_l  = 4.7e3   # in Meter/sekunde
@@ -145,13 +146,12 @@ print("test", T_mittel[T_mittel<170])
 print(C_V[T_mittel<170])
 
 T_170 = T_mittel[T_mittel<170]
+
 C_V_170 = C_V[T_mittel<170]
 
 debyefunktion_C_V =  np.reshape(np.genfromtxt("debyefunktion.txt"),160)
 debyefunktion_O_T = np.linspace(0,15.9,160)
 
-print(debyefunktion_C_V)
-print(debyefunktion_O_T)
 debye_temp_lit = 345
 
 C_V_170 = np.delete(C_V_170,[2,9],None)
@@ -187,7 +187,10 @@ plt.legend(loc='best')
 plt.savefig('build/debyefunktion.pdf')
 plt.close
 
-Gemessen_O_T = np.interp(noms(C_V_170), debyefunktion_C_V[::-1], debyefunktion_O_T[::-1])
+#Gemessen_O_T = np.interp(noms(C_V_170), debyefunktion_C_V[::-1], debyefunktion_O_T[::-1])
+Gemessen_O_T_f = interpolate.interp1d(debyefunktion_C_V[::-1], debyefunktion_O_T[::-1])
+Gemessen_O_T = Gemessen_O_T_f(noms(C_V_170))
+
 print("Test",Gemessen_O_T)
 print("parmas mit fehler", uparams_debye )
 debye_temperatur_kupfer = Gemessen_O_T * T_170
