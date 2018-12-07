@@ -63,7 +63,7 @@ masse_Cu = 0.342
 
 
 t_1 = np.linspace(0,22.5,10)
-t_2 = np.linspace(25, 25+5*float(len(R_probe)-11),len(R_probe)-10)
+t_2 = np.linspace(27.5, 27.5+5*float(len(R_probe)-11),len(R_probe)-10)
 print(len(R_probe)-10)
 I=unp.uarray(152,2)*1e-3
 U=unp.uarray(16.0,0.5)
@@ -154,8 +154,8 @@ debyefunktion_O_T = np.linspace(0,15.9,160)
 
 debye_temp_lit = 345
 
-C_V_170 = np.delete(C_V_170,[2,9],None)
-T_170 = np.delete(T_170,[2,9],None)
+C_V_170 = np.delete(C_V_170,[2],None)
+T_170 = np.delete(T_170,[2],None)
 
 plt.figure(10)
 plt.plot(debye_temp_lit/debyefunktion_O_T[10:],3*const.R+debye_temp_lit/debyefunktion_O_T[10:]*0,'-',label=r'Klassisch')
@@ -175,7 +175,7 @@ params_debye , cov_debye = curve_fit(fit_polynom_grad4, debyefunktion_C_V[(debye
 uparams_debye = unp.uarray(params_debye, np.sqrt(np.diag(cov_debye)))
 print("debyefitparameter", uparams_debye)
 
-print('cooler Test',noms(C_V_170),np.interp(noms(C_V_170), debyefunktion_C_V, debyefunktion_O_T))
+# print('cooler Test',noms(C_V_170),np.interp(noms(C_V_170), debyefunktion_C_V, debyefunktion_O_T))
 
 plt.figure(6)
 plt.plot(debyefunktion_C_V,debyefunktion_O_T ,'+' ,label=r'Debyefunktion')
