@@ -89,9 +89,7 @@ a population inversion by pumping is created.
 Pumping energy is supplied by light or electric current.
 In addition the gain medium is bounded to a heat-sink
 to dissipate residual heat, which is produced by pumping.
-
-
-
+Further more a Laser cavity is required.
 The Laser cavity consists of the gain medium and two
 mirrors, one higly reflective and the other
 partially transparent,
@@ -111,7 +109,22 @@ in the gain medium. The two mirrows
 ensure that the photons stay in the Laser cavity
 and the Laser intenensity increases due to
 stimulated emission of other photons.
-
+Depeneding on the cavity lenght $L$
+standing waves along the cavity axis so called longituidinal modes
+are developed.
+The modes vary according to the wavelength and hence
+the the number of knots. The spacing
+between frequencies of two modes in a laser
+cavity is given by the free spectral range (FSR)
+\begin{align}
+\Delta \nu_{FSR} = \frac{c}{2Ln}
+\end{align}
+where $c$ is the speed of light and $n$ is
+the index of refraction.
+A development of transversal modes in the laser cavity
+is also possible but is not discussed on detail further.
+The laser ray that comes out of the output coupler
+contains all the frequencies of the longituidinal modes.
 
 \subsection{Semiconductor}
 \label{subsec:Semiconductor}
@@ -163,13 +176,51 @@ For a LED a direct band gab is needed, so a photon
 with the energy of the band gab is
 emitted if electrons and holes recombine.
 
-
+\subsection{Diodenlaser}
+\label{sec:Diodenlaser}
+By applying the informations of previous sections
+a diode laser can be explained.
+The diode laser consist of a special semiconductor chip.
+The chip has a certain structur shown in figure \ref{fig:chip}.
 \begin{figure}
   \centering
-  \includegraphics{plot.pdf}
-  \caption{Plot.}
-  \label{fig:plot}
+  \includegraphics[width=0.7\textwidth]{chip.png}
+  \caption{Two different typical structurs profiles of a diode laser chip.}
+  \label{fig:chip}
 \end{figure}
+The active layer of the chip has a higer refraction index than
+its surroundings. Because of that light which is emmitted
+in the active layer through recombination of electron-hole pairs
+is confined in the channel by total internal reflection.
+The cleaved facets at the end of the chip
+are coated to incraese or decrease the facet reflectivity
+The cavity mirrors and output couplers arise
+by coating the cleaved facets at the end of the chip,
+to increase or decrease the facet reflectivity.
+So a tiny semiconductor laser cavity inside the chip
+with a typical linewidht
+$\delta \nu \approx \SI{50}{\mega\hertz}$
+is developed.
+A population inversion
+can be achieved through current.
+But at low levels of current
+the optical losses are higer than the gain
+so a population inversion is not achieved and
+the laser diode emits a broad-band light
+through spontaneous emission
+like a LED.
+To obtain a coherent laser beam the current must be above
+a threshold current where the gain is higher than the
+optical losses so a population inversion is created.
+The in
+
+the output beam is elliptical an strongly diverging
+focussing lens
+sensitve to optical feedback
+$10^{-6}$ output ligth scattered back affects the stability of the frequence
+Diffraction Grating
+Collimating Lens
+
 
 
 
