@@ -212,16 +212,32 @@ like a LED.
 To obtain a coherent laser beam the current must be above
 a threshold current where the gain is higher than the
 optical losses so a population inversion is created.
-The in
+Futhermore the laser intensity increases linearly with
+injection current.
+The output beam of chip is elliptical an strongly diverging
+therefore a collimating lens is necessary.
+Still there are two Problems to solve.
+First the diode laser is very sensitive to optical feedback
+already $10^{-6}$ of the output light affects
+the stability of the frequence
+when scattered back in the
+laser cavity.
+Therefore a diffraction grating is installed which
+is shown in figure \ref{fig:aufbau}.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\textwidth]{aufbau.png}
+  \caption{Schematical layout of a diode laser with collimating lens and diffraction grating.}
+  \label{fig:aufbau}
+\end{figure}
+The diffraction grating ensure that
 
-the output beam is elliptical an strongly diverging
-focussing lens
-sensitve to optical feedback
-$10^{-6}$ output ligth scattered back affects the stability of the frequence
-Diffraction Grating
-Collimating Lens
-
-
+The diffraction grating fortunately solves the second
+problem which is the large linewidth of the bare
+diode laser($\delta \nu \approx \SI{50}{\mega\hertz}$)
+compared to the linewidth of atomic transitions
+(here $\Gamma \approx \SI{5}{\mega\hertz}$).
+The grating and the
 
 
 \subsection{Diodenlaser}
