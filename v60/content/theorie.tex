@@ -53,7 +53,7 @@ to the decay rate. In figure \ref{fig:3_n} the process of pumping and stimulated
 is displayed for a three energy level system.
 \begin{figure}
   \centering
-  \includegraphics{Laser_3_Niveau.jpg}
+  \includegraphics[width=0.4\textwidth]{Laser_3_Niveau.jpg}
   \caption{three energy level system}
   \label{fig:3_n}
 \end{figure}
@@ -177,7 +177,7 @@ with the energy of the band gab is
 emitted if electrons and holes recombine.
 
 \subsection{Diodenlaser}
-\label{sec:Diodenlaser}
+\label{subsec:diodenlaser}
 By applying the informations of previous sections
 a diode laser can be explained.
 The diode laser consist of a special semiconductor chip.
@@ -185,15 +185,15 @@ The chip has a certain structur shown in figure \ref{fig:chip}.
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{chip.png}
-  \caption{Two different typical structurs profiles of a diode laser chip.}
+  \caption{Two different typical structurs profiles of a diode laser chip.\cite{V61}}
   \label{fig:chip}
 \end{figure}
 The active layer of the chip has a higer refraction index than
 its surroundings. Because of that light which is emmitted
 in the active layer through recombination of electron-hole pairs
 is confined in the channel by total internal reflection.
-The cleaved facets at the end of the chip
-are coated to incraese or decrease the facet reflectivity
+% The cleaved facets at the end of the chip
+% are coated to incraese or decrease the facet reflectivity
 The cavity mirrors and output couplers arise
 by coating the cleaved facets at the end of the chip,
 to increase or decrease the facet reflectivity.
@@ -227,26 +227,41 @@ is shown in figure \ref{fig:aufbau}.
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{aufbau.png}
-  \caption{Schematical layout of a diode laser with collimating lens and diffraction grating.}
+  \caption{Schematical layout of a diode laser with collimating lens and diffraction grating.\cite{V61}}
   \label{fig:aufbau}
 \end{figure}
-The diffraction grating ensure that
 
-The diffraction grating fortunately solves the second
+The diffraction grating ensure that a majority path of
+the light that scattered back in the laser cavity is from the  1. order
+diffraction of the grating. This leads to
+a frequency-stabilzed laser beam, because only certain wavelengths,
+depending on the position
+of the grating, scatter back in the cavity.
+Most of part of the light scatters in the 0. order,
+the output Beam, but $\SI{15}{\percent}$ scatters back into
+the cavity, which is enough to cause the stabilisation.
+Futhermore grating and the highly reflective end of the chip form a
+further Laser cavity
+so called external cavity.
+Hence the diffraction grating fortunately solves the second
 problem which is the large linewidth of the bare
 diode laser($\delta \nu \approx \SI{50}{\mega\hertz}$)
 compared to the linewidth of atomic transitions
 (here $\Gamma \approx \SI{5}{\mega\hertz}$).
-The grating and the
-
-
-\subsection{Diodenlaser}
-\label{subsec:diodenlaser}
-
+The external cavity
+reduces the linewidth namely to $\Delta\nu\l \SI{1}{\mega\hertz}$.
+All in all the diffraction grating
+functions as a controlled feedback for frequency stability
+and a reduced the linewidth of the laser.
 
 \subsection{Beiträge im Laser}
 \label{subsec:}
-
+To observe atomic transitions controlling
+the frequency of the laser output is necessary.
+The frequency depending on the mode of the laser
+so a deeper understanding in which mode the laser
+oscillates is essential.
+Therefore ...
 
 
 \subsection{Rubidum spektrum}
