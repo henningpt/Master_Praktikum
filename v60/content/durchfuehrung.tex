@@ -19,7 +19,7 @@ top knob changes the vertical alignment.
 \end{figure}
 
 
-\subsection{Setup}
+\subsection{Setup and Procedure}
 \label{subsec:setup}
 The fist step is to determine the threshold current
 of the diode laser.
@@ -70,20 +70,40 @@ By adjusting the side knob and the current
 the fluorescence of Rb atoms in the absoption cell
 can be observed
 as a fluorescence flashing along the laserbeam.
-Besides the observation of the camera a photodiode
-is installed behind the absoption cell
-measuring the intensity
-of the out coming laserbeam.
- and
-oscilloscope
+Besides the observation with the camera a photodiode,
+which measures the intensity
+of the outgoing laserbeam,
+is installed behind the absoption cell and
+connected to an oscilloscope to
+see some fraction of the Rubidum absorption spectrum .
 
+To achieve the visualisation of the full Rubidum
+spectrum
+simultaneous current and piezo modulation
+is necessary. Therefore the ramp generator output
+is connected also to the current modulation input.
+With some Adjustments of the current and the side knob
+a full trance over the Rubidum is displayed at the  oscilloscope.
 
-Simultaneous current and piezo modulation
+A seconde methode to obtain the absoptionspectrum
+is as follows.
+The setup of the other methode is shown in
+figure \ref{fig:setup3}.
+Additionally to the setup before a beam splitter is addeded
+betweeen the diode laser and the Rubidum cell.
+A seconde photodiode is installed in the splitted laser beam of the beam splitter
+in order to optian a signal without the Rubidum absoption spectrum.
+The different signals of the two photondiode are send to the
+laser controller as shown in figure \ref{fig:dl_controll2}.
+Since output of the operational amplifier is
+the  difference between the two signals,
+only the rubidum absoption and not the signal of the ramp generator is
+displayed with the oscilloscope.
 
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{setup3.png}
-  \caption{Schematical setup to observe the Rubidium absoptionspectrum.\cite{V61}}
+  \caption{An other schematical setup to observe the Rubidium absoptionspectrum.\cite{V61}}
   \label{fig:setup3}
 \end{figure}
 
@@ -94,7 +114,3 @@ Simultaneous current and piezo modulation
   \caption{Wiring of the controllelement to observe the Rubidium florescence.\cite{V61}}
   \label{fig:dl_controll2}
 \end{figure}
-
-
-\subsection{Procedure}
-\label{subsec:procedure}
