@@ -198,7 +198,7 @@ The cavity mirrors and output couplers arise
 by coating the cleaved facets at the end of the chip,
 to increase or decrease the facet reflectivity.
 So a tiny semiconductor laser cavity inside the chip
-with a typical linewidht
+with a typical linewidth
 $\delta \nu \approx \SI{50}{\mega\hertz}$
 is developed.
 A population inversion
@@ -231,7 +231,7 @@ is shown in figure \ref{fig:aufbau}.
   \label{fig:aufbau}
 \end{figure}
 
-The diffraction grating ensure that a majority path of
+The diffraction grating ensures that a majority path of
 the light that scattered back in the laser cavity is from the  1. order
 diffraction of the grating. This leads to
 a frequency-stabilzed laser beam, because only certain wavelengths,
@@ -256,11 +256,79 @@ and a reduced the linewidth of the laser.
 
 \subsection{Beiträge im Laser}
 \label{subsec:}
-To observe atomic transitions controlling
-the frequency of the laser output is necessary.
-The frequency depending on the mode of the laser
-so a deeper understanding in which mode the laser
-oscillates is essential.
+To observe atomic transitions, precise knowledge
+of the developed frequency is necessary.
+In theory the Laser operates in the mode with the highest net gain
+and other modes do not occur.
+However in reality it is possible, that multiple modes occur, leading
+to spectrum of multiple frequencies. In the following the focus will
+lay on single mode operation, since this is also the desired case
+for the experiment.
+
+As shown in figure \ref{fig:gain_overview} the main contributions
+to the \textbf{net gain} can be reduced to
+the \textbf{medium}, \textbf{internal cavity}, \textbf{grating feedback}
+and  \textbf{external cavity}.
+In the following these four contributions will be explained seperately.
+
+
+\FloatBarrier
+\begin{figure}
+  \includegraphics{gain_overview.png}
+  \caption{Overview for the contributions to the net gain as function of
+            wavelength.\cite{sample}}
+  \label{fig:gain_overview}
+\end{figure}
+\FloatBarrier
+
+
+\paragraph{Medium gain}
+The medium gain as function of frequency(or wavelength) has
+the shape of a broad peak and is determined by two parameters.
+The band gap of the lasers semiconductor material and the temperature
+at which the laser is used. Since the band gap is a fixed
+quantity the medium gain can only be controlled by changing
+the temperature, which changes peak's position.
+The relation between the output wavelength and the
+temperature is graphically shown for multiple modes
+in figure \ref{fig:medium_gain_temperature.png}.
+
+
+
+\paragraph{Internal cavity}
+As described in \ref{subsec:diodenlaser} the diode junction itself
+acts as a laser cavity, that is referred to as the \textbf{internal cavity}.
+The associated contribution to the gain is periodically dependent of
+the frequency or the wavelength respectively. The \textbf{FSR} is about
+$\Delta\nu_{\text{FSR}} = \SI{60}{\giga\hertz}$  or
+$\Delta\lamda = \SI{0.122}{\nano\mether}$ respectively.
+Since the laser's output wavelength shows a linear
+temperature dependence(see figure \ref{fig:medium_gain_temperature}),
+the gain function for the internal cavity is moved in frequency.
+A change in temperature is for example evoked by the diode current,
+that will increase the temperature faster, as if the laser is heated
+externally. Besides heating the laser, the diode current changes the optical
+path length in the diode junction, by manipulating the concentration
+of charge carriers. Due to this the frequency is increased at a rate of
+approximately $SI{200}{\mega\hertz\per\milli\ampere}$, until it reaches
+a maximum at around $\mathcal{O}(\SI{1}{\giga\hertz})$.
+This effect is shown in figure \ref{fig:injectioncurrent_wavelength}.
+
+
+
+\FloatBarrier
+\begin{figure}
+  \includegraphics{medium_gain_temperature.png}
+  \caption{Relation between wavelength and diode current
+           for different laser modes at a constant temperature.}
+  \label{fig:medium_gain_temperature}
+\end{figure}
+FloatBarrier
+
+
+
+
+
 Therefore ...
 
 
