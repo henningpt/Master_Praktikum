@@ -257,7 +257,7 @@ and to reduce the linewidth of the laser.
 
 \subsection{Beiträge im Laser}
 \label{subsec:}
-To observe atomic transitions, precise knowledge
+To observe atomic transitions, precise control
 of the developed frequency is necessary.
 In theory the Laser operates at the mode with the highest net gain
 and other modes do not occur.
@@ -270,7 +270,9 @@ As shown in figure \ref{fig:gain_overview} the main contributions
 to the \textbf{net gain} can be reduced to
 the \textbf{medium}, \textbf{internal cavity}, \textbf{grating feedback}
 and  \textbf{external cavity}.
-In the following these four contributions will be explained seperately.
+The best case scenario, in which all gain functions peak at the
+same wavelength, is displayed in figure \ref{fig:ideal_gain_overview}
+In the following the four contributions will be explained seperately.
 
 
 \FloatBarrier
@@ -279,6 +281,15 @@ In the following these four contributions will be explained seperately.
   \caption{Overview for the contributions to the net gain as function of
             wavelength.\cite{sample}}
   \label{fig:gain_overview}
+\end{figure}
+\FloatBarrier
+
+\FloatBarrier
+\begin{figure}
+  \includegraphics{ideal_gain_overview.png}
+  \caption{Overview for the contributions to the net gain as function of
+            wavelength in the ideal case.\cite{sample}}
+  \label{fig:ideal_gain_overview}
 \end{figure}
 \FloatBarrier
 
@@ -328,6 +339,19 @@ gain function (see figure \ref{fig:gain_overview}) to another.
 
 
 \paragraph{Grating feedback}
+-control which wavelengths are scattered feedback,
+  by choosing LR angle
+
+-control what order of the grating is scattered back
+  -> mainly first order
+
+-Littrow configuration (?)
+
+
+\paragraph{External cavity}
+- is created by grating and highly reflective back of diode
+
+- large scale (~15mm) compared to internal cavity
 
 
 
