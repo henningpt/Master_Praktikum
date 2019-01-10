@@ -25,9 +25,9 @@ Absorption describes the process where a photon annihilates and
 delivers energy for the transition
 to a higher energy level.
 Spontaneous emission discribes the opposite, a photon is
-emitted if a transition to a lower energy
+emitted, if a transition to a lower energy
 level occurs spontaneously.
-But most important for a laser as the name indicates
+But most important for a laser, as the name indicates,
 is the stimulated emission.
 The process of stimulated emission works as follows.
 If a photon with the energy same as
@@ -35,11 +35,11 @@ the energy gap between the two energy levels
 encounters an excited state, another photon with
 same energy and phase is emmitted and the excited state
 returns to the ground state.
-To run a laser stimulated emission must be the most common interaction.
-Since the occupation of the energy levels for fermion follows
+To run a laser, stimulated emission must be the most common interaction.
+Since the occupation of the energy levels for fermions follows
 the Fermi-Dirac statistics, % vielleicht doch hier noch von bolzmannstatistik sprechen
 levels above the Fermi energy are
-less occupied. By increases the temperature only
+less occupied. By increasing the temperature, only
 a same occupation can be accomplished.
 However, this is not enough in order to ensure mostly stimulated emission.
 Therefore a population inversion
@@ -339,19 +339,44 @@ gain function (see figure \ref{fig:gain_overview}) to another.
 
 
 \paragraph{Grating feedback}
--control which wavelengths are scattered feedback,
-  by choosing LR angle
+With the diffraction grating, light with a specific wavelength
+can be scattered back into the laser. This allows one to precisely
+influence the gain function. By modifying the left/right angle
+it is possible to choose which wavelengths are scattered back.
+By modifying the up/down angle, the order of diffraction, that
+is scattered back, is chosen. In this case the grating
+should be configured in a way, that mostly light from
+the first order is send back. Figure \ref{gain_overview}
+displays the small wavelength-band that can be chosen with
+the grating feedback. Hence it is possible to deal with "mode hopping"
+by changing the left/right angle of the grating. This is illustrated
+in figure \ref{fig:mode_hops}
 
--control what order of the grating is scattered back
-  -> mainly first order
+
+\FloatBarrier
+\begin{figure}
+  \includegraphics{mode_hops.png}
+  \caption{Illustration of mode hopping, due to change in grating feedback and external cavity.\cite{sample}}
+  \label{fig:mode_hops}
+\end{figure}
+\FloatBarrier
+
 
 -Littrow configuration (?)
 
 
 \paragraph{External cavity}
-- is created by grating and highly reflective back of diode
+The Grating and the reflective back of the diode form another
+cavity. It is reffered to as the \textbf{external cavity}.
+The external cavity posseses a by far greater length then
+the internal one, which results into a
+smaller FSR of
+$\sim \SI{10}{\giga\hertz}$(in the case of $L = \SI{15}{\milli\meter}$).
+If the laser itself is not moved, the gain function
+contribution of the external is only shifted if the grating
+is moved. In the experiment the grating's position
+is periodically changed by a \textbf{piezzo element} or chaning the left/right angle of the grating.
 
-- large scale (~15mm) compared to internal cavity
 
 
 
