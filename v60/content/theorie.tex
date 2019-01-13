@@ -185,7 +185,7 @@ The chip has a certain structur shown in figure \ref{fig:chip}.
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{chip.png}
-  \caption{Two different typical structurs profiles of a diode laser chip.\cite{V61}}
+  \caption{Two different typical strutures profiles of a diode laser chip.\cite{V61}}
   \label{fig:chip}
 \end{figure}
 The active layer of the chip has a higer refraction index than
@@ -277,18 +277,18 @@ In the following the four contributions will be explained seperately.
 
 \FloatBarrier
 \begin{figure}
-  \includegraphics{gain_overview.png}
+  \includegraphics[width=\textwidth]{gain_overview.png}
   \caption{Overview for the contributions to the net gain as function of
-            wavelength.\cite{sample}}
+            wavelength.\cite{V61}}
   \label{fig:gain_overview}
 \end{figure}
 \FloatBarrier
 
 \FloatBarrier
 \begin{figure}
-  \includegraphics{ideal_gain_overview.png}
+  \includegraphics[width=\textwidth]{ideal_gain_overview.png}
   \caption{Overview for the contributions to the net gain as function of
-            wavelength in the ideal case.\cite{sample}}
+            wavelength in the ideal case.\cite{V61}}
   \label{fig:ideal_gain_overview}
 \end{figure}
 \FloatBarrier
@@ -303,7 +303,7 @@ quantity, the medium gain can only be controlled by changing
 the temperature, which changes the peak's position.
 The relation between output wavelength and
 temperature is graphically shown
-in figure \ref{fig:medium_gain_temperature.png}
+in figure \ref{fig:medium_gain_temperature}
 for multiple modes.
 
 
@@ -314,7 +314,7 @@ acts as a laser cavity, that is referred to as the \textbf{internal cavity}.
 The associated contribution to the gain is periodically dependent on
 the frequency or the wavelength respectively. The \textbf{FSR} is about
 $\Delta\nu_{\text{FSR}} = \SI{60}{\giga\hertz}$ (or
-$\Delta\lamda = \SI{0.122}{\nano\mether}$ respectively).
+$\Delta\lambda = \SI{0.122}{\nano\meter}$ respectively).
 Since the laser's output wavelength shows a linear
 temperature dependency(see figure \ref{fig:medium_gain_temperature}),
 the gain function for the internal cavity is moved in frequency$/$wavelength.
@@ -324,7 +324,7 @@ as if the laser is heated externally($\sim \SI{10}{\second}$).
 Besides heating the laser, the diode current changes the optical
 path length in the diode junction, by manipulating the concentration
 of charge carriers. Due to this the frequency is increased at a rate of
-approximately $SI{200}{\mega\hertz\per\milli\ampere}$, until it reaches
+approximately $\SI{200}{\mega\hertz\per\milli\ampere}$, until it reaches
 its maximum at around $\mathcal{O}(\SI{1}{\giga\hertz})$.
 This effect is illustrated by figure \ref{fig:injectioncurrent_wavelength}.
 
@@ -337,6 +337,16 @@ switches from one peak of the internal cavity
 gain function (see figure \ref{fig:gain_overview}) to another.
 
 
+\FloatBarrier
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\textwidth]{injectioncurrent_wavelength.png}
+  \caption{Relation between injection current and laser wavelength for the internal cavity.\cite{V61}}
+  \label{injectioncurrent_wavelength}
+\end{figure}
+\FloatBarrier
+
+
 
 \paragraph{Grating feedback}
 With the diffraction grating, light with a specific wavelength
@@ -346,7 +356,7 @@ it is possible to choose which wavelengths are scattered back.
 By modifying the up/down angle, the order of diffraction, that
 is scattered back, is chosen. In this case the grating
 should be configured in a way, that mostly light from
-the first order is send back. Figure \ref{gain_overview}
+the first order is send back. Figure \ref{fig:gain_overview}
 displays the small wavelength-band that can be chosen with
 the grating feedback. Hence it is possible to deal with "mode hopping"
 by changing the left/right angle of the grating. This is illustrated
@@ -355,8 +365,9 @@ in figure \ref{fig:mode_hops}
 
 \FloatBarrier
 \begin{figure}
-  \includegraphics{mode_hops.png}
-  \caption{Illustration of mode hopping, due to change in grating feedback and external cavity.\cite{sample}}
+  \centering
+  \includegraphics[width=0.7\textwidth]{mode_hops.png}
+  \caption{Illustration of mode hopping, due to change in grating feedback and external cavity.\cite{V61}}
   \label{fig:mode_hops}
 \end{figure}
 \FloatBarrier
@@ -375,7 +386,7 @@ $\sim \SI{10}{\giga\hertz}$(in the case of $L = \SI{15}{\milli\meter}$).
 If the laser itself is not moved, the gain function
 contribution of the external is only shifted if the grating
 is moved. In the experiment the grating's position
-is periodically changed by a \textbf{piezzo element} or changing
+is periodically changed by a \textbf{piezo element} or changing
 the left/right angle of the grating.
 
 
@@ -386,7 +397,8 @@ the left/right angle of the grating.
 
 \FloatBarrier
 \begin{figure}
-  \includegraphics{medium_gain_temperature.png}
+  \centering
+  \includegraphics[width=0.7\textwidth]{medium_gain_temperature.png}
   \caption{Relation between wavelength and diode current
            for different laser modes at a constant temperature.}
   \label{fig:medium_gain_temperature}
@@ -416,12 +428,12 @@ energy difference between the electron states,
 have a reduced intensity when measured afterwards.
 This process leads to a characteristic absorption spectrum for
 every element. For example the rubidium isotopes $Rb^{87}$ and $Rb^{85}$, which are examined in
-this experiment, lead to the spectrum shown in figure \ref{fig:rubdium_spectrum}.
+this experiment, lead to the spectrum shown in figure \ref{fig:rubidium_spectrum}.
 
 \begin{figure}
   \centering
-  \includegraphics{rubidium_spectrum.png}
-  \caption{Expected absorption spectrum of $Rb^{87}$ and $Rb^{85}$.\cite{sample}}
+  \includegraphics[width=0.7\textwidth]{rubidium_spectrum.png}
+  \caption{Expected absorption spectrum of $Rb^{87}$ and $Rb^{85}$.\cite{V61}}
   \label{fig:rubidum_spectrum}
 \end{figure}
 
