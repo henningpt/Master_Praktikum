@@ -1,18 +1,18 @@
 \section{Theory}
 \label{sec:theory}
 The aim of this experiment is to record the absorption spectrum
-of rubidium. Therefore a diode laser is adjusted and aimed towards a cell
+of rubidium gas. Therefore a diode laser is adjusted and aimed towards a cell
 filled with rubidium gas.
 The following sections introduce the theory
 important for the understanding of the experiment.
 
-\subsection{laser basics}
+\subsection{Laser basics}
 \label{subsec:laser}
 A laser (Light Amplification by Stimulated Emission of radiation)
 emits highly intensive light with a long coherence length.
 First of all the interaction of a radiation field with
-an energy level system is considered. These includes
-absorption and spontaneous and stimulated emission
+an electron is considered within a simple energy level system.
+These includes absorption and spontaneous and stimulated emission
 of a photon, shown in figure \ref{fig:ab_em}.
 \begin{figure}
 \centering
@@ -39,9 +39,9 @@ To run a laser, stimulated emission must be the most common interaction.
 Since the occupation of the energy levels for fermions follows
 the Fermi-Dirac statistics, % vielleicht doch hier noch von bolzmannstatistik sprechen
 levels above the Fermi energy are
-less occupied. By increasing the temperature, only
-a same occupation can be accomplished.
-However, this is not enough in order to ensure mostly stimulated emission.
+less occupied. Even if infinitely high temperatures are considered,
+the excited state would only be populated with the same probability as the ground state.  % oder den satz vllt einfach streichen
+This would not be enough in order to ensure mostly stimulated emission.
 Therefore a population inversion
 between ground state and an excited
 state is necessary. As to achieve this at least
@@ -89,18 +89,18 @@ a population inversion is created by pumping.
 Pumping energy is supplied by light or electric current.
 In addition the gain medium is bound to a heat-sink
 to dissipate residual heat, which is produced by pumping.
-Furthermore a laser cavity is required.
-The laser cavity consists of the gain medium and two
+Furthermore a laser cavity,
+which consists of the gain medium and two
 mirrors, one highly reflective and the other
 partially transparent,
-the output coupler.
+the output coupler, is required.
 In figure \ref{fig:laserschema}
 a schematic laser with its components is displayed.
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{laserkonzept.png}
 \caption{A schematic laser and its components.
-\cite{V61}
+\cite{V61}}
 \label{fig:laserschema}
 \end{figure}
 The operation of the laser cavity is as follows.
@@ -113,13 +113,20 @@ Depending on the cavity length $L$,
 standing waves along the cavity axis so called longitudinal modes
 are developed.
 The modes vary according to the wavelength and hence
-the number of knots. The spacing
+the number of knots.
+For the mode exists the following relation
+\begin{align}
+  L = m \, \frac{\lambda}{2} = m \, \frac{c_{\text{medium}}}{2 \nu_{m}} \, .
+  \label{eqn:resonatorbedingung}
+\end{align}
+Where $m$ is a natural number and $\nu_{m}$ the according frequency.
+The spacing
 between frequencies of two modes in a laser
 cavity is given by the free spectral range (FSR)
 \begin{align}
-\Delta \nu_{FSR} = \frac{c}{2Ln}
+\Delta \nu_{FSR} = \lvert \nu_{m + 1} - \nu_{m}\rvert = \frac{c_{0}}{2Ln}
 \end{align}
-where $c$ is the speed of light and $n$ is
+where $c_{0}$ is the speed of light and $n$ is
 the index of refraction.
 A development of transversal modes in the laser cavity
 is also possible but is not discussed in detail.
@@ -158,7 +165,7 @@ a schematic p-n Diode in equilibrium.
 There are two possible ways to apply voltage
 in forward bias and
 in reverse bias.
-In forward bias the diode lets the current follow
+In forward bias the diode lets the current flow
 but in the reverse bias the diode blocks the current up to the breaking point.
 A typical diode characteristic is shown in figure \ref{fig:chara}
 \begin{figure}
@@ -254,11 +261,12 @@ functions as a controlled feedback for frequency stability
 and to reduce the linewidth of the laser.
 
 
+\newpage
 \subsection{Laser gain contributions}
 \label{subsec:}
 To observe atomic transitions, precise control
 of the developed frequency is necessary.
-In theory the laser operates at the mode with the highest net gain
+  In theory the laser operates at the mode with the highest net gain
 and other modes do not occur.
 However in reality it is possible, that multiple modes occur, leading
 to a spectrum of multiple frequencies. In the following the focus will
@@ -276,7 +284,7 @@ In the following the four contributions will be explained seperately.
 
 \FloatBarrier
 \begin{figure}
-  \includegraphics[width=0.7\textwidth]{gain_overview.png}
+  \includegraphics[width=0.5\textwidth]{gain_overview.png}
   \caption{Overview for the contributions to the net gain as function of
             wavelength.\cite{V60}}
   \label{fig:gain_overview}
@@ -285,7 +293,7 @@ In the following the four contributions will be explained seperately.
 
 \FloatBarrier
 \begin{figure}
-  \includegraphics[width=0.7\textwidth]{ideal_gain_overview.png}
+  \includegraphics[width=0.5\textwidth]{ideal_gain_overview.png}
   \caption{Overview for the contributions to the net gain as function of
             wavelength in the ideal case.\cite{V60}}
   \label{fig:ideal_gain_overview}
@@ -324,7 +332,7 @@ Besides heating the laser, the diode current changes the optical
 path length in the diode junction, by manipulating the concentration
 of charge carriers. Due to this the frequency is increased at a rate of
 approximately $\SI{200}{\mega\hertz\per\milli\ampere}$, until it reaches
-its maximum at around $\mathcal{O}(\SI{1}{\giga\hertz})$.
+its maximum at around $\sim(\SI{1}{\giga\hertz})$.
 This effect is illustrated by figure \ref{fig:injectioncurrent_wavelength}.
 
 
@@ -437,7 +445,7 @@ this experiment, lead to the spectrum shown in figure \ref{fig:rubidium_spectrum
 \end{figure}
 
 
-\subsection{piezo}
+\subsection{Piezo effect}
 \label{subsec:}
 In this experiment, a so called \textbf{piezo-element} is used to move the
 diffraction grating, periodically with a high frequency.
