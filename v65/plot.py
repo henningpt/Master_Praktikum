@@ -34,13 +34,17 @@ def sign(x):
 
 #Gausfunktion
 
-def Gaus(x,a,mu,sigma):
-    return a * np.exp(-(x-mu)**2 /(2 * sigma**2) )
+def Gaus(x,a,mu,w):
+    return a * np.exp(-(x-mu)**2 /(w**2) )
+
 
 def Betragsfunktion(x,a,b,c):
     return a * np.abs(x+b) + c
 
 
+# alpha_g
+# def geo(alpha_g, D, d0):
+#     return(unp.sin(alpha_g))
 # Brechungsindex
 n_1 = 1 #Luft
 n_2 = 1 - 1e-6
@@ -51,24 +55,25 @@ sigma_2 = 3e-10 #Substrat
 n_3 = 1 - 2e-6
 #Schichtdicke
 
-z2 = 500e-10
+z_2 = 500e-10
 
-def kann_alles_macht_alles(Winkel,n1,n2,n3,sigma1,sigma2,z2):
+
+def kann_alles_macht_alles(Winkel,sigma1,sigma2,z2):
     #Einfallswinkel
     ai = np.array(Winkel * np.pi / 180 )
 
     # Wellenvektorübertrag
 
-    qz = 4 * np.pi / 1.54 * np.sin(ai)
+    qz = 4 * np.pi / 1.54 * 1e10 * np.sin(ai)
 
     #Betrag des Wellenvektors
 
     k = 2 * np.pi / 1.54 * 1e10
     # z-Komponenten
 
-    kz1 = k * np.sqrt(n1**2 - np.cos(ai)**2)
-    kz2 = k * np.sqrt(n2**2 - np.cos(ai)**2)
-    kz3 = k * np.sqrt(n3**2 - np.cos(ai)**2)
+    kz1 = k * np.sqrt(n_1**2 - np.cos(ai)**2)
+    kz2 = k * np.sqrt(n_2**2 - np.cos(ai)**2)
+    kz3 = k * np.sqrt(n_3**2 - np.cos(ai)**2)
 
 
     #z-Komponenten
@@ -77,21 +82,56 @@ def kann_alles_macht_alles(Winkel,n1,n2,n3,sigma1,sigma2,z2):
     r23 = (kz2 - kz3) / (kz2 + kz3) * np.exp(-2 *  kz2 * kz3 * sigma2**2)
     x2 = np.exp(-2j * kz2 * z2) * r23
     x1 = (r12 + x2) / (1 + r12 * x2)
-    return x1
+    return np.abs(x1)**2
 
 params_det, cov_det = curve_fit(Gaus ,THETA_det_scan,Int_det_scan,p0=[0.9e8,0,0.02])
-uparams_pol = unp.uarray(params_det, np.sqrt(np.diag(cov_det)))
+uparams_det = unp.uarray(params_det, np.sqrt(np.diag(cov_det)))
+
+strahl_durchmesser = 2 * uparams_det[2] # noch nicht richtig !!!!!
 
 
+params_rock, cov_rock = curve_fit(Betragsfunktion ,Theta_rock[(Theta_rock > -0.25) & (Theta_rock < 0.7) ],
+                                    Int_rock[(Theta_rock > -0.25) & (Theta_rock < 0.7)], p0=[14e7,-0.25,7e7])
+uparams_rock = unp.uarray(params_rock, np.sqrt(np.diag(cov_rock)))
 
+
+# finde nullstelle von rockingscan
+def betragsfunktion_params(x):
+    return(Betragsfunktion(x, params_rock[0], 0, params_rock[2]))
+
+Winkel_rock = - uparams_rock[2]/uparams_rock[0]
+print("\n\nGeometry winkel ",Winkel_rock)
+Winkel_rock_rad = Winkel_rock * np.pi / 180
+
+print("\n Winkel in rad ", Winkel_rock_rad)
+
+proben_durchmesser = strahl_durchmesser / unp.sin(Winkel_rock_rad)
+print("proben_durchmesser", proben_durchmesser)
+
+plt.figure(4)
+plt.plot(Theta_rock, Int_rock,'x', label='Kurve')
+plt.plot(Theta_rock, Betragsfunktion(Theta_rock ,*params_rock))
+plt.xlabel(r'$\Theta$')
+plt.ylabel(r'$Intesity$')
+plt.legend(loc='best')
+plt.ylim(0,8e7)
+plt.savefig('build/plot_rocking.pdf')
+
+Int_messung_sauber = (Int_messung - Int_untergrund) / params_det[0]  # Int_messung_sauber ist auf I0 normiert -> reflektivitaet
 
 # fit reflektivitaet gesamt
-params_det, cov_det = curve_fit(Gaus ,THETA_det_scan,Int_det_scan,p0=[0.9e8,0,0.02])
-uparams_pol = unp.uarray(params_det, np.sqrt(np.diag(cov_det)))
+Theta_messung_ohne = Theta_messung[Theta_messung > Winkel_rock]
+Int_messung_sauber_ohne = Int_messung_sauber[Theta_messung > Winkel_rock]
+print(Theta_messung_ohne)
+params_messung, cov_messung = curve_fit(kann_alles_macht_alles, Theta_messung_ohne,
+                                        Int_messung_sauber_ohne, p0=[sigma_1, sigma_2, z_2])
+uparams_messung = unp.uarray(params_messung, np.sqrt(np.diag(cov_messung)))
+
 
 plt.figure(100)
-# plt.plot(Theta_messung, np.abs(x1)**2)
-plt.plot(Theta_messung, (Int_messung-Int_untergrund)/params_det[0],'-', label='Messung')
+plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung,*params_messung))
+plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung, sigma_1, sigma_2, z_2))
+plt.plot(Theta_messung, Int_messung_sauber,'-', label='Messung')
 plt.yscale('log')
 plt.savefig('build/Programm.pdf')
 
@@ -122,29 +162,6 @@ plt.ylabel(r'$Intesity$')
 plt.legend(loc='best')
 plt.savefig('build/plot_messung.pdf')
 
-
-params_rock, cov_rock = curve_fit(Betragsfunktion ,Theta_rock[(Theta_rock > -0.25) & (Theta_rock < 0.7) ], Int_rock[(Theta_rock > -0.25) & (Theta_rock < 0.7)], p0=[14e7,-0.25,7e7])
-uparams_rock = unp.uarray(params_rock, np.sqrt(np.diag(cov_rock)))
-
-
-# finde nullstelle von rockingscan
-#ableitung von betragsfunction
-def ableitungbetrag(x):
-    return(params_rock[0]  * sign(x) )
-
-def betragsfunktion_params(x):
-    return(Betragsfunktion(x, params_rock[0], 0, params_rock[2]))
-nullstellen = opt.root(betragsfunktion_params, [1], jac=ableitungbetrag, method='hybr')
-print("\n\nNullstellen von Betragsfunktion: ", nullstellen)
-
-plt.figure(4)
-plt.plot(Theta_rock, Int_rock,'x', label='Kurve')
-plt.plot(Theta_rock, Betragsfunktion(Theta_rock ,*params_rock))
-plt.xlabel(r'$\Theta$')
-plt.ylabel(r'$Intesity$')
-plt.legend(loc='best')
-plt.ylim(0,8e7)
-plt.savefig('build/plot_rocking.pdf')
 
 plt.figure(5)
 plt.plot(Theta_messung, Int_messung-Int_untergrund,'-', label='Differenz')
