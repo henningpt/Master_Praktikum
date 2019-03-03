@@ -49,12 +49,13 @@ wird eine komplexe Zahl
   n_{2} = \alpha + i \beta& &\text{mit } \alpha, \beta \in \mathbb{N}
   \label{eqn:komplexerindex}
 \end{align}
-gewählt. Der Realteil $\alpha$ beinhaltet die Informationen bezüglich der eigentlichen
-Brechung und der Imaginarteil $\beta$ die Dämpfung der Welle im Medium. Für Röntgenstrahlung
-gilt typischerweise $\alpha < 1$. Dies liegt daran, dass der reele
-Brechungsindex das Verhältnis von Lichtgeschwindigkeit im Medium zu der im Vakuum
-misst und für Röntgenstrahlung die Phasengeschwindigkeit im Medium
-schneller sein kann als die Vakuumlichtgeschwindigkeit $c_{0}$.
+gewählt. Der Realteil $\alpha$ beinhaltet die Informationen bezüglich der
+eigentlichen Brechung und der Imaginarteil $\beta$
+die Dämpfung der Welle im Medium. Für Röntgenstrahlung gilt typischerweise
+$\alpha < 1$. Dies liegt daran, dass der reele Brechungsindex das Verhältnis
+von Lichtgeschwindigkeit im Medium zu der im Vakuum misst und für
+Röntgenstrahlung die Phasengeschwindigkeit im Medium schneller
+sein kann als die Vakuumlichtgeschwindigkeit $c_{0}$.
 Da der Realteil von $n$ den Wert $1$ nur um sehr kleine Werte
 $\delta \sim 10^{-6}$ unterschreitet, wird die Formulierung
 $\alpha = 1 - \delta$ gewählt,
@@ -70,108 +71,156 @@ Anhand des Brechungsgesetzes \eqref{eqn:snellius} wird klar , dass ein Winkel
 $\alpha_\text{{crit.}} = \arccos\left( n_{2} \right)$ existiert,
 ab dem die Welle nicht in das zweite Medium eintritt,
 also total refelektiert wird.
-Damit überhaupt transmittierte Strahlung auftritt muss also gelten,
-$\alpha_{\text{i}} > \alpha_{\text{crit.}}$.
-
+Damit überhaupt transmittierte Strahlung auftritt, muss also gelten,
+$\alpha_{\text{i}} > \alpha_{\text{crit.}}$.\\
+Wird der Imaginarteil von $n_{2}$ vernachlässigt und eine Entwicklung
+des Kosinus in Gleichung \eqref{eqn:snellius} für kleine Winkel in
+quadratischer Ordnung durchgeführt, so ergibt sich für den kritischen Winkel
+\begin{align}
+  a_{\text{crit.}} \approx \sqrt{2 \delta} = \lambda \,
+  \sqrt{\frac{ \rho r_{\text{e}} }{ \pi }} \, .
+\end{align}
+Dabei entpricht $\lambda$ der Wellenlänge der Strahlung, $\rho$ der
+Volumendichte der Elektronen im Probenmaterial und $r_{\text{e}}$ dem
+(klassischen) Elektronenradius.
 
 % fresnel -> transmissions/reflektions amplituden -> Fresnelreflektivitaet
+Wie bereits erwähnt und in Abbildung \ref{fig:einschicht} gezeigt,
+entsteht bei der Interaktion einer elektromagnetischen Welle,
+mit Wellenvektor $k_{\text{i}}$ mit einer dünnen Schicht im Allgemeinen
+neben einer reflektierten Welle,
+mit dem Wellenvektor $k_{\text{f}}$, auch eine transmittierte mit dem
+Wellenvektor $k_{\text{t}}$ auf.
+Die verschiedenen (elektrischen) Feldvektoren
+$\vec{E}_{\text{index}}\left( \vec{r} \right)$
+lassen sich wie folgt angeben.
+Für die einlaufende Welle
+$\vec{E}_{\text{i}} = \begin{pmatrix} 0, A, 0 \end{pmatrix}
+e^{ \i \vec{k_{\text{i}} \vec{r} }}$,
+die reflektierte\\
+$\vec{E}_{\text{f}} = \begin{pmatrix} 0, B, 0 \end{pmatrix}
+e^{ \i \vec{k_{\text{f}} \vec{r} }}$
+und die transmittierte
+$\vec{E}_{\text{i}} = \begin{pmatrix} 0, C, 0 \end{pmatrix}
+e^{ \i \vec{k_{\text{t}} \vec{r} }}$. \\
+Dabei gilt für die Wellenvektoren
+\begin{align*}
+  \vec{k_{\text{i}}} &= k
+  \begin{pmatrix} \left( \cos\alpha_{\text{i}} , 0, -\sin\alpha_{\text{i}} \right) \end{pmatrix}\\
+  \vec{k_{\text{f}}} &= k
+  \begin{pmatrix} \left( \cos\alpha_{\text{i}} , 0, \sin\alpha_{\text{i}} \right) \end{pmatrix}\\
+  \vec{k_{\text{t}}} &= n \, k
+  \begin{pmatrix} \left( \cos\alpha_{\text{t}} , 0, -\sin\alpha_{\text{t}} \right) \end{pmatrix} \, .
+\end{align*}
 
+% Hier Begründung für : Roentgenstrahlung -> s polarisiert ~ p polarisiert
 
+Anhand der vorausgegangenen Definitionen für die Feldvektoren sowie
+Stetigkeitsbedingungen an den Grenzflächen, lassen sich die
+fresnelschen Formeln %für senkrecht polarisierte Strahlung
+\begin{align}
+  r &= \frac{B}{A} = \frac{k_{\text{i,}z} - k_{\text{t,}z}}{k_{\text{i,}z} + k_{\text{t,}z}}\\
+  &\intertext{und}&\\
+  t &= \frac{C}{A} = \frac{2 k_{\text{i,}z} }{k_{\text{i,}z} + k_{\text{t,}z}}
+  \label{eqn:fresnel_allgemein}
+\end{align}
+für den Reflektionskoeffizienten $r$ und den Transmissionskoeffizienten $t$
+gewinnen.
 
 % dag
 \subsection{Brechung von Röntgenstrahlung in Mehrschichtsystemen}
 \label{subsec:mehrschicht}
-Im Folgenden wird nun nicht mehr 
+Im Folgenden wird nun nicht mehr
 die Röngenreflektivität
-eins einschichtigen 
-Mediums betrachtet sondern eines Mehrschichtsystem wie 
-beispielsweise ein $\SI{800}{\angstrom}$ dicker Polystyrolfilm (PS) 
-auf Silizium (Si). Die berechntet Röngenreflektivität dieses 
-Systems ist in der Abbilung \ref{fig:mehrschicht} dargestellt. 
+eins einschichtigen
+Mediums betrachtet sondern eines Mehrschichtsystem wie
+beispielsweise ein $\SI{800}{\angstrom}$ dicker Polystyrolfilm (PS)
+auf Silizium (Si). Die berechntet Röngenreflektivität dieses
+Systems ist in der Abbilung \ref{fig:mehrschicht} dargestellt.
 
 \begin{figure}
 \centering
-\includegraphics[widht = 0.7\textwidth]{bilder/mehrschicht_beispiel.PNG}
-\caption{Berechnete Röngenreflektivität für $\lambda=\SI{1.54}{\angstrom} $ sowohl eines 
-$\SI{800}{\angstrom}$ dicker Polystyrolfilm (PS) 
+\includegraphics[width = 0.7\textwidth]{bilder/mehrschicht_beispiel.PNG}
+\caption{Berechnete Röngenreflektivität für $\lambda=\SI{1.54}{\angstrom} $ sowohl eines
+$\SI{800}{\angstrom}$ dicker Polystyrolfilm (PS)
 auf Silizium (Si)} als auch die reine Röngenreflektivität von Si ohne Film.
-in Abhängigkeit des Einfallswinkel $\alpha_i$.\cite{sample}}
+in Abhängigkeit des Einfallswinkel $\alpha_i$.\cite{sample}
 \label{fig:mehrschicht}
 \end{figure}
 
-Deutlich zu erkennen ist der Abfall in der Reflektivität wie schon 
-bei einem Einschichtsystemen nach der Formel \ref{eqn??}.
-  
+Deutlich zu erkennen ist der Abfall in der Reflektivität wie schon
+bei einem Einschichtsystemen nach der Formel \eqref{eqn:??}.
+
 Die Ozillation in der Reflektivität aus der Abbildung \ref{subsec:mehrschicht}
 lassen sich auf konstruktive und destruktive Interferenzen in
 der refelektiert Strahlung zurückführen.
-Da bei einem Mehrschichtsystem mehr  
+Da bei einem Mehrschichtsystem mehr
 Grenzflächen, an denen Reflexion auftritt, exsistiern,
-kömmt es zu einer Überlagerung der an unterschiedlichen Grenzflächen 
-refelektierten Strahlen. 
-Beträgt der Gangunterschied der Strahlen 
+kömmt es zu einer Überlagerung der an unterschiedlichen Grenzflächen
+refelektierten Strahlen.
+Beträgt der Gangunterschied der Strahlen
 ein ungerades Vielfaches der halben Wellenlänge
-kommt es zu einer destruktive Interferenzen und für gerade Vielfach 
+kommt es zu einer destruktive Interferenzen und für gerade Vielfach
 liegt konstruktive Interferenzen vor.
-Die so auftretetenden  
-Modulationen in der Reflektionskurve 
+Die so auftretetenden
+Modulationen in der Reflektionskurve
 werden auch "Kiessig-Ringe" gennant.
-Für ein einfaches Modelle mit zwei 
+Für ein einfaches Modelle mit zwei
 Grenzschichten mit dem Schichtabstand $d$
 ergibt sich der Zusammenhang
 \begin{align}
   d = \frac{2\pi}{\Delta q_z} \approx \frac{\lambda}{2\Delta \alpha_i}.
 \end{align}
-Dabei ist $q$ der Wellenvetorübertrag für den gilt 
-$\vec{q} = \vec{k}_f \vec{k}_i$ und welcher die z-Komponente $q_z=2k\sin \alpha_i$ besitzt  
-Dabei sind $\Delta q_z$ und $\Delta\alpha_i$ Differenzen 
+Dabei ist $q$ der Wellenvetorübertrag für den gilt
+$\vec{q} = \vec{k}_f \vec{k}_i$ und welcher die z-Komponente $q_z=2k\sin \alpha_i$ besitzt
+Dabei sind $\Delta q_z$ und $\Delta\alpha_i$ Differenzen
 der jeweiligen
 Werte zwischen zwei benachbarten Minima. % ????????
 
 Für Mehrschichtsysteme mit Schichten
 unterschiedlicher Brechungsindizes
-ergibt sich auf Grund der Überlagerungen der reflektierten 
-Strahlen eine  
-komplizierte Reflektivität, für die der 
+ergibt sich auf Grund der Überlagerungen der reflektierten
+Strahlen eine
+komplizierte Reflektivität, für die der
 rekusiven Parratt-Algorithmus einen Lösungsansatz
 liefert.
-Der Parratt-Algorithmus geht von einem System 
-wie in Abbildung \ref{fig:parratt_syst} dargestellt  
-mit $N$ glatte Grenzflächen und somit $N+1$ Schichten 
-aus. 
+Der Parratt-Algorithmus geht von einem System
+wie in Abbildung \ref{fig:parratt_syst} dargestellt
+mit $N$ glatte Grenzflächen und somit $N+1$ Schichten
+aus.
 
 \begin{figure}
   \centering
-\includegraphics[\width=0.7\textwidth]{mehrschicht_parratt.PNG}
-\caption{Beispiel System für den Parratt-Algorithmus 
+\includegraphics[width=0.7\textwidth]{mehrschicht_parratt.PNG}
+\caption{Beispiel System für den Parratt-Algorithmus
 mit $N+1$ Schichten und $N$ glatten Grenzflächen.\cite{sample}}
 \label{fig:parratt_syst}
 \end{figure}
 
-Die erste Schicht ist das Vakuum mit Brechungsindex $n=1$ 
+Die erste Schicht ist das Vakuum mit Brechungsindex $n=1$
 und die letzte Schicht ist das Substrat, welches als
 unendlich dick angenommen wird.
-Diese Annahme ist 
-eine gute Nährung  
-solange 
-die Substratdicke größer gegenüber der  
+Diese Annahme ist
+eine gute Nährung
+solange
+die Substratdicke größer gegenüber der
 Eindringtiefe ist.
-Als Folge dessen existiert eine Startwert 
+Als Folge dessen existiert eine Startwert
 für den Parratt-Algorithmus, da
-aus dem Substrat keine refektierte Strahlung $R_{N+1}$ 
+aus dem Substrat keine refektierte Strahlung $R_{N+1}$
 existiert.
 Für das Verhältnis von refelektierter und transmittierte Amplitude
-$\mathrm{X}_j$ an der $j$-ten Grenzfläche liefert der 
+$\mathrm{X}_j$ an der $j$-ten Grenzfläche liefert der
 Parratt-Algorithmus den Zusammenhang
 
 \begin{align}
-\mathrm{X}_j = \frac{\mathrm{R}_j}{\mathrm{T}_j} = \exp\left(-2\symup{i} \mathrm{k}_{z,j} \mathrm{z}_j\right) 
+\mathrm{X}_j = \frac{\mathrm{R}_j}{\mathrm{T}_j} = \exp\left(-2\symup{i} \mathrm{k}_{z,j} \mathrm{z}_j\right)
 \frac{\mathrm{r}_{j,j+1} + \mathrm{X}_{j+1}\exp\left(2\symup{i} \mathrm{k}_{z,j+1} \mathrm{z}_j \right)}
 {1 + \mathrm{r}_{j,j+1} + \mathrm{X}_{j+1}\exp\left(2\symup{i} \mathrm{k}_{z,j+1} \mathrm{z}_j \right)}.
 \end{align}
-Der koeffizienten $\mathrm{r}_{j,j+1}$ entspricht dabei 
+Der koeffizienten $\mathrm{r}_{j,j+1}$ entspricht dabei
 der Fresnelreflektivität an der $j$-ten Grenzfläche
-mit 
+mit
 \begin{align}
   \mathrm{r}_{j,j+1} &= \frac{\mathrm{k}_{z,j}-\mathrm{k}_{z,j+1}}{\mathrm{k}_{z,j} + \mathrm{k}_{z,j+1}}
 \intertext{und der z-komponente des Wellenvektors in der $j$-ten Schicht}
@@ -187,23 +236,23 @@ mit
 \subsection{Rauigkeit}
 \label{subsec:rauigkeit}
 Die zuvorher eingehende
-Annahme, dass es sich bei alle betrachteten Grenzflächen um 
-glatte Grenzflächen wird nun verworfen, da in 
-der Realität bei Grenzflächen immer 
+Annahme, dass es sich bei alle betrachteten Grenzflächen um
+glatte Grenzflächen wird nun verworfen, da in
+der Realität bei Grenzflächen immer
 eine endliche Rauigkeit auftritt.
-Wobei die Rauigkeit nur in z-Richtung bestimmen lässt, da 
-bei Reflektivitätsmessungen mit einem 
-Impulsübertrag senktecht zur Probenoberfläche das Signal 
-keine Informationen laterale Oberflächenstruktur 
+Wobei die Rauigkeit nur in z-Richtung bestimmen lässt, da
+bei Reflektivitätsmessungen mit einem
+Impulsübertrag senktecht zur Probenoberfläche das Signal
+keine Informationen laterale Oberflächenstruktur
 enthält.
-Die Übergangsbereich zwischen zwei Schichten besitzen 
-nun einen gemittelten Brechungsindex 
-$\mathrm{n}(z)$, der für den Grenzfall 
-glatter Grenzflächen, also geringer Rauigkeit, 
+Die Übergangsbereich zwischen zwei Schichten besitzen
+nun einen gemittelten Brechungsindex
+$\mathrm{n}(z)$, der für den Grenzfall
+glatter Grenzflächen, also geringer Rauigkeit,
 einer Heavisidefunktion \Theta(z) entspricht.
-Mit einer 
+Mit einer
 
-Durch Rauigkeit Schmiert übergang aus 
+Durch Rauigkeit Schmiert übergang aus
 
 Mit hilfe d
 
