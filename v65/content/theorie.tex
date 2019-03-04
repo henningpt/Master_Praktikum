@@ -183,25 +183,45 @@ mit
 \subsection{Rauigkeit}
 \label{subsec:rauigkeit}
 Die zuvorher eingehende
-Annahme, dass es sich bei alle betrachteten Grenzflächen um 
+Annahme, dass es sich bei alle betrachteten 
+Grenzflächen um 
 glatte Grenzflächen wird nun verworfen, da in 
 der Realität bei Grenzflächen immer 
 eine endliche Rauigkeit auftritt.
-Wobei die Rauigkeit nur in z-Richtung bestimmen lässt, da 
-bei Reflektivitätsmessungen mit einem 
-Impulsübertrag senktecht zur Probenoberfläche das Signal 
+Wobei die Rauigkeit nur in z-Richtung bestimmen lässt, 
+da bei Reflektivitätsmessungen mit einem 
+Impulsübertrag senktecht zur Probenoberfläche 
+das Signal 
 keine Informationen laterale Oberflächenstruktur 
-enthält.
-Die Übergangsbereich zwischen zwei Schichten besitzen 
+enthält. Die Übergangsbereich zwischen 
+zwei Schichten besitzen 
 nun einen gemittelten Brechungsindex 
 $\mathrm{n}(z)$, der für den Grenzfall 
 glatter Grenzflächen, also geringer Rauigkeit, 
-einer Heavisidefunktion \Theta(z) entspricht.
-Mit einer 
+einer Heavisidefunktion $\Theta(z)$ entspricht.
+Die Breite dieses Übergangsbereiches 
+entspricht der Rauigkeit $\sigma_j$.
+Durch die Rauigkeit schmiert der Übergang
+zwischen den Schichten aus und es ergeben sich die
+modifizierten Fresnelkoeffizienten 
+\begin{align}
+\bar{\mathrm{r}}_{j,j+1} = \mathrm{r}_{j+j+1} \exp\left(-2\mathrm{k}_{z,j}\mathrm{k}_{z,j+1}\sigma^2_j\right)  \\
+\bar{\mathrm{t}}_{j,j+1} = \mathrm{t}_{j+j+1} \exp\left[\left(\mathrm{k}_{z,j}-\mathrm{k}_{z,j+1}\rigth)^2\sigma^2_j/2\right].  
+\end{align}
+Die modifizierten Fresnelkoeffizienten werden 
+anstelle der Fresnelkoeffizienten einer glatten
+Schicht in den Parratt-Algorithmus eingesetzt, 
+um so die Reflektivität eines 
+Schichtsystems mit rauen Schichtübergängen 
+zu bestimmen.  
 
-Durch Rauigkeit Schmiert übergang aus 
 
-Mit hilfe d
+
+
+
+
+
+
 
 
 
