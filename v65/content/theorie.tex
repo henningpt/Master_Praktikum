@@ -77,8 +77,8 @@ Wird der Imaginarteil von $n_{2}$ vernachlässigt und eine Entwicklung
 des Kosinus in Gleichung \eqref{eqn:snellius} für kleine Winkel in
 quadratischer Ordnung durchgeführt, so ergibt sich für den kritischen Winkel
 \begin{align}
-  a_{\text{crit.}} \approx \sqrt{2 \delta} = \lambda \,
-  \sqrt{\frac{ \rho r_{\text{e}} }{ \pi }} \, .
+  \alpha_{\text{crit.}} \approx \sqrt{2 \delta} = \lambda \,
+  \sqrt{\frac{ \rho \, r_{\text{e}} }{ \pi }} \, .
 \end{align}
 Dabei entpricht $\lambda$ der Wellenlänge der Strahlung, $\rho$ der
 Volumendichte der Elektronen im Probenmaterial und $r_{\text{e}}$ dem
@@ -95,22 +95,22 @@ Die verschiedenen (elektrischen) Feldvektoren
 $\vec{E}_{\text{index}}\left( \vec{r} \right)$
 lassen sich wie folgt angeben.
 Für die einlaufende Welle
-$\vec{E}_{\text{i}} = \begin{pmatrix} 0, A, 0 \end{pmatrix}
+$\vec{E}_{\text{i}} = \begin{pmatrix} 0, A, 0 \end{pmatrix}^{\top}
 e^{ \i \vec{k_{\text{i}} \vec{r} }}$,
 die reflektierte\\
-$\vec{E}_{\text{f}} = \begin{pmatrix} 0, B, 0 \end{pmatrix}
+$\vec{E}_{\text{f}} = \begin{pmatrix} 0, B, 0 \end{pmatrix}^{\top}
 e^{ \i \vec{k_{\text{f}} \vec{r} }}$
 und die transmittierte
-$\vec{E}_{\text{i}} = \begin{pmatrix} 0, C, 0 \end{pmatrix}
+$\vec{E}_{\text{t}} = \begin{pmatrix} 0, C, 0 \end{pmatrix}^{\top}
 e^{ \i \vec{k_{\text{t}} \vec{r} }}$. \\
 Dabei gilt für die Wellenvektoren
 \begin{align*}
   \vec{k_{\text{i}}} &= k
-  \begin{pmatrix} \left( \cos\alpha_{\text{i}} , 0, -\sin\alpha_{\text{i}} \right) \end{pmatrix}\\
+  \begin{pmatrix} \left( \cos\alpha_{\text{i}} , 0, -\sin\alpha_{\text{i}} \right) \end{pmatrix}^{\top}\\
   \vec{k_{\text{f}}} &= k
-  \begin{pmatrix} \left( \cos\alpha_{\text{i}} , 0, \sin\alpha_{\text{i}} \right) \end{pmatrix}\\
+  \begin{pmatrix} \left( \cos\alpha_{\text{i}} , 0, \sin\alpha_{\text{i}} \right) \end{pmatrix}^{\top}\\
   \vec{k_{\text{t}}} &= n \, k
-  \begin{pmatrix} \left( \cos\alpha_{\text{t}} , 0, -\sin\alpha_{\text{t}} \right) \end{pmatrix} \, .
+  \begin{pmatrix} \left( \cos\alpha_{\text{t}} , 0, -\sin\alpha_{\text{t}} \right) \end{pmatrix}^{\top} \, .
 \end{align*}
 
 % Hier Begründung für : Roentgenstrahlung -> s polarisiert ~ p polarisiert
@@ -120,12 +120,30 @@ Stetigkeitsbedingungen an den Grenzflächen, lassen sich die
 fresnelschen Formeln %für senkrecht polarisierte Strahlung
 \begin{align}
   r &= \frac{B}{A} = \frac{k_{\text{i,}z} - k_{\text{t,}z}}{k_{\text{i,}z} + k_{\text{t,}z}}\\
-  &\intertext{und}&\\
+  \label{eqn:fresnel_r}
+  &\intertext{und}
   t &= \frac{C}{A} = \frac{2 k_{\text{i,}z} }{k_{\text{i,}z} + k_{\text{t,}z}}
-  \label{eqn:fresnel_allgemein}
+  \label{eqn:fresnel_t}
 \end{align}
 für den Reflektionskoeffizienten $r$ und den Transmissionskoeffizienten $t$
 gewinnen.
+
+Die Reflektivität $R$ bezeichnet das Verhältnis der reflektierten Intensität
+zur eingestrahlten Intensität.
+Das Betragsquadrat der
+Feldstärke\footnote{Das Verhältnis der Feldstärken von einlaufender und
+reflektierter Welle wird durch $r$ bemessen.} dient als Maß für die Intensität,
+sodass sich die Reflektivität durch
+\begin{align}
+  R = \lvert r \rvert^{2} \approx
+  \left( \frac{\alpha_{\text{crit.}}}{2\alpha_{\text{i}}} \right)
+  \label{eqn:reflektivitaet}
+\end{align}
+ausdrücken lässt.\\
+Die Näherung in Gleichung \eqref{eqn:reflektivitaet} ist für
+$\alpha_{\text{i}} > 3\alpha_{\text{crit.}}$ vertretbar. Dabei ist zu erkennen,
+dass diese (Fresnel-)Reflektivität mit der vierten Potenz von $\alpha_{\text{i}}$
+abfällt.
 
 % dag
 \subsection{Brechung von Röntgenstrahlung in Mehrschichtsystemen}
