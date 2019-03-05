@@ -140,10 +140,16 @@ Int_messung_sauber_ohne = Int_messung_sauber[Theta_messung > Winkel_rock]
 
 index_min = rel_min(np.log(Int_messung_sauber),order=4)
 alpha_min = Theta_messung[index_min]
-delta_a_i = alpha_min[:-1] -alpha_min[1:]
-print("\nDelta_a_i",delta_a_i)
+alpha_min = alpha_min[alpha_min<2]
+
+delta_a_i = alpha_min[1:] - alpha_min[:-1]
 delta_a_i_mean = np.mean(delta_a_i)
-delta_a_i_mean_in_rad = delta_a_i_mean * np.pi / 180
+delta_a_i_std = np.std(delta_a_i)
+
+print("\nDelta_a_i_mean",delta_a_i_mean)
+print("\nDelta_a_i_std",delta_a_i_std)
+udelta_a_i = unp.uarray(delta_a_i_mean,delta_a_i_std)
+delta_a_i_mean_in_rad = udelta_a_i * np.pi / 180
 #Berechnete Schichtdicke
 z_berechnet = lam / (2 *delta_a_i_mean_in_rad)
 

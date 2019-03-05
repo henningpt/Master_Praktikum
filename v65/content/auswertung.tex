@@ -122,10 +122,18 @@ korrigiert. Die Korrigierten Messwerte mit Hilfe des Geometriefaktors sind in de
 \end{figure}
 
 Ebenfalls in der Abbildung \ref{fig:korr}
-sind die lokalenminima im Refektivitätsscan markiert.
-Über den Zusammenhang
+sind die lokalen Minima im Refektivitätsscan markiert.
+über die Differenz der Einfallswinkel bei lokalen Minima lässt
+sich der Schichtabstand $d$ nach Gleichung \eqref{eqn:schichtabstand}
+bestimmen.
+Dazu werden alle Differenzen
+berechnet und über alle Werte gemittelt, wobei Einfallswinkel
+über $\SI{2}{\degree}$ auf Grunde von Signalstörungen vernachlässigt werden.
+Es ergibt sich eine Differenz von $\Delta \alpha_i = \SI{0.053(3)}{\degree}$
+und mit einer Wellenlänge von $\lambda=\SI{1.54}{\angstrom}$
+eine Schichtabstand
 \begin{align}
-  
+d \approx \frac{\lambda}{2\Delta\alpha_i} = \SI{840(50)}{\angstrom}.
 \end{align}
 % Geometriewinkel aus daten von Justierung -> Korrekturfaktor G
 % -> Daten korrigieren
