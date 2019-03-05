@@ -82,8 +82,23 @@ justiert. Dabei wird zwischen unterschiedliche Justageschritten Unterschieden.
 
 \subsection{Messung}
 \label{subsec:messung}
+Nachdem das Diffraktiometer justiert ist, wird anschließend
+die eigentliche Messung durchgeführt.
+Neben einer Messung mit Probe wird auch eine ohne durchgefürt,
+um Untergrundsignale gegebenfalls abziehen zu können.
 
 % Messung mit Probe
+Bei diesem Messvorgang, wird eine Reflektivitätsscan vorgenommen.
+Dabei werden $\alpha_{\text{i}}$ und der Winkel den Probe und Detektor einschließen nicht
+variiert. Im verwendeten Programm, das die Messeinstellungen verwaltet, wird
+"Omega / 2Theta" ausgewählt und ein Intervall von $\SI{0}{\degree}$ bis
+$\SI{5}{\degree}$ gemessen.
+Für die Schrittweite wird 0.005 % ?? prüfen ??
+gewählt. Für die Geschwindgikeit des Scans werden $\SI{5}{\second}$ gewählt.
 
 
 % Messung "Untergrund"
+Um die störende Untergrundsignale aus den Messdaten entfernen zu können,
+wird eine Messung ohne Probe durchgeführt. Diese kann bei der Auswertung
+von den eigentlichen Messdaten abgezogen werden, um möglichst nur
+Informationen über die Probe zu erhalten.
