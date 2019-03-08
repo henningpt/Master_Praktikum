@@ -54,20 +54,21 @@ lam = 1.54e-10
 # Brechungsindex
 n_1 = 1 #Luft
 n_2 = 1 - 1e-6
+n_3 = 1 - 2e-6
 #Rauigkeit
 
 sigma_1 = 10e-10 #Schicht
 sigma_2 = 1e-10 #Substrat
-n_3 = 1 - 2e-6
 #Schichtdicke
 
 z_2 = 500e-10
 
 
-def kann_alles_macht_alles(Winkel,sigma1,sigma2,z2):
+def kann_alles_macht_alles(Winkel,sigma1,sigma2,z2,n2,n3):
     #Einfallswinkel
     ai = np.array(Winkel * np.pi / 180 )
-
+    # if(n2>1 or n3>1 ):
+    #     return 100000000
     # Wellenvektorübertrag
 
     qz = 4 * np.pi / 1.54 * 1e10 * np.sin(ai)
@@ -76,19 +77,20 @@ def kann_alles_macht_alles(Winkel,sigma1,sigma2,z2):
 
     k = 2 * np.pi / 1.54 * 1e10
     # z-Komponenten
-
     kz1 = k * np.sqrt(n_1**2 - np.cos(ai)**2)
-    kz2 = k * np.sqrt(n_2**2 - np.cos(ai)**2)
-    kz3 = k * np.sqrt(n_3**2 - np.cos(ai)**2)
+    kz2 = k * np.sqrt(n2**2 - np.cos(ai)**2)
+    kz3 = k * np.sqrt(n3**2 - np.cos(ai)**2)
 
 
     #z-Komponenten
 
     r12 = (kz1 - kz2) / (kz1 + kz2) * np.exp(-2 *  kz1 * kz2 * sigma1**2)
     r23 = (kz2 - kz3) / (kz2 + kz3) * np.exp(-2 *  kz2 * kz3 * sigma2**2)
-    x2 = np.exp(-2j * kz2 * z2) * r23
+    x2 = np.exp(- 1j *2 * kz2 * z2) * r23
+    # print("test",(r12 + x2),"durch", (1 + r12 * x2))
     x1 = (r12 + x2) / (1 + r12 * x2)
-    return np.abs(x1)**2
+    return np.log(np.abs(x1)**2)
+
 
 params_det, cov_det = curve_fit(Gaus ,THETA_det_scan,Int_det_scan,p0=[0.9e8,0,0.02])
 uparams_det = unp.uarray(params_det, np.sqrt(np.diag(cov_det)))
@@ -132,8 +134,8 @@ Int_messung_sauber = (Int_messung - Int_untergrund) / params_det[0]  # Int_messu
 Int_messung_sauber_mit_geo_faktor = np.array(Int_messung_sauber)
 Int_messung_sauber_mit_geo_faktor[Theta_messung < geo_winkel] = Int_messung_sauber[Theta_messung < geo_winkel] / ( noms(proben_durchmesser) * np.sin(Theta_messung[Theta_messung < geo_winkel]*np.pi/180) / noms(strahl_durchmesser))
 print(Int_messung_sauber_mit_geo_faktor[Theta_messung < Winkel_rock])
-print("Geometriefaktor",noms(proben_durchmesser) * np.sin(Theta_messung[Theta_messung < Winkel_rock]*np.pi/180) / noms(strahl_durchmesser))
-print(Int_messung_sauber_mit_geo_faktor- Int_messung_sauber)
+# print("Geometriefaktor",noms(proben_durchmesser) * np.sin(Theta_messung[Theta_messung < Winkel_rock]*np.pi/180) / noms(strahl_durchmesser))
+# print(Int_messung_sauber_mit_geo_faktor- Int_messung_sauber)
 # fit reflektivitaet gesamt
 Theta_messung_ohne = Theta_messung[Theta_messung > Winkel_rock]
 Int_messung_sauber_ohne = Int_messung_sauber[Theta_messung > Winkel_rock]
@@ -146,8 +148,8 @@ delta_a_i = alpha_min[1:] - alpha_min[:-1]
 delta_a_i_mean = np.mean(delta_a_i)
 delta_a_i_std = np.std(delta_a_i)
 
-print("\nDelta_a_i_mean",delta_a_i_mean)
-print("\nDelta_a_i_std",delta_a_i_std)
+# print("\nDelta_a_i_mean",delta_a_i_mean)
+# print("\nDelta_a_i_std",delta_a_i_std)
 udelta_a_i = unp.uarray(delta_a_i_mean,delta_a_i_std)
 delta_a_i_mean_in_rad = udelta_a_i * np.pi / 180
 #Berechnete Schichtdicke
@@ -155,14 +157,13 @@ z_berechnet = lam / (2 *delta_a_i_mean_in_rad)
 
 print("Schichtdicke", z_berechnet)
 
-# params_messung, cov_messung = curve_fit(kann_alles_macht_alles, Theta_messung_ohne,
-#                                         Int_messung_sauber_ohne, p0=[sigma_1, sigma_2, z_berechnet])
-# uparams_messung = unp.uarray(params_messung, np.sqrt(np.diag(cov_messung)))
 
 
+# Beobachtung:  sigma substrat bestimmt die mittlere Steigung am Ende
+#               sigma Schicht bestimmt die Stärke der Schwingungen aber antiproportional
 
-sigma_1 = 9e-10 #Schicht
-sigma_2 = 4.5e-10 #Substrat
+sigma_1 = 5e-10 #Schicht
+sigma_2 = 4e-10 #Substrat
 #
 # test_1 = 9e-10 #Schicht
 # test_2 = 4.5e-10 #Substrat
@@ -170,18 +171,84 @@ sigma_2 = 4.5e-10 #Substrat
 # test_3 = 10e-10 #Schicht
 # test_4 = 4.5e-10 #Substrat
 
-# Beobachtung:  sigma substrat bestimmt die mittlere Steigung am Ende
-#               sigma Schicht bestimmt die Stärke der Schwingungen aber antiproportional
+n_2 = 1 - 1.5e-6
+n_3 = 1 - 11.5e-6
+
+n_4 = 1 - 2e-6
+n_5 = 1 - 11.5e-6
+
+# Beobachtung: n3 substrat bestimmt die höhe der funktion
+#              n2 Schicht bestimmt die Stärke der Schwingungen protional
+
+
+# n_6 = 1 + 0.5e-6
+# n_7 = 1 - 12e-6
+
+def z_gesucht(Winkel,z):
+    sigma_1 = 5e-10 #Schicht
+    sigma_2 = 4e-10 #Substrat
+    n_2 = 1 - 1.5e-6
+    n_3 = 1 - 6e-6
+    return(kann_alles_macht_alles(Winkel,sigma_1,sigma_2,z,n_2,n_3))
+
+def n_3_gesucht(Winkel,n3,n2):
+    sigma_1 = 5e-10 #Schicht
+    sigma_2 = 4e-10 #Substrat
+    # n_2 = 1 - 1.5e-6
+    return(kann_alles_macht_alles(Winkel,sigma_1,sigma_2,noms(z_berechnet),n_2,n3))
+
+def sigma_gesucht(Winkel,sigma1,sigma2):
+    n_4 = 1 - 2e-6
+    n_5 = 1 - 11.5e-6
+    return(kann_alles_macht_alles(Winkel,sigma1,sigma2,noms(z_berechnet),n_4,n_5))
+
+
+bereich = 150
+params_messung, cov_messung = curve_fit(kann_alles_macht_alles, Theta_messung[4:-bereich],
+                                        np.log(Int_messung_sauber_mit_geo_faktor[4:-bereich]), p0=[sigma_1, sigma_2, noms(z_berechnet),n_2, n_3])
+uparams_messung = unp.uarray(params_messung, np.sqrt(np.diag(cov_messung)))
+print("Params Fit",uparams_messung)
+
+params_messung_z, cov_messung_z = curve_fit(z_gesucht, Theta_messung[10:],
+                                          Int_messung_sauber_mit_geo_faktor[10:], p0=[noms(z_berechnet)],maxfev=800)
+uparams_messung_z = unp.uarray(params_messung_z, np.sqrt(np.diag(cov_messung_z)))
+
+params_messung_n3, cov_messung_n3 = curve_fit(n_3_gesucht, Theta_messung[20:],
+                                          Int_messung_sauber_mit_geo_faktor[20:], p0=[n_2,n_3],maxfev=800)
+uparams_messung_n3 = unp.uarray(params_messung_n3, np.sqrt(np.diag(cov_messung_n3)))
+print(uparams_messung_n3)
+
+params_messung_sigma, cov_messung_sigma = curve_fit(sigma_gesucht, Theta_messung[20:],
+                                          Int_messung_sauber_mit_geo_faktor[20:], p0=[sigma_1,sigma_2],maxfev=800)
+uparams_messung_sigma = unp.uarray(params_messung_sigma, np.sqrt(np.diag(cov_messung_sigma)))
+print(uparams_messung_sigma)
+
+    # n_2 = 1 - 1.5e-6
+    # n_3 = 1 - 6e-6
+
+params_test=np.array(params_messung)
+params_test[4] = 0.999988
+params_test[3] = 1 - 3.5e-6
+params_test[0] = 10e-10 #Schicht
+# params_test[]=
+
+print("z_überfit",uparams_messung_z)
+print("n_2,n_3", uparams_messung_n3)
 plt.figure(100)
 # plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung,*params_messung),label='Fit')
-plt.plot(Theta_messung, Int_messung_sauber_mit_geo_faktor,'-', label='Messung_mit_Faktor')
-plt.plot(Theta_messung, Int_messung_sauber,'-', label='Messung')
+plt.plot(Theta_messung, np.log(Int_messung_sauber_mit_geo_faktor),'-', label='$I_{korr}$')
+plt.plot(Theta_messung[4:-bereich], np.log(Int_messung_sauber_mit_geo_faktor[4:-bereich]),'--', label='$I_{korr}$ für Fit')
+# plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung, sigma_1, sigma_2, 7e-8,n_2,n_3),label='Hand Fit 3')
+# plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung, sigma_1, sigma_2, noms(z_berechnet),n_2,n_3),label='Hand Fit 1')
+# plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung, sigma_1, sigma_2, noms(z_berechnet),n_6,n_7),label='Hand Fit 7')
+# plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung, sigma_1, sigma_2, z_2,n_4,n_5),label='Hand Fit z1')
+plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung, *params_messung),label='Fit ')
+# plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung, *params_test),label='Fit test')
 
-# plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung, sigma_1, sigma_2, z_berechnet)*10**2,label='Hand Fit')
-# plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung, test_1, test_2, z_berechnet)*10**2,label='Hand Fit')
-# plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung, test_3, test_4, z_berechnet)*10**2,label='Hand Fit ')
-plt.plot(Theta_messung[index_min],Int_messung_sauber[index_min],'x')
-plt.yscale('log')
+#plt.plot(Theta_messung, z_gesucht(Theta_messung, *params_messung_z),label='z_gesucht')
+# plt.plot(Theta_messung, n_3_gesucht(Theta_messung, *params_messung_n3),label='n3_gesucht')
+# plt.plot(Theta_messung, sigma_gesucht(Theta_messung, *params_messung_sigma),label='sigma_gesucht')
+# plt.yscale('log')
 plt.legend(loc="best")
 plt.savefig('build/Programm.pdf')
 
