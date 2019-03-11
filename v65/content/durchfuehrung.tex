@@ -75,20 +75,28 @@ verwendet um die Motoren ensprechend anzusteuern.
 
 % Rocking-Scan 0 grad
 Nachdem die Probe zuvor möglichst parallel zur Strahlachse ausgerichtet wurde,
-wird ein Rockingscan durchgeführt.   
+wird ein Rockingscan durchgeführt. Bei diesem werden Röntgenröhre und
+Detektor gemeinsam symmetrisch um die Probe gedreht. In diesem ersten
+Rockingscan wird für den Winkel zwischen Röhre und Detektor ein Wert von
+$2\Theta = \SI{0}{\degree}$ gewählt. Die Drehung erfolgt in einem Winkelbereich
+zwischen $\SI{-1}{\degree}$ und $\SI{1}{\degree}$. Nach Beenden des Scans wird
+das Maximum, der sich ergebenden Kurve, ausgemessen und durch das Programm direkt
+an die Motoren zur Anpassung weitergegeben.
+
 
 % Z-Scan #2
+Anschließend wird ein zweiter Z-Scan durchgeführt um zu gewährleisten, dass
+nach Anpassung gemäß des Rockingscans, die Probe wieder parallel zur Strahlachse
+ausgerichtet ist. Der bisher
+beschriebene Vorgang wird solange ausgeführt, bis die Justage sich nicht mehr
+verbessert.
+
 
 
 % Rocking-Scan 0.3 grad
-
-
-% Z-Scan #3
-
-
-% Rocking-Scan 1 grad
-
-
+Für eine genauere Probenjustage, wird ein weiterer Rockingscan mit
+$2\Theta = \SI{0.3}{\degree}$ durchgeführt. Der Winkelbereich für die Drehung,
+wird von $\SI{0.1}{\degree}$ bis $\SI{0.2}{\degree}$ gewählt.
 
 
 \subsection{Messung}
