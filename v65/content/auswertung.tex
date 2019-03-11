@@ -23,7 +23,7 @@ Dieser berücksichtigt den Intensitätsverlust, da
 nicht der gesamte Strahl von der Probe reflektiert wird.
 Der Geometriefaktor ergibt sich somit zu
 \begin{align}
-G&=\frac{D\sin\alpha_i}{d_0} &  &\text{für} \alpha_i<\alpha_g \\
+G&=\frac{D\sin\alpha_i}{d_0} &  &\text{für} \alpha_i<\alpha_g \label{eqn:GEO}\\
 G&=1 & &\text{für} \alpha_i<\alpha_g
 \end{align}
 mit der Gesamtstrahlbreite $d_0$ und der Durchmesser der Probenoberfläche $D$.
@@ -36,10 +36,26 @@ dargestellt.
   \label{fig:geo}
 \end{figure}
 
-Der Strahldurchmesser $d_0$ und der Druchmesser der Probenoberfläche $D$
-ergeben sich aus den Messungen die zur Justage zwecken vor der eigentlichen Messung durchgeführt werden.
+Der Strahldurchmesser $d_0$ und der Druchmesser der Probenoberfläche $D$ können in der Formel für den Geometriefaktor \eqref{eqn:GEO}
+durch den Zusammenhang
+\begin{align}
+   \sin(\alpha_g) = \frac{d_0}{D}
+\end{align}
+mit den Geometriewinkel $\alpha_g$ ersetzt werden, sodass der Geometriefaktor
+\begin{align}
+  G&=\frac{\sin\alpha_i}{\sin\alpha_g} &  &\text{für} \alpha_i<\alpha_g \label{eqn:GEO_neu}\\
+  G&=1 & &\text{für} \alpha_i<\alpha_g
+\end{align}
+lautet.
+Der Geometriewinkel ergibt sich aus den Messungen die zur Justage zwecken vor der eigentlichen Messung durchgeführt werden.
+Desweitern wird die Intensität der einfallenden Strahlung $I_0$ benötigt, um die normierte Reflektivität
+\begin{align}
+  R=\frac{I_R}{I_0}
+\end{align}
+zu erhalten.
 Aus dem Messwerten des Detektorscan ergibt sich der in Abbildung \ref{fig:det_scan}
 gezeigte Intensitätsverlauf in Abhängigkeit des Detektorwinkel $\Theta'$.
+
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{build/plot_det_scan.pdf}
@@ -49,27 +65,25 @@ gezeigte Intensitätsverlauf in Abhängigkeit des Detektorwinkel $\Theta'$.
 
 Durch einen Fit der Form
 \begin{align}
-I(\Theta) =  a \exp\left(-\frac{(\Theta-\mu)^2}{\omega^2}\right) \text{\cite{wiki_strahl}}
+  I(\Theta) =  I_0 \exp\left(-\frac{(\Theta-\mu)^2}{\omega^2}\right) \text{\cite{wiki_strahl}}
 \end{align}
-an die Intensitätsverteilung ergibt sich für den Strahldurchmesser
+an die Intensitätsverteilung ergibt sich die Intensität
+\begin{align}
+  I_0 = \label{eqn:I_0}
+\end{align}
+der einfallenden Strahlung.
+% \begin{align}
+% \mu&= & \omega&= \\
+% \end{align}
+% und dem Radius $R=\SI{0.5}{\meter}$?? folgt für den Strahldurchmesser
+% \begin{align}
+%   d_0=\SI{}{\meter}.
+% \end{align}
+% Zur Ermittelung der Probenoberfläche $D$ wird zunächst aus den Messwerten
 
-\begin{align}
-d_0 = 2 \sin(\omega) R \label{eqn:d_o}
-\end{align}
-mit dem Radius $R$ des Detektorschiene.
-Für die Fitparameter
-\begin{align}
-\mu&= & \omega&= \\
-\end{align}
-und dem Radius $R=\SI{0.5}{\meter}$?? folgt für den Strahldurchmesser
-\begin{align}
-  d_0=\SI{}{\meter}.
-\end{align}
-
-Zur Ermittelung der Probenoberfläche $D$ wird zunächst aus den Messwerten
+Zur Ermittelung des Geometriewinkel  $\alpha_g$ werden die Messwerte
 des Rockingscan mit $2\Theta = \SI{0}{\degree}$, die in der Abblidung \ref{fig:rock_scan_0}
-dargestellt sind,
-der Geometriewinkel  $\alpha_g$ bestimmt.
+dargestellt sind, verwendet.
 
 
 \begin{figure}
@@ -95,19 +109,21 @@ entspricht der Geometriewinkel genau dem Winkel ab dem keine Intensität
 mehr auf den Detektor fällt und somit genau dem Betrag der Nullstellen der an die Messwerte
 angepassten Funktion.
 Der bestimmte Geometriewinkel $\alpha_g$
-lautet
+lautet somit
 \begin{align}
 \alpha_g = \lvert \pm\frac{c}{a} \rvert = \SI{0.48(1)}{\degree}.
 \end{align}
-Über den Zusammenhang
-\begin{align}
-D = d_0\sin(\alpha_g)
-\end{align}
-ergibt sich der Druchmesser
-der Probenoberfläche.
-\begin{align}
-  D=\Si{}{\meter}
-\end{align}
+% Über den Zusammenhang
+% \begin{align}
+% D = d_0\sin(\alpha_g)
+% \end{align}
+% ergibt sich der Druchmesser
+% der Probenoberfläche.
+% \begin{align}
+%   D=\Si{}{\meter}
+% \end{align}
+
+
 Die Messwerte $I_{\mathrm{mess}}$ mit $\alpha_i < \alpha_g $ werden mit dem Geometriefaktor $G$
 in der Form
 \begin{align}
@@ -131,13 +147,22 @@ berechnet und über alle Werte gemittelt, wobei Einfallswinkel
 über $\SI{2}{\degree}$ auf Grunde von Signalstörungen vernachlässigt werden.
 Es ergibt sich eine Differenz von $\Delta \alpha_i = \SI{0.053(3)}{\degree}$
 und mit einer Wellenlänge von $\lambda=\SI{1.54}{\angstrom}$
-eine Schichtabstand
+eine Schichtabstand von
 \begin{align}
 d \approx \frac{\lambda}{2\Delta\alpha_i} = \SI{840(50)}{\angstrom}.
 \end{align}
 % Geometriewinkel aus daten von Justierung -> Korrekturfaktor G
 % -> Daten korrigieren
 
+Um aus den Daten der Reflektivitätsmessung Dispersion und Rauigkeit
+der Probe und des Substrats zu bestimmen, werden die Messwerte in der Form
+Einfallswinkel $\alpha_i$ gegen die
+normierte Reflektivität $R$ aufgetragen, wie in Abbildung \ref{fig:messung}
+zusehen. Zusätzlich wird an die markierten Messwerte
+eine Funktion gefittet, die
+sich über den
+modifizierten Parratt-Algorithmus für Rauegrenzflächen ergibt und
+aus der Versuchsanleitung \cite{sample} entnommen wird.
 
 % Schichtdicke mit formel (9)
 % Dispersionsprofil mit Parrot Alg. ( Lage des krit. Winkels anpassen)
@@ -146,10 +171,24 @@ d \approx \frac{\lambda}{2\Delta\alpha_i} = \SI{840(50)}{\angstrom}.
 
 
 
-%
-% \begin{figure}
-%   \centering
-%   \includegraphics{plot.pdf}
-%   \caption{Plot.}
-%   \label{fig:plot}
-% \end{figure}
+\begin{figure}
+ \centering
+   \includegraphics[width=0.7\textwidth]{build/Programm.pdf}
+   \caption{Normierte Reflektivität $R$ gegen den Einfallswinkel $\alpha_i$ aufgetragen und Fit an die marktierte Messwerte.}
+   \label{fig:messung}
+\end{figure}
+
+Aus den Parameter ergeben sich für Dispersion $n_i$, Rauigkeit $\sigma_i$ und Schichtdicke $d$ die Werte
+\begin{align}
+  n_{\mathrm{Schicht}}&= \num{0.9999996(2)}  & \sigma_{\mathrm{Schicht}}&= \num{9e-11\pm1e-9}  & d=\SI{849(1)}{\angstrom} \\
+  n_{\mathrm{Substrat}}&= \num{0.9999893(1)} & \sigma_{\mathrm{Substrat}}&= \num{4.53e-10\pm(7)}
+\end{align}
+für die verwendete Probe.
+Die Elektronendichte $\rho_i$ der zwei Materialien ergibt sich aus dem Zusammenhang \eqref{eqn:elektronendichte} zu
+\begin{align}
+\rho_i&=\frac{2\delta_i \pi}{\lambda^2 r_e} &\text{mit}&  &\delta_i = 1 - n_i.\\
+\end{align}
+Aus den berechneten Dispersionene ergeben sich die Elektronendichten
+\begin{align}
+\rho_{\mathrm{Schicht}}&=\SI{4(1.6)e28}{\per\cubic\meter}  & \rho_{\mathrm{Substrat}}&=\SI{101(1)e28}{\per\cubic\meter}
+\end{align}

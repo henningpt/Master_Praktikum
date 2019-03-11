@@ -53,8 +53,8 @@ lam = 1.54e-10
 #     return(unp.sin(alpha_g))
 # Brechungsindex
 n_1 = 1 #Luft
-n_2 = 1 - 1e-6
-n_3 = 1 - 2e-6
+n_2 = 1 - 3.5e-6
+n_3 = 1 - 7.9e-6
 #Rauigkeit
 
 sigma_1 = 10e-10 #Schicht
@@ -67,8 +67,11 @@ z_2 = 500e-10
 def kann_alles_macht_alles(Winkel,sigma1,sigma2,z2,n2,n3):
     #Einfallswinkel
     ai = np.array(Winkel * np.pi / 180 )
-    # if(n2>1 or n3>1 ):
-    #     return 100000000
+    if(n2>1 or n3>1 ):
+        return 100000000
+    if(sigma1<0 or sigma2<0 ):
+        return 100000000
+
     # Wellenvektorübertrag
 
     qz = 4 * np.pi / 1.54 * 1e10 * np.sin(ai)
@@ -95,9 +98,9 @@ def kann_alles_macht_alles(Winkel,sigma1,sigma2,z2,n2,n3):
 params_det, cov_det = curve_fit(Gaus ,THETA_det_scan,Int_det_scan,p0=[0.9e8,0,0.02])
 uparams_det = unp.uarray(params_det, np.sqrt(np.diag(cov_det)))
 
-detektor_radius = 0.5 # Schätzwert!!!!!!
+detektor_radius = 100 # Schätzwert!!!!!!
 
-strahl_durchmesser =  0.5 * 2 * unp.sin(uparams_det[2]*np.pi/180) # noch nicht richtig !!!!!
+strahl_durchmesser =  detektor_radius * 2 * unp.sin(uparams_det[2]*np.pi/180) # noch nicht richtig !!!!!
 print("strahl_durchmesser=",strahl_durchmesser)
 
 params_rock, cov_rock = curve_fit(Betragsfunktion ,Theta_rock[(Theta_rock > -0.25) & (Theta_rock < 0.7) ],
@@ -119,7 +122,7 @@ proben_durchmesser = strahl_durchmesser / unp.sin(Winkel_rock_rad)
 print("proben_durchmesser", proben_durchmesser)
 
 geo_winkel = np.arcsin(noms(strahl_durchmesser)/noms(proben_durchmesser))*180/np.pi
-print("Anderer Geometriewinkel???",geo_winkel)
+# print("Anderer Geometriewinkel???",geo_winkel)
 
 plt.figure(4)
 plt.plot(Theta_rock, Int_rock,'x', label='Kurve')
@@ -198,14 +201,14 @@ def n_3_gesucht(Winkel,n3,n2):
     return(kann_alles_macht_alles(Winkel,sigma_1,sigma_2,noms(z_berechnet),n_2,n3))
 
 def sigma_gesucht(Winkel,sigma1,sigma2):
-    n_4 = 1 - 2e-6
-    n_5 = 1 - 11.5e-6
+    n_4 = 1 - 3.5e-6
+    n_5 = 1 - 7.6e-6
     return(kann_alles_macht_alles(Winkel,sigma1,sigma2,noms(z_berechnet),n_4,n_5))
 
 
 bereich = 150
 params_messung, cov_messung = curve_fit(kann_alles_macht_alles, Theta_messung[4:-bereich],
-                                        np.log(Int_messung_sauber_mit_geo_faktor[4:-bereich]), p0=[sigma_1, sigma_2, noms(z_berechnet),n_2, n_3])
+                                        np.log(Int_messung_sauber_mit_geo_faktor[4:-bereich]), p0=[sigma_1, sigma_2, noms(z_berechnet),n_2, n_3],maxfev=100000)
 uparams_messung = unp.uarray(params_messung, np.sqrt(np.diag(cov_messung)))
 print("Params Fit",uparams_messung)
 
@@ -218,39 +221,54 @@ params_messung_n3, cov_messung_n3 = curve_fit(n_3_gesucht, Theta_messung[20:],
 uparams_messung_n3 = unp.uarray(params_messung_n3, np.sqrt(np.diag(cov_messung_n3)))
 print(uparams_messung_n3)
 
-params_messung_sigma, cov_messung_sigma = curve_fit(sigma_gesucht, Theta_messung[20:],
-                                          Int_messung_sauber_mit_geo_faktor[20:], p0=[sigma_1,sigma_2],maxfev=800)
-uparams_messung_sigma = unp.uarray(params_messung_sigma, np.sqrt(np.diag(cov_messung_sigma)))
-print(uparams_messung_sigma)
+# params_messung_sigma, cov_messung_sigma = curve_fit(sigma_gesucht, Theta_messung[4:-bereich],
+#                                           np.log(Int_messung_sauber_mit_geo_faktor[4:-bereich]), p0=[sigma_1,sigma_2],maxfev=800000)
+# uparams_messung_sigma = unp.uarray(params_messung_sigma, np.sqrt(np.diag(cov_messung_sigma)))
+# print(uparams_messung_sigma)
 
     # n_2 = 1 - 1.5e-6
     # n_3 = 1 - 6e-6
 
 params_test=np.array(params_messung)
-params_test[4] = 0.999988
+params_test[4] = 1 - 7.6e-6
 params_test[3] = 1 - 3.5e-6
-params_test[0] = 10e-10 #Schicht
+# params_test[0] = 2e-13
+#Schicht
 # params_test[]=
 
-print("z_überfit",uparams_messung_z)
-print("n_2,n_3", uparams_messung_n3)
+
+n_schicht = uparams_messung[3]
+n_substrat = uparams_messung[4]
+
+def e_dichte(n):
+    lam = 1.54e-10
+    r_e = 2.8179403227e-15
+    return 2*(1-n)*np.pi/(lam**2*r_e)
+
+print('Elektronendichten n_schicht', e_dichte(n_schicht))
+print('Elektronendichten n_substrat', e_dichte(n_substrat))
+print('d n_schicht',1-n_schicht)
+print('d n_substrat',1-n_substrat)
+# print("z_überfit",uparams_messung_z)
+# print("n_2,n_3", uparams_messung_n3)
 plt.figure(100)
 # plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung,*params_messung),label='Fit')
-plt.plot(Theta_messung, np.log(Int_messung_sauber_mit_geo_faktor),'-', label='$I_{korr}$')
-plt.plot(Theta_messung[4:-bereich], np.log(Int_messung_sauber_mit_geo_faktor[4:-bereich]),'--', label='$I_{korr}$ für Fit')
+plt.plot(Theta_messung, Int_messung_sauber_mit_geo_faktor,'tab:orange', label='$I_{korr}$')
+plt.plot(Theta_messung[4:-bereich], Int_messung_sauber_mit_geo_faktor[4:-bereich],'--r', label='$I_{korr}$ für Fit')
 # plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung, sigma_1, sigma_2, 7e-8,n_2,n_3),label='Hand Fit 3')
 # plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung, sigma_1, sigma_2, noms(z_berechnet),n_2,n_3),label='Hand Fit 1')
 # plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung, sigma_1, sigma_2, noms(z_berechnet),n_6,n_7),label='Hand Fit 7')
 # plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung, sigma_1, sigma_2, z_2,n_4,n_5),label='Hand Fit z1')
-plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung, *params_messung),label='Fit ')
-# plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung, *params_test),label='Fit test')
-
+plt.plot(Theta_messung, np.exp(kann_alles_macht_alles(Theta_messung, *params_messung)),'tab:blue', linewidth=0.75 ,label='Fit ')
+# plt.plot(Theta_messung, np.exp(kann_alles_macht_alles(Theta_messung, *params_test)),label='Fit test')
 #plt.plot(Theta_messung, z_gesucht(Theta_messung, *params_messung_z),label='z_gesucht')
 # plt.plot(Theta_messung, n_3_gesucht(Theta_messung, *params_messung_n3),label='n3_gesucht')
-# plt.plot(Theta_messung, sigma_gesucht(Theta_messung, *params_messung_sigma),label='sigma_gesucht')
-# plt.yscale('log')
+# plt.plot(Theta_messung, np.exp(sigma_gesucht(Theta_messung, *params_messung_sigma)),label='sigma_gesucht')
+plt.yscale('log')
 plt.legend(loc="best")
 plt.savefig('build/Programm.pdf')
+
+
 
 
 plt.figure(101)
