@@ -52,13 +52,24 @@ justiert. Dabei wird zwischen unterschiedliche Justageschritten Unterschieden.
 % haben wir ja gar nichts mit zu tun gehabt
 
 
-% Probe justieren
-\paragraph{Probe justieren}
+% % Probe justieren
+% \paragraph{Probe justieren}
 
 
 % Detektorscan
 \paragraph{Detektorscan}
-
+Bevor Justageschritte mit Probe unternommen werden, wird eine Primärstrahljustierung
+vorgenommen. Dabei werden Röntgenröhre und Detektor so zueinander eingestell,
+dass sie einen Winkel von $\SI{0}{\degree}$ einschließen. Weiterhin wird die
+Probe aus dem Strahlengang gefahren.
+Anschließend wird ein sogenannter Detektorscan durchgeführt.
+Dabei wird Position der Röhre nicht verändert, allerdings die des Detektors.
+Letzterer wird aufsteigend durch den Strahl geschoben. Der Scanbereich
+verläuft von $\SI{-0.5}{\degree}$ bis $\SI{0.5}{\degree}$. Nachdem die Messung beendet ist,
+wird das Maximum lokalisiert und ein weiterer Detektorscan in einer symmetrischen
+Umgebung der Größe $\SI{0.4}{\degree}$ um das Maximum herum, durchgeführt.
+Nach Ende der Messung werden der Wert des Maximums, sowie die Halbwertsbreite
+des Peaks notiert.
 
 %  Z-Scan #1
 \paragraph{Erster Z-Scan}
@@ -99,6 +110,26 @@ $2\Theta = \SI{0.3}{\degree}$ durchgeführt. Der Winkelbereich für die Drehung,
 wird von $\SI{0.1}{\degree}$ bis $\SI{0.2}{\degree}$ gewählt.
 
 
+% Z-Scan #3
+Zur feineren Justage, wird ein dritter Z-Scan durchgeführt.
+Dabei wird für den Winkel zwischen Röntgenröhre und Detektor von
+$2\Theta = \SI{0.3}{\degree}$ gewählt. Der Bereich für die z-Koordinate
+ist $[\SI{-0.5}{\milli\meter}, \SI{0.5}{\milli\meter}]$.
+Nach Abschluss der Messung wird wieder das Maximum gemessen und
+die Motoren entprechend angesteuert, sodass die bestmögliche Höheneinstellung
+der Probe erreicht ist.
+
+
+% Rockingscan 1.0 grad
+Abschließend wird ein Rockingscan mit einer Winkeleinstellung von
+$2\Theta = \SI{1}{\degree}$ durchgeführt. Der Scanbereich wird zwischen den Werten
+$0.45$ und $0.55$ gewählt. Die Wahl dieses Scanbereichs lässt sich dadruch begründen,
+dass bei $0.5$ das Maximum prognostiziert wird. Nach Vollendung der Messung
+werden die Motoren wieder entprechend ańgesteuert, sodass das Diffraktiometer
+nun vollständig justiert ist.
+
+
+
 \subsection{Messung}
 \label{subsec:messung}
 Nachdem das Diffraktiometer justiert ist, wird anschließend
@@ -112,12 +143,12 @@ Dabei werden $\alpha_{\text{i}}$ und der Winkel den Probe und Detektor einschlie
 variiert. Im verwendeten Programm, das die Messeinstellungen verwaltet, wird
 "Omega / 2Theta" ausgewählt und ein Intervall von $\SI{0}{\degree}$ bis
 $\SI{5}{\degree}$ gemessen.
-Für die Schrittweite wird 0.005 % ?? prüfen ??
-gewählt. Für die Geschwindgikeit des Scans werden $\SI{5}{\second}$ gewählt.
+Für die Schrittweite wird $\SI{0.05}{\degree\per\second}$ 
+gewählt. Für die Dauer des Scans werden $\SI{5}{\second}$ gewählt.
 
 
 % Messung "Untergrund"
-Um die störende Untergrundsignale aus den Messdaten entfernen zu können,
-wird eine Messung ohne Probe durchgeführt. Diese kann bei der Auswertung
-von den eigentlichen Messdaten abgezogen werden, um möglichst nur
-Informationen über die Probe zu erhalten.
+Um die störende Untergrundsignale aus dens später aufgenommenen Messdaten
+entfernen zu können, wird eine Messung ohne Probe durchgeführt.
+Diese kann bei der Auswertung von den eigentlichen Messdaten abgezogen werden,
+um möglichst nur Informationen über die Probe zu erhalten.
