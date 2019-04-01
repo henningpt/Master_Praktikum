@@ -12,12 +12,11 @@ durchgefürt, das in der Abbildung \ref{fig:app} zu sehen ist.
 
 Mit Hilfe des Gerätes kann sowohl der
 Winkel der Röntgenröhre
-als auch der Winkel des Detektor zum Probentisch
-genau eingestellt werden. Desweitern ist es
+als auch der Winkel des Detektors zum Probentisch
+genau eingestellt werden. Desweiteren ist es
 möglich den Probentisch sowohl in x-Richtung als auch in
 y,z-Richtung zu fahren.
-Die Abbildung \ref{fig:anode_det} enthält eine genau
-Ansicht zum Einen auf die
+Die Abbildung \ref{fig:anode_det} enthält zum Einen eine genaue Ansicht auf die
 Röntgenröhre mit Blende und zum Anderen auf den Detektor des Gerätes.
 
 \begin{figure}
@@ -38,7 +37,7 @@ Röntgenröhre mit Blende und zum Anderen auf den Detektor des Gerätes.
 
 Die Röntgenröhre besitzt eine Kupferanode und wird mit einer Spannung von $\SI{40}{\kilo\volt}$
 und einem Strom von $\SI{40}{\milli\ampere}$ betrieben.
-Die Röntgenstrahlen der Röntgenröhre werden durch den Göbel Spiegel
+Die Röntgenstrahlen der Röntgenröhre werden durch den Göbelspiegel
 gebündelt und monochromatisiert,
 so dass der austretende Strahl eine Wellenlänge von
 $\lambda=\SI{1.54}{\angstrom}$ besitzt.
@@ -47,7 +46,7 @@ $\lambda=\SI{1.54}{\angstrom}$ besitzt.
 \subsection{Justage des D8-Labordiffraktiometers}
 \label{subsec:justage}
 Bevor mit der Messung gestartet wird, wird das D8-Labordiffraktiometer
-justiert. Dabei wird zwischen unterschiedliche Justageschritten Unterschieden.
+justiert. Dabei wird zwischen unterschiedlichen Justageschritten Unterschieden.
 % ?? strom und spannung hochfahren ??
 % haben wir ja gar nichts mit zu tun gehabt
 
@@ -59,12 +58,12 @@ justiert. Dabei wird zwischen unterschiedliche Justageschritten Unterschieden.
 % Detektorscan
 \paragraph{Detektorscan}
 Bevor Justageschritte mit Probe unternommen werden, wird eine Primärstrahljustierung
-vorgenommen. Dabei werden Röntgenröhre und Detektor so zueinander eingestell,
+vorgenommen. Dabei werden Röntgenröhre und Detektor so zueinander eingestellt,
 dass sie einen Winkel von $\SI{0}{\degree}$ einschließen. Weiterhin wird die
 Probe aus dem Strahlengang gefahren.
 Anschließend wird ein sogenannter Detektorscan durchgeführt.
 Dabei wird Position der Röhre nicht verändert, allerdings die des Detektors.
-Letzterer wird aufsteigend durch den Strahl geschoben. Der Scanbereich
+Letzterer wird durch eine Drehbewegung aufsteigend durch den Strahl bewegt. Der Scanbereich
 verläuft von $\SI{-0.5}{\degree}$ bis $\SI{0.5}{\degree}$. Nachdem die Messung beendet ist,
 wird das Maximum lokalisiert und ein weiterer Detektorscan in einer symmetrischen
 Umgebung der Größe $\SI{0.4}{\degree}$ um das Maximum herum, durchgeführt.
@@ -75,7 +74,7 @@ des Peaks notiert.
 \paragraph{Erster Z-Scan}
 Um die Probenjustage zu prüfen,
 wird ein sogenannter Z-Scan durchgeführt.
-Beid diesem wird die Probe entlang der Z-Achse verschoben,
+Bei diesem wird die Probe entlang der Z-Achse verschoben,
 sodass reguliert werden kann, wie stark die Probe den Strahlengang
 abdeckt. Im idealen Fall, bei dem die Probe parallel zur Strahlachse
 orientiert ist, wird die hälfte der Strahlintensität abgedeckt.
@@ -85,6 +84,7 @@ verwendet um die Motoren ensprechend anzusteuern.
 
 
 % Rocking-Scan 0 grad
+\paragraph{Erster Rockingscan}
 Nachdem die Probe zuvor möglichst parallel zur Strahlachse ausgerichtet wurde,
 wird ein Rockingscan durchgeführt. Bei diesem werden Röntgenröhre und
 Detektor gemeinsam symmetrisch um die Probe gedreht. In diesem ersten
@@ -96,6 +96,7 @@ an die Motoren zur Anpassung weitergegeben.
 
 
 % Z-Scan #2
+\paragraph{Zweiter Z-Scan}
 Anschließend wird ein zweiter Z-Scan durchgeführt um zu gewährleisten, dass
 nach Anpassung gemäß des Rockingscans, die Probe wieder parallel zur Strahlachse
 ausgerichtet ist. Der bisher
@@ -105,14 +106,16 @@ verbessert.
 
 
 % Rocking-Scan 0.3 grad
+\paragraph{Zweiter Rockingscan}
 Für eine genauere Probenjustage, wird ein weiterer Rockingscan mit
 $2\Theta = \SI{0.3}{\degree}$ durchgeführt. Der Winkelbereich für die Drehung,
 wird von $\SI{0.1}{\degree}$ bis $\SI{0.2}{\degree}$ gewählt.
 
 
 % Z-Scan #3
+\paragraph{Dritter Z-Scan}
 Zur feineren Justage, wird ein dritter Z-Scan durchgeführt.
-Dabei wird für den Winkel zwischen Röntgenröhre und Detektor von
+Dabei wird für den Winkel zwischen Röntgenröhre und Detektor ein Wert von
 $2\Theta = \SI{0.3}{\degree}$ gewählt. Der Bereich für die z-Koordinate
 ist $[\SI{-0.5}{\milli\meter}, \SI{0.5}{\milli\meter}]$.
 Nach Abschluss der Messung wird wieder das Maximum gemessen und
@@ -121,9 +124,10 @@ der Probe erreicht ist.
 
 
 % Rockingscan 1.0 grad
+\paragraph{Dritter Rockingscan}
 Abschließend wird ein Rockingscan mit einer Winkeleinstellung von
 $2\Theta = \SI{1}{\degree}$ durchgeführt. Der Scanbereich wird zwischen den Werten
-$0.45$ und $0.55$ gewählt. Die Wahl dieses Scanbereichs lässt sich dadruch begründen,
+$\SI{0.45}{\degree}$ und $\SI{0.55}{\degree}$ gewählt. Die Wahl dieses Scanbereichs lässt sich dadruch begründen,
 dass bei $0.5$ das Maximum prognostiziert wird. Nach Vollendung der Messung
 werden die Motoren wieder entprechend ańgesteuert, sodass das Diffraktiometer
 nun vollständig justiert ist.
@@ -132,7 +136,7 @@ nun vollständig justiert ist.
 
 \subsection{Messung}
 \label{subsec:messung}
-Nachdem das Diffraktiometer justiert ist, wird anschließend
+Nachdem das Diffraktiometer justiert ist, wird
 die eigentliche Messung durchgeführt.
 Neben einer Messung mit Probe wird auch eine ohne durchgefürt,
 um Untergrundsignale gegebenfalls abziehen zu können.
@@ -142,9 +146,9 @@ Bei diesem Messvorgang, wird eine Reflektivitätsscan vorgenommen.
 Dabei werden $\alpha_{\text{i}}$ und der Winkel den Probe und Detektor einschließen nicht
 variiert. Im verwendeten Programm, das die Messeinstellungen verwaltet, wird
 "Omega / 2Theta" ausgewählt und ein Intervall von $\SI{0}{\degree}$ bis
-$\SI{5}{\degree}$ gemessen.
-Für die Schrittweite wird $\SI{0.05}{\degree\per\second}$ 
-gewählt. Für die Dauer des Scans werden $\SI{5}{\second}$ gewählt.
+$\SI{5}{\degree}$ vermessen.
+Für die Schrittweite wird $\SI{0.05}{\degree\per\second}$
+gewählt. Für die Dauer wird $\SI{5}{\second}$ gewählt.
 
 
 % Messung "Untergrund"

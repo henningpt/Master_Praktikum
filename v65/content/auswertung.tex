@@ -1,11 +1,11 @@
 \newpage
 \section{Auswertung}
 \label{sec:Auswertung}
-Um aus den Messwerten aus dem Refektivitätsscan Schichtdicke, Dispersion
-und Rauigkeit der Polysterolschicht sowie Dispersion und Rauigkeit des Siliziumwafers
+Um aus den Messwerten des Reflektivitätsscans Schichtdicke, Dispersion
+und Rauigkeit der Polysterolschicht, sowie Dispersion und Rauigkeit des Siliziumwafers
 zu ermitteln, wird
 % Untergrund von Messung mit Probe abziehen
-zu Beginn der diffuse Scan von den Messwerten abgezogen wie in Abbildung
+zu Beginn der diffuse Scan von den Messwerten abgezogen, wie in Abbildung
 \ref{fig:diffuse_Scan} zu sehen.
 
 \begin{figure}
@@ -16,7 +16,7 @@ zu Beginn der diffuse Scan von den Messwerten abgezogen wie in Abbildung
 \end{figure}
 
 Da erst ab einem ausreichend großen Einfallswinkel,
-dem so definierte Geometriewinkel $\alpha_g$,
+dem so definierten Geometriewinkel $\alpha_g$,
 der gesamte Strahl auf die Oberfläche trifft,
 werden die Messwerte mit $\alpha_i < \alpha_g$
 mit einem Geometriefaktor $G$ korrigiert.
@@ -27,13 +27,13 @@ Der Geometriefaktor ergibt sich somit zu
 G&=\frac{D\sin\alpha_i}{d_0} &  &\text{für} \alpha_i<\alpha_g \label{eqn:GEO}\\
 G&=1 & &\text{für} \alpha_i<\alpha_g
 \end{align}
-mit der Gesamtstrahlbreite $d_0$ und der Durchmesser der Probenoberfläche $D$.
-Ein Beispielhafter Strahlenverlauf für $\alpha_i<\alpha_g$ ist in Abbildung \ref{fig:geo}
+mit der Gesamtstrahlbreite $d_0$ und dem Durchmesser der Probenoberfläche $D$.
+Ein beispielhafter Strahlverlauf für $\alpha_i<\alpha_g$ ist in Abbildung \ref{fig:geo}
 dargestellt.
 \begin{figure}
   \centering
   \includegraphics{bilder/geo_winkel.PNG}
-  \caption{Strahlenverlauf für $\alpha_i<\alpha_g$. \cite{sample}}
+  \caption{Strahlverlauf für $\alpha_i<\alpha_g$. \cite{sample}}
   \label{fig:geo}
 \end{figure}
 
@@ -42,19 +42,19 @@ durch den Zusammenhang
 \begin{align}
    \sin(\alpha_g) = \frac{d_0}{D}
 \end{align}
-mit den Geometriewinkel $\alpha_g$ ersetzt werden, sodass der Geometriefaktor
+mit dem Geometriewinkel $\alpha_g$ ersetzt werden, sodass der Geometriefaktor
 \begin{align}
   G&=\frac{\sin\alpha_i}{\sin\alpha_g} &  &\text{für} \alpha_i<\alpha_g \label{eqn:GEO_neu}\\
   G&=1 & &\text{für} \alpha_i<\alpha_g
 \end{align}
 lautet.
-Der Geometriewinkel ergibt sich aus den Messungen die zur Justage zwecken vor der eigentlichen Messung durchgeführt werden.
-Desweitern wird die Intensität der einfallenden Strahlung $I_0$ benötigt, um die normierte Reflektivität
+Der Geometriewinkel ergibt sich aus den Messungen die zu Justagezwecken vor der eigentlichen Messung durchgeführt werden.
+Desweiteren wird die Intensität der einfallenden Strahlung $I_0$ benötigt, um die normierte Reflektivität
 \begin{align}
   R=\frac{I_R}{I_0}
 \end{align}
 zu erhalten.
-Aus dem Messwerten des Detektorscan ergibt sich der in Abbildung \ref{fig:det_scan}
+Aus dem Messwerten des Detektorscans ergibt sich der in Abbildung \ref{fig:det_scan}
 gezeigte Intensitätsverlauf in Abhängigkeit des Detektorwinkel $\Theta'$.
 
 \begin{figure}
@@ -82,7 +82,7 @@ der einfallenden Strahlung.
 % \end{align}
 % Zur Ermittelung der Probenoberfläche $D$ wird zunächst aus den Messwerten
 
-Zur Ermittelung des Geometriewinkel  $\alpha_g$ werden die Messwerte
+Zur Ermittlung des Geometriewinkels  $\alpha_g$ werden die Messwerte
 des Rockingscan mit $2\Theta = \SI{0}{\degree}$, die in der Abblidung \ref{fig:rock_scan_0}
 dargestellt sind, verwendet.
 
@@ -98,12 +98,12 @@ Dafür wird eine Funktion der Form
 \begin{align}
   f(x) = a \lvert x + b \rvert + c
 \end{align}
-an die Messwerte angepasst und es ergeben sich die Parametern
+an die Messwerte angepasst und es ergeben sich die Parameter
 \begin{align}
 a&= &b&=  &c&=.
 \end{align}
-Dabei entspricht der Parameter $b$ nur einer fehlende Eichung in der Messung und
-es wird für die Berechung des Geometriewinkels $b=0$ gesetzt.
+Dabei entspricht der Parameter $b$ nur einer fehlenden Eichung in der Messung und
+es wird für die Berechnung des Geometriewinkels $b=0$ gesetzt.
 Der Geometriewinkel entspricht dem Winkel, ab dem der Strahl
 vollständig auf die Probe trifft. Bei dem Rockingscan für $2\Theta=\SI{0}{\degree}$
 entspricht der Geometriewinkel genau dem Winkel ab dem keine Intensität
@@ -130,7 +130,7 @@ in der Form
 \begin{align}
   I_{\mathrm{korr}} = \frac{I_{\mathrm{mess}}}{G}
 \end{align}
-korrigiert. Die Korrigierten Messwerte mit Hilfe des Geometriefaktors sind in der Abbildung \ref{fig:korr} dargestellt.
+korrigiert. Die mit Hilfe des Geometriefaktors korrigierten Messwerte sind in der Abbildung \ref{fig:korr} dargestellt.
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{build/Geometriefaktor.pdf}
@@ -145,10 +145,10 @@ sich der Schichtabstand $d$ nach Gleichung \eqref{eqn:schichtabstand}
 bestimmen.
 Dazu werden alle Differenzen
 berechnet und über alle Werte gemittelt, wobei Einfallswinkel
-über $\SI{2}{\degree}$ auf Grunde von Signalstörungen vernachlässigt werden.
+über $\SI{2}{\degree}$ auf Grund von Signalstörungen vernachlässigt werden.
 Es ergibt sich eine Differenz von $\Delta \alpha_i = \SI{0.053(3)}{\degree}$
 und mit einer Wellenlänge von $\lambda=\SI{1.54}{\angstrom}$
-eine Schichtabstand von
+ein Schichtabstand von
 \begin{align}
 d \approx \frac{\lambda}{2\Delta\alpha_i} = \SI{840(50)}{\angstrom}.
 \end{align}
@@ -175,21 +175,21 @@ aus der Versuchsanleitung \cite{sample} entnommen wird.
 \begin{figure}
  \centering
    \includegraphics[width=0.7\textwidth]{build/Programm.pdf}
-   \caption{Normierte Reflektivität $R$ gegen den Einfallswinkel $\alpha_i$ aufgetragen und Fit an die marktierte Messwerte.}
+   \caption{Normierte Reflektivität $R$ gegen den Einfallswinkel $\alpha_i$ aufgetragen und Fit an die markierten Messwerte.}
    \label{fig:messung}
 \end{figure}
 
 Aus den Parameter ergeben sich für Dispersion $n_i$, Rauigkeit $\sigma_i$ und Schichtdicke $d$ die Werte
 \begin{align}
-  n_{\mathrm{Schicht}}&= \num{0.9999996(2)}  & \sigma_{\mathrm{Schicht}}&= \num{9e-11\pm1e-9}  & d=\SI{849(1)}{\angstrom} \\
-  n_{\mathrm{Substrat}}&= \num{0.9999893(1)} & \sigma_{\mathrm{Substrat}}&= \num{4.53e-10\pm(7)}
+  n_{\mathrm{Schicht}}&= \num{0.9999996(2)}  & \sigma_{\mathrm{Schicht}}&= \num{9e-11} \pm \num{1e-9}  & d=\SI{849(1)}{\angstrom} \\
+  n_{\mathrm{Substrat}}&= \num{0.9999893(1)} & \sigma_{\mathrm{Substrat}}&= \SI{4.53(7)e-10}{} % ?? so richtig ?
 \end{align}
 für die verwendete Probe.
 Die Elektronendichte $\rho_i$ der zwei Materialien ergibt sich aus dem Zusammenhang \eqref{eqn:elektronendichte} zu
 \begin{align}
 \rho_i&=\frac{2\delta_i \pi}{\lambda^2 r_e} &\text{mit}&  &\delta_i = 1 - n_i.\\
 \end{align}
-Aus den berechneten Dispersionene ergeben sich die Elektronendichten
+Aus den berechneten Dispersionen ergeben sich die Elektronendichten
 \begin{align}
-\rho_{\mathrm{Schicht}}&=\SI{4(1.6)e28}{\per\cubic\meter}  & \rho_{\mathrm{Substrat}}&=\SI{101(1)e28}{\per\cubic\meter}
+\rho_{\mathrm{Schicht}}&=\SI{4(2)e28}{\per\cubic\meter}  & \rho_{\mathrm{Substrat}}&=\SI{101(1)e28}{\per\cubic\meter}
 \end{align}
