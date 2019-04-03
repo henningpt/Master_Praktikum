@@ -8,6 +8,8 @@ from scipy.optimize import curve_fit
 import scipy.constants as const
 from scipy import optimize as opt
 from scipy.signal import argrelmin as rel_min
+
+
 # daten
 # gemessene intensitaeten
 THETA_det_scan, Int_det_scan   = np.genfromtxt("messwerte/det_scan.txt", unpack=True)
@@ -240,14 +242,36 @@ params_test[3] = 1 - 3.5e-6
 n_schicht = uparams_messung[3]
 n_substrat = uparams_messung[4]
 
+lit_delta_schicht  = 3.5e-6
+lit_delta_substrat = 7.6e-6
+
+print("\nDelta schicht lit abweichung: ",
+        abs( 1 - n_schicht - lit_delta_schicht) / lit_delta_schicht)
+print("Delta substrat lit abweichung: ",
+        abs(1 - n_substrat - lit_delta_substrat) / lit_delta_substrat)
+
 def e_dichte(n):
     lam = 1.54e-10
     r_e = 2.8179403227e-15
     return 2*(1-n)*np.pi/(lam**2*r_e)
 
-print('Elektronendichten n_schicht', e_dichte(n_schicht))
-print('Elektronendichten n_substrat', e_dichte(n_substrat))
-print('d n_schicht',1-n_schicht)
+
+# lit werte Elektronendichten
+c_e_radius_info = const.physical_constants['classical electron radius']
+c_e_radius      = unp.uarray(c_e_radius_info[0], c_e_radius_info[2])
+
+lit_edichte_schicht  =  9.5 * 10**(14) / c_e_radius
+lit_edichte_substrat = 20.0 * 10**(14) / c_e_radius
+
+print('\nElektronendichten n_schicht', e_dichte(n_schicht))
+print("relat. abweichung zu lit wert schicht : ",
+        abs(e_dichte(n_schicht) - lit_edichte_schicht) / lit_edichte_schicht)
+
+print('\nElektronendichten n_substrat', e_dichte(n_substrat))
+print("relat. abweichung zu lit wert schicht : ",
+        abs(e_dichte(n_substrat) - lit_edichte_substrat) / lit_edichte_substrat)
+
+print('\n d n_schicht',1-n_schicht)
 print('d n_substrat',1-n_substrat)
 # print("z_überfit",uparams_messung_z)
 # print("n_2,n_3", uparams_messung_n3)
