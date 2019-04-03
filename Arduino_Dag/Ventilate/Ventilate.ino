@@ -4,7 +4,7 @@ This sketch is for ventilate the room in an ordert way.
 const int flexPin = A0; //Define analog input pin to measure
             //flex sensor position. 
 
-unsigned long ventilate_time_total = 1000;
+unsigned long ventilate_time_total = 5000;
 unsigned long ventilate_time_closed = 10000;   
 unsigned long time_open = 0;
 unsigned long time_closed = 0;
@@ -14,13 +14,17 @@ const int GREEN_PIN = 10;
 const int BLUE_PIN = 11;
 int flexPosition;  // Input value from the analog pin.
 const int button_pin = 2;  // pushbutton 2 pin
+const int sensorPin = 1; // Light sensor
+int speakerPin = 6;     //the pin that buzzer is connected to
+unsigned long LightLevel; 
 int button_state;
 int season = 0; 
 
 void setup() {
   Serial.begin(9600); //Set serial baud rate to 9600 bps
   pinMode(13, OUTPUT); 
-  pinMode(12, OUTPUT);  
+  pinMode(12, OUTPUT);
+  pinMode(speakerPin, OUTPUT);    //set the output pin for the speaker
   pinMode(RED_PIN, OUTPUT);
   pinMode(GREEN_PIN, OUTPUT);
   pinMode(BLUE_PIN, OUTPUT);
@@ -31,8 +35,16 @@ void setup() {
 
 
 void loop() {
- // put your main code here, to run repeatedly:
-
+// determine the light level of the room 
+LightLevel = analogRead(sensorPin);
+Serial.print("Lichtintensität: ");
+Serial.print(LightLevel);
+//Is it night?
+while(LightLevel<30){
+  timer = millis();
+  LightLevel = analogRead(sensorPin);
+Serial.println("Nacht ");
+}
 button_state = digitalRead(button_pin);
 
 // if button is pressed
@@ -70,9 +82,12 @@ unsigned long time_difference(unsigned long Start, unsigned long End){
 void ventilate_process(){
     while(flexPosition < 800){  // Is the window open?
       digitalWrite(13, HIGH);   // Turn on the red LED till the window is opened
+      tone(speakerPin,440); // play an A for "aufmachen" 
       flexPosition = analogRead(flexPin); // read the position of the window
-    }
-   
+      Serial.print("Flexwert: ");
+      Serial.println(flexPosition);
+     }
+   noTone(speakerPin);
    digitalWrite(13, LOW);   // Turn off the red LED 
    time_closed = 0;
    timer = millis(); // set the time to the current time
@@ -82,15 +97,19 @@ void ventilate_process(){
       Serial.print(ventilate_time_total);
       Serial.print("/");
       Serial.println(time_open);
-
+      Serial.print("Flexwert: ");
+      Serial.print(flexPosition);
       time_open = time_difference(timer, millis());   
    }
    time_open = 0;
    while(flexPosition > 800){  // Is the window closed?
           digitalWrite(12, HIGH);   // Turn on the yellow LED till the window is closed
+          tone(speakerPin,262 ); // play a C for "close"  
           flexPosition = analogRead(flexPin); // read the position of the window
+          Serial.print("Flexwert: ");
+          Serial.println(flexPosition);
    }           
-   
+   noTone(speakerPin);
    digitalWrite(12, LOW);    // Turn off the yellow LED   
    timer = millis();    // set the new timer
   }  
@@ -108,7 +127,7 @@ void season_set(int x){ // where x is the account how often he butten was presse
     ventilate_time_closed = 10000;   
     break;
   case 1: // summer
-    // organe
+    // organe or yellow not sure
     analogWrite(RED_PIN, 255);
     analogWrite(GREEN_PIN, 165);
     analogWrite(BLUE_PIN, 0 );
@@ -131,7 +150,7 @@ void season_set(int x){ // where x is the account how often he butten was presse
     ventilate_time_total = 10;
     ventilate_time_closed = 50000;   
     break;
-  }
+  }  
   delay(display_time);
   digitalWrite(RED_PIN, LOW);
   digitalWrite(GREEN_PIN, LOW);
