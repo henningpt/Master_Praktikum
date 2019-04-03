@@ -106,7 +106,7 @@ print("Intesität=",uparams_det[0])
 params_rock, cov_rock = curve_fit(Betragsfunktion ,Theta_rock[(Theta_rock > -0.25) & (Theta_rock < 0.7) ],
                                     Int_rock[(Theta_rock > -0.25) & (Theta_rock < 0.7)], p0=[14e7,-0.25,7e7])
 uparams_rock = unp.uarray(params_rock, np.sqrt(np.diag(cov_rock)))
-
+print("Rocking_scan_params",uparams_rock)
 
 # finde nullstelle von rockingscan
 def betragsfunktion_params(x):
