@@ -35,6 +35,7 @@ angenommen. \\
 
 \FloatBarrier
 \begin{figure}
+  \centering
   \includegraphics[width=0.7\textwidth]{bilder/einschicht.png}
   \caption{Übergang einer elektromagnetischen Welle vom Vakuum in ein
             anderes Medium und dabei auftretetende Reflexion und Transmission.\cite{sample}}
@@ -97,13 +98,13 @@ $\vec{E}_{\text{index}}\left( \vec{r} \right)$
 lassen sich wie folgt angeben.
 Für die einlaufende Welle
 $\vec{E}_{\text{i}} = \begin{pmatrix} 0, A, 0 \end{pmatrix}^{\top}
-e^{ \i \vec{k_{\text{i}} \vec{r} }}$,
+e^{ \i \vec{k}_{\text{i} \vec{r} }}$,
 die reflektierte\\
 $\vec{E}_{\text{f}} = \begin{pmatrix} 0, B, 0 \end{pmatrix}^{\top}
-e^{ \i \vec{k_{\text{f}} \vec{r} }}$
+e^{ \i \vec{k}_{\text{f} \vec{r} }}$
 und die transmittierte
 $\vec{E}_{\text{t}} = \begin{pmatrix} 0, C, 0 \end{pmatrix}^{\top}
-e^{ \i \vec{k_{\text{t}} \vec{r} }}$. \\
+e^{ \i \vec{k}_{\text{t} \vec{r} }}$. \\
 Dabei gilt für die Wellenvektoren
 \begin{align*}
   \vec{k_{\text{i}}} &= k
@@ -114,7 +115,7 @@ Dabei gilt für die Wellenvektoren
   \begin{pmatrix} \cos\alpha_{\text{t}} , 0, -\sin\alpha_{\text{t}} \end{pmatrix}^{\top} \, .
 \end{align*}
 
-Hier wurde verwendet, dass bei Röntgenstrahlung nicht zwischen s- und p-Polaristation
+Hier wurde verwendet, dass bei Röntgenstrahlung nicht zwischen s- und p-Polarisation
 unterschieden werden muss.
 
 Anhand der vorausgegangenen Definitionen für die Feldvektoren sowie
@@ -138,7 +139,7 @@ reflektierter Welle wird durch $r$ bemessen.} dient als Maß für die Intensitä
 sodass sich die Reflektivität durch
 \begin{align}
   R = \lvert r \rvert^{2} \approx
-  \left( \frac{\alpha_{\text{crit.}}}{2\alpha_{\text{i}}} \right)
+  \left( \frac{\alpha_{\text{crit.}}}{2\alpha_{\text{i}}} \right)^{4}
   \label{eqn:reflektivitaet}
 \end{align}
 ausdrücken lässt.\\
@@ -155,14 +156,14 @@ die Röngenreflektivität
 eins einschichtigen
 Mediums betrachtet sondern eines Mehrschichtsystem wie
 beispielsweise ein $\SI{800}{\angstrom}$ dicker Polystyrolfilm (PS)
-auf Silizium (Si). Die berechntet Röngenreflektivität dieses
+auf Silizium (Si). Die berechnete Röngenreflektivität dieses
 Systems ist in der Abbilung \ref{fig:mehrschicht} dargestellt.
 
 \begin{figure}
 \centering
 \includegraphics[width = 0.7\textwidth]{bilder/mehrschicht_beispiel.PNG}
-\caption{Berechnete Röngenreflektivität für $\lambda=\SI{1.54}{\angstrom} $ sowohl eines
-$\SI{800}{\angstrom}$ dicker Polystyrolfilm (PS)
+\caption{Berechnete Röngenreflektivität für $\lambda=\SI{1.54}{\angstrom} $ sowohl
+für einen $\SI{800}{\angstrom}$ dicker Polystyrolfilm (PS)
 auf Silizium (Si)} als auch die reine Röngenreflektivität von Si ohne Film.
 in Abhängigkeit des Einfallswinkel $\alpha_i$.\cite{sample}
 \label{fig:mehrschicht}
@@ -175,13 +176,13 @@ Die Ozillation in der Reflektivität aus der Abbildung \ref{subsec:mehrschicht}
 lassen sich auf konstruktive und destruktive Interferenzen in
 der refelektiert Strahlung zurückführen.
 Da bei einem Mehrschichtsystem mehr
-Grenzflächen, an denen Reflexion auftritt, exsistiern,
-kömmt es zu einer Überlagerung der an unterschiedlichen Grenzflächen
+Grenzflächen, an denen Reflexion auftritt, existieren,
+kommt es zu einer Überlagerung der an unterschiedlichen Grenzflächen
 refelektierten Strahlen.
 Beträgt der Gangunterschied der Strahlen
 ein ungerades Vielfaches der halben Wellenlänge
-kommt es zu einer destruktive Interferenzen und für gerade Vielfach
-liegt konstruktive Interferenzen vor.
+kommt es zu destruktiver Interferenz und für gerade Vielfache
+liegt konstruktive Interferenz vor.
 Die so auftretetenden
 Modulationen in der Reflektionskurve
 werden auch "Kiessig-Ringe" gennant.
@@ -202,17 +203,15 @@ unterschiedlicher Brechungsindizes
 ergibt sich auf Grund der Überlagerungen der reflektierten
 Strahlen eine
 komplizierte Reflektivität, für die der
-rekusiven Parratt-Algorithmus einen Lösungsansatz
+rekursive Parratt-Algorithmus einen Lösungsansatz
 liefert.
-Der Parratt-Algorithmus geht von einem System
-wie in Abbildung \ref{fig:parratt_syst} dargestellt
-mit $N$ glatte Grenzflächen und somit $N+1$ Schichten
-aus.
+Der Parratt-Algorithmus geht, wie in Abbildung \ref{fig:parratt_syst} dargestellt, von einem System
+mit $N$ glatte Grenzflächen und somit $N+1$ Schichten aus.
 
 \begin{figure}
   \centering
 \includegraphics[width=0.7\textwidth]{bilder/mehrschicht_parratt.PNG}
-\caption{Beispiel System für den Parratt-Algorithmus
+\caption{Beispielsystem für den Parratt-Algorithmus
 mit $N+1$ Schichten und $N$ glatten Grenzflächen.\cite{sample}}
 \label{fig:parratt_syst}
 \end{figure}
@@ -223,13 +222,13 @@ unendlich dick angenommen wird.
 Diese Annahme ist
 eine gute Nährung
 solange
-die Substratdicke größer gegenüber der
+die Substratdicke groß gegenüber der
 Eindringtiefe ist.
-Als Folge dessen existiert eine Startwert
+Als Folge dessen existiert ein Startwert
 für den Parratt-Algorithmus, da
 aus dem Substrat keine refektierte Strahlung $R_{N+1}$
 existiert.
-Für das Verhältnis von refelektierter und transmittierte Amplitude
+Für das Verhältnis von refelektierter und transmittierter Amplitude
 $\mathrm{X}_j$ an der $j$-ten Grenzfläche liefert der
 Parratt-Algorithmus den Zusammenhang
 
@@ -238,12 +237,12 @@ Parratt-Algorithmus den Zusammenhang
 \frac{\mathrm{r}_{j,j+1} + \mathrm{X}_{j+1}\exp\left(2\symup{i} \mathrm{k}_{z,j+1} \mathrm{z}_j \right)}
 {1 + \mathrm{r}_{j,j+1} + \mathrm{X}_{j+1}\exp\left(2\symup{i} \mathrm{k}_{z,j+1} \mathrm{z}_j \right)}.
 \end{align}
-Der koeffizienten $\mathrm{r}_{j,j+1}$ entspricht dabei
+Der Koeffizient $\mathrm{r}_{j,j+1}$ entspricht dabei
 der Fresnelreflektivität an der $j$-ten Grenzfläche
 mit
 \begin{align}
   \mathrm{r}_{j,j+1} &= \frac{\mathrm{k}_{z,j}-\mathrm{k}_{z,j+1}}{\mathrm{k}_{z,j} + \mathrm{k}_{z,j+1}}
-\intertext{und der z-komponente des Wellenvektors in der $j$-ten Schicht}
+\intertext{und der z-Komponente des Wellenvektors in der $j$-ten Schicht}
  \mathrm{k}_{z,j} &= \mathrm{k}\left(\mathrm{n}_j^2 - \cos^2\alpha_i\right)^{\sfrac{1}{2}}
 \end{align}
 
@@ -256,17 +255,17 @@ mit
 \subsection{Rauigkeit}
 \label{subsec:rauigkeit}
 Die zuvorher eingehende
-Annahme, dass es sich bei alle betrachteten
+Annahme, dass es sich bei allen betrachteten
 Grenzflächen um
 glatte Grenzflächen wird nun verworfen, da in
 der Realität bei Grenzflächen immer
 eine endliche Rauigkeit auftritt.
-Wobei die Rauigkeit nur in z-Richtung bestimmen lässt,
+Wobei sich die Rauigkeit nur in z-Richtung bestimmen lässt,
 da bei Reflektivitätsmessungen mit einem
-Impulsübertrag senktecht zur Probenoberfläche
+Impulsübertrag senkrecht zur Probenoberfläche
 das Signal
-keine Informationen laterale Oberflächenstruktur
-enthält. Die Übergangsbereich zwischen
+keine Informationen über die laterale Oberflächenstruktur
+enthält. Die Übergangsbereiche zwischen
 zwei Schichten besitzen
 nun einen gemittelten Brechungsindex
 $\mathrm{n}(z)$, der für den Grenzfall
