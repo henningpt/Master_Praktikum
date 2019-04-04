@@ -261,18 +261,24 @@ c_e_radius_info = const.physical_constants['classical electron radius']
 c_e_radius      = unp.uarray(c_e_radius_info[0], c_e_radius_info[2])
 
 lit_edichte_schicht  =  9.5 * 10**(14) / c_e_radius
+print("\nlit dichte schicht: ", lit_edichte_schicht)
+
 lit_edichte_substrat = 20.0 * 10**(14) / c_e_radius
+print("litdichte substrat: ", lit_edichte_substrat)
+
 
 print('\nElektronendichten n_schicht', e_dichte(n_schicht))
+print('\nElektronendichten n_schicht lit', lit_edichte_schicht)
 print("relat. abweichung zu lit wert schicht : ",
         abs(e_dichte(n_schicht) - lit_edichte_schicht) / lit_edichte_schicht)
 
 print('\nElektronendichten n_substrat', e_dichte(n_substrat))
-print("relat. abweichung zu lit wert schicht : ",
+print('\nElektronendichten n_substrat lit', lit_edichte_substrat)
+print("relat. abweichung zu lit wert substrat : ",
         abs(e_dichte(n_substrat) - lit_edichte_substrat) / lit_edichte_substrat)
 
-print('\n d n_schicht',1-n_schicht)
-print('d n_substrat',1-n_substrat)
+print('\n delta n_schicht',1-n_schicht)
+print('delta n_substrat',1-n_substrat)
 # print("z_überfit",uparams_messung_z)
 # print("n_2,n_3", uparams_messung_n3)
 plt.figure(100)
