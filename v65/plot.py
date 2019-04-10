@@ -21,10 +21,11 @@ Theta_rock , Int_rock = np.genfromtxt("messwerte/rock_scan_0.txt", unpack=True)
 # da der Strahl noch teilweise
 # direkt auf den Detektor fällt.
 
-Theta_messung = theta_messung[theta_messung > 0.25]
-Int_messung = int_messung[theta_messung > 0.25]
-Theta_untergrund  = theta_untergrund[theta_untergrund > 0.25]
-Int_untergrund = int_untergrund[theta_untergrund > 0.25]
+Theta_messung = theta_messung[theta_messung > 0.05]
+Int_messung = int_messung[theta_messung > 0.05]
+Theta_untergrund  = theta_untergrund[theta_untergrund > 0.05]
+Int_untergrund = int_untergrund[theta_untergrund > 0.05]
+
 
 
 
@@ -82,9 +83,9 @@ def kann_alles_macht_alles(Winkel,sigma1,sigma2,z2,n2,n3):
 
     k = 2 * np.pi / 1.54 * 1e10
     # z-Komponenten
-    kz1 = k * np.sqrt(n_1**2 - np.cos(ai)**2)
-    kz2 = k * np.sqrt(n2**2 - np.cos(ai)**2)
-    kz3 = k * np.sqrt(n3**2 - np.cos(ai)**2)
+    kz1 = k * np.sqrt(n_1**2 - np.cos(ai)**2 + 0j)
+    kz2 = k * np.sqrt(n2**2 - np.cos(ai)**2  + 0j)
+    kz3 = k * np.sqrt(n3**2 - np.cos(ai)**2  + 0j)
 
 
     #z-Komponenten
@@ -94,7 +95,9 @@ def kann_alles_macht_alles(Winkel,sigma1,sigma2,z2,n2,n3):
     x2 = np.exp(- 1j *2 * kz2 * z2) * r23
     # print("test",(r12 + x2),"durch", (1 + r12 * x2))
     x1 = (r12 + x2) / (1 + r12 * x2)
-    return np.log(np.abs(x1)**2)
+    antwort =  np.log(np.abs(x1)**2)
+    return antwort
+
 
 
 params_det, cov_det = curve_fit(Gaus ,THETA_det_scan,Int_det_scan,p0=[0.9e8,0,0.02])
@@ -135,15 +138,26 @@ plt.legend(loc='best')
 plt.ylim(0,8e7)
 plt.savefig('build/plot_rocking.pdf')
 
-Int_messung_sauber = (Int_messung - Int_untergrund) / params_det[0]  # Int_messung_sauber ist auf I0 normiert -> reflektivitaet
+Int_messung_sauber = (Int_messung - Int_untergrund) # / params_det[0]  # Int_messung_sauber ist auf I0 normiert -> reflektivitaet
 Int_messung_sauber_mit_geo_faktor = np.array(Int_messung_sauber)
 Int_messung_sauber_mit_geo_faktor[Theta_messung < geo_winkel] = Int_messung_sauber[Theta_messung < geo_winkel] / ( noms(proben_durchmesser) * np.sin(Theta_messung[Theta_messung < geo_winkel]*np.pi/180) / noms(strahl_durchmesser))
 print(Int_messung_sauber_mit_geo_faktor[Theta_messung < Winkel_rock])
 # print("Geometriefaktor",noms(proben_durchmesser) * np.sin(Theta_messung[Theta_messung < Winkel_rock]*np.pi/180) / noms(strahl_durchmesser))
 # print(Int_messung_sauber_mit_geo_faktor- Int_messung_sauber)
+Int_messung_sauber_mit_geo_faktor = Int_messung_sauber_mit_geo_faktor/Int_messung_sauber_mit_geo_faktor[0]
+
+plt.figure(44)
+plt.plot(theta_messung,(int_messung-int_untergrund) / params_det[0] ,'-', label='Messwerte')
+plt.plot(Theta_messung,Int_messung_sauber_mit_geo_faktor ,'-', label="Messwerte mit Geo")
+plt.axvline(x=0.05)
+plt.xlabel(r'$\Theta/°$')
+plt.ylabel(r'$Intesity I$')
+plt.legend(loc='best')
+plt.yscale('log')
+plt.savefig('build/plot_Messwerte.pdf')
+
+
 # fit reflektivitaet gesamt
-Theta_messung_ohne = Theta_messung[Theta_messung > Winkel_rock]
-Int_messung_sauber_ohne = Int_messung_sauber[Theta_messung > Winkel_rock]
 
 index_min = rel_min(np.log(Int_messung_sauber),order=4)
 alpha_min = Theta_messung[index_min]
@@ -167,8 +181,8 @@ print("Schichtdicke", z_berechnet)
 # Beobachtung:  sigma substrat bestimmt die mittlere Steigung am Ende
 #               sigma Schicht bestimmt die Stärke der Schwingungen aber antiproportional
 
-sigma_1 = 5e-10 #Schicht
-sigma_2 = 4e-10 #Substrat
+sigma_1 =   10e-10 #Schicht
+sigma_2 =  10e-10 #Substrat
 #
 # test_1 = 9e-10 #Schicht
 # test_2 = 4.5e-10 #Substrat
@@ -176,11 +190,11 @@ sigma_2 = 4e-10 #Substrat
 # test_3 = 10e-10 #Schicht
 # test_4 = 4.5e-10 #Substrat
 
-n_2 = 1 - 1.5e-6
-n_3 = 1 - 11.5e-6
+n_2 = 1 - 3e-6
+n_3 = 1 - 7e-6
 
-n_4 = 1 - 2e-6
-n_5 = 1 - 11.5e-6
+n_4 = 1 - 1e-6
+n_5 = 1 - 1e-6
 
 # Beobachtung: n3 substrat bestimmt die höhe der funktion
 #              n2 Schicht bestimmt die Stärke der Schwingungen protional
@@ -209,48 +223,77 @@ def sigma_gesucht(Winkel,sigma1,sigma2,z):
 
 
 bereich = 150
-params_messung, cov_messung = curve_fit(kann_alles_macht_alles, Theta_messung[4:-bereich],
-                                        np.log(Int_messung_sauber_mit_geo_faktor[4:-bereich]), p0=[sigma_1, sigma_2, noms(z_berechnet),n_2, n_3],maxfev=100000)
+
+Testfunktionswerte = kann_alles_macht_alles(Theta_messung[:-bereich],sigma_1, sigma_2, noms(z_berechnet),n_2, n_3)
+
+print("Funkionswerte ",Testfunktionswerte)
+
+params_messung, cov_messung = curve_fit(kann_alles_macht_alles, Theta_messung[:-bereich],
+                                        np.log(Int_messung_sauber_mit_geo_faktor[:-bereich]), p0=[
+                                         sigma_1, sigma_2, noms(z_berechnet),n_2, n_3
+                                        ],maxfev=100000)
+
+
 uparams_messung = unp.uarray(params_messung, np.sqrt(np.diag(cov_messung)))
-print("Params Fit",uparams_messung)
+print("Params Fit nach 1",uparams_messung)
+print("Params von delta Fit nach 1",1-uparams_messung)
+n_schicht = uparams_messung[3]
+n_substrat = uparams_messung[4]
 
-params_messung_z, cov_messung_z = curve_fit(z_gesucht, Theta_messung[10:],
-                                          Int_messung_sauber_mit_geo_faktor[10:], p0=[noms(z_berechnet)],maxfev=800)
-uparams_messung_z = unp.uarray(params_messung_z, np.sqrt(np.diag(cov_messung_z)))
-
-params_messung_n3, cov_messung_n3 = curve_fit(n_3_gesucht, Theta_messung[20:],
-                                          Int_messung_sauber_mit_geo_faktor[20:], p0=[n_2,n_3],maxfev=800)
-uparams_messung_n3 = unp.uarray(params_messung_n3, np.sqrt(np.diag(cov_messung_n3)))
-print(uparams_messung_n3)
-
+# params_messung_z, cov_messung_z = curve_fit(z_gesucht, Theta_messung[10:],
+#                                           Int_messung_sauber_mit_geo_faktor[10:], p0=[noms(z_berechnet)],maxfev=800)
+# uparams_messung_z = unp.uarray(params_messung_z, np.sqrt(np.diag(cov_messung_z)))
+#
+# params_messung_n3, cov_messung_n3 = curve_fit(n_3_gesucht, Theta_messung[20:],
+#                                           Int_messung_sauber_mit_geo_faktor[20:], p0=[n_2,n_3],maxfev=800)
+# uparams_messung_n3 = unp.uarray(params_messung_n3, np.sqrt(np.diag(cov_messung_n3)))
+# print(uparams_messung_n3)
+#
 params_messung_sigma, cov_messung_sigma = curve_fit(sigma_gesucht, Theta_messung[4:-bereich],
                                            np.log(Int_messung_sauber_mit_geo_faktor[4:-bereich]), p0=[sigma_1,sigma_2,noms(z_berechnet)],maxfev=800000)
 uparams_messung_sigma = unp.uarray(params_messung_sigma, np.sqrt(np.diag(cov_messung_sigma)))
-print(uparams_messung_sigma)
+# print(uparams_messung_sigma)
 
     # n_2 = 1 - 1.5e-6
     # n_3 = 1 - 6e-6
 
 params_test=np.array(params_messung)
-params_test[4] = 1 - 7.6e-6
-params_test[3] = 1 - 3.5e-6
-# params_test[0] = 2e-13
+# params_test[0] = params_messung[0]-0.9e-9
+# params_test[1] = params_messung[1]+0.3e-10
+# params_test[3] = 1 - 2.5e-6
+# params_test[4] = 1 - 7e-6
+params_test[0] = 8e-10+1e-10
+params_test[1] = 2e-10+2.9e-10
+params_test[3] = 1- 2.1e-6
+params_test[4] = 1 - 6e-6 -0.5e-6
+
+
 #Schicht
 # params_test[]=
 
+params_messung, cov_messung = curve_fit(kann_alles_macht_alles, Theta_messung[:-bereich],
+                                        np.log(Int_messung_sauber_mit_geo_faktor[:-bereich]), p0=[
+                                        *params_test
+                                        ])
+
+
+uparams_messung = unp.uarray(params_messung, np.sqrt(np.diag(cov_messung)))
+print("Params Fit nach 2",uparams_messung)
+print("Params von delta Fit nach 2",1-uparams_messung)
+print("Parmas diff", params_messung-params_test)
 
 n_schicht = uparams_messung[3]
 n_substrat = uparams_messung[4]
 
 def sigma_mit_n_fit(Winkel,sigma1,sigma2,z):
-    n_4 = noms(n_schicht)
-    n_5 = noms(n_substrat)
-    return(kann_alles_macht_alles(Winkel,sigma1,sigma2,z,n_4,n_5))
+     n_4 = noms(n_schicht)
+     n_5 = noms(n_substrat)
+     return(kann_alles_macht_alles(Winkel,sigma1,sigma2,z,n_4,n_5))
 
 params_messung_sigma_mit_n, cov_messung_sigma_mit_n = curve_fit(sigma_mit_n_fit, Theta_messung[4:-bereich],
                                            np.log(Int_messung_sauber_mit_geo_faktor[4:-bereich]), p0=[sigma_1,sigma_2,noms(z_berechnet)],maxfev=800000)
 uparams_messung_sigma_mit_n = unp.uarray(params_messung_sigma_mit_n, np.sqrt(np.diag(cov_messung_sigma_mit_n)))
-print("super test",uparams_messung_sigma_mit_n)
+# print("super test",uparams_messung_sigma_mit_n)
 
 
 
@@ -274,6 +317,8 @@ c_e_radius_info = const.physical_constants['classical electron radius']
 c_e_radius      = unp.uarray(c_e_radius_info[0], c_e_radius_info[2])
 
 lit_edichte_schicht  =  9.5 * 10**(14) / c_e_radius
+
+
 print("\nlit dichte schicht: ", lit_edichte_schicht)
 
 lit_edichte_substrat = 20.0 * 10**(14) / c_e_radius
@@ -297,13 +342,17 @@ print('delta n_substrat',1-n_substrat)
 plt.figure(100)
 # plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung,*params_messung),label='Fit')
 plt.plot(Theta_messung, Int_messung_sauber_mit_geo_faktor,'tab:orange', label=r'$I_{korr}$')
-plt.plot(Theta_messung[4:-bereich], Int_messung_sauber_mit_geo_faktor[4:-bereich],'--r', label=r'$I_{korr}$ für Fit')
+plt.plot(Theta_messung[:-bereich], Int_messung_sauber_mit_geo_faktor[:-bereich],'--r', label=r'$I_{korr}$ für Fit')
 # plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung, sigma_1, sigma_2, 7e-8,n_2,n_3),label='Hand Fit 3')
 # plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung, sigma_1, sigma_2, noms(z_berechnet),n_2,n_3),label='Hand Fit 1')
 # plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung, sigma_1, sigma_2, noms(z_berechnet),n_6,n_7),label='Hand Fit 7')
 # plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung, sigma_1, sigma_2, z_2,n_4,n_5),label='Hand Fit z1')
 plt.plot(Theta_messung, np.exp(kann_alles_macht_alles(Theta_messung, *params_messung)),'tab:blue', linewidth=0.75 ,label=r'Fit ')
-# plt.plot(Theta_messung, np.exp(kann_alles_macht_alles(Theta_messung, *params_test)),label='Fit test')
+# plt.plot(Theta_messung, np.exp(kann_alles_macht_alles(Theta_messung, 0.2e-10, 6e-10, noms(z_berechnet), 1-0.1e-6, 1-2e-6 )) , linewidth=0.75 ,label=r'Fit hand 0 ')
+# plt.plot(Theta_messung, np.exp(kann_alles_macht_alles(Theta_messung, 0.2e-10, 6e-10, noms(z_berechnet), 1-0.2e-6, 1-3e-6 )) , linewidth=0.75 ,label=r'Fit hand 1 ')
+# plt.plot(Theta_messung, np.exp(kann_alles_macht_alles(Theta_messung, 0.2e-10, 6e-10, noms(z_berechnet), 1-0.3e-6, 1-4e-6 )) , linewidth=0.75 ,label=r'Fit hand 2')
+# plt.plot(Theta_messung, np.exp(kann_alles_macht_alles(Theta_messung, 0.2e-10, 6e-10, noms(z_berechnet), 1-0.4e-6, 1-8e-6 )) , linewidth=0.75 ,label=r'Fit hand 3 ')
+# plt.plot(Theta_messung, np.exp(kann_alles_macht_alles(Theta_messung, *params_test)),'m' ,linewidth=0.75 ,label='Fit test')
 #plt.plot(Theta_messung, z_gesucht(Theta_messung, *params_messung_z),label='z_gesucht')
 # plt.plot(Theta_messung, n_3_gesucht(Theta_messung, *params_messung_n3),label='n3_gesucht')
 plt.yscale('log')

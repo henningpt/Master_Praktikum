@@ -4,8 +4,8 @@ This sketch is for ventilate the room in an ordert way.
 const int flexPin = A0; //Define analog input pin to measure
             //flex sensor position. 
 
-unsigned long ventilate_time_total = 5000;
-unsigned long ventilate_time_closed = 10000;   
+unsigned long ventilate_time_total = 600000;
+unsigned long ventilate_time_closed = 8160000;   
 unsigned long time_open = 0;
 unsigned long time_closed = 0;
 unsigned long timer = 0;
@@ -45,15 +45,10 @@ while(LightLevel<30){
   LightLevel = analogRead(sensorPin);
 Serial.println("Nacht ");
 }
-button_state = digitalRead(button_pin);
 
 // if button is pressed
- if(button_state == LOW){
-  season +=1;
-  season = season%4; 
-  season_set(season);
- }
- time_closed = time_difference(timer  ,millis()); 
+season_button();
+time_closed = time_difference(timer  ,millis()); 
 // Serial.print("Time: ");
 // Serial.println(millis()); //prints time since programm started
 
@@ -81,18 +76,20 @@ unsigned long time_difference(unsigned long Start, unsigned long End){
 
 void ventilate_process(){
     while(flexPosition < 800){  // Is the window open?
+      season_button();
       digitalWrite(13, HIGH);   // Turn on the red LED till the window is opened
       tone(speakerPin,440); // play an A for "aufmachen" 
       flexPosition = analogRead(flexPin); // read the position of the window
       Serial.print("Flexwert: ");
       Serial.println(flexPosition);
-     }
+      }
    noTone(speakerPin);
    digitalWrite(13, LOW);   // Turn off the red LED 
    time_closed = 0;
    timer = millis(); // set the time to the current time
   
    while(ventilate_time_total > time_open){  //Was the window long enough open?
+      season_button();
       Serial.print("Zeit geöffnet: ");
       Serial.print(ventilate_time_total);
       Serial.print("/");
@@ -103,6 +100,7 @@ void ventilate_process(){
    }
    time_open = 0;
    while(flexPosition > 800){  // Is the window closed?
+          season_button();
           digitalWrite(12, HIGH);   // Turn on the yellow LED till the window is closed
           tone(speakerPin,262 ); // play a C for "close"  
           flexPosition = analogRead(flexPin); // read the position of the window
@@ -115,6 +113,16 @@ void ventilate_process(){
   }  
 
 
+void season_button(){ 
+  button_state = digitalRead(button_pin);
+  if(button_state == LOW){
+     season +=1;
+     Serial.println("knopf gedrückt");
+     season = season%4; 
+    season_set(season);
+ }
+}
+
 void season_set(int x){ // where x is the account how often he butten was pressed 
      int display_time = 2000;
   switch (x) {
@@ -123,32 +131,32 @@ void season_set(int x){ // where x is the account how often he butten was presse
     digitalWrite(RED_PIN, LOW);
     digitalWrite(GREEN_PIN, HIGH);
     digitalWrite(BLUE_PIN, LOW);
-    ventilate_time_total = 5000;
-    ventilate_time_closed = 10000;   
+    ventilate_time_total =   600000;
+    ventilate_time_closed = 8160000;   
     break;
   case 1: // summer
     // organe or yellow not sure
     analogWrite(RED_PIN, 255);
     analogWrite(GREEN_PIN, 165);
     analogWrite(BLUE_PIN, 0 );
-    ventilate_time_total = 100;
-    ventilate_time_closed = 100000;   
+    ventilate_time_total =   1800000;
+    ventilate_time_closed = 13050000;   
     break;
   case 2: // autumn
     // red
     digitalWrite(RED_PIN, HIGH);
     digitalWrite(GREEN_PIN, LOW);
     digitalWrite(BLUE_PIN, LOW);
-    ventilate_time_total = 700;
-    ventilate_time_closed = 100000;   
+    ventilate_time_total =   900000;
+    ventilate_time_closed = 8325000;   
     break;
   case 3: // winter
     // blue
     analogWrite(RED_PIN, 5);
     analogWrite(GREEN_PIN, 215);
     analogWrite(BLUE_PIN, 255);
-    ventilate_time_total = 10;
-    ventilate_time_closed = 50000;   
+    ventilate_time_total =   300000;
+    ventilate_time_closed = 5520000;   
     break;
   }  
   delay(display_time);
