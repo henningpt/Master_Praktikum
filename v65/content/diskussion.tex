@@ -1,7 +1,7 @@
 \section{Diskussion}
 \label{sec:Diskussion}
 In Tabelle \ref{tab:vergleiche} sind die
-bestimmten Messwerte und Literaturwerte und die
+bestimmten Werte für Elektronendichte $\rho$ und $\delta$ und Literaturwerte und die
 relative Abweichung gezeigt.
 
 \begin{table}
@@ -22,7 +22,41 @@ relative Abweichung gezeigt.
 
 Die sich ergebendenen relativen Abweichungen zu den Literaturwerten aus Tabelle \ref{tab:vergleiche}
 sind zu groß, um von einer genauen Messung auszugehen.
-Mögliche Ursachen liegen zum einen an der Anzahl der Freiheitsgerade bei dem Fit für den
+Mögliche Ursachen liegen zum einen an der Anzahl der Freiheitsgerade
+bei dem Fit mit dem modifierten Parrat Algorithmus. Um bessere Ergebnisse
+zu erhalten könnte noch in Erwägung gezogen werden, die verschiedenen Bereiche
+im Fit gesondert zu gewichten. So könnten relevantere Bereiche besonders
+berücksichtigt werden.
+
+Für die Rauigkeit der Polystyrolschicht wurde ein Wert von $ \SI{9(100)e-11}{} $
+und für die
+Rauigkeit des Wafers ein Wert von $ \SI{4.53(7)e-10}{} $gemesen. Auffällig ist
+der große Fehler auf die Rauigkeit der Polystyrolschicht, sodass der gemessene Wert
+nicht besonders aussagekräftig ist.
+
+In Abbildung \ref{fig:messung} wird deutlich, dass wenn für
+Elektronendichten und Brechungsindizes die Literaturwerte eingesetzt werden
+und als freie Parameter die Rauigkeit und der z-Wert übrig bleiben, keine
+gute Anpassung an die Messwerte erreicht wird.
+Somit lässt sich vermuten, dass ein systematischer Fehler bezüglich des
+Messvorgangs vorliegt.
+
+\begin{figure}
+ \centering
+   \includegraphics[width=0.7\textwidth]{build/Programm_mit_lit.pdf}
+   \caption{Normierte Reflektivität $R$ gegen den Einfallswinkel $\alpha_i$ aufgetragen und
+    Fit an die markierten Messwerte. Sowie eine Reflektivitätskurve mit den Literaturwerten der Dispersionen und angepasster Rauigkeit.}
+   \label{fig:messung}
+\end{figure}
+
+Abschließend lässt sich sagen, dass bei der durchgeführten Messung, zwar
+der erwartete Zusammenhang visuell bestätigt werden konnte, allerdings die
+Anpassung an die Messwerte Parameter liefert die stark von den Literaturwerten
+Abweichung beziehungsweise einen großen Fehler aufweisen.
+Dabei ist zu bemerken, dass die verschiedenen Justageschritte viel Potenzial
+für sytematische Fehler beherbergen.
+
+
 % Korrektur durch Geometriefaktor <-- Hier zu was schreiben
 
 %  -> Fit Detektorscan
