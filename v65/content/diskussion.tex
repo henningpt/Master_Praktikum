@@ -1,9 +1,9 @@
+
 \section{Diskussion}
 \label{sec:Diskussion}
 In Tabelle \ref{tab:vergleiche} sind die
 bestimmten Werte für Elektronendichte $\rho$ und $\delta$ und Literaturwerte und die
 relative Abweichung gezeigt.
-
 \begin{table}
   \caption{Bestimmte Werte für $\rho$ und $\delta = n - 1$
   der Schicht(PS) und dem Substrat(Silizium) im Vergleich mit Literaturwerten.}
@@ -19,58 +19,43 @@ relative Abweichung gezeigt.
       \bottomrule
   \end{tabular}
 \end{table}
-
-%Die sich ergebendenen relativen Abweichungen zu den Literaturwerten aus Tabelle \ref{tab:vergleiche}
-%sind zu groß, um von einer genauen Messung auszugehen.
-% Mögliche Ursachen liegen zum einen an der Anzahl der Freiheitsgerade
-% bei dem Fit mit dem modifierten Parrat Algorithmus. Um bessere Ergebnisse
-% zu erhalten könnte noch in Erwägung gezogen werden, die verschiedenen Bereiche
-% im Fit gesondert zu gewichten. So könnten relevantere Bereiche besonders
-% berücksichtigt werden.
+Die sich ergebendenen relativen Abweichungen zu den Literaturwerten aus Tabelle \ref{tab:vergleiche}
+sind zu groß, um von einer genauen Messung auszugehen.
+Mögliche Ursachen liegen zum einen an der Anzahl der Freiheitsgerade
+bei dem Fit mit dem modifizierten Parrat Algorithmus. Um bessere Ergebnisse
+zu erhalten könnte noch in Erwägung gezogen werden, die verschiedenen Bereiche
+im Fit gesondert zu gewichten. So könnten relevantere Bereiche besonders
+berücksichtigt werden.
 
 Für die Rauigkeit der Polystyrolschicht wurde ein Wert von $ \SI{{17.9(5)e-10}}{} $
 und für die
-Rauigkeit des Wafers ein Wert von $ \SI{4.6(1)e-10}{}$ gemessen. Diese liegen im Bereich
-der erwarteten Größenordnung. Sie können jedoch nicht mit mit Literaturwerten verglichen werden,
-da die Rauigkeit vom Herstellungsvorgang abhängt.
-Desweiteren fällt in Abbildung \ref{fig:messung} auf,
-dass der Fit nicht in allen Bereichen an die Messwerte passen, da die Schwingungen
-für höhere $\alpha_i$ nicht mehr in der Fitkurve vorzufinden sind.
-Dies liegt zum einen an dem verwendeten Zwei-Schichten-Modell,
-da Silizium oxidiert und somit in der Realität zwischen PS und Siliziumwafer eine nicht berücksichtigte Siliziumoxid Schicht liegt.
-Zum anderen führen verschiedene Startparameter des Fits mit dem modifierten Parrat Algorithmus,
-zu varrierenden Fit-Parametern im Programm.
-Dies ist der hohen Anzahl an Freiheitsgeraden geschuldet.
-Somit 
-% Auffällig ist
-% der große Fehler auf die Rauigkeit der Polystyrolschicht, sodass der gemessene Wert
-% nicht besonders aussagekräftig ist.
+Rauigkeit des Wafers ein Wert von $ \SI{4.53(7)e-10}{} $gemesen. Auffällig ist
+der große Fehler auf die Rauigkeit der Polystyrolschicht, sodass der gemessene Wert
+nicht besonders aussagekräftig ist.
 
-% In Abbildung \ref{fig:messung} wird deutlich, dass wenn für
-% Elektronendichten und Brechungsindizes die Literaturwerte eingesetzt werden
-% und als freie Parameter die Rauigkeit und der z-Wert übrig bleiben, keine
-% gute Anpassung an die Messwerte erreicht wird.
-% Somit lässt sich vermuten, dass ein systematischer Fehler bezüglich des
-% Messvorgangs vorliegt.
-%
-% \begin{figure}
-%  \centering
-%    \includegraphics[width=0.7\textwidth]{build/Programm_mit_lit.pdf}
-%    \caption{Normierte Reflektivität $R$ gegen den Einfallswinkel $\alpha_i$ aufgetragen und
-%     Fit an die markierten Messwerte. Sowie eine Reflektivitätskurve mit den Literaturwerten der Dispersionen und angepasster Rauigkeit.}
-%    \label{fig:messung}
-% \end{figure}
+In Abbildung \ref{fig:messung} wird deutlich, dass wenn für
+Elektronendichten und Brechungsindizes die Literaturwerte eingesetzt werden
+und als freie Parameter die Rauigkeit und der z-Wert übrig bleiben, keine
+gute Anpassung an die Messwerte erreicht wird.
+Somit lässt sich vermuten, dass ein systematischer Fehler bezüglich des
+Messvorgangs vorliegt.
 
-Abschließend lässt sich sagen, dass bei der durchgeführten Messung, 
-Brechungsindizes und Elektronendichten bis auf wenige Prozent genau bestimmt werden konnten.
-Weiterhin konnte durch den Versuch die Oberflächenstruktur in Bezug auf die Rauigkeit untersucht werden.
-Bessere Ergebnisse lassen sich durch Berücksichtigen der Siliziumoxidschicht und
-aufwändigeres variieren der Schätzparameter beim fitten gewinnen.
+\FloatBarrier
+\begin{figure}
+ \centering
+   \includegraphics[width=0.7\textwidth]{build/Programm_mit_lit.pdf}
+   \caption{Normierte Reflektivität $R$ gegen den Einfallswinkel $\alpha_i$ aufgetragen und
+    Fit an die markierten Messwerte. Sowie eine Reflektivitätskurve mit den Literaturwerten der Dispersionen und angepasster Rauigkeit.}
+   \label{fig:messung}
+\end{figure}
+\FloatBarrier
 
-% Anpassung an die Messwerte Parameter liefert die stark von den Literaturwerten
-% Abweichung beziehungsweise einen großen Fehler aufweisen.
-% Dabei ist zu bemerken, dass die verschiedenen Justageschritte viel Potenzial
-% für sytematische Fehler beherbergen.
+Abschließend lässt sich sagen, dass bei der durchgeführten Messung, zwar
+der erwartete Zusammenhang visuell bestätigt werden konnte, allerdings die
+Anpassung an die Messwerte Parameter liefert die stark von den Literaturwerten
+Abweichung beziehungsweise einen großen Fehler aufweisen.
+Dabei ist zu bemerken, dass die verschiedenen Justageschritte viel Potenzial
+für sytematische Fehler beherbergen.
 
 
 % Korrektur durch Geometriefaktor <-- Hier zu was schreiben
@@ -97,4 +82,3 @@ aufwändigeres variieren der Schätzparameter beim fitten gewinnen.
 %
 % - diffuse_Scan nicht wirklicher untergrund aber nur gerninge auswirkung auf den verlauf so
 % wie der Gemometrie faktor
-
