@@ -4,8 +4,8 @@ This sketch is for ventilate the room in an ordert way.
 const int flexPin = A0; //Define analog input pin to measure
             //flex sensor position. 
 
-unsigned long ventilate_time_total = 600000;
-unsigned long ventilate_time_closed = 8160000;   
+unsigned long ventilate_time_total = 5000; //600000;
+unsigned long ventilate_time_closed =10000 ;//8160000;   
 unsigned long time_open = 0;
 unsigned long time_closed = 0;
 unsigned long timer = 0;
@@ -40,14 +40,15 @@ LightLevel = analogRead(sensorPin);
 Serial.print("Lichtintensität: ");
 Serial.print(LightLevel);
 //Is it night?
-while(LightLevel<30){
+while(LightLevel<120){
+  season_button();
   timer = millis();
   LightLevel = analogRead(sensorPin);
 Serial.println("Nacht ");
 }
 
 // if button is pressed
-season_button();
+ season_button();
 time_closed = time_difference(timer  ,millis()); 
 // Serial.print("Time: ");
 // Serial.println(millis()); //prints time since programm started
@@ -94,6 +95,7 @@ void ventilate_process(){
       Serial.print(ventilate_time_total);
       Serial.print("/");
       Serial.println(time_open);
+      flexPosition = analogRead(flexPin); // read the position of the window
       Serial.print("Flexwert: ");
       Serial.print(flexPosition);
       time_open = time_difference(timer, millis());   

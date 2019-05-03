@@ -262,10 +262,10 @@ params_test=np.array(params_messung)
 # params_test[1] = params_messung[1]+0.3e-10
 # params_test[3] = 1 - 2.5e-6
 # params_test[4] = 1 - 7e-6
-params_test[0] = 8e-10+1e-10
-params_test[1] = 2e-10+2.9e-10
-params_test[3] = 1- 2.1e-6
-params_test[4] = 1 - 6e-6 -0.5e-6
+params_test[0] = 8.2e-10
+params_test[1] = 4.7e-10
+params_test[3] = 1 - 1.69e-6
+params_test[4] = 1 - 5.8e-6
 
 
 #Schicht
@@ -339,6 +339,9 @@ print('\n delta n_schicht',1-n_schicht)
 print('delta n_substrat',1-n_substrat)
 # print("z_überfit",uparams_messung_z)
 # print("n_2,n_3", uparams_messung_n3)
+
+
+
 plt.figure(100)
 # plt.plot(Theta_messung, kann_alles_macht_alles(Theta_messung,*params_messung),label='Fit')
 plt.plot(Theta_messung, Int_messung_sauber_mit_geo_faktor,'tab:orange', label=r'$I_{korr}$')
@@ -352,7 +355,7 @@ plt.plot(Theta_messung, np.exp(kann_alles_macht_alles(Theta_messung, *params_mes
 # plt.plot(Theta_messung, np.exp(kann_alles_macht_alles(Theta_messung, 0.2e-10, 6e-10, noms(z_berechnet), 1-0.2e-6, 1-3e-6 )) , linewidth=0.75 ,label=r'Fit hand 1 ')
 # plt.plot(Theta_messung, np.exp(kann_alles_macht_alles(Theta_messung, 0.2e-10, 6e-10, noms(z_berechnet), 1-0.3e-6, 1-4e-6 )) , linewidth=0.75 ,label=r'Fit hand 2')
 # plt.plot(Theta_messung, np.exp(kann_alles_macht_alles(Theta_messung, 0.2e-10, 6e-10, noms(z_berechnet), 1-0.4e-6, 1-8e-6 )) , linewidth=0.75 ,label=r'Fit hand 3 ')
-# plt.plot(Theta_messung, np.exp(kann_alles_macht_alles(Theta_messung, *params_test)),'m' ,linewidth=0.75 ,label='Fit test')
+plt.plot(Theta_messung, np.exp(kann_alles_macht_alles(Theta_messung, *params_test)),'g' ,linewidth=0.75 ,label='Fit test')
 #plt.plot(Theta_messung, z_gesucht(Theta_messung, *params_messung_z),label='z_gesucht')
 # plt.plot(Theta_messung, n_3_gesucht(Theta_messung, *params_messung_n3),label='n3_gesucht')
 plt.yscale('log')
